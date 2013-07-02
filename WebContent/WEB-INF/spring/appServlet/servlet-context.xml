@@ -16,6 +16,10 @@
 	<mvc:resources location="/resources/" mapping="/resources/**" />
 	
 	<mvc:annotation-driven />
+	
+	<mvc:interceptors>
+		<ref bean="accessLogInterceptor" />
+	</mvc:interceptors>
 
 	<!--
 	<bean id="viewResolver"
