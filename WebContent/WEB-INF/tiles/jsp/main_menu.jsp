@@ -15,6 +15,7 @@
 					<li><a href="<c:url value="/playground" />">Playground</a></li>
 					<li><a href="<c:url value="/about" />">About</a></li>
 					<li><a href="<c:url value="/links" />">Links</a></li>
+					<li><a href="<c:url value="/admin" />">Admin</a></li>
 				</ul>
 			</div>
 		</div>
