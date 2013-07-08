@@ -9,6 +9,8 @@ public interface AccessLogDao {
 
 	void insert(AccessLog log);
 
+	List<AccessLog> getAllAccessLogs();
+
 	List<AccessLog> getAccessLogsInSpecificDate(String date);
 
 	List<DailyCount> getDailyCounts();

@@ -9,8 +9,13 @@ public interface MenuConstants {
 	String MENU_NAME_ADMIN = "Admin";
 
 	String SUB_MENU_HEADER_ANALYTICS = "Analytics";
-	String SUB_MENU_ITEM_NAME_AUDIENCE = "Audience";
-	String SUB_MENU_ITEM_URL_AUDIENCE = "/admin/analytics/audience/overview";
+
+	String SUB_MENU_ITEM_NAME_AUDIENCE_OVERVIEW = "Audience Overview";
+	String SUB_MENU_ITEM_URL_AUDIENCE_OVERVIEW = "/admin/analytics/audience/overview";
+
+	String SUB_MENU_ITEM_NAME_AUDIENCE_ACCESS_LOGS = "Audience Access Logs";
+	String SUB_MENU_ITEM_URL_AUDIENCE_ACCESS_LOGS = "/admin/analytics/audience/access_logs";
+
 	String SUB_MENU_ITEM_NAME_TODAY = "Today";
 	String SUB_MENU_ITEM_URL_TODAY = "";
 

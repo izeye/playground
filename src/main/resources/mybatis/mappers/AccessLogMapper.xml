@@ -7,6 +7,9 @@
 		VALUES
 			(#{accessTime}, #{ip}, #{url}, #{userAgent}, #{referer})
 	</insert>
+	<select id="getAllAccessLogs" resultType="AccessLog">
+		SELECT * FROM tb_access_log ORDER BY access_time DESC
+	</select>
 	<select id="getAccessLogsInSpecificDate" resultType="AccessLog">
 		SELECT * FROM tb_access_log WHERE DATE_FORMAT(access_time, '%Y-%m-%d') = #{date}
 	</select>

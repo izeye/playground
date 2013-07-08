@@ -1,8 +1,13 @@
 package com.izeye.playground.web.menu.service;
 
+import static com.izeye.playground.web.menu.domain.MenuConstants.MENU_NAME_ADMIN;
 import static com.izeye.playground.web.menu.domain.MenuConstants.MENU_NAME_PLAYGROUND;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_HEADER_ANALYTICS;
-import static com.izeye.playground.web.menu.domain.MenuConstants.*;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_AUDIENCE_ACCESS_LOGS;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_AUDIENCE_OVERVIEW;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_TODAY;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_AUDIENCE_ACCESS_LOGS;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_AUDIENCE_OVERVIEW;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_TODAY;
 
 import java.util.ArrayList;
@@ -36,8 +41,10 @@ public class DefaultMenuService implements MenuService {
 		// Admin
 		subMenuSections = new ArrayList<SubMenuSection>();
 		subMenuSection = new SubMenuSection(SUB_MENU_HEADER_ANALYTICS);
-		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_AUDIENCE,
-				SUB_MENU_ITEM_URL_AUDIENCE);
+		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_AUDIENCE_OVERVIEW,
+				SUB_MENU_ITEM_URL_AUDIENCE_OVERVIEW);
+		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_AUDIENCE_ACCESS_LOGS,
+				SUB_MENU_ITEM_URL_AUDIENCE_ACCESS_LOGS);
 		subMenuSections.add(subMenuSection);
 		menuNameAndSubMenuSectionListMap.put(MENU_NAME_ADMIN, subMenuSections);
 	}

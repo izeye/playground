@@ -1,6 +1,7 @@
 package com.izeye.playground.log.access.service;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.annotation.Resource;
 
@@ -24,6 +25,11 @@ public class DefaultAccessLogService implements AccessLogService {
 		log.setUserAgent(userAgent);
 		log.setReferer(referer);
 		accessLogDao.insert(log);
+	}
+
+	@Override
+	public List<AccessLog> getAllAccessLogs() {
+		return accessLogDao.getAllAccessLogs();
 	}
 
 }

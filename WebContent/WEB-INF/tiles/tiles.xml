@@ -36,4 +36,8 @@
 	<definition name="admin/analytics/audience/overview" extends="admin/admin">
 		<put-attribute name="body" value="/WEB-INF/views/admin/analytics/audience/overview.jsp" />
 	</definition>
+
+	<definition name="admin/analytics/audience/access_logs" extends="admin/admin">
+		<put-attribute name="body" value="/WEB-INF/views/admin/analytics/audience/access_logs.jsp" />
+	</definition>
 </tiles-definitions>

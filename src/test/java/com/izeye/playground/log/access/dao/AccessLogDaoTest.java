@@ -41,6 +41,12 @@ public class AccessLogDaoTest {
 	}
 
 	@Test
+	public void getAllAccessLogs() {
+		List<AccessLog> allAccessLogs = accessLogDao.getAllAccessLogs();
+		System.out.println(allAccessLogs);
+	}
+
+	@Test
 	public void getAccessLogsInSpecificDate() {
 		String date = "2013-07-02";
 		List<AccessLog> accessLogs = accessLogDao

@@ -9,6 +9,8 @@ public interface AccessLogMapper {
 
 	void insert(AccessLog accessLog);
 
+	List<AccessLog> getAllAccessLogs();
+
 	List<AccessLog> getAccessLogsInSpecificDate(String date);
 
 	List<DailyCount> getDailyCounts();

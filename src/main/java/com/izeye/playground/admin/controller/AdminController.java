@@ -12,7 +12,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.izeye.playground.analytics.audience.service.AudienceAnalyticsService;
+import com.izeye.playground.log.access.domain.AccessLog;
 import com.izeye.playground.log.access.domain.DailyCount;
+import com.izeye.playground.log.access.service.AccessLogService;
 import com.izeye.playground.web.menu.domain.SubMenuSection;
 import com.izeye.playground.web.menu.service.MenuService;
 
@@ -24,6 +26,9 @@ public class AdminController {
 
 	@Resource
 	private AudienceAnalyticsService audienceAnalyticsService;
+
+	@Resource
+	private AccessLogService accessLogService;
 
 	private List<SubMenuSection> subMenuSections;
 
@@ -48,6 +53,16 @@ public class AdminController {
 		model.addAttribute("dailyCounts", dailyCounts);
 
 		return "admin/analytics/audience/overview";
+	}
+
+	@RequestMapping("/admin/analytics/audience/access_logs")
+	public String analyticsAudienceAccessLogs(Model model) {
+		model.addAttribute("subMenuSections", subMenuSections);
+
+		List<AccessLog> allAccessLogs = accessLogService.getAllAccessLogs();
+		model.addAttribute("allAccessLogs", allAccessLogs);
+
+		return "admin/analytics/audience/access_logs";
 	}
 
 }
