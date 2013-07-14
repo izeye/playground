@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.izeye.playground.log.access.dao.AccessLogDao;
 import com.izeye.playground.log.access.domain.AccessLog;
 import com.izeye.playground.log.access.domain.DailyCount;
+import com.izeye.playground.log.access.domain.UserAgentCount;
 
 @Repository("accessLogDao")
 public class AccessLogDaoMyBatis implements AccessLogDao {
@@ -25,7 +26,7 @@ public class AccessLogDaoMyBatis implements AccessLogDao {
 	}
 
 	@Override
-	@Cacheable("accessLogCache")
+	@Cacheable(value = "accessLogCache", key = "{#root.methodName}")
 	public List<AccessLog> getAllAccessLogs() {
 		AccessLogMapper mapper = sqlSession.getMapper(AccessLogMapper.class);
 		return mapper.getAllAccessLogs();
@@ -39,10 +40,23 @@ public class AccessLogDaoMyBatis implements AccessLogDao {
 	}
 
 	@Override
-	@Cacheable("accessLogCache")
+	@Cacheable(value = "accessLogCache", key = "{#root.methodName}")
 	public List<DailyCount> getDailyCounts() {
 		AccessLogMapper mapper = sqlSession.getMapper(AccessLogMapper.class);
 		return mapper.getDailyCounts();
+	}
+
+	@Override
+	public List<AccessLog> getLatestAccessLogs(int count) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	@Cacheable(value = "accessLogCache", key = "{#root.methodName}")
+	public List<UserAgentCount> getUserAgentCounts() {
+		AccessLogMapper mapper = sqlSession.getMapper(AccessLogMapper.class);
+		return mapper.getUserAgentCounts();
 	}
 
 }

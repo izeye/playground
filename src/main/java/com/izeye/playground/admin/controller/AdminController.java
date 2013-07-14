@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.izeye.playground.analytics.audience.service.AudienceAnalyticsService;
 import com.izeye.playground.log.access.domain.AccessLog;
 import com.izeye.playground.log.access.domain.DailyCount;
+import com.izeye.playground.log.access.domain.UserAgentCount;
 import com.izeye.playground.log.access.service.AccessLogService;
 import com.izeye.playground.web.menu.domain.SubMenuSection;
 import com.izeye.playground.web.menu.service.MenuService;
@@ -63,6 +64,17 @@ public class AdminController {
 		model.addAttribute("allAccessLogs", allAccessLogs);
 
 		return "admin/analytics/audience/access_logs";
+	}
+
+	@RequestMapping("/admin/analytics/audience/user_agents")
+	public String analyticsAudienceUserAgents(Model model) {
+		model.addAttribute("subMenuSections", subMenuSections);
+
+		List<UserAgentCount> userAgentCounts = audienceAnalyticsService
+				.getUserAgentCounts();
+		model.addAttribute("userAgentCounts", userAgentCounts);
+
+		return "admin/analytics/audience/user_agents";
 	}
 
 }

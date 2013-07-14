@@ -3,12 +3,15 @@ package com.izeye.playground.web.menu.service;
 import static com.izeye.playground.web.menu.domain.MenuConstants.MENU_NAME_ADMIN;
 import static com.izeye.playground.web.menu.domain.MenuConstants.MENU_NAME_PLAYGROUND;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_HEADER_ANALYTICS;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_HEADER_DEMO;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_AUDIENCE_ACCESS_LOGS;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_AUDIENCE_OVERVIEW;
-import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_TODAY;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_AUDIENCE_USER_AGENTS;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_WEBCAM;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_AUDIENCE_ACCESS_LOGS;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_AUDIENCE_OVERVIEW;
-import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_TODAY;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_AUDIENCE_USER_AGENTS;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_WEBCAM;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,10 +33,9 @@ public class DefaultMenuService implements MenuService {
 	public void init() {
 		// Playground
 		List<SubMenuSection> subMenuSections = new ArrayList<SubMenuSection>();
-		SubMenuSection subMenuSection = new SubMenuSection(
-				SUB_MENU_HEADER_ANALYTICS);
-		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_TODAY,
-				SUB_MENU_ITEM_URL_TODAY);
+		SubMenuSection subMenuSection = new SubMenuSection(SUB_MENU_HEADER_DEMO);
+		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_WEBCAM,
+				SUB_MENU_ITEM_URL_WEBCAM);
 		subMenuSections.add(subMenuSection);
 		menuNameAndSubMenuSectionListMap.put(MENU_NAME_PLAYGROUND,
 				subMenuSections);
@@ -45,6 +47,8 @@ public class DefaultMenuService implements MenuService {
 				SUB_MENU_ITEM_URL_AUDIENCE_OVERVIEW);
 		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_AUDIENCE_ACCESS_LOGS,
 				SUB_MENU_ITEM_URL_AUDIENCE_ACCESS_LOGS);
+		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_AUDIENCE_USER_AGENTS,
+				SUB_MENU_ITEM_URL_AUDIENCE_USER_AGENTS);
 		subMenuSections.add(subMenuSection);
 		menuNameAndSubMenuSectionListMap.put(MENU_NAME_ADMIN, subMenuSections);
 	}

@@ -13,6 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.izeye.playground.log.access.domain.AccessLog;
 import com.izeye.playground.log.access.domain.DailyCount;
+import com.izeye.playground.log.access.domain.UserAgentCount;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:applicationContext.xml")
@@ -27,7 +28,8 @@ public class AccessLogDaoTest {
 		Date accessTime = new Date();
 		String ip = "1.2.3.4";
 		String url = "http://izeye.cafe24.com";
-		String userAgent = "userAgent";
+		// String userAgent = "userAgent";
+		String userAgent = null;
 		String referer = "http://devday.tistory.com";
 
 		AccessLog log = new AccessLog();
@@ -63,6 +65,13 @@ public class AccessLogDaoTest {
 	public void getDailyCounts() {
 		List<DailyCount> dailyCounts = accessLogDao.getDailyCounts();
 		System.out.println(dailyCounts);
+	}
+
+	@Test
+	public void getUserAgentCounts() {
+		List<UserAgentCount> userAgentCounts = accessLogDao
+				.getUserAgentCounts();
+		System.out.println(userAgentCounts);
 	}
 
 }

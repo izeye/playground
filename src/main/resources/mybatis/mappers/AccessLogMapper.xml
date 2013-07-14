@@ -27,4 +27,12 @@
 		GROUP BY day
 		ORDER BY day DESC
 	</select>
+	<select id="getUserAgentCounts" resultType="UserAgentCount">
+		SELECT
+			user_agent, COUNT(1) AS count
+		FROM
+			tb_access_log
+		GROUP BY user_agent
+		ORDER BY count DESC
+	</select>
 </mapper>

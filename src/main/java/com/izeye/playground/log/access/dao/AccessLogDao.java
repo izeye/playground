@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.izeye.playground.log.access.domain.AccessLog;
 import com.izeye.playground.log.access.domain.DailyCount;
+import com.izeye.playground.log.access.domain.UserAgentCount;
 
 public interface AccessLogDao {
 
@@ -11,8 +12,12 @@ public interface AccessLogDao {
 
 	List<AccessLog> getAllAccessLogs();
 
+	List<AccessLog> getLatestAccessLogs(int count);
+
 	List<AccessLog> getAccessLogsInSpecificDate(String date);
 
 	List<DailyCount> getDailyCounts();
+
+	List<UserAgentCount> getUserAgentCounts();
 
 }

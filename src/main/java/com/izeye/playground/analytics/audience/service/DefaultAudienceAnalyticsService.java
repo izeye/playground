@@ -13,6 +13,7 @@ import com.izeye.playground.common.util.DateUtils;
 import com.izeye.playground.log.access.dao.AccessLogDao;
 import com.izeye.playground.log.access.domain.AccessLog;
 import com.izeye.playground.log.access.domain.DailyCount;
+import com.izeye.playground.log.access.domain.UserAgentCount;
 
 @Service("audienceAnalyticsService")
 public class DefaultAudienceAnalyticsService implements
@@ -47,6 +48,11 @@ public class DefaultAudienceAnalyticsService implements
 	@Override
 	public List<DailyCount> getDailyCounts() {
 		return accessLogDao.getDailyCounts();
+	}
+
+	@Override
+	public List<UserAgentCount> getUserAgentCounts() {
+		return accessLogDao.getUserAgentCounts();
 	}
 
 }

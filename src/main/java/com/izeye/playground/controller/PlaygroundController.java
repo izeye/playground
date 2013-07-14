@@ -27,4 +27,20 @@ public class PlaygroundController {
 		return "playground/playground";
 	}
 
+	@RequestMapping("/playground/demo/webcam/live")
+	public String live(Model model) {
+		List<SubMenuSection> subMenuSections = menuService
+				.getSubMenu(MENU_NAME_PLAYGROUND);
+		model.addAttribute("subMenuSections", subMenuSections);
+		return "playground/demo/webcam/live";
+	}
+
+	@RequestMapping("/playground/demo/webcam/snapshots")
+	public String snapshots(Model model) {
+		List<SubMenuSection> subMenuSections = menuService
+				.getSubMenu(MENU_NAME_PLAYGROUND);
+		model.addAttribute("subMenuSections", subMenuSections);
+		return "playground/demo/webcam/snapshots";
+	}
+
 }

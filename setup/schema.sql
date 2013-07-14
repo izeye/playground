@@ -11,3 +11,5 @@ CREATE TABLE tb_access_log (
 	referer VARCHAR(1024),
 	PRIMARY KEY (id)
 );
+
+ALTER TABLE tb_access_log MODIFY user_agent VARCHAR(1024);

@@ -12,6 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.izeye.playground.analytics.audience.domain.VisitStat;
 import com.izeye.playground.log.access.domain.DailyCount;
+import com.izeye.playground.log.access.domain.UserAgentCount;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:applicationContext.xml")
@@ -34,6 +35,13 @@ public class AudienceStatServiceTest {
 		List<DailyCount> dailyCounts = audienceAnalyticsService
 				.getDailyCounts();
 		System.out.println(dailyCounts);
+	}
+
+	@Test
+	public void getUserAgentCounts() {
+		List<UserAgentCount> userAgentCounts = audienceAnalyticsService
+				.getUserAgentCounts();
+		System.out.println(userAgentCounts);
 	}
 
 }

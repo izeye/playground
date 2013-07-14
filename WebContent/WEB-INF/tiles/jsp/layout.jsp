@@ -21,6 +21,7 @@ body {
 	padding: 9px 0;
 }
 </style>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 </head>
 <body>
 	<tiles:insertAttribute name="main_menu" />
@@ -36,7 +37,6 @@ body {
 		<hr />
 		<tiles:insertAttribute name="footer" />
 	</div>
-	<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 	<script type="text/javascript"
 		src="<c:url value="/resources/bootstrap/2.3.2/js/bootstrap.min.js" />"></script>
 	<script>

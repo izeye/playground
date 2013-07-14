@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.izeye.playground.analytics.audience.domain.VisitStat;
 import com.izeye.playground.log.access.domain.DailyCount;
+import com.izeye.playground.log.access.domain.UserAgentCount;
 
 public interface AudienceAnalyticsService {
 
@@ -14,5 +15,7 @@ public interface AudienceAnalyticsService {
 	VisitStat getYesterdayVisitStat();
 
 	List<DailyCount> getDailyCounts();
+
+	List<UserAgentCount> getUserAgentCounts();
 
 }
