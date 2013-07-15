@@ -1,70 +1,43 @@
 package com.izeye.playground.support.ua.domain;
 
+import com.izeye.playground.support.ua.domain.browser.BrowserInfo;
+import com.izeye.playground.support.ua.domain.device.DeviceType;
+import com.izeye.playground.support.ua.domain.os.OSInfo;
+
 public class UserAgent {
 
-	private String browserName;
-	private String browserVersion;
+	private OSInfo osInfo;
+	private BrowserInfo browserInfo;
+	private DeviceType deviceType;
 
-	private String osName;
-	private String osVersion;
-
-	private String deviceModelName;
-	private String deviceProductName;
-
-	public String getBrowserName() {
-		return browserName;
+	public OSInfo getOsInfo() {
+		return osInfo;
 	}
 
-	public void setBrowserName(String browserName) {
-		this.browserName = browserName;
+	public void setOsInfo(OSInfo osInfo) {
+		this.osInfo = osInfo;
 	}
 
-	public String getBrowserVersion() {
-		return browserVersion;
+	public BrowserInfo getBrowserInfo() {
+		return browserInfo;
 	}
 
-	public void setBrowserVersion(String browserVersion) {
-		this.browserVersion = browserVersion;
+	public void setBrowserInfo(BrowserInfo browserInfo) {
+		this.browserInfo = browserInfo;
 	}
 
-	public String getOsName() {
-		return osName;
+	public DeviceType getDeviceType() {
+		return deviceType;
 	}
 
-	public void setOsName(String osName) {
-		this.osName = osName;
-	}
-
-	public String getOsVersion() {
-		return osVersion;
-	}
-
-	public void setOsVersion(String osVersion) {
-		this.osVersion = osVersion;
-	}
-
-	public String getDeviceModelName() {
-		return deviceModelName;
-	}
-
-	public void setDeviceModelName(String deviceModelName) {
-		this.deviceModelName = deviceModelName;
-	}
-
-	public String getDeviceProductName() {
-		return deviceProductName;
-	}
-
-	public void setDeviceProductName(String deviceProductName) {
-		this.deviceProductName = deviceProductName;
+	public void setDeviceType(DeviceType deviceType) {
+		this.deviceType = deviceType;
 	}
 
 	@Override
 	public String toString() {
-		return "UserAgent [browserName=" + browserName + ", browserVersion="
-				+ browserVersion + ", osName=" + osName + ", osVersion="
-				+ osVersion + ", deviceModelName=" + deviceModelName
-				+ ", deviceProductName=" + deviceProductName + "]";
+		return "UserAgent [osInfo=" + osInfo + ", browserInfo=" + browserInfo
+				+ ", deviceType=" + deviceType + "]";
 	}
 
 }

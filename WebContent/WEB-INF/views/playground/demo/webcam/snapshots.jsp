@@ -1,4 +1,4 @@
-<h2>Webcam Snapshots</h2>
+<h3>Webcam Snapshots</h3>
 
 <p>You can click to get snapshots of your image.</p>
 

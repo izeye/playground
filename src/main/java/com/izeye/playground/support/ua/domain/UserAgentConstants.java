@@ -4,4 +4,6 @@ public interface UserAgentConstants {
 
 	String COMMENT_DELIMITER = ";";
 
+	String SECURITY_VALUE_STRONG_SECURITY = "U";
+
 }

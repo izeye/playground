@@ -1,6 +1,6 @@
 package com.izeye.playground.web.menu.service;
 
-import static com.izeye.playground.web.menu.domain.MenuConstants.MENU_NAME_ADMIN;
+import static com.izeye.playground.web.menu.domain.MenuConstants.*;
 import static com.izeye.playground.web.menu.domain.MenuConstants.MENU_NAME_PLAYGROUND;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_HEADER_ANALYTICS;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_HEADER_DEMO;
@@ -36,6 +36,8 @@ public class DefaultMenuService implements MenuService {
 		SubMenuSection subMenuSection = new SubMenuSection(SUB_MENU_HEADER_DEMO);
 		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_WEBCAM,
 				SUB_MENU_ITEM_URL_WEBCAM);
+		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_UA_ANALYZER,
+				SUB_MENU_ITEM_URL_UA_ANALYZER);
 		subMenuSections.add(subMenuSection);
 		menuNameAndSubMenuSectionListMap.put(MENU_NAME_PLAYGROUND,
 				subMenuSections);

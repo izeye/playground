@@ -28,7 +28,7 @@ video {
 }
 </style>
 
-<h2>Webcam Live</h2>
+<h3>Webcam Live</h3>
 <p>You can click to filter your image by gray scale, sepia, or blur.</p>
 
 <video autoplay></video>

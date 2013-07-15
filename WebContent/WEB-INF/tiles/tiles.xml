@@ -20,6 +20,10 @@
 		<put-attribute name="body" value="/WEB-INF/views/playground/playground.jsp" />
 	</definition>
 
+	<definition name="playground/utilities/ua" extends="playground/playground">
+		<put-attribute name="body" value="/WEB-INF/views/playground/utilities/ua/ua.jsp" />
+	</definition>
+
 	<definition name="playground/demo/webcam.definition" template="/WEB-INF/views/playground/demo/webcam/webcam.jsp">
 	</definition>
 

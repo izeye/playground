@@ -10,6 +10,9 @@ public interface MenuConstants {
 
 	String SUB_MENU_HEADER_DEMO = "Demo";
 
+	String SUB_MENU_ITEM_NAME_UA_ANALYZER = "UA Analyzer";
+	String SUB_MENU_ITEM_URL_UA_ANALYZER = "/playground/utilities/ua";
+
 	String SUB_MENU_ITEM_NAME_WEBCAM = "Webcam";
 	String SUB_MENU_ITEM_URL_WEBCAM = "/playground/demo/webcam/live";
 
