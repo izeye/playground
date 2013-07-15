@@ -3,8 +3,12 @@ package com.izeye.playground.support.ua.domain.browser;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+
+import com.izeye.playground.common.EnumObjectSerializer;
 import com.izeye.playground.support.ua.domain.UnidentifiableUserAgentException;
 
+@JsonSerialize(using = EnumObjectSerializer.class)
 public enum BrowserType {
 
 	// NOTE:

@@ -1,5 +1,10 @@
 package com.izeye.playground.support.ua.domain.os;
 
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+
+import com.izeye.playground.common.EnumObjectSerializer;
+
+@JsonSerialize(using = EnumObjectSerializer.class)
 public enum OSType {
 
 	MAC_OS_X("Intel Mac OS X", "Mac OS X"), WINDOWS("Windows", "Windows"), IOS(

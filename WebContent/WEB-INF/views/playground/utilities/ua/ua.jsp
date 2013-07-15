@@ -14,7 +14,7 @@ var analyzeUserAgent = function () {
 		console.log(data);
 		$('#os').text(data.osInfo.displayName);
 		$('#browser').text(data.browserInfo.displayName);
-		$('#device').text(data.deviceType);
+		$('#device').text(data.deviceType.displayName);
 	});
 };
 </script>
@@ -63,5 +63,5 @@ http://izeye.cafe24.com/playground/utilities/ua/json?userAgent=Mozilla%2F5.0+(Ma
 
 <b>And the result will be a JSON like this:</b>
 <div class="well">
-{"osInfo":{"type":"MAC_OS_X","version":"10.8.4","displayName":"Mac OS X 10.8.4 (Mountain Lion)"},"browserInfo":{"type":"CHROME","version":"28.0.1500.71","displayName":"Chrome 28.0.1500.71"},"deviceType":"Macintosh (Macintosh)"}
+{"osInfo":{"type":{"keyInUserAgent":"Intel Mac OS X","name":"Mac OS X"},"version":"10.8.4","displayName":"Mac OS X 10.8.4 (Mountain Lion)"},"browserInfo":{"type":{"keyInUserAgent":"Chrome","name":"Chrome"},"version":"28.0.1500.71","displayName":"Chrome 28.0.1500.71"},"deviceType":{"modelName":"Macintosh","productName":"Macintosh","callable":false,"displayName":"Macintosh (Macintosh), non-callable"}}
 </div>

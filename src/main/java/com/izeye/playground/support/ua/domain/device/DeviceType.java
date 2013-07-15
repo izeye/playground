@@ -1,20 +1,31 @@
 package com.izeye.playground.support.ua.domain.device;
 
-import org.codehaus.jackson.annotate.JsonValue;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
 
+import com.izeye.playground.common.EnumObjectSerializer;
+
+@JsonSerialize(using = EnumObjectSerializer.class)
 public enum DeviceType {
 
-	MACINTOSH("Macintosh", "Macintosh"), IPHONE("iPhone", "iPhone"), IPAD(
-			"iPad", "iPad"), PC("PC", "PC"), GALAXY_NOTE("SC-05D",
-			"Samsung Galaxy Note"), GALAXY_NOTE_II("SHV-E250K",
-			"Samsung Galaxy Note II"), UNKNOWN("Unknown", "Unknown");
+	MACINTOSH("Macintosh", "Macintosh", false), IPHONE("iPhone", "iPhone", true), IPAD(
+			"iPad", "iPad", false), PC("PC", "PC", false), GALAXY_NOTE_DOCOMO(
+			"SC-05D", "Samsung Galaxy Note (Docomo)", true), GALAXY_NOTE_II_KT(
+			"SHV-E250K", "Samsung Galaxy Note II (KT)", true), UNKNOWN(
+			"Unknown", "Unknown", false);
 
 	private final String modelName;
 	private final String productName;
+	private final boolean callable;
 
-	private DeviceType(String modelName, String productName) {
+	private final String displayName;
+
+	private DeviceType(String modelName, String productName, boolean callable) {
 		this.modelName = modelName;
 		this.productName = productName;
+		this.callable = callable;
+
+		this.displayName = productName + " (" + modelName + "), "
+				+ (callable ? "callable" : "non-callable");
 	}
 
 	public String getModelName() {
@@ -25,9 +36,12 @@ public enum DeviceType {
 		return productName;
 	}
 
-	@JsonValue
+	public boolean isCallable() {
+		return callable;
+	}
+
 	public String getDisplayName() {
-		return productName + " (" + modelName + ")";
+		return displayName;
 	}
 
 	public static DeviceType extractFromUserAgent(String userAgent) {
