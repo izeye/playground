@@ -10,27 +10,25 @@
 </style>
 
 <p>
-	<b>Access Logs (Delayed. At most 1 minute.)</b>
+	<b>QR Code Generation Logs</b>
 </p>
 <table class="table table-striped table-bordered table-condensed"
 	style="font-size: 12px">
 	<tr>
 		<th style="width: 30px">ID</th>
 		<th style="width: 120px">Time</th>
-		<th style="width: 100px">IP</th>
-		<th>URL</th>
-		<th>User Agent</th>
-		<th>Referrer</th>
+		<th style="width: 500px">Text</th>
+		<th style="width: 30px">Size</th>
+		<th>IP Address</th>
 	</tr>
-	<c:forEach var="accessLog" items="${allAccessLogs}">
+	<c:forEach var="qrCodeGenerationLog" items="${allQRCodeGenerationLogs}">
 		<tr>
-			<td>${accessLog.getId()}</td>
-			<td><fmt:formatDate value="${accessLog.getAccessTime()}"
+			<td>${qrCodeGenerationLog.getId()}</td>
+			<td><fmt:formatDate value="${qrCodeGenerationLog.getGeneratedTime()}"
 					pattern="yyyy-MM-dd HH:mm:ss" /></td>
-			<td>${accessLog.getIp()}</td>
-			<td>${accessLog.getUrl()}</td>
-			<td>${accessLog.getUserAgent()}</td>
-			<td>${accessLog.getReferer()}</td>
+			<td>${qrCodeGenerationLog.getText()}</td>
+			<td>${qrCodeGenerationLog.getSize()}</td>
+			<td>${qrCodeGenerationLog.getIp()}</td>
 		</tr>
 	</c:forEach>
 </table>

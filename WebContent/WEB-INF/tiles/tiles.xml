@@ -20,6 +20,10 @@
 		<put-attribute name="body" value="/WEB-INF/views/playground/playground.jsp" />
 	</definition>
 
+	<definition name="playground/utilities/text2qrcode" extends="playground/playground">
+		<put-attribute name="body" value="/WEB-INF/views/playground/utilities/qrcode/qrcode.jsp" />
+	</definition>
+
 	<definition name="playground/utilities/ip" extends="playground/playground">
 		<put-attribute name="body" value="/WEB-INF/views/playground/utilities/ip/ip.jsp" />
 	</definition>
@@ -72,5 +76,9 @@
 
 	<definition name="admin/analytics/audience/user_agents" extends="admin/admin">
 		<put-attribute name="body" value="/WEB-INF/views/admin/analytics/audience/user_agents.jsp" />
+	</definition>
+
+	<definition name="admin/analytics/qrcode/qrcode_generation_logs" extends="admin/admin">
+		<put-attribute name="body" value="/WEB-INF/views/admin/analytics/qrcode/qrcode_generation_logs.jsp" />
 	</definition>
 </tiles-definitions>

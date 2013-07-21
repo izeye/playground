@@ -4,13 +4,20 @@ import static com.izeye.playground.web.menu.domain.MenuConstants.*;
 import static com.izeye.playground.web.menu.domain.MenuConstants.MENU_NAME_PLAYGROUND;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_HEADER_ANALYTICS;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_HEADER_DEMO;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_HEADER_UTILITIES;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_AUDIENCE_ACCESS_LOGS;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_AUDIENCE_OVERVIEW;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_AUDIENCE_USER_AGENTS;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_IP_ANALYZER;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_TEXT_2_QR_CODE;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_UA_ANALYZER;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_WEBCAM;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_AUDIENCE_ACCESS_LOGS;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_AUDIENCE_OVERVIEW;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_AUDIENCE_USER_AGENTS;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_IP_ANALYZER;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_TEXT_2_QR_CODE;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_UA_ANALYZER;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_WEBCAM;
 
 import java.util.ArrayList;
@@ -37,6 +44,8 @@ public class DefaultMenuService implements MenuService {
 		// Playground -> Utilities
 		SubMenuSection subMenuSection = new SubMenuSection(
 				SUB_MENU_HEADER_UTILITIES);
+		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_TEXT_2_QR_CODE,
+				SUB_MENU_ITEM_URL_TEXT_2_QR_CODE);
 		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_IP_ANALYZER,
 				SUB_MENU_ITEM_URL_IP_ANALYZER);
 		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_UA_ANALYZER,
@@ -63,6 +72,9 @@ public class DefaultMenuService implements MenuService {
 				SUB_MENU_ITEM_URL_AUDIENCE_ACCESS_LOGS);
 		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_AUDIENCE_USER_AGENTS,
 				SUB_MENU_ITEM_URL_AUDIENCE_USER_AGENTS);
+		subMenuSection.addMenuItem(
+				SUB_MENU_ITEM_NAME_AUDIENCE_QR_CODE_GENERATION_LOGS,
+				SUB_MENU_ITEM_URL_AUDIENCE_QR_CODE_GENERATION_LOGS);
 		subMenuSections.add(subMenuSection);
 
 		menuNameAndSubMenuSectionListMap.put(MENU_NAME_ADMIN, subMenuSections);

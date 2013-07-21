@@ -10,6 +10,9 @@ public interface MenuConstants {
 
 	String SUB_MENU_HEADER_UTILITIES = "Utilities";
 
+	String SUB_MENU_ITEM_NAME_TEXT_2_QR_CODE = "Text 2 QR Code";
+	String SUB_MENU_ITEM_URL_TEXT_2_QR_CODE = "/playground/utilities/text2qrcode";
+
 	String SUB_MENU_ITEM_NAME_IP_ANALYZER = "IP Analyzer";
 	String SUB_MENU_ITEM_URL_IP_ANALYZER = "/playground/utilities/ip";
 
@@ -31,5 +34,8 @@ public interface MenuConstants {
 
 	String SUB_MENU_ITEM_NAME_AUDIENCE_USER_AGENTS = "Audience User Agents";
 	String SUB_MENU_ITEM_URL_AUDIENCE_USER_AGENTS = "/admin/analytics/audience/user_agents";
+
+	String SUB_MENU_ITEM_NAME_AUDIENCE_QR_CODE_GENERATION_LOGS = "QR Code Generation Logs";
+	String SUB_MENU_ITEM_URL_AUDIENCE_QR_CODE_GENERATION_LOGS = "/admin/analytics/qrcode/qrcode_generation_logs";
 
 }

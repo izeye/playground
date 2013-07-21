@@ -16,6 +16,8 @@ import com.izeye.playground.log.access.domain.AccessLog;
 import com.izeye.playground.log.access.domain.DailyCount;
 import com.izeye.playground.log.access.domain.UserAgentCount;
 import com.izeye.playground.log.access.service.AccessLogService;
+import com.izeye.playground.support.qrcode.domain.QRCodeGenerationLog;
+import com.izeye.playground.support.qrcode.service.QRCodeService;
 import com.izeye.playground.web.menu.domain.SubMenuSection;
 import com.izeye.playground.web.menu.service.MenuService;
 
@@ -30,6 +32,9 @@ public class AdminController {
 
 	@Resource
 	private AccessLogService accessLogService;
+
+	@Resource
+	private QRCodeService qrCodeService;
 
 	private List<SubMenuSection> subMenuSections;
 
@@ -75,6 +80,17 @@ public class AdminController {
 		model.addAttribute("userAgentCounts", userAgentCounts);
 
 		return "admin/analytics/audience/user_agents";
+	}
+
+	@RequestMapping("/admin/analytics/qrcode/qrcode_generation_logs")
+	public String analyticsQRCodeGenerationLogs(Model model) {
+		model.addAttribute("subMenuSections", subMenuSections);
+
+		List<QRCodeGenerationLog> allQRCodeGenerationLogs = qrCodeService
+				.getAllQRCodeGenerationLogs();
+		model.addAttribute("allQRCodeGenerationLogs", allQRCodeGenerationLogs);
+
+		return "admin/analytics/qrcode/qrcode_generation_logs";
 	}
 
 }

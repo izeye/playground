@@ -6,5 +6,6 @@
 	</settings>
 	<typeAliases>
 		<package name="com.izeye.playground.log.access.domain" />
+		<package name="com.izeye.playground.support.qrcode.domain" />
 	</typeAliases>
 </configuration>

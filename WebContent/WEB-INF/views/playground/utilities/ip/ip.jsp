@@ -92,7 +92,7 @@ This page provides analysis of your IP address or any IP address and the usage o
 
 <b>You can also use this by calling its API version like this:</b>
 <div class="well">
-http://izeye.cafe24.com/playground/utilities//ip/json?ipAddress=220.95.233.171
+http://izeye.cafe24.com/playground/utilities/ip/json?ipAddress=220.95.233.171
 </div>
 
 <b>And the result will be a JSON like this:</b>

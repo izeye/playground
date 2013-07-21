@@ -13,3 +13,12 @@ CREATE TABLE tb_access_log (
 );
 
 ALTER TABLE tb_access_log MODIFY user_agent VARCHAR(1024);
+
+CREATE TABLE tb_qrcode_generation_log (
+	id INT AUTO_INCREMENT,
+	text VARCHAR(1024) NOT NULL,
+	size INT NOT NULL,
+	ip VARCHAR(128) NOT NULL,
+	generated_time DATETIME NOT NULL,
+	PRIMARY KEY (id)
+);
