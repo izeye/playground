@@ -18,7 +18,7 @@ import com.izeye.playground.support.ua.domain.UserAgent;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:applicationContext.xml")
-@ActiveProfiles("unittest")
+@ActiveProfiles("dev")
 public class UserAgentAnalyzerTest {
 
 	@Resource
@@ -38,7 +38,7 @@ public class UserAgentAnalyzerTest {
 		BufferedReader br = new BufferedReader(new FileReader(file));
 		String line;
 		while ((line = br.readLine()) != null) {
-			String userAgentAsString = line.split("\t")[0];
+			String userAgentAsString = line.split("\t")[1];
 			UserAgent userAgent = userAgentAnalyzer.analyze(userAgentAsString);
 			System.out.println(userAgentAsString);
 			System.out.println(userAgent);

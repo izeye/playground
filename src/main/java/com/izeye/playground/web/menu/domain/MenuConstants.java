@@ -8,10 +8,15 @@ public interface MenuConstants {
 	String MENU_NAME_LINKS = "Links";
 	String MENU_NAME_ADMIN = "Admin";
 
-	String SUB_MENU_HEADER_DEMO = "Demo";
+	String SUB_MENU_HEADER_UTILITIES = "Utilities";
+
+	String SUB_MENU_ITEM_NAME_IP_ANALYZER = "IP Analyzer";
+	String SUB_MENU_ITEM_URL_IP_ANALYZER = "/playground/utilities/ip";
 
 	String SUB_MENU_ITEM_NAME_UA_ANALYZER = "UA Analyzer";
 	String SUB_MENU_ITEM_URL_UA_ANALYZER = "/playground/utilities/ua";
+
+	String SUB_MENU_HEADER_DEMO = "Demo";
 
 	String SUB_MENU_ITEM_NAME_WEBCAM = "Webcam";
 	String SUB_MENU_ITEM_URL_WEBCAM = "/playground/demo/webcam/live";

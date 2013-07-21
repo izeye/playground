@@ -5,14 +5,18 @@ import static com.izeye.playground.web.menu.domain.MenuConstants.MENU_NAME_PLAYG
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.izeye.playground.support.ip.domain.IPInfo;
+import com.izeye.playground.support.ip.service.IPAnalyzer;
 import com.izeye.playground.support.ua.domain.UserAgent;
 import com.izeye.playground.support.ua.service.UserAgentAnalyzer;
 import com.izeye.playground.web.menu.domain.SubMenuSection;
@@ -25,6 +29,9 @@ public class PlaygroundController {
 	private MenuService menuService;
 
 	@Resource
+	private IPAnalyzer ipAnalyzer;
+
+	@Resource
 	private UserAgentAnalyzer userAgentAnalyzer;
 
 	@RequestMapping("/playground")
@@ -33,6 +40,29 @@ public class PlaygroundController {
 				.getSubMenu(MENU_NAME_PLAYGROUND);
 		model.addAttribute("subMenuSections", subMenuSections);
 		return "playground/playground";
+	}
+
+	@ModelAttribute("ipAddress")
+	public String populateIpAddress(HttpServletRequest request) {
+		return request.getRemoteAddr();
+	}
+
+	@RequestMapping("/playground/utilities/ip")
+	public String utilitiesIP(@ModelAttribute("ipAddress") String ipAddress,
+			Model model) {
+		List<SubMenuSection> subMenuSections = menuService
+				.getSubMenu(MENU_NAME_PLAYGROUND);
+		model.addAttribute("subMenuSections", subMenuSections);
+
+		IPInfo ipInfo = ipAnalyzer.analyze(ipAddress);
+		model.addAttribute("ipInfo", ipInfo);
+		return "playground/utilities/ip";
+	}
+
+	@RequestMapping("/playground/utilities/ip/json")
+	@ResponseBody
+	public IPInfo utilitiesIPJSON(@RequestParam String ipAddress, Model model) {
+		return ipAnalyzer.analyze(ipAddress);
 	}
 
 	@RequestMapping("/playground/utilities/ua")

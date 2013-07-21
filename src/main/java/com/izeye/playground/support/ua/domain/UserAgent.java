@@ -6,9 +6,9 @@ import com.izeye.playground.support.ua.domain.os.OSInfo;
 
 public class UserAgent {
 
-	private OSInfo osInfo;
-	private BrowserInfo browserInfo;
-	private DeviceType deviceType;
+	private OSInfo osInfo = OSInfo.NOT_AVAILABLE;
+	private BrowserInfo browserInfo = BrowserInfo.NOT_AVAILABLE;
+	private DeviceType deviceType = DeviceType.NOT_AVAILABLE;
 
 	public OSInfo getOsInfo() {
 		return osInfo;

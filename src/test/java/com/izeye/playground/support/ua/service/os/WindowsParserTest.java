@@ -12,7 +12,7 @@ import com.izeye.playground.support.ua.domain.os.OSInfo;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:applicationContext.xml")
-@ActiveProfiles("unittest")
+@ActiveProfiles("dev")
 public class WindowsParserTest {
 
 	@Resource

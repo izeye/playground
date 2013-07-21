@@ -1,6 +1,11 @@
 package com.izeye.playground.support.ua.domain.browser;
 
+import com.izeye.playground.common.util.StringConstants;
+
 public class BrowserInfo {
+
+	public static final BrowserInfo NOT_AVAILABLE = new BrowserInfo(
+			BrowserType.NOT_AVAILABLE, StringConstants.NOT_AVAILABLE);
 
 	private final BrowserType type;
 	private final String version;

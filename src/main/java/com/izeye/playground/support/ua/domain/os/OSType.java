@@ -3,13 +3,14 @@ package com.izeye.playground.support.ua.domain.os;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 import com.izeye.playground.common.EnumObjectSerializer;
+import com.izeye.playground.common.util.StringConstants;
 
 @JsonSerialize(using = EnumObjectSerializer.class)
 public enum OSType {
 
 	MAC_OS_X("Intel Mac OS X", "Mac OS X"), WINDOWS("Windows", "Windows"), IOS(
-			"None", "iOS"), ANDROID("Android", "Android"), UNKNOWN("Unknown",
-			"Unknown");
+			"None", "iOS"), ANDROID("Android", "Android"), NOT_AVAILABLE(
+			StringConstants.NOT_AVAILABLE, StringConstants.NOT_AVAILABLE);
 
 	private final String keyInUserAgent;
 	private final String name;
@@ -33,7 +34,7 @@ public enum OSType {
 				return osType;
 			}
 		}
-		return OSType.UNKNOWN;
+		return OSType.NOT_AVAILABLE;
 	}
 
 }

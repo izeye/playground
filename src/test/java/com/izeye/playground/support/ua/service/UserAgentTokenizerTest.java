@@ -20,7 +20,7 @@ import com.izeye.playground.support.ua.domain.UserAgentToken;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:applicationContext.xml")
-@ActiveProfiles("unittest")
+@ActiveProfiles("dev")
 public class UserAgentTokenizerTest {
 
 	@Resource

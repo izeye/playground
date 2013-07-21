@@ -12,7 +12,7 @@
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url"
 			value="jdbc:mysql://localhost:3306/playground?useUnicode=yes&amp;characterEncoding=UTF-8" />
-		<property name="username" value="playground" />
+		<property name="username" value="${dataSource.username}" />
 		<property name="password" value="${dataSource.password}" />
 		<property name="initialSize" value="10" />
 		<property name="maxActive" value="10" />
@@ -42,10 +42,24 @@
 		class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean"
 		p:config-location="classpath:ehcache/ehcache.xml" />
 
-	<beans profile="unittest">
-		<context:property-placeholder location="classpath:config/profiles/local/persistence.properties "/>
+	<beans profile="dev">
+		<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+			<property name="locations">
+				<list>
+					<value>classpath:config/profiles/dev/persistence.properties</value>
+					<value>classpath:config/profiles/dev/api.properties</value>
+				</list>
+			</property>
+		</bean>
 	</beans>
-	<beans profile="!unittest">
-		<context:property-placeholder />
+	<beans profile="production">
+		<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+			<property name="locations">
+				<list>
+					<value>classpath:config/profiles/production/persistence.properties</value>
+					<value>classpath:config/profiles/production/api.properties</value>
+				</list>
+			</property>
+		</bean>
 	</beans>
 </beans>

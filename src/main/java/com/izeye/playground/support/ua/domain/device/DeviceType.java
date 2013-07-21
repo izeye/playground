@@ -3,6 +3,7 @@ package com.izeye.playground.support.ua.domain.device;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 import com.izeye.playground.common.EnumObjectSerializer;
+import com.izeye.playground.common.util.StringConstants;
 
 @JsonSerialize(using = EnumObjectSerializer.class)
 public enum DeviceType {
@@ -10,8 +11,8 @@ public enum DeviceType {
 	MACINTOSH("Macintosh", "Macintosh", false), IPHONE("iPhone", "iPhone", true), IPAD(
 			"iPad", "iPad", false), PC("PC", "PC", false), GALAXY_NOTE_DOCOMO(
 			"SC-05D", "Samsung Galaxy Note (Docomo)", true), GALAXY_NOTE_II_KT(
-			"SHV-E250K", "Samsung Galaxy Note II (KT)", true), UNKNOWN(
-			"Unknown", "Unknown", false);
+			"SHV-E250K", "Samsung Galaxy Note II (KT)", true), NOT_AVAILABLE(
+			StringConstants.NOT_AVAILABLE, StringConstants.NOT_AVAILABLE, false);
 
 	private final String modelName;
 	private final String productName;
@@ -50,7 +51,7 @@ public enum DeviceType {
 				return deviceType;
 			}
 		}
-		return DeviceType.UNKNOWN;
+		return DeviceType.NOT_AVAILABLE;
 	}
 
 	@Override

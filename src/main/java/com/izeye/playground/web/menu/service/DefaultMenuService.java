@@ -33,17 +33,29 @@ public class DefaultMenuService implements MenuService {
 	public void init() {
 		// Playground
 		List<SubMenuSection> subMenuSections = new ArrayList<SubMenuSection>();
-		SubMenuSection subMenuSection = new SubMenuSection(SUB_MENU_HEADER_DEMO);
-		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_WEBCAM,
-				SUB_MENU_ITEM_URL_WEBCAM);
+
+		// Playground -> Utilities
+		SubMenuSection subMenuSection = new SubMenuSection(
+				SUB_MENU_HEADER_UTILITIES);
+		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_IP_ANALYZER,
+				SUB_MENU_ITEM_URL_IP_ANALYZER);
 		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_UA_ANALYZER,
 				SUB_MENU_ITEM_URL_UA_ANALYZER);
 		subMenuSections.add(subMenuSection);
+
+		// Playground -> Demo
+		subMenuSection = new SubMenuSection(SUB_MENU_HEADER_DEMO);
+		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_WEBCAM,
+				SUB_MENU_ITEM_URL_WEBCAM);
+		subMenuSections.add(subMenuSection);
+
 		menuNameAndSubMenuSectionListMap.put(MENU_NAME_PLAYGROUND,
 				subMenuSections);
 
 		// Admin
 		subMenuSections = new ArrayList<SubMenuSection>();
+
+		// Admin -> Analytics
 		subMenuSection = new SubMenuSection(SUB_MENU_HEADER_ANALYTICS);
 		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_AUDIENCE_OVERVIEW,
 				SUB_MENU_ITEM_URL_AUDIENCE_OVERVIEW);
@@ -52,6 +64,7 @@ public class DefaultMenuService implements MenuService {
 		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_AUDIENCE_USER_AGENTS,
 				SUB_MENU_ITEM_URL_AUDIENCE_USER_AGENTS);
 		subMenuSections.add(subMenuSection);
+
 		menuNameAndSubMenuSectionListMap.put(MENU_NAME_ADMIN, subMenuSections);
 	}
 

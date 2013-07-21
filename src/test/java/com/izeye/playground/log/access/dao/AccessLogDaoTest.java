@@ -17,7 +17,7 @@ import com.izeye.playground.log.access.domain.UserAgentCount;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:applicationContext.xml")
-@ActiveProfiles("unittest")
+@ActiveProfiles("dev")
 public class AccessLogDaoTest {
 
 	@Resource

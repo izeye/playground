@@ -6,6 +6,7 @@ import java.util.Map;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 import com.izeye.playground.common.EnumObjectSerializer;
+import com.izeye.playground.common.util.StringConstants;
 import com.izeye.playground.support.ua.domain.UnidentifiableUserAgentException;
 
 @JsonSerialize(using = EnumObjectSerializer.class)
@@ -19,7 +20,8 @@ public enum BrowserType {
 			"Safari", "Safari"), EOLIN_NET_BOT("Eolin.Net.ExtHTTPRequest",
 			"Eolin Net Bot"), BINGBOT("bingbot", "Bingbot"), SEMRUSH_BOT(
 			"SemrushBot", "Semrush Bot"), BAIDUSPIDER("Baiduspider",
-			"Baiduspider");
+			"Baiduspider"), NOT_AVAILABLE(StringConstants.NOT_AVAILABLE,
+			StringConstants.NOT_AVAILABLE);
 
 	private final String keyInUserAgent;
 	private final String name;

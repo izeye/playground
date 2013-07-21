@@ -11,7 +11,7 @@
 			<a class="brand" href="<c:url value="/" />">izeye's Playground</a>
 			<div class="nav-collapse collapse">
 				<ul class="nav">
-					<li class="active"><a href="<c:url value="/" />">Home</a></li>
+					<li class="active"><a href="<c:url value="/"/>">Home</a></li>
 					<li><a href="<c:url value="/playground" />">Playground</a></li>
 					<li><a href="<c:url value="/about" />">About</a></li>
 					<li><a href="<c:url value="/links" />">Links</a></li>

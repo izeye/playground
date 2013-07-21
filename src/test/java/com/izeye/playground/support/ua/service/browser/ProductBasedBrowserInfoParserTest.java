@@ -13,7 +13,7 @@ import com.izeye.playground.support.ua.service.browser.ProductBasedBrowserInfoPa
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:applicationContext.xml")
-@ActiveProfiles("unittest")
+@ActiveProfiles("dev")
 public class ProductBasedBrowserInfoParserTest {
 
 	@Resource

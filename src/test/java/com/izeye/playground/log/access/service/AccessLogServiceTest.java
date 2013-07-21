@@ -14,7 +14,7 @@ import com.izeye.playground.log.access.domain.AccessLog;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:applicationContext.xml")
-@ActiveProfiles("unittest")
+@ActiveProfiles("dev")
 public class AccessLogServiceTest {
 
 	@Resource
