@@ -24,6 +24,9 @@ public interface MenuConstants {
 	String SUB_MENU_ITEM_NAME_FRACTALS = "Fractals";
 	String SUB_MENU_ITEM_URL_FRACTALS = "/playground/math/fractals";
 
+	String SUB_MENU_ITEM_NAME_COLLATZ = "Collatz Conjecture";
+	String SUB_MENU_ITEM_URL_COLLATZ = "/playground/math/collatz";
+
 	String SUB_MENU_HEADER_DEMO = "Demo";
 
 	String SUB_MENU_ITEM_NAME_WEBCAM = "Webcam";

@@ -36,6 +36,10 @@
 		<put-attribute name="body" value="/WEB-INF/views/playground/math/fractals/fractals.jsp" />
 	</definition>
 
+	<definition name="playground/math/collatz" extends="playground/playground">
+		<put-attribute name="body" value="/WEB-INF/views/playground/math/collatz/collatz.jsp" />
+	</definition>
+
 	<definition name="playground/demo/webcam.definition" template="/WEB-INF/views/playground/demo/webcam/webcam.jsp">
 	</definition>
 

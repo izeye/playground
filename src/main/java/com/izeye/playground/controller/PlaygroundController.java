@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.zxing.WriterException;
 import com.izeye.playground.support.ip.domain.IPInfo;
 import com.izeye.playground.support.ip.service.IPAnalyzer;
+import com.izeye.playground.support.math.collatz.service.CollatzConjectureSolver;
 import com.izeye.playground.support.qrcode.domain.QRCodeGenerationRequest;
 import com.izeye.playground.support.qrcode.service.QRCodeService;
 import com.izeye.playground.support.ua.domain.UserAgent;
@@ -45,11 +46,15 @@ public class PlaygroundController {
 	@Resource
 	private UserAgentAnalyzer userAgentAnalyzer;
 
+	@Resource
+	private CollatzConjectureSolver collatzConjectureSolver;
+
 	@RequestMapping("/playground")
 	public String home(Model model) {
 		List<SubMenuSection> subMenuSections = menuService
 				.getSubMenu(MENU_NAME_PLAYGROUND);
 		model.addAttribute("subMenuSections", subMenuSections);
+
 		return "playground/playground";
 	}
 
@@ -94,6 +99,7 @@ public class PlaygroundController {
 
 		IPInfo ipInfo = ipAnalyzer.analyze(ipAddress);
 		model.addAttribute("ipInfo", ipInfo);
+
 		return "playground/utilities/ip";
 	}
 
@@ -113,6 +119,7 @@ public class PlaygroundController {
 		UserAgent analyzedUserAgent = userAgentAnalyzer.analyze(userAgent);
 		model.addAttribute("userAgent", userAgent);
 		model.addAttribute("analyzedUserAgent", analyzedUserAgent);
+
 		return "playground/utilities/ua";
 	}
 
@@ -131,11 +138,27 @@ public class PlaygroundController {
 		return "playground/math/fractals";
 	}
 
+	@RequestMapping("/playground/math/collatz")
+	public String mathCollatz(Model model) {
+		List<SubMenuSection> subMenuSections = menuService
+				.getSubMenu(MENU_NAME_PLAYGROUND);
+		model.addAttribute("subMenuSections", subMenuSections);
+
+		return "playground/math/collatz";
+	}
+
+	@RequestMapping("/playground/math/collatz/json")
+	@ResponseBody
+	public List<Long> mathCollatzJSON(@RequestParam Long number, Model model) {
+		return collatzConjectureSolver.solve(number);
+	}
+
 	@RequestMapping("/playground/demo/webcam/live")
 	public String demoWebcamLive(Model model) {
 		List<SubMenuSection> subMenuSections = menuService
 				.getSubMenu(MENU_NAME_PLAYGROUND);
 		model.addAttribute("subMenuSections", subMenuSections);
+
 		return "playground/demo/webcam/live";
 	}
 
@@ -144,6 +167,7 @@ public class PlaygroundController {
 		List<SubMenuSection> subMenuSections = menuService
 				.getSubMenu(MENU_NAME_PLAYGROUND);
 		model.addAttribute("subMenuSections", subMenuSections);
+
 		return "playground/demo/webcam/snapshots";
 	}
 

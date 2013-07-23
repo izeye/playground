@@ -56,6 +56,8 @@ public class DefaultMenuService implements MenuService {
 		subMenuSection = new SubMenuSection(SUB_MENU_HEADER_MATH);
 		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_FRACTALS,
 				SUB_MENU_ITEM_URL_FRACTALS);
+		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_COLLATZ,
+				SUB_MENU_ITEM_URL_COLLATZ);
 		subMenuSections.add(subMenuSection);
 
 		// Playground -> Demo
