@@ -32,6 +32,10 @@
 		<put-attribute name="body" value="/WEB-INF/views/playground/utilities/ua/ua.jsp" />
 	</definition>
 
+	<definition name="playground/utilities/world_clock" extends="playground/playground">
+		<put-attribute name="body" value="/WEB-INF/views/playground/utilities/clock/clock.jsp" />
+	</definition>
+
 	<definition name="playground/math/fractals" extends="playground/playground">
 		<put-attribute name="body" value="/WEB-INF/views/playground/math/fractals/fractals.jsp" />
 	</definition>

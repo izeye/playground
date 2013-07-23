@@ -3,7 +3,9 @@ package com.izeye.playground.controller;
 import static com.izeye.playground.web.menu.domain.MenuConstants.MENU_NAME_PLAYGROUND;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -127,6 +129,18 @@ public class PlaygroundController {
 	@ResponseBody
 	public UserAgent utilitiesUAJSON(@RequestParam String userAgent, Model model) {
 		return userAgentAnalyzer.analyze(userAgent);
+	}
+
+	@RequestMapping("/playground/utilities/world_clock")
+	public String utilitiesWorldClock(Model model) {
+		List<SubMenuSection> subMenuSections = menuService
+				.getSubMenu(MENU_NAME_PLAYGROUND);
+		model.addAttribute("subMenuSections", subMenuSections);
+
+		model.addAttribute("now", new Date());
+		model.addAttribute("timeZoneIds", TimeZone.getAvailableIDs());
+
+		return "playground/utilities/world_clock";
 	}
 
 	@RequestMapping("/playground/math/fractals")

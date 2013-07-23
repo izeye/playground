@@ -50,6 +50,8 @@ public class DefaultMenuService implements MenuService {
 				SUB_MENU_ITEM_URL_IP_ANALYZER);
 		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_UA_ANALYZER,
 				SUB_MENU_ITEM_URL_UA_ANALYZER);
+		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_WORLD_CLOCK,
+				SUB_MENU_ITEM_URL_WORLD_CLOCK);
 		subMenuSections.add(subMenuSection);
 
 		// Playground -> Math

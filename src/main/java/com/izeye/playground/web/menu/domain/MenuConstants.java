@@ -19,6 +19,9 @@ public interface MenuConstants {
 	String SUB_MENU_ITEM_NAME_UA_ANALYZER = "UA Analyzer";
 	String SUB_MENU_ITEM_URL_UA_ANALYZER = "/playground/utilities/ua";
 
+	String SUB_MENU_ITEM_NAME_WORLD_CLOCK = "World Clock";
+	String SUB_MENU_ITEM_URL_WORLD_CLOCK = "/playground/utilities/world_clock";
+
 	String SUB_MENU_HEADER_MATH = "Math";
 
 	String SUB_MENU_ITEM_NAME_FRACTALS = "Fractals";
