@@ -35,6 +35,9 @@ public interface MenuConstants {
 	String SUB_MENU_ITEM_NAME_WEBCAM = "Webcam";
 	String SUB_MENU_ITEM_URL_WEBCAM = "/playground/demo/webcam/live";
 
+	String SUB_MENU_ITEM_NAME_KAKAO_LINK = "KakaoLink";
+	String SUB_MENU_ITEM_URL_KAKAO_LINK = "/playground/demo/kakao_link";
+
 	String SUB_MENU_HEADER_ANALYTICS = "Analytics";
 
 	String SUB_MENU_ITEM_NAME_AUDIENCE_OVERVIEW = "Audience Overview";

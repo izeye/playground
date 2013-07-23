@@ -6,7 +6,7 @@ Collatz conjecture hasn't been proved yet.
 Try to find the number which can break his conjecture :-)
 </p>
 
-<label for="size">Enter a number:</label>
+<label for="number">Enter a number:</label>
 <input type="text" id="number" value="300"><br/>
 <input type="button" value="Solve" onclick="solve();"><br/><br/>
 <div id="result" class="well">

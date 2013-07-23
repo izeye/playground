@@ -65,6 +65,10 @@
 		<put-attribute name="body" value="playground/demo/webcam/snapshots.body" />
 	</definition>
 
+	<definition name="playground/demo/kakao_link" extends="playground/playground">
+		<put-attribute name="body" value="/WEB-INF/views/playground/demo/kakao/kakao.jsp" />
+	</definition>
+
 	<definition name="about/about" extends="base.definition">
 		<put-attribute name="body" value="/WEB-INF/views/about/about.jsp" />
 	</definition>

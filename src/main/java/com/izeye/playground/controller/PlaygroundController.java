@@ -185,4 +185,13 @@ public class PlaygroundController {
 		return "playground/demo/webcam/snapshots";
 	}
 
+	@RequestMapping("/playground/demo/kakao_link")
+	public String demoKakaoLink(Model model) {
+		List<SubMenuSection> subMenuSections = menuService
+				.getSubMenu(MENU_NAME_PLAYGROUND);
+		model.addAttribute("subMenuSections", subMenuSections);
+
+		return "playground/demo/kakao_link";
+	}
+
 }

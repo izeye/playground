@@ -66,6 +66,8 @@ public class DefaultMenuService implements MenuService {
 		subMenuSection = new SubMenuSection(SUB_MENU_HEADER_DEMO);
 		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_WEBCAM,
 				SUB_MENU_ITEM_URL_WEBCAM);
+		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_KAKAO_LINK,
+				SUB_MENU_ITEM_URL_KAKAO_LINK);
 		subMenuSections.add(subMenuSection);
 
 		menuNameAndSubMenuSectionListMap.put(MENU_NAME_PLAYGROUND,
