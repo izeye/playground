@@ -52,6 +52,12 @@ public class DefaultMenuService implements MenuService {
 				SUB_MENU_ITEM_URL_UA_ANALYZER);
 		subMenuSections.add(subMenuSection);
 
+		// Playground -> Math
+		subMenuSection = new SubMenuSection(SUB_MENU_HEADER_MATH);
+		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_FRACTALS,
+				SUB_MENU_ITEM_URL_FRACTALS);
+		subMenuSections.add(subMenuSection);
+
 		// Playground -> Demo
 		subMenuSection = new SubMenuSection(SUB_MENU_HEADER_DEMO);
 		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_WEBCAM,

@@ -22,14 +22,16 @@
 		<th>User Agent</th>
 		<th>Referrer</th>
 	</tr>
-	<c:forEach var="accessLog" items="${allAccessLogs}">
+	<c:forEach var="accessLog" items="${latestAccessLogs}">
+		<c:set var="ip" value="${accessLog.getIp()}"></c:set>
+		<c:set var="userAgent" value="${accessLog.getUserAgent()}"></c:set>
 		<tr>
 			<td>${accessLog.getId()}</td>
 			<td><fmt:formatDate value="${accessLog.getAccessTime()}"
 					pattern="yyyy-MM-dd HH:mm:ss" /></td>
-			<td>${accessLog.getIp()}</td>
+			<td title="${ipAnalyzer.analyze(ip).getLocation()}">${ip}</td>
 			<td>${accessLog.getUrl()}</td>
-			<td>${accessLog.getUserAgent()}</td>
+			<td title="${userAgentAnalyzer.analyze(userAgent).getDisplayName()}">${userAgent}</td>
 			<td>${accessLog.getReferer()}</td>
 		</tr>
 	</c:forEach>

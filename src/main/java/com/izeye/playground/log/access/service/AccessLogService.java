@@ -10,4 +10,8 @@ public interface AccessLogService {
 
 	List<AccessLog> getAllAccessLogs();
 
+	List<AccessLog> getLatestAccessLogs(int count);
+
+	List<AccessLog> getLatestAccessLogs(long exclusiveBaseId, int count);
+
 }

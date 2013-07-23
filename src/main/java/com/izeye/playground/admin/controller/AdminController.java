@@ -16,8 +16,10 @@ import com.izeye.playground.log.access.domain.AccessLog;
 import com.izeye.playground.log.access.domain.DailyCount;
 import com.izeye.playground.log.access.domain.UserAgentCount;
 import com.izeye.playground.log.access.service.AccessLogService;
+import com.izeye.playground.support.ip.service.IPAnalyzer;
 import com.izeye.playground.support.qrcode.domain.QRCodeGenerationLog;
 import com.izeye.playground.support.qrcode.service.QRCodeService;
+import com.izeye.playground.support.ua.service.UserAgentAnalyzer;
 import com.izeye.playground.web.menu.domain.SubMenuSection;
 import com.izeye.playground.web.menu.service.MenuService;
 
@@ -35,6 +37,12 @@ public class AdminController {
 
 	@Resource
 	private QRCodeService qrCodeService;
+
+	@Resource
+	private IPAnalyzer ipAnalyzer;
+
+	@Resource
+	private UserAgentAnalyzer userAgentAnalyzer;
 
 	private List<SubMenuSection> subMenuSections;
 
@@ -61,12 +69,22 @@ public class AdminController {
 		return "admin/analytics/audience/overview";
 	}
 
+	private static final int DEFAULT_ACCESS_LOG_PAGE_SIZE = 100;
+
 	@RequestMapping("/admin/analytics/audience/access_logs")
 	public String analyticsAudienceAccessLogs(Model model) {
 		model.addAttribute("subMenuSections", subMenuSections);
 
-		List<AccessLog> allAccessLogs = accessLogService.getAllAccessLogs();
-		model.addAttribute("allAccessLogs", allAccessLogs);
+		// List<AccessLog> allAccessLogs = accessLogService.getAllAccessLogs();
+		// model.addAttribute("allAccessLogs", allAccessLogs);
+		List<AccessLog> latestAccessLogs = accessLogService
+				.getLatestAccessLogs(DEFAULT_ACCESS_LOG_PAGE_SIZE);
+		model.addAttribute("latestAccessLogs", latestAccessLogs);
+
+		// TODO: Implement more button.
+
+		model.addAttribute("ipAnalyzer", ipAnalyzer);
+		model.addAttribute("userAgentAnalyzer", userAgentAnalyzer);
 
 		return "admin/analytics/audience/access_logs";
 	}

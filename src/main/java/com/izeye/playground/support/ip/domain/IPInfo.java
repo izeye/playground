@@ -1,5 +1,7 @@
 package com.izeye.playground.support.ip.domain;
 
+import com.izeye.playground.support.country.domain.Country;
+
 public class IPInfo {
 
 	private Whois whois;
@@ -10,6 +12,17 @@ public class IPInfo {
 
 	public Whois getWhois() {
 		return whois;
+	}
+
+	public String getLocation() {
+		Country country = whois.getCountry();
+		if (country == Country.NOT_AVAILABLE
+				|| !country.getCode().equalsIgnoreCase(
+						KisaWhoisConstants.COUNTRY_CODE_KR)) {
+			return country.getName();
+		} else {
+			return whois.getKoreanDetail().getUserAddr();
+		}
 	}
 
 	@Override

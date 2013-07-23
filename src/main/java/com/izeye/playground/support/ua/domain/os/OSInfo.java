@@ -43,6 +43,9 @@ public class OSInfo {
 	private static String WINDOWS_XP_VERSION = "NT 5.1";
 	private static String WINDOWS_XP_ALIAS = "XP";
 
+	private static String WINDOWS_VISTA_VERSION = "NT 6.0";
+	private static String WINDOWS_VISTA_ALIAS = "Vista";
+
 	private static String WINDOWS_7_VERSION = "NT 6.1";
 	private static String WINDOWS_7_ALIAS = "7";
 
@@ -81,6 +84,8 @@ public class OSInfo {
 				return WINDOWS_NT_ALIAS;
 			} else if (version.equals(WINDOWS_XP_VERSION)) {
 				return WINDOWS_XP_ALIAS;
+			} else if (version.equals(WINDOWS_VISTA_VERSION)) {
+				return WINDOWS_VISTA_ALIAS;
 			} else if (version.equals(WINDOWS_7_VERSION)) {
 				return WINDOWS_7_ALIAS;
 			} else if (version.equals(WINDOWS_8_VERSION)) {

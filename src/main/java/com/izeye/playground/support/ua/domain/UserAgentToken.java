@@ -3,26 +3,26 @@ package com.izeye.playground.support.ua.domain;
 public class UserAgentToken {
 
 	private final UserAgentTokenType type;
-	private final String token;
+	private final String value;
 
-	public UserAgentToken(UserAgentTokenType type, String token) {
+	public UserAgentToken(UserAgentTokenType type, String value) {
 		this.type = type;
-		this.token = token;
+		this.value = value;
 	}
 
 	public UserAgentTokenType getType() {
 		return type;
 	}
 
-	public String getToken() {
-		return token;
+	public String getValue() {
+		return value;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((token == null) ? 0 : token.hashCode());
+		result = prime * result + ((value == null) ? 0 : value.hashCode());
 		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		return result;
 	}
@@ -36,10 +36,10 @@ public class UserAgentToken {
 		if (getClass() != obj.getClass())
 			return false;
 		UserAgentToken other = (UserAgentToken) obj;
-		if (token == null) {
-			if (other.token != null)
+		if (value == null) {
+			if (other.value != null)
 				return false;
-		} else if (!token.equals(other.token))
+		} else if (!value.equals(other.value))
 			return false;
 		if (type != other.type)
 			return false;
@@ -48,7 +48,7 @@ public class UserAgentToken {
 
 	@Override
 	public String toString() {
-		return "UserAgentToken [type=" + type + ", token=" + token + "]";
+		return "UserAgentToken [type=" + type + ", value=" + value + "]";
 	}
 
 }

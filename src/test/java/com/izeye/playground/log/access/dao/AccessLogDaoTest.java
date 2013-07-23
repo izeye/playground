@@ -74,4 +74,21 @@ public class AccessLogDaoTest {
 		System.out.println(userAgentCounts);
 	}
 
+	@Test
+	public void getLatestAccessLogs() {
+		int count = 10;
+		List<AccessLog> latestAccessLogs = accessLogDao
+				.getLatestAccessLogs(count);
+		System.out.println(latestAccessLogs);
+	}
+
+	@Test
+	public void getLatestAccessLogsWithExclusiveBaseId() {
+		long exclusiveBaseId = 100;
+		int count = 10;
+		List<AccessLog> latestAccessLogs = accessLogDao.getLatestAccessLogs(
+				exclusiveBaseId, count);
+		System.out.println(latestAccessLogs);
+	}
+
 }

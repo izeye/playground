@@ -33,6 +33,19 @@ public class AccessLogDaoMyBatis implements AccessLogDao {
 	}
 
 	@Override
+	public List<AccessLog> getLatestAccessLogs(int count) {
+		AccessLogMapper mapper = sqlSession.getMapper(AccessLogMapper.class);
+		return mapper.getLatestAccessLogs(count);
+	}
+
+	@Override
+	public List<AccessLog> getLatestAccessLogs(long exclusiveBaseId, int count) {
+		AccessLogMapper mapper = sqlSession.getMapper(AccessLogMapper.class);
+		return mapper.getLatestAccessLogsWithExclusiveBaseId(exclusiveBaseId,
+				count);
+	}
+
+	@Override
 	@Cacheable("accessLogCache")
 	public List<AccessLog> getAccessLogsInSpecificDate(String date) {
 		AccessLogMapper mapper = sqlSession.getMapper(AccessLogMapper.class);
@@ -44,12 +57,6 @@ public class AccessLogDaoMyBatis implements AccessLogDao {
 	public List<DailyCount> getDailyCounts() {
 		AccessLogMapper mapper = sqlSession.getMapper(AccessLogMapper.class);
 		return mapper.getDailyCounts();
-	}
-
-	@Override
-	public List<AccessLog> getLatestAccessLogs(int count) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override

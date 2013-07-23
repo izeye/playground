@@ -24,6 +24,7 @@ public class DefaultUserAgentTokenizer implements UserAgentTokenizer {
 		List<UserAgentToken> userAgentTokens = new ArrayList<UserAgentToken>();
 		StringBuilder sbToken = new StringBuilder();
 		State state = State.NOT_IN_TOKEN;
+		boolean inParentheses = false;
 		for (int i = 0; i < userAgent.length(); i++) {
 			char c = userAgent.charAt(i);
 			switch (state) {
@@ -44,14 +45,30 @@ public class DefaultUserAgentTokenizer implements UserAgentTokenizer {
 				break;
 
 			case IN_PRODUCT_TOKEN:
-				if (c == ' ') {
+				switch (c) {
+				case '(':
+					inParentheses = true;
+					break;
+
+				case ')':
+					inParentheses = false;
+					break;
+
+				case ' ':
+					if (inParentheses) {
+						break;
+					}
+
 					String token = sbToken.toString();
 					userAgentTokens.add(new UserAgentToken(PRODUCT, token));
 
 					sbToken = new StringBuilder();
 					state = State.NOT_IN_TOKEN;
-				} else {
+					break;
+
+				default:
 					sbToken.append(c);
+					break;
 				}
 				break;
 

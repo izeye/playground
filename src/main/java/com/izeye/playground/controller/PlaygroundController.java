@@ -122,6 +122,15 @@ public class PlaygroundController {
 		return userAgentAnalyzer.analyze(userAgent);
 	}
 
+	@RequestMapping("/playground/math/fractals")
+	public String mathFractals(Model model) {
+		List<SubMenuSection> subMenuSections = menuService
+				.getSubMenu(MENU_NAME_PLAYGROUND);
+		model.addAttribute("subMenuSections", subMenuSections);
+
+		return "playground/math/fractals";
+	}
+
 	@RequestMapping("/playground/demo/webcam/live")
 	public String demoWebcamLive(Model model) {
 		List<SubMenuSection> subMenuSections = menuService

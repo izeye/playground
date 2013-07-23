@@ -1,6 +1,9 @@
 package com.izeye.playground.support.ua.service;
 
-import static com.izeye.playground.support.ua.domain.UserAgentConstants.*;
+import static com.izeye.playground.support.ua.domain.UserAgentConstants.COMMENT_DELIMITER;
+import static com.izeye.playground.support.ua.domain.UserAgentConstants.PRODUCT_DELIMITER;
+import static com.izeye.playground.support.ua.domain.UserAgentConstants.SECURITY_VALUE_STRONG_SECURITY;
+import static com.izeye.playground.support.ua.domain.UserAgentConstants.USER_AGENT_EMPTY;
 import static com.izeye.playground.support.ua.domain.UserAgentTokenType.COMMENT;
 import static com.izeye.playground.support.ua.domain.UserAgentTokenType.PRODUCT;
 
@@ -23,6 +26,7 @@ import com.izeye.playground.support.ua.domain.device.DeviceType;
 import com.izeye.playground.support.ua.domain.os.OSInfo;
 import com.izeye.playground.support.ua.domain.os.OSType;
 import com.izeye.playground.support.ua.service.browser.IEParser;
+import com.izeye.playground.support.ua.service.browser.NaverAppParser;
 import com.izeye.playground.support.ua.service.browser.ProductBasedBrowserInfoParser;
 import com.izeye.playground.support.ua.service.os.AndroidOSInfoParser;
 import com.izeye.playground.support.ua.service.os.AppleOSInfoParser;
@@ -52,20 +56,28 @@ public class DefaultUserAgentAnalyzer implements UserAgentAnalyzer {
 	@Resource
 	private IEParser ieParser;
 
-	private static final String MOZILLA_4_0 = "Mozilla/4.0";
-	private static final String MOZILLA_5_0 = "Mozilla/5.0";
+	@Resource
+	private NaverAppParser naverAppParser;
 
-	private static final Set<String> validMozillaTokenSet;
+	private static final String MOZILLA = "Mozilla";
+
+	private static final Set<String> validMozillaVersionSet;
 	static {
 		Set<String> mozillaTokens = new HashSet<String>();
-		mozillaTokens.add(MOZILLA_4_0);
-		mozillaTokens.add(MOZILLA_5_0);
+		mozillaTokens.add("4.0");
+		mozillaTokens.add("5.0");
 
-		validMozillaTokenSet = Collections.unmodifiableSet(mozillaTokens);
+		validMozillaVersionSet = Collections.unmodifiableSet(mozillaTokens);
 	}
 
 	@Override
 	public UserAgent analyze(String userAgent) {
+		// NOTE:
+		// Suspicious user agent!
+		if (userAgent.equals(USER_AGENT_EMPTY)) {
+			return UserAgent.NOT_AVAILABLE;
+		}
+
 		UserAgent analyzedUserAgent = new UserAgent();
 
 		try {
@@ -86,8 +98,22 @@ public class DefaultUserAgentAnalyzer implements UserAgentAnalyzer {
 
 			// Mozilla/[version]
 			UserAgentToken mozillaToken = userAgentTokens.remove(0);
-			if (mozillaToken.getType() != PRODUCT
-					|| !validMozillaTokenSet.contains(mozillaToken.getToken())) {
+			String mozillaTokenValue = mozillaToken.getValue();
+
+			String[] splitMozillaTokenValue = mozillaTokenValue
+					.split(PRODUCT_DELIMITER);
+			String mozilla = splitMozillaTokenValue[0];
+			String mozillaVersion = splitMozillaTokenValue[1];
+
+			// Handle some bots.
+			if (BrowserType.isBot(mozilla)) {
+				analyzedUserAgent.setBrowserInfo(new BrowserInfo(browserType,
+						mozillaVersion));
+				return analyzedUserAgent;
+			}
+
+			if (!mozilla.equals(MOZILLA)
+					|| !validMozillaVersionSet.contains(mozillaVersion)) {
 				throw new UnidentifiableUserAgentException(
 						"Unexpected mozilla token: " + mozillaToken
 								+ ", user agent: " + userAgent);
@@ -103,7 +129,7 @@ public class DefaultUserAgentAnalyzer implements UserAgentAnalyzer {
 			}
 
 			String[] splitSystemAndBrowserToken = systemAndBrowserToken
-					.getToken().split(COMMENT_DELIMITER);
+					.getValue().split(COMMENT_DELIMITER);
 
 			OSInfo osInfo = OSInfo.NOT_AVAILABLE;
 			switch (osType) {
@@ -176,7 +202,7 @@ public class DefaultUserAgentAnalyzer implements UserAgentAnalyzer {
 
 			case CHROME:
 				browserInfo = productBasedBrowserInfoParser
-						.parse(extensionsTokens.get(0).getToken());
+						.parse(extensionsTokens.get(0).getValue());
 				break;
 
 			case GOOGLEBOT:
@@ -191,13 +217,18 @@ public class DefaultUserAgentAnalyzer implements UserAgentAnalyzer {
 
 			case FIREFOX:
 				browserInfo = productBasedBrowserInfoParser
-						.parse(extensionsTokens.get(0).getToken());
+						.parse(extensionsTokens.get(0).getValue());
 				break;
 
 			case SAFARI:
 				browserInfo = productBasedBrowserInfoParser
 						.parse(extensionsTokens
-								.get(extensionsTokens.size() - 1).getToken());
+								.get(extensionsTokens.size() - 1).getValue());
+				break;
+
+			case NAVER_APP:
+				browserInfo = naverAppParser.parse(extensionsTokens.get(1)
+						.getValue());
 				break;
 
 			default:

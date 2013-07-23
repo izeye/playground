@@ -10,6 +10,19 @@
 	<select id="getAllAccessLogs" resultType="AccessLog">
 		SELECT * FROM tb_access_log ORDER BY access_time DESC
 	</select>
+	<select id="getLatestAccessLogs" resultType="AccessLog">
+		SELECT * FROM tb_access_log ORDER BY access_time DESC LIMIT #{count}
+	</select>
+	<select id="getLatestAccessLogsWithExclusiveBaseId" resultType="AccessLog">
+		SELECT
+			*
+		FROM
+			tb_access_log
+		WHERE
+			id &lt; #{exclusiveBaseId}
+		ORDER BY access_time DESC
+		LIMIT #{count}
+	</select>
 	<select id="getAccessLogsInSpecificDate" resultType="AccessLog">
 		SELECT * FROM tb_access_log WHERE DATE_FORMAT(access_time, '%Y-%m-%d') = #{date}
 	</select>

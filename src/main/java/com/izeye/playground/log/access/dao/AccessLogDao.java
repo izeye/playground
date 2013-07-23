@@ -14,6 +14,8 @@ public interface AccessLogDao {
 
 	List<AccessLog> getLatestAccessLogs(int count);
 
+	List<AccessLog> getLatestAccessLogs(long exclusiveBaseId, int count);
+
 	List<AccessLog> getAccessLogsInSpecificDate(String date);
 
 	List<DailyCount> getDailyCounts();

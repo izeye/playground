@@ -32,4 +32,14 @@ public class DefaultAccessLogService implements AccessLogService {
 		return accessLogDao.getAllAccessLogs();
 	}
 
+	@Override
+	public List<AccessLog> getLatestAccessLogs(int count) {
+		return accessLogDao.getLatestAccessLogs(count);
+	}
+
+	@Override
+	public List<AccessLog> getLatestAccessLogs(long exclusiveBaseId, int count) {
+		return accessLogDao.getLatestAccessLogs(exclusiveBaseId, count);
+	}
+
 }
