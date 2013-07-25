@@ -19,8 +19,6 @@ var analyzeUserAgent = function () {
 };
 </script>
 
-<h2>UA (User Agent) Analyzer</h2>
-
 <p>
 This page provides analysis of your UA or any UA string and the usage of its API version.
 </p>

@@ -27,8 +27,6 @@ var analyzeIpAddress = function () {
 };
 </script>
 
-<h2>IP Analyzer</h2>
-
 <p>
 This page provides analysis of your IP address or any IP address and the usage of its API version.
 </p>

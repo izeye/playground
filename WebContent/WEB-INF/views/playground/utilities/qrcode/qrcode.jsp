@@ -13,8 +13,6 @@
 	};
 </script>
 
-<h2>Text 2 QR Code</h2>
-
 <p>This page provides a QR code of any text and the usage of its API
 	version.</p>
 

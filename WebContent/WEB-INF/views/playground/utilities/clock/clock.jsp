@@ -7,8 +7,6 @@
 <script type="text/javascript" charset="utf8"
 	src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
 
-<h2>World Clock</h2>
-
 <p>
 This page provides all clocks in the world
 and you can find any clock you want by typing its time zone name in the Search box.

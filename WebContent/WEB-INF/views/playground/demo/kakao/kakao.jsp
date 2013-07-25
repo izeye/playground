@@ -17,8 +17,6 @@ var send = function () {
 };
 </script>
 
-<h2>KakaoLink Demo</h2>
-
 <p>This page provides sending a KakaoTalk message via KakaoLink API.</p>
 
 <label for="message">Message</label>

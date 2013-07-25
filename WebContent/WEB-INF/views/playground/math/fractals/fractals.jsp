@@ -1,5 +1,3 @@
-<h2>Fractals</h2>
-
 <p>This page shows some fractals using HTML5 canvas.</p>
 
 <h3>Sierpinski Triangle</h3>

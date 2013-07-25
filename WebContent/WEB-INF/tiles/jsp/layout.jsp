@@ -32,6 +32,8 @@ body {
 				<tiles:insertAttribute name="sub_menu" />
 			</div>
 			<div class="span9">
+				<h2><tiles:insertAttribute name="body_title" /></h2>
+				<tiles:insertAttribute name="facebook_like" /><br/><br/>
 				<tiles:insertAttribute name="body" />
 			</div>
 		</div>

@@ -1,5 +1,5 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
-<h2>Webcam</h2>
+
 <p>To run this demo, allow to use your camera above.</p>
 
 <ul class="nav nav-tabs">

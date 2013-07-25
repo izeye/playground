@@ -7,6 +7,8 @@
 		<put-attribute name="title" value="izeye's Playground" />
 		<put-attribute name="main_menu" value="/WEB-INF/tiles/jsp/main_menu.jsp" />
 		<put-attribute name="sub_menu" value="" />
+		<put-attribute name="body_title" value="" />
+		<put-attribute name="facebook_like" value="" />
 		<put-attribute name="body" value="" />
 		<put-attribute name="footer" value="/WEB-INF/tiles/jsp/footer.jsp" />
 	</definition>
@@ -17,30 +19,37 @@
 	
 	<definition name="playground/playground" extends="base.definition">
 		<put-attribute name="sub_menu" value="/WEB-INF/tiles/jsp/sub_menu.jsp" />
+		<put-attribute name="facebook_like" value="/WEB-INF/tiles/jsp/facebook_like.jsp" />
 		<put-attribute name="body" value="/WEB-INF/views/playground/playground.jsp" />
 	</definition>
 
 	<definition name="playground/utilities/text2qrcode" extends="playground/playground">
+		<put-attribute name="body_title" value="Text 2 QR Code" />
 		<put-attribute name="body" value="/WEB-INF/views/playground/utilities/qrcode/qrcode.jsp" />
 	</definition>
 
 	<definition name="playground/utilities/ip" extends="playground/playground">
+		<put-attribute name="body_title" value="IP Analyzer" />
 		<put-attribute name="body" value="/WEB-INF/views/playground/utilities/ip/ip.jsp" />
 	</definition>
 
 	<definition name="playground/utilities/ua" extends="playground/playground">
+		<put-attribute name="body_title" value="UA (User Agent) Analyzer" />
 		<put-attribute name="body" value="/WEB-INF/views/playground/utilities/ua/ua.jsp" />
 	</definition>
 
 	<definition name="playground/utilities/world_clock" extends="playground/playground">
+		<put-attribute name="body_title" value="World Clock" />
 		<put-attribute name="body" value="/WEB-INF/views/playground/utilities/clock/clock.jsp" />
 	</definition>
 
 	<definition name="playground/math/fractals" extends="playground/playground">
+		<put-attribute name="body_title" value="Fractals" />
 		<put-attribute name="body" value="/WEB-INF/views/playground/math/fractals/fractals.jsp" />
 	</definition>
 
 	<definition name="playground/math/collatz" extends="playground/playground">
+		<put-attribute name="body_title" value="Collatz Conjecture" />
 		<put-attribute name="body" value="/WEB-INF/views/playground/math/collatz/collatz.jsp" />
 	</definition>
 
@@ -58,14 +67,17 @@
 	</definition>
 
 	<definition name="playground/demo/webcam/live" extends="playground/playground">
+		<put-attribute name="body_title" value="Webcam" />
 		<put-attribute name="body" value="playground/demo/webcam/live.body" />
 	</definition>
 
 	<definition name="playground/demo/webcam/snapshots" extends="playground/playground">
+		<put-attribute name="body_title" value="Webcam" />
 		<put-attribute name="body" value="playground/demo/webcam/snapshots.body" />
 	</definition>
 
 	<definition name="playground/demo/kakao_link" extends="playground/playground">
+		<put-attribute name="body_title" value="KakaoLink" />
 		<put-attribute name="body" value="/WEB-INF/views/playground/demo/kakao/kakao.jsp" />
 	</definition>
 

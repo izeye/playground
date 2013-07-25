@@ -1,5 +1,3 @@
-<h2>Collatz Conjecture</h2>
-
 <p>
 This page solves Collatz conjecture.
 Collatz conjecture hasn't been proved yet.
