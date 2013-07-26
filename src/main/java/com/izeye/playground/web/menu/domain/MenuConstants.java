@@ -10,6 +10,9 @@ public interface MenuConstants {
 
 	String SUB_MENU_HEADER_UTILITIES = "Utilities";
 
+	String SUB_MENU_ITEM_NAME_TIMESTAMP_2_DATE = "Timestamp 2 Date";
+	String SUB_MENU_ITEM_URL_TIMESTAMP_2_DATE = "/playground/utilities/timestamp2date";
+
 	String SUB_MENU_ITEM_NAME_TEXT_2_QR_CODE = "Text 2 QR Code";
 	String SUB_MENU_ITEM_URL_TEXT_2_QR_CODE = "/playground/utilities/text2qrcode";
 

@@ -3,9 +3,11 @@ package com.izeye.playground.controller;
 import static com.izeye.playground.web.menu.domain.MenuConstants.MENU_NAME_PLAYGROUND;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
+import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -23,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.zxing.WriterException;
+import com.izeye.playground.support.date.service.DateService;
 import com.izeye.playground.support.ip.domain.IPInfo;
 import com.izeye.playground.support.ip.service.IPAnalyzer;
 import com.izeye.playground.support.math.collatz.service.CollatzConjectureSolver;
@@ -38,6 +41,9 @@ public class PlaygroundController {
 
 	@Resource
 	private MenuService menuService;
+
+	@Resource
+	private DateService dateService;
 
 	@Resource
 	private QRCodeService qrCodeService;
@@ -58,6 +64,38 @@ public class PlaygroundController {
 		model.addAttribute("subMenuSections", subMenuSections);
 
 		return "playground/playground";
+	}
+
+	@RequestMapping("/playground/utilities/timestamp2date")
+	public String utilitiesTimestamp2Date(Model model) {
+		List<SubMenuSection> subMenuSections = menuService
+				.getSubMenu(MENU_NAME_PLAYGROUND);
+		model.addAttribute("subMenuSections", subMenuSections);
+
+		Date currentDate = new Date();
+		long currentTimestampInSeconds = TimeUnit.MILLISECONDS
+				.toSeconds(currentDate.getTime());
+		String currentFormattedDate = dateService.format(currentDate);
+		model.addAttribute("currentTimestampInSeconds",
+				currentTimestampInSeconds);
+		model.addAttribute("currentFormattedDate", currentFormattedDate);
+
+		return "playground/utilities/timestamp2date";
+	}
+
+	@RequestMapping("/playground/utilities/timestamp2date/api")
+	@ResponseBody
+	public String utilitiesTimestamp2DateAPI(
+			@RequestParam long timestampInSeconds, Model model) {
+		return dateService
+				.timestampInSecondsToFormattedDate(timestampInSeconds);
+	}
+
+	@RequestMapping("/playground/utilities/date2timestamp/api")
+	@ResponseBody
+	public long utilitiesDate2TimestampAPI(@RequestParam String formattedDate,
+			Model model) throws ParseException {
+		return dateService.formattedDateToTimestampInSeconds(formattedDate);
 	}
 
 	@RequestMapping("/playground/utilities/text2qrcode")

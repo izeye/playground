@@ -44,6 +44,8 @@ public class DefaultMenuService implements MenuService {
 		// Playground -> Utilities
 		SubMenuSection subMenuSection = new SubMenuSection(
 				SUB_MENU_HEADER_UTILITIES);
+		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_TIMESTAMP_2_DATE,
+				SUB_MENU_ITEM_URL_TIMESTAMP_2_DATE);
 		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_TEXT_2_QR_CODE,
 				SUB_MENU_ITEM_URL_TEXT_2_QR_CODE);
 		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_IP_ANALYZER,

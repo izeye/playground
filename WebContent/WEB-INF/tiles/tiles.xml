@@ -9,6 +9,7 @@
 		<put-attribute name="sub_menu" value="" />
 		<put-attribute name="body_title" value="" />
 		<put-attribute name="facebook_like" value="" />
+		<put-attribute name="facebook_share" value="" />
 		<put-attribute name="body" value="" />
 		<put-attribute name="footer" value="/WEB-INF/tiles/jsp/footer.jsp" />
 	</definition>
@@ -20,7 +21,13 @@
 	<definition name="playground/playground" extends="base.definition">
 		<put-attribute name="sub_menu" value="/WEB-INF/tiles/jsp/sub_menu.jsp" />
 		<put-attribute name="facebook_like" value="/WEB-INF/tiles/jsp/facebook_like.jsp" />
+		<put-attribute name="facebook_share" value="/WEB-INF/tiles/jsp/facebook_share.jsp" />
 		<put-attribute name="body" value="/WEB-INF/views/playground/playground.jsp" />
+	</definition>
+
+	<definition name="playground/utilities/timestamp2date" extends="playground/playground">
+		<put-attribute name="body_title" value="Timestamp 2 Date" />
+		<put-attribute name="body" value="/WEB-INF/views/playground/utilities/date/date.jsp" />
 	</definition>
 
 	<definition name="playground/utilities/text2qrcode" extends="playground/playground">
