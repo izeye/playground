@@ -26,11 +26,17 @@ public class OSInfo {
 		return version;
 	}
 
+	private static String MAC_OS_X_SNOW_LEOPARD_VERSION = "10.6";
+	private static String MAC_OS_X_SNOW_LEOPARD_ALIAS = "Snow Leopard";
+
 	private static String MAC_OS_X_LION_VERSION = "10.7";
 	private static String MAC_OS_X_LION_ALIAS = "Lion";
 
 	private static String MAC_OS_X_MOUNTAIN_LION_VERSION = "10.8";
 	private static String MAC_OS_X_MOUNTAIN_LION_ALIAS = "Mountain Lion";
+
+	private static String MAC_OS_X_MOUNTAIN_MAVERICKS_VERSION = "10.9";
+	private static String MAC_OS_X_MOUNTAIN_MAVERICKS_ALIAS = "Mavericks";
 
 	private static String WINDOWS_98_VERSION = "98";
 	private static String WINDOWS_98_ALIAS = "98";
@@ -68,10 +74,14 @@ public class OSInfo {
 	private String getAlias() {
 		switch (type) {
 		case MAC_OS_X:
-			if (version.startsWith(MAC_OS_X_LION_VERSION)) {
+			if (version.startsWith(MAC_OS_X_SNOW_LEOPARD_VERSION)) {
+				return MAC_OS_X_SNOW_LEOPARD_ALIAS;
+			} else if (version.startsWith(MAC_OS_X_LION_VERSION)) {
 				return MAC_OS_X_LION_ALIAS;
 			} else if (version.startsWith(MAC_OS_X_MOUNTAIN_LION_VERSION)) {
 				return MAC_OS_X_MOUNTAIN_LION_ALIAS;
+			} else if (version.startsWith(MAC_OS_X_MOUNTAIN_MAVERICKS_VERSION)) {
+				return MAC_OS_X_MOUNTAIN_MAVERICKS_ALIAS;
 			} else {
 				throw new UnidentifiableUserAgentException(
 						"Unidentifiable OS version: " + type + ", " + version);

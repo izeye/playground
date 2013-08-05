@@ -3,6 +3,7 @@ package com.izeye.playground.controller;
 import static com.izeye.playground.web.menu.domain.MenuConstants.MENU_NAME_PLAYGROUND;
 
 import java.io.IOException;
+import java.math.BigInteger;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
@@ -29,10 +30,20 @@ import com.izeye.playground.support.date.service.DateService;
 import com.izeye.playground.support.ip.domain.IPInfo;
 import com.izeye.playground.support.ip.service.IPAnalyzer;
 import com.izeye.playground.support.math.collatz.service.CollatzConjectureSolver;
+import com.izeye.playground.support.math.factorial.service.FactorialSolver;
 import com.izeye.playground.support.qrcode.domain.QRCodeGenerationRequest;
 import com.izeye.playground.support.qrcode.service.QRCodeService;
 import com.izeye.playground.support.ua.domain.UserAgent;
 import com.izeye.playground.support.ua.service.UserAgentAnalyzer;
+import com.izeye.playground.support.unit.domain.AreaUnit;
+import com.izeye.playground.support.unit.domain.DigitalStorageUnit;
+import com.izeye.playground.support.unit.domain.FuelConsumptionUnit;
+import com.izeye.playground.support.unit.domain.LengthUnit;
+import com.izeye.playground.support.unit.domain.MassUnit;
+import com.izeye.playground.support.unit.domain.SpeedUnit;
+import com.izeye.playground.support.unit.domain.TemperatureUnit;
+import com.izeye.playground.support.unit.domain.UnitType;
+import com.izeye.playground.support.unit.domain.VolumeUnit;
 import com.izeye.playground.web.menu.domain.SubMenuSection;
 import com.izeye.playground.web.menu.service.MenuService;
 
@@ -57,8 +68,11 @@ public class PlaygroundController {
 	@Resource
 	private CollatzConjectureSolver collatzConjectureSolver;
 
+	@Resource
+	private FactorialSolver factorialSolver;
+
 	@RequestMapping("/playground")
-	public String home(Model model) {
+	public String playground(Model model) {
 		List<SubMenuSection> subMenuSections = menuService
 				.getSubMenu(MENU_NAME_PLAYGROUND);
 		model.addAttribute("subMenuSections", subMenuSections);
@@ -96,6 +110,28 @@ public class PlaygroundController {
 	public long utilitiesDate2TimestampAPI(@RequestParam String formattedDate,
 			Model model) throws ParseException {
 		return dateService.formattedDateToTimestampInSeconds(formattedDate);
+	}
+
+	@RequestMapping("/playground/utilities/unit_conversion")
+	public String utilitiesUnitConversion(Model model) {
+		List<SubMenuSection> subMenuSections = menuService
+				.getSubMenu(MENU_NAME_PLAYGROUND);
+		model.addAttribute("subMenuSections", subMenuSections);
+
+		model.addAttribute("unitTypes", UnitType.values());
+		model.addAttribute("temperatureUnits", TemperatureUnit.values());
+		model.addAttribute("lengthUnits", LengthUnit.values());
+		model.addAttribute("massUnits", MassUnit.values());
+		model.addAttribute("speedUnits", SpeedUnit.values());
+		model.addAttribute("volumeUnits", VolumeUnit.values());
+		model.addAttribute("areaUnits", AreaUnit.values());
+		model.addAttribute("fuelConsumptionUnits", FuelConsumptionUnit.values());
+
+		// FIXME: Use mine.
+		model.addAttribute("timeUnits", TimeUnit.values());
+		model.addAttribute("digitalStorageUnits", DigitalStorageUnit.values());
+
+		return "playground/utilities/unit_conversion";
 	}
 
 	@RequestMapping("/playground/utilities/text2qrcode")
@@ -188,6 +224,22 @@ public class PlaygroundController {
 		model.addAttribute("subMenuSections", subMenuSections);
 
 		return "playground/math/fractals";
+	}
+
+	@RequestMapping("/playground/math/factorial")
+	public String mathFactorial(Model model) {
+		List<SubMenuSection> subMenuSections = menuService
+				.getSubMenu(MENU_NAME_PLAYGROUND);
+		model.addAttribute("subMenuSections", subMenuSections);
+
+		return "playground/math/factorial";
+	}
+
+	@RequestMapping("/playground/math/factorial/json")
+	@ResponseBody
+	public BigInteger mathFactorialJSON(@RequestParam BigInteger number,
+			Model model) {
+		return factorialSolver.solve(number);
 	}
 
 	@RequestMapping("/playground/math/collatz")

@@ -13,6 +13,9 @@ public interface MenuConstants {
 	String SUB_MENU_ITEM_NAME_TIMESTAMP_2_DATE = "Timestamp 2 Date";
 	String SUB_MENU_ITEM_URL_TIMESTAMP_2_DATE = "/playground/utilities/timestamp2date";
 
+	String SUB_MENU_ITEM_NAME_UNIT_CONVERSION = "Unit Conversion";
+	String SUB_MENU_ITEM_URL_UNIT_CONVERSION = "/playground/utilities/unit_conversion";
+
 	String SUB_MENU_ITEM_NAME_TEXT_2_QR_CODE = "Text 2 QR Code";
 	String SUB_MENU_ITEM_URL_TEXT_2_QR_CODE = "/playground/utilities/text2qrcode";
 
@@ -29,6 +32,9 @@ public interface MenuConstants {
 
 	String SUB_MENU_ITEM_NAME_FRACTALS = "Fractals";
 	String SUB_MENU_ITEM_URL_FRACTALS = "/playground/math/fractals";
+
+	String SUB_MENU_ITEM_NAME_FACTORIAL = "Factorial";
+	String SUB_MENU_ITEM_URL_FACTORIAL = "/playground/math/factorial";
 
 	String SUB_MENU_ITEM_NAME_COLLATZ = "Collatz Conjecture";
 	String SUB_MENU_ITEM_URL_COLLATZ = "/playground/math/collatz";

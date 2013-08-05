@@ -5,6 +5,7 @@
 				'width=626,height=436');
 	}
 </script>
+
 <style>
 img.facebook
 {

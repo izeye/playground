@@ -1,32 +1,71 @@
 package com.izeye.playground.support.ua.domain.device;
 
+import static com.izeye.playground.support.ua.domain.device.DeviceVendor.APPLE;
+import static com.izeye.playground.support.ua.domain.device.DeviceVendor.*;
+import static com.izeye.playground.support.ua.domain.carrier.CarrierType.*;
+
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 import com.izeye.playground.common.EnumObjectSerializer;
 import com.izeye.playground.common.util.StringConstants;
+import com.izeye.playground.support.ua.domain.carrier.CarrierType;
 
 @JsonSerialize(using = EnumObjectSerializer.class)
 public enum DeviceType {
 
-	MACINTOSH("Macintosh", "Macintosh", false), IPHONE("iPhone", "iPhone", true), IPAD(
-			"iPad", "iPad", false), PC("PC", "PC", false), GALAXY_NOTE_DOCOMO(
-			"SC-05D", "Samsung Galaxy Note (Docomo)", true), GALAXY_NOTE_II_KT(
-			"SHV-E250K", "Samsung Galaxy Note II (KT)", true), NOT_AVAILABLE(
-			StringConstants.NOT_AVAILABLE, StringConstants.NOT_AVAILABLE, false);
+	MACINTOSH("Macintosh", "Macintosh", APPLE, CarrierType.NOT_AVAILABLE, false), IPHONE(
+			"iPhone", "iPhone", APPLE, CarrierType.NOT_AVAILABLE, true), IPAD(
+			"iPad", "iPad", APPLE, CarrierType.NOT_AVAILABLE, false), PC("PC",
+			"PC", DeviceVendor.NOT_AVAILABLE, CarrierType.NOT_AVAILABLE, false), GALAXY_S_II_SKT(
+			"SHW-M250S", "Galaxy S II", SAMSUNG, SKT, true), GALAXY_S_II_HD_LG_U_PLUS(
+			"SHV-E120L", "Galaxy S II HD", SAMSUNG, LG_U_PLUS, true), GALAXY_S_II_LTE_SKT(
+			"SHV-E110S", "Galaxy S II LTE", SAMSUNG, SKT, true), GALAXY_S_III_SKT(
+			"SHV-E210S", "Galaxy S III", SAMSUNG, SKT, true), GALAXY_S_III_KT(
+			"SHV-E210K", "Galaxy S III", SAMSUNG, KT, true), GALAXY_S_III_LG_U_PLUS(
+			"SHV-E210L", "Galaxy S III", SAMSUNG, LG_U_PLUS, true), GALAXY_NOTE_SKT(
+			"SHV-E160S", "Galaxy Note", SAMSUNG, SKT, true), GALAXY_NOTE_DOCOMO(
+			"SC-05D", "Galaxy Note", SAMSUNG, DOCOMO, true), GALAXY_NOTE_N7000(
+			"GT-N7000", "Galaxy Note N7000", SAMSUNG,
+			CarrierType.NOT_AVAILABLE, true), GALAXY_NOTE_II_SKT("SHV-E250S",
+			"Galaxy Note II", SAMSUNG, SKT, true), GALAXY_NOTE_II_KT(
+			"SHV-E250K", "Galaxy Note II", SAMSUNG, KT, true), SKY_VEGA_RACER_KT(
+			"IM-A770K", "SKY Vega Racer", PANTECH, KT, true), NOT_AVAILABLE(
+			StringConstants.NOT_AVAILABLE, StringConstants.NOT_AVAILABLE,
+			DeviceVendor.NOT_AVAILABLE, CarrierType.NOT_AVAILABLE, false);
 
 	private final String modelName;
 	private final String productName;
+	private final DeviceVendor vendor;
+	private final CarrierType carrierType;
 	private final boolean callable;
 
 	private final String displayName;
 
-	private DeviceType(String modelName, String productName, boolean callable) {
+	private DeviceType(String modelName, String productName,
+			DeviceVendor vendor, CarrierType carrierType, boolean callable) {
 		this.modelName = modelName;
 		this.productName = productName;
+		this.vendor = vendor;
+		this.carrierType = carrierType;
 		this.callable = callable;
 
-		this.displayName = productName + " (" + modelName + "), "
-				+ (callable ? "callable" : "non-callable");
+		this.displayName = buildDisplayName();
+	}
+
+	private String buildDisplayName() {
+		StringBuilder sbDisplayName = new StringBuilder();
+		sbDisplayName.append(vendor.getName());
+		sbDisplayName.append(", ");
+		sbDisplayName.append(productName);
+		sbDisplayName.append(" (");
+		sbDisplayName.append(modelName);
+		sbDisplayName.append("), ");
+		if (carrierType != CarrierType.NOT_AVAILABLE) {
+			sbDisplayName.append(carrierType.getName());
+			sbDisplayName.append(", ");
+		}
+		sbDisplayName.append(callable ? "callable" : "non-callable");
+		return sbDisplayName.toString();
 	}
 
 	public String getModelName() {
@@ -35,6 +74,14 @@ public enum DeviceType {
 
 	public String getProductName() {
 		return productName;
+	}
+
+	public DeviceVendor getVendor() {
+		return vendor;
+	}
+
+	public CarrierType getCarrierType() {
+		return carrierType;
 	}
 
 	public boolean isCallable() {
@@ -52,12 +99,6 @@ public enum DeviceType {
 			}
 		}
 		return DeviceType.NOT_AVAILABLE;
-	}
-
-	@Override
-	public String toString() {
-		return "DeviceType [modelName=" + modelName + ", productName="
-				+ productName + "]";
 	}
 
 }

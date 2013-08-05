@@ -16,6 +16,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.izeye.playground.common.util.StringConstants;
 import com.izeye.playground.support.ua.domain.UnidentifiableUserAgentException;
 import com.izeye.playground.support.ua.domain.UserAgent;
 import com.izeye.playground.support.ua.domain.UserAgentToken;
@@ -25,6 +26,7 @@ import com.izeye.playground.support.ua.domain.browser.BrowserType;
 import com.izeye.playground.support.ua.domain.device.DeviceType;
 import com.izeye.playground.support.ua.domain.os.OSInfo;
 import com.izeye.playground.support.ua.domain.os.OSType;
+import com.izeye.playground.support.ua.service.browser.FacebookAppParser;
 import com.izeye.playground.support.ua.service.browser.IEParser;
 import com.izeye.playground.support.ua.service.browser.NaverAppParser;
 import com.izeye.playground.support.ua.service.browser.ProductBasedBrowserInfoParser;
@@ -58,6 +60,9 @@ public class DefaultUserAgentAnalyzer implements UserAgentAnalyzer {
 
 	@Resource
 	private NaverAppParser naverAppParser;
+
+	@Resource
+	private FacebookAppParser facebookAppParser;
 
 	private static final String MOZILLA = "Mozilla";
 
@@ -103,7 +108,20 @@ public class DefaultUserAgentAnalyzer implements UserAgentAnalyzer {
 			String[] splitMozillaTokenValue = mozillaTokenValue
 					.split(PRODUCT_DELIMITER);
 			String mozilla = splitMozillaTokenValue[0];
-			String mozillaVersion = splitMozillaTokenValue[1];
+
+			// NOTE:
+			// Remove the trailing semicolon for Google Producer.
+			if (mozilla.endsWith(";")) {
+				mozilla = mozilla.substring(0, mozilla.length() - 1);
+			}
+
+			String mozillaVersion = StringConstants.NOT_AVAILABLE;
+
+			// NOTE:
+			// The Google Producer doesn't have the version part.
+			if (splitMozillaTokenValue.length == 2) {
+				mozillaVersion = splitMozillaTokenValue[1];
+			}
 
 			// Handle some bots.
 			if (BrowserType.isBot(mozilla)) {
@@ -134,8 +152,11 @@ public class DefaultUserAgentAnalyzer implements UserAgentAnalyzer {
 			OSInfo osInfo = OSInfo.NOT_AVAILABLE;
 			switch (osType) {
 			case MAC_OS_X:
-				osInfo = appleOSInfoParser.parse(splitSystemAndBrowserToken[1]
-						.trim());
+				String osInfoCandidate = splitSystemAndBrowserToken[1].trim();
+				if (osInfoCandidate.equals(SECURITY_VALUE_STRONG_SECURITY)) {
+					osInfoCandidate = splitSystemAndBrowserToken[2].trim();
+				}
+				osInfo = appleOSInfoParser.parse(osInfoCandidate);
 				analyzedUserAgent.setDeviceType(DeviceType.MACINTOSH);
 				break;
 
@@ -155,12 +176,15 @@ public class DefaultUserAgentAnalyzer implements UserAgentAnalyzer {
 				break;
 
 			case IOS:
-				osInfo = appleOSInfoParser.parse(splitSystemAndBrowserToken[1]
-						.trim());
+				osInfoCandidate = splitSystemAndBrowserToken[1].trim();
+				if (osInfoCandidate.equals(SECURITY_VALUE_STRONG_SECURITY)) {
+					osInfoCandidate = splitSystemAndBrowserToken[2].trim();
+				}
+				osInfo = appleOSInfoParser.parse(osInfoCandidate);
 				break;
 
 			case ANDROID:
-				String osInfoCandidate = splitSystemAndBrowserToken[1].trim();
+				osInfoCandidate = splitSystemAndBrowserToken[1].trim();
 				if (osInfoCandidate.equals(SECURITY_VALUE_STRONG_SECURITY)) {
 					osInfoCandidate = splitSystemAndBrowserToken[2].trim();
 				}
@@ -169,9 +193,10 @@ public class DefaultUserAgentAnalyzer implements UserAgentAnalyzer {
 			}
 			analyzedUserAgent.setOsInfo(osInfo);
 
+			UserAgentToken platformToken = null;
 			if (userAgentTokens.size() != 0) {
 				// [platform]
-				UserAgentToken platformToken = userAgentTokens.remove(0);
+				platformToken = userAgentTokens.remove(0);
 				if (platformToken.getType() != PRODUCT) {
 					throw new UnidentifiableUserAgentException(
 							"Unexpected platform token: " + platformToken
@@ -193,7 +218,7 @@ public class DefaultUserAgentAnalyzer implements UserAgentAnalyzer {
 			// [extensions]
 			List<UserAgentToken> extensionsTokens = userAgentTokens;
 
-			BrowserInfo browserInfo;
+			BrowserInfo browserInfo = BrowserInfo.NOT_AVAILABLE;
 			switch (browserType) {
 			case IE:
 				browserInfo = ieParser.parse(splitSystemAndBrowserToken[1]
@@ -210,9 +235,22 @@ public class DefaultUserAgentAnalyzer implements UserAgentAnalyzer {
 			case BINGBOT:
 			case SEMRUSH_BOT:
 			case BAIDUSPIDER:
+			case YANDEX_BOT:
+			case EZOOMS_BOT:
+			case AHREFS_BOT:
 				browserInfo = productBasedBrowserInfoParser
 						.parse(splitSystemAndBrowserToken[1].trim());
-				analyzedUserAgent.setDeviceType(DeviceType.NOT_AVAILABLE);
+				break;
+
+			case DAUM_BOT:
+				browserInfo = productBasedBrowserInfoParser.parse(platformToken
+						.getValue().trim());
+				break;
+
+			case GOOGLE_BOT_MOBILE:
+				browserInfo = productBasedBrowserInfoParser
+						.parse(extensionsTokens.get(3).getValue().split(";")[1]
+								.trim());
 				break;
 
 			case FIREFOX:
@@ -227,13 +265,39 @@ public class DefaultUserAgentAnalyzer implements UserAgentAnalyzer {
 				break;
 
 			case NAVER_APP:
-				browserInfo = naverAppParser.parse(extensionsTokens.get(1)
+				boolean succeeded = false;
+				for (int i = 0; i < extensionsTokens.size(); i++) {
+					String extensionsTokenValue = extensionsTokens.get(i)
+							.getValue();
+					if (extensionsTokenValue.equals(BrowserType.NAVER_APP
+							.getKeyInUserAgent())) {
+						browserInfo = naverAppParser.parse(extensionsTokens
+								.get(i + 1).getValue());
+						succeeded = true;
+						break;
+					}
+				}
+				if (!succeeded) {
+					throw new UnidentifiableUserAgentException(
+							"Unexpected Naver app signature: " + userAgent);
+				}
+				break;
+
+			case FACEBOOK_APP:
+				browserInfo = facebookAppParser.parse(extensionsTokens.get(1)
 						.getValue());
 				break;
 
+			case DAUM_APP:
+				browserInfo = productBasedBrowserInfoParser
+						.parse(extensionsTokens
+								.get(extensionsTokens.size() - 1).getValue());
+				break;
+
 			default:
-				browserInfo = BrowserInfo.NOT_AVAILABLE;
+				break;
 			}
+
 			analyzedUserAgent.setBrowserInfo(browserInfo);
 		} catch (UnidentifiableUserAgentException e) {
 			e.printStackTrace();
@@ -241,4 +305,5 @@ public class DefaultUserAgentAnalyzer implements UserAgentAnalyzer {
 
 		return analyzedUserAgent;
 	}
+
 }

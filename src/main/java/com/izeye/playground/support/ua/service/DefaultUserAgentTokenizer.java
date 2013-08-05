@@ -37,6 +37,13 @@ public class DefaultUserAgentTokenizer implements UserAgentTokenizer {
 					state = State.IN_COMMENT_TOKEN;
 					break;
 
+				// NOTE:
+				// To handle Facebook app.
+				case '[':
+					state = State.IN_PRODUCT_TOKEN;
+					inParentheses = true;
+					break;
+
 				default:
 					state = State.IN_PRODUCT_TOKEN;
 					sbToken.append(c);
@@ -46,16 +53,15 @@ public class DefaultUserAgentTokenizer implements UserAgentTokenizer {
 
 			case IN_PRODUCT_TOKEN:
 				switch (c) {
-				case '(':
-					inParentheses = true;
-					break;
-
-				case ')':
+				// NOTE:
+				// To handle Facebook app.
+				case ']':
 					inParentheses = false;
 					break;
 
 				case ' ':
 					if (inParentheses) {
+						sbToken.append(c);
 						break;
 					}
 
@@ -64,6 +70,14 @@ public class DefaultUserAgentTokenizer implements UserAgentTokenizer {
 
 					sbToken = new StringBuilder();
 					state = State.NOT_IN_TOKEN;
+					break;
+
+				case '(':
+					token = sbToken.toString();
+					userAgentTokens.add(new UserAgentToken(PRODUCT, token));
+
+					sbToken = new StringBuilder();
+					state = State.IN_COMMENT_TOKEN;
 					break;
 
 				default:
@@ -100,4 +114,5 @@ public class DefaultUserAgentTokenizer implements UserAgentTokenizer {
 
 		return userAgentTokens;
 	}
+
 }

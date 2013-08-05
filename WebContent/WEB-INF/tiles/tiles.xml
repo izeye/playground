@@ -30,6 +30,11 @@
 		<put-attribute name="body" value="/WEB-INF/views/playground/utilities/date/date.jsp" />
 	</definition>
 
+	<definition name="playground/utilities/unit_conversion" extends="playground/playground">
+		<put-attribute name="body_title" value="Unit Conversion" />
+		<put-attribute name="body" value="/WEB-INF/views/playground/utilities/unit/unit.jsp" />
+	</definition>
+
 	<definition name="playground/utilities/text2qrcode" extends="playground/playground">
 		<put-attribute name="body_title" value="Text 2 QR Code" />
 		<put-attribute name="body" value="/WEB-INF/views/playground/utilities/qrcode/qrcode.jsp" />
@@ -53,6 +58,11 @@
 	<definition name="playground/math/fractals" extends="playground/playground">
 		<put-attribute name="body_title" value="Fractals" />
 		<put-attribute name="body" value="/WEB-INF/views/playground/math/fractals/fractals.jsp" />
+	</definition>
+
+	<definition name="playground/math/factorial" extends="playground/playground">
+		<put-attribute name="body_title" value="Factorial" />
+		<put-attribute name="body" value="/WEB-INF/views/playground/math/factorial/factorial.jsp" />
 	</definition>
 
 	<definition name="playground/math/collatz" extends="playground/playground">

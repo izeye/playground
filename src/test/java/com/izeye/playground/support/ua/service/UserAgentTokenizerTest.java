@@ -17,6 +17,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.izeye.playground.support.ua.domain.UserAgentToken;
+import com.izeye.playground.support.ua.domain.UserAgentTokenType;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:applicationContext.xml")
@@ -49,4 +50,48 @@ public class UserAgentTokenizerTest {
 					is(expectedUserAgentTokens.get(i)));
 		}
 	}
+
+	@Test
+	public void tokenizeFacebookApp() {
+		String expectedLastTokenValue = "FBAN/FBIOS;FBAV/6.3;FBBV/257209;FBDV/iPhone3,1;FBMD/iPhone;FBSN/iPhone OS;FBSV/5.1.1;FBSS/2; FBCR/SKTelecom;FBID/phone;FBLC/ko_KR;FBOP/1";
+		String userAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 5_1_1 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Mobile/9B206 ["
+				+ expectedLastTokenValue + "]";
+
+		List<UserAgentToken> userAgentTokens = userAgentTokenizer
+				.tokenize(userAgent);
+		System.out.println(userAgentTokens);
+
+		UserAgentToken actualLastToken = userAgentTokens.get(userAgentTokens
+				.size() - 1);
+		assertThat(actualLastToken.getType(), is(UserAgentTokenType.PRODUCT));
+		assertThat(actualLastToken.getValue(), is(expectedLastTokenValue));
+	}
+
+	@Test
+	public void tokenizeNaverApp() {
+		String expectedLastProductTokenValue = "NAVER";
+		String expectedLastCommentTokenValue = "inapp; search; 310; 4.6.0; 4S";
+		String userAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 6_1_3 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Mobile/10B329 "
+				+ expectedLastProductTokenValue
+				+ "("
+				+ expectedLastCommentTokenValue + ")";
+
+		List<UserAgentToken> userAgentTokens = userAgentTokenizer
+				.tokenize(userAgent);
+		System.out.println(userAgentTokens);
+
+		UserAgentToken actualLastProductToken = userAgentTokens
+				.get(userAgentTokens.size() - 2);
+		UserAgentToken actualLastCommentToken = userAgentTokens
+				.get(userAgentTokens.size() - 1);
+		assertThat(actualLastProductToken.getType(),
+				is(UserAgentTokenType.PRODUCT));
+		assertThat(actualLastProductToken.getValue(),
+				is(expectedLastProductTokenValue));
+		assertThat(actualLastCommentToken.getType(),
+				is(UserAgentTokenType.COMMENT));
+		assertThat(actualLastCommentToken.getValue(),
+				is(expectedLastCommentTokenValue));
+	}
+
 }
