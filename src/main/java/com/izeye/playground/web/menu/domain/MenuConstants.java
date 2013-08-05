@@ -36,6 +36,9 @@ public interface MenuConstants {
 	String SUB_MENU_ITEM_NAME_FACTORIAL = "Factorial";
 	String SUB_MENU_ITEM_URL_FACTORIAL = "/playground/math/factorial";
 
+	String SUB_MENU_ITEM_NAME_FIBONACCI = "Fibonacci Number";
+	String SUB_MENU_ITEM_URL_FIBONACCI = "/playground/math/fibonacci";
+
 	String SUB_MENU_ITEM_NAME_COLLATZ = "Collatz Conjecture";
 	String SUB_MENU_ITEM_URL_COLLATZ = "/playground/math/collatz";
 

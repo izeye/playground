@@ -65,6 +65,11 @@
 		<put-attribute name="body" value="/WEB-INF/views/playground/math/factorial/factorial.jsp" />
 	</definition>
 
+	<definition name="playground/math/fibonacci" extends="playground/playground">
+		<put-attribute name="body_title" value="Fibonacci Number" />
+		<put-attribute name="body" value="/WEB-INF/views/playground/math/fibonacci/fibonacci.jsp" />
+	</definition>
+
 	<definition name="playground/math/collatz" extends="playground/playground">
 		<put-attribute name="body_title" value="Collatz Conjecture" />
 		<put-attribute name="body" value="/WEB-INF/views/playground/math/collatz/collatz.jsp" />

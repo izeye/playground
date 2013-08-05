@@ -64,6 +64,8 @@ public class DefaultMenuService implements MenuService {
 				SUB_MENU_ITEM_URL_FRACTALS);
 		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_FACTORIAL,
 				SUB_MENU_ITEM_URL_FACTORIAL);
+		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_FIBONACCI,
+				SUB_MENU_ITEM_URL_FIBONACCI);
 		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_COLLATZ,
 				SUB_MENU_ITEM_URL_COLLATZ);
 		subMenuSections.add(subMenuSection);

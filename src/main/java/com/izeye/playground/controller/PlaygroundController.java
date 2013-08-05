@@ -31,6 +31,7 @@ import com.izeye.playground.support.ip.domain.IPInfo;
 import com.izeye.playground.support.ip.service.IPAnalyzer;
 import com.izeye.playground.support.math.collatz.service.CollatzConjectureSolver;
 import com.izeye.playground.support.math.factorial.service.FactorialSolver;
+import com.izeye.playground.support.math.fibonacci.service.FibonacciNumberSolver;
 import com.izeye.playground.support.qrcode.domain.QRCodeGenerationRequest;
 import com.izeye.playground.support.qrcode.service.QRCodeService;
 import com.izeye.playground.support.ua.domain.UserAgent;
@@ -66,10 +67,13 @@ public class PlaygroundController {
 	private UserAgentAnalyzer userAgentAnalyzer;
 
 	@Resource
-	private CollatzConjectureSolver collatzConjectureSolver;
+	private FactorialSolver factorialSolver;
 
 	@Resource
-	private FactorialSolver factorialSolver;
+	private FibonacciNumberSolver fibonacciNumberSolver;
+
+	@Resource
+	private CollatzConjectureSolver collatzConjectureSolver;
 
 	@RequestMapping("/playground")
 	public String playground(Model model) {
@@ -240,6 +244,21 @@ public class PlaygroundController {
 	public BigInteger mathFactorialJSON(@RequestParam BigInteger number,
 			Model model) {
 		return factorialSolver.solve(number);
+	}
+
+	@RequestMapping("/playground/math/fibonacci")
+	public String mathFibonacci(Model model) {
+		List<SubMenuSection> subMenuSections = menuService
+				.getSubMenu(MENU_NAME_PLAYGROUND);
+		model.addAttribute("subMenuSections", subMenuSections);
+
+		return "playground/math/fibonacci";
+	}
+
+	@RequestMapping("/playground/math/fibonacci/json")
+	@ResponseBody
+	public List<Long> mathFibonacciJSON(@RequestParam Long number, Model model) {
+		return fibonacciNumberSolver.solve(number);
 	}
 
 	@RequestMapping("/playground/math/collatz")
