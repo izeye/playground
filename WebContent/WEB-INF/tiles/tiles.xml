@@ -70,6 +70,11 @@
 		<put-attribute name="body" value="/WEB-INF/views/playground/math/prime/prime.jsp" />
 	</definition>
 
+	<definition name="playground/math/prime_factorization" extends="playground/playground">
+		<put-attribute name="body_title" value="Prime Factorization" />
+		<put-attribute name="body" value="/WEB-INF/views/playground/math/prime/prime_factorization.jsp" />
+	</definition>
+
 	<definition name="playground/math/factorial" extends="playground/playground">
 		<put-attribute name="body_title" value="Factorial" />
 		<put-attribute name="body" value="/WEB-INF/views/playground/math/factorial/factorial.jsp" />

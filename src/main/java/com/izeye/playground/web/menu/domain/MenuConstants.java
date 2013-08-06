@@ -39,6 +39,9 @@ public interface MenuConstants {
 	String SUB_MENU_ITEM_NAME_PRIME = "Prime";
 	String SUB_MENU_ITEM_URL_PRIME = "/playground/math/prime";
 
+	String SUB_MENU_ITEM_NAME_PRIME_FACTORIZATION = "Prime Factorization";
+	String SUB_MENU_ITEM_URL_PRIME_FACTORIZATION = "/playground/math/prime_factorization";
+
 	String SUB_MENU_ITEM_NAME_FACTORIAL = "Factorial";
 	String SUB_MENU_ITEM_URL_FACTORIAL = "/playground/math/factorial";
 

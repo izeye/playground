@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.izeye.playground.support.math.prime.domain.PrimeFactor;
+
 @Service("primeSolver")
 public class DefaultPrimeSolver implements PrimeSolver {
 
@@ -61,6 +63,25 @@ public class DefaultPrimeSolver implements PrimeSolver {
 			}
 			primeCandidate++;
 		}
+	}
+
+	@Override
+	public List<PrimeFactor> getPrimeFactors(long n) {
+		List<PrimeFactor> primeFactors = new ArrayList<PrimeFactor>();
+
+		long value = n;
+		List<Long> primes = getAllPrimesWithin(n);
+		for (Long prime : primes) {
+			int exponent = 0;
+			while (value % prime == 0) {
+				exponent++;
+				value /= prime;
+			}
+			if (exponent != 0) {
+				primeFactors.add(new PrimeFactor(prime, exponent));
+			}
+		}
+		return primeFactors;
 	}
 
 }

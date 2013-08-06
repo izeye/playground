@@ -34,6 +34,7 @@ import com.izeye.playground.support.math.factorial.service.FactorialSolver;
 import com.izeye.playground.support.math.fibonacci.service.FibonacciNumberSolver;
 import com.izeye.playground.support.math.gcd.domain.GcdAndLcm;
 import com.izeye.playground.support.math.gcd.service.GcdAndLcmSolver;
+import com.izeye.playground.support.math.prime.domain.PrimeFactor;
 import com.izeye.playground.support.math.prime.service.PrimeSolver;
 import com.izeye.playground.support.qrcode.domain.QRCodeGenerationRequest;
 import com.izeye.playground.support.qrcode.service.QRCodeService;
@@ -259,6 +260,22 @@ public class PlaygroundController {
 	@ResponseBody
 	public boolean mathPrimeIsPrimeJSON(@RequestParam Long number, Model model) {
 		return primeSolver.isPrime(number);
+	}
+
+	@RequestMapping("/playground/math/prime_factorization")
+	public String mathPrimeFactorization(Model model) {
+		List<SubMenuSection> subMenuSections = menuService
+				.getSubMenu(MENU_NAME_PLAYGROUND);
+		model.addAttribute("subMenuSections", subMenuSections);
+
+		return "playground/math/prime_factorization";
+	}
+
+	@RequestMapping("/playground/math/prime_factorization/json")
+	@ResponseBody
+	public List<PrimeFactor> mathPrimeFactorizationJSON(
+			@RequestParam Long number, Model model) {
+		return primeSolver.getPrimeFactors(number);
 	}
 
 	@RequestMapping("/playground/math/gcd_and_lcm")
