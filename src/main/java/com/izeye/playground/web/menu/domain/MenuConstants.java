@@ -36,6 +36,9 @@ public interface MenuConstants {
 	String SUB_MENU_ITEM_NAME_GCD_AND_LCM = "GCD & LCM";
 	String SUB_MENU_ITEM_URL_GCD_AND_LCM = "/playground/math/gcd_and_lcm";
 
+	String SUB_MENU_ITEM_NAME_PRIME = "Prime";
+	String SUB_MENU_ITEM_URL_PRIME = "/playground/math/prime";
+
 	String SUB_MENU_ITEM_NAME_FACTORIAL = "Factorial";
 	String SUB_MENU_ITEM_URL_FACTORIAL = "/playground/math/factorial";
 

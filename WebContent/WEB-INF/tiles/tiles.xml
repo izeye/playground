@@ -65,6 +65,11 @@
 		<put-attribute name="body" value="/WEB-INF/views/playground/math/gcd_and_lcm/gcd_and_lcm.jsp" />
 	</definition>
 
+	<definition name="playground/math/prime" extends="playground/playground">
+		<put-attribute name="body_title" value="Prime" />
+		<put-attribute name="body" value="/WEB-INF/views/playground/math/prime/prime.jsp" />
+	</definition>
+
 	<definition name="playground/math/factorial" extends="playground/playground">
 		<put-attribute name="body_title" value="Factorial" />
 		<put-attribute name="body" value="/WEB-INF/views/playground/math/factorial/factorial.jsp" />

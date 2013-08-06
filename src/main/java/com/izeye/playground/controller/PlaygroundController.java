@@ -34,6 +34,7 @@ import com.izeye.playground.support.math.factorial.service.FactorialSolver;
 import com.izeye.playground.support.math.fibonacci.service.FibonacciNumberSolver;
 import com.izeye.playground.support.math.gcd.domain.GcdAndLcm;
 import com.izeye.playground.support.math.gcd.service.GcdAndLcmSolver;
+import com.izeye.playground.support.math.prime.service.PrimeSolver;
 import com.izeye.playground.support.qrcode.domain.QRCodeGenerationRequest;
 import com.izeye.playground.support.qrcode.service.QRCodeService;
 import com.izeye.playground.support.ua.domain.UserAgent;
@@ -70,6 +71,9 @@ public class PlaygroundController {
 
 	@Resource
 	private GcdAndLcmSolver gcdAndLcmSolver;
+
+	@Resource
+	private PrimeSolver primeSolver;
 
 	@Resource
 	private FactorialSolver factorialSolver;
@@ -241,14 +245,20 @@ public class PlaygroundController {
 				.getSubMenu(MENU_NAME_PLAYGROUND);
 		model.addAttribute("subMenuSections", subMenuSections);
 
-		return "playground/math/gcd_and_lcm";
+		return "playground/math/prime";
 	}
 
-	@RequestMapping("/playground/math/prime/json")
+	@RequestMapping("/playground/math/prime/all_primes")
 	@ResponseBody
-	public List<Long> mathPrimeSON(@RequestParam Long number, Model model) {
-		// return gcdAndLcmSolver.getGcdAndLcm(number1, number2);
-		return null;
+	public List<Long> mathPrimeAllPrimeJSON(@RequestParam Long number,
+			Model model) {
+		return primeSolver.getAllPrimesWithin(number);
+	}
+
+	@RequestMapping("/playground/math/prime/is_prime")
+	@ResponseBody
+	public boolean mathPrimeIsPrimeJSON(@RequestParam Long number, Model model) {
+		return primeSolver.isPrime(number);
 	}
 
 	@RequestMapping("/playground/math/gcd_and_lcm")
@@ -262,7 +272,7 @@ public class PlaygroundController {
 
 	@RequestMapping("/playground/math/gcd_and_lcm/json")
 	@ResponseBody
-	public GcdAndLcm mathGcdAndLcmSON(@RequestParam Long number1,
+	public GcdAndLcm mathGcdAndLcmJSON(@RequestParam Long number1,
 			@RequestParam Long number2, Model model) {
 		return gcdAndLcmSolver.getGcdAndLcm(number1, number2);
 	}
