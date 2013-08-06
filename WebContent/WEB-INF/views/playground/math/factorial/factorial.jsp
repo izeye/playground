@@ -15,10 +15,10 @@ For more information, visit
 
 <script type="text/javascript">
 var solve = function () {
-	$.getJSON('/playground/math/factorial/json', {
+	$.get('/playground/math/factorial/json', {
 		number: $('#number').val()
 	}).done(function (data) {
 		$('#result').text(data);
 	});
-}
+};
 </script>

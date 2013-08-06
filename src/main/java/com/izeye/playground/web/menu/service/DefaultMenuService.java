@@ -62,6 +62,8 @@ public class DefaultMenuService implements MenuService {
 		subMenuSection = new SubMenuSection(SUB_MENU_HEADER_MATH);
 		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_FRACTALS,
 				SUB_MENU_ITEM_URL_FRACTALS);
+		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_GCD_AND_LCM,
+				SUB_MENU_ITEM_URL_GCD_AND_LCM);
 		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_FACTORIAL,
 				SUB_MENU_ITEM_URL_FACTORIAL);
 		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_FIBONACCI,

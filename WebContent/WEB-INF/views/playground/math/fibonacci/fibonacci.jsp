@@ -20,5 +20,5 @@ var solve = function () {
 	}).done(function (data) {
 		$('#result').text(data);
 	});
-}
+};
 </script>

@@ -22,5 +22,5 @@ var solve = function () {
 	}).done(function (data) {
 		$('#result').text('Length: ' + data.length + ', List: ' + data);
 	});
-}
+};
 </script>

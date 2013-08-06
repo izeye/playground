@@ -32,6 +32,8 @@ import com.izeye.playground.support.ip.service.IPAnalyzer;
 import com.izeye.playground.support.math.collatz.service.CollatzConjectureSolver;
 import com.izeye.playground.support.math.factorial.service.FactorialSolver;
 import com.izeye.playground.support.math.fibonacci.service.FibonacciNumberSolver;
+import com.izeye.playground.support.math.gcd.domain.GcdAndLcm;
+import com.izeye.playground.support.math.gcd.service.GcdAndLcmSolver;
 import com.izeye.playground.support.qrcode.domain.QRCodeGenerationRequest;
 import com.izeye.playground.support.qrcode.service.QRCodeService;
 import com.izeye.playground.support.ua.domain.UserAgent;
@@ -65,6 +67,9 @@ public class PlaygroundController {
 
 	@Resource
 	private UserAgentAnalyzer userAgentAnalyzer;
+
+	@Resource
+	private GcdAndLcmSolver gcdAndLcmSolver;
 
 	@Resource
 	private FactorialSolver factorialSolver;
@@ -230,6 +235,38 @@ public class PlaygroundController {
 		return "playground/math/fractals";
 	}
 
+	@RequestMapping("/playground/math/prime")
+	public String mathPrime(Model model) {
+		List<SubMenuSection> subMenuSections = menuService
+				.getSubMenu(MENU_NAME_PLAYGROUND);
+		model.addAttribute("subMenuSections", subMenuSections);
+
+		return "playground/math/gcd_and_lcm";
+	}
+
+	@RequestMapping("/playground/math/prime/json")
+	@ResponseBody
+	public List<Long> mathPrimeSON(@RequestParam Long number, Model model) {
+		// return gcdAndLcmSolver.getGcdAndLcm(number1, number2);
+		return null;
+	}
+
+	@RequestMapping("/playground/math/gcd_and_lcm")
+	public String mathGcdAndLcm(Model model) {
+		List<SubMenuSection> subMenuSections = menuService
+				.getSubMenu(MENU_NAME_PLAYGROUND);
+		model.addAttribute("subMenuSections", subMenuSections);
+
+		return "playground/math/gcd_and_lcm";
+	}
+
+	@RequestMapping("/playground/math/gcd_and_lcm/json")
+	@ResponseBody
+	public GcdAndLcm mathGcdAndLcmSON(@RequestParam Long number1,
+			@RequestParam Long number2, Model model) {
+		return gcdAndLcmSolver.getGcdAndLcm(number1, number2);
+	}
+
 	@RequestMapping("/playground/math/factorial")
 	public String mathFactorial(Model model) {
 		List<SubMenuSection> subMenuSections = menuService
@@ -241,9 +278,9 @@ public class PlaygroundController {
 
 	@RequestMapping("/playground/math/factorial/json")
 	@ResponseBody
-	public BigInteger mathFactorialJSON(@RequestParam BigInteger number,
-			Model model) {
-		return factorialSolver.solve(number);
+	public String mathFactorialJSON(@RequestParam BigInteger number, Model model) {
+		String result = factorialSolver.solve(number).toString();
+		return result;
 	}
 
 	@RequestMapping("/playground/math/fibonacci")
