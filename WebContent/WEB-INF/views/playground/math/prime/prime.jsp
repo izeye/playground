@@ -1,5 +1,5 @@
 <p>
-This page handles prime numbers.
+This page helps to handle prime numbers. To test primality, this uses trial division.
 </p>
 
 <label for="numberForPrimality">Enter a number to test primality:</label>

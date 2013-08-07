@@ -13,6 +13,12 @@ public interface MenuConstants {
 	String SUB_MENU_ITEM_NAME_TIMESTAMP_2_DATE = "Timestamp 2 Date";
 	String SUB_MENU_ITEM_URL_TIMESTAMP_2_DATE = "/playground/utilities/timestamp2date";
 
+	String SUB_MENU_ITEM_NAME_URL_ENCODER_AND_DECODER = "URL Encoder & Decoder";
+	String SUB_MENU_ITEM_URL_URL_ENCODER_AND_DECODER = "/playground/utilities/url_encoder_and_decoder";
+
+	String SUB_MENU_ITEM_NAME_BASE64_ENCODER_AND_DECODER = "Base64 Encoder & Decoder";
+	String SUB_MENU_ITEM_URL_BASE64_ENCODER_AND_DECODER = "/playground/utilities/base64_encoder_and_decoder";
+
 	String SUB_MENU_ITEM_NAME_UNIT_CONVERSION = "Unit Conversion";
 	String SUB_MENU_ITEM_URL_UNIT_CONVERSION = "/playground/utilities/unit_conversion";
 
@@ -47,6 +53,9 @@ public interface MenuConstants {
 
 	String SUB_MENU_ITEM_NAME_FIBONACCI = "Fibonacci Number";
 	String SUB_MENU_ITEM_URL_FIBONACCI = "/playground/math/fibonacci";
+
+	String SUB_MENU_ITEM_NAME_GOLDBACH = "Goldbach's Conjecture";
+	String SUB_MENU_ITEM_URL_GOLDBACH = "/playground/math/goldbach";
 
 	String SUB_MENU_ITEM_NAME_COLLATZ = "Collatz Conjecture";
 	String SUB_MENU_ITEM_URL_COLLATZ = "/playground/math/collatz";

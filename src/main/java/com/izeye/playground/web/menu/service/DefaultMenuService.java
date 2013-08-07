@@ -1,24 +1,55 @@
 package com.izeye.playground.web.menu.service;
 
-import static com.izeye.playground.web.menu.domain.MenuConstants.*;
+import static com.izeye.playground.web.menu.domain.MenuConstants.MENU_NAME_ADMIN;
 import static com.izeye.playground.web.menu.domain.MenuConstants.MENU_NAME_PLAYGROUND;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_HEADER_ANALYTICS;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_HEADER_DEMO;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_HEADER_MATH;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_HEADER_UTILITIES;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_AUDIENCE_ACCESS_LOGS;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_AUDIENCE_OVERVIEW;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_AUDIENCE_QR_CODE_GENERATION_LOGS;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_AUDIENCE_USER_AGENTS;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_BASE64_ENCODER_AND_DECODER;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_COLLATZ;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_FACTORIAL;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_FIBONACCI;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_FRACTALS;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_GCD_AND_LCM;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_GOLDBACH;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_IP_ANALYZER;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_KAKAO_LINK;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_PRIME;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_PRIME_FACTORIZATION;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_TEXT_2_QR_CODE;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_TIMESTAMP_2_DATE;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_UA_ANALYZER;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_UNIT_CONVERSION;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_URL_ENCODER_AND_DECODER;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_WEBCAM;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_WORLD_CLOCK;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_AUDIENCE_ACCESS_LOGS;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_AUDIENCE_OVERVIEW;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_AUDIENCE_QR_CODE_GENERATION_LOGS;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_AUDIENCE_USER_AGENTS;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_BASE64_ENCODER_AND_DECODER;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_COLLATZ;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_FACTORIAL;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_FIBONACCI;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_FRACTALS;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_GCD_AND_LCM;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_GOLDBACH;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_IP_ANALYZER;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_KAKAO_LINK;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_PRIME;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_PRIME_FACTORIZATION;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_TEXT_2_QR_CODE;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_TIMESTAMP_2_DATE;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_UA_ANALYZER;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_UNIT_CONVERSION;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_URL_ENCODER_AND_DECODER;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_WEBCAM;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_WORLD_CLOCK;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -46,6 +77,11 @@ public class DefaultMenuService implements MenuService {
 				SUB_MENU_HEADER_UTILITIES);
 		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_TIMESTAMP_2_DATE,
 				SUB_MENU_ITEM_URL_TIMESTAMP_2_DATE);
+		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_URL_ENCODER_AND_DECODER,
+				SUB_MENU_ITEM_URL_URL_ENCODER_AND_DECODER);
+		subMenuSection.addMenuItem(
+				SUB_MENU_ITEM_NAME_BASE64_ENCODER_AND_DECODER,
+				SUB_MENU_ITEM_URL_BASE64_ENCODER_AND_DECODER);
 		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_UNIT_CONVERSION,
 				SUB_MENU_ITEM_URL_UNIT_CONVERSION);
 		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_TEXT_2_QR_CODE,
@@ -72,6 +108,8 @@ public class DefaultMenuService implements MenuService {
 				SUB_MENU_ITEM_URL_FACTORIAL);
 		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_FIBONACCI,
 				SUB_MENU_ITEM_URL_FIBONACCI);
+		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_GOLDBACH,
+				SUB_MENU_ITEM_URL_GOLDBACH);
 		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_COLLATZ,
 				SUB_MENU_ITEM_URL_COLLATZ);
 		subMenuSections.add(subMenuSection);

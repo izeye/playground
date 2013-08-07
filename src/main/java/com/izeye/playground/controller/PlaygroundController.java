@@ -3,6 +3,7 @@ package com.izeye.playground.controller;
 import static com.izeye.playground.web.menu.domain.MenuConstants.MENU_NAME_PLAYGROUND;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.text.ParseException;
 import java.util.Date;
@@ -27,6 +28,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.zxing.WriterException;
 import com.izeye.playground.support.date.service.DateService;
+import com.izeye.playground.support.encode.base64.service.Base64EncodingService;
+import com.izeye.playground.support.encode.url.service.URLEncodingService;
 import com.izeye.playground.support.ip.domain.IPInfo;
 import com.izeye.playground.support.ip.service.IPAnalyzer;
 import com.izeye.playground.support.math.collatz.service.CollatzConjectureSolver;
@@ -34,6 +37,8 @@ import com.izeye.playground.support.math.factorial.service.FactorialSolver;
 import com.izeye.playground.support.math.fibonacci.service.FibonacciNumberSolver;
 import com.izeye.playground.support.math.gcd.domain.GcdAndLcm;
 import com.izeye.playground.support.math.gcd.service.GcdAndLcmSolver;
+import com.izeye.playground.support.math.goldbach.domain.GoldbachPartition;
+import com.izeye.playground.support.math.goldbach.service.GoldbachConjectureSolver;
 import com.izeye.playground.support.math.prime.domain.PrimeFactor;
 import com.izeye.playground.support.math.prime.service.PrimeSolver;
 import com.izeye.playground.support.qrcode.domain.QRCodeGenerationRequest;
@@ -51,6 +56,7 @@ import com.izeye.playground.support.unit.domain.UnitType;
 import com.izeye.playground.support.unit.domain.VolumeUnit;
 import com.izeye.playground.web.menu.domain.SubMenuSection;
 import com.izeye.playground.web.menu.service.MenuService;
+import com.sun.org.apache.xml.internal.security.exceptions.Base64DecodingException;
 
 @Controller
 public class PlaygroundController {
@@ -60,6 +66,12 @@ public class PlaygroundController {
 
 	@Resource
 	private DateService dateService;
+
+	@Resource
+	private URLEncodingService urlEncodingService;
+
+	@Resource
+	private Base64EncodingService base64EncodingService;
 
 	@Resource
 	private QRCodeService qrCodeService;
@@ -81,6 +93,9 @@ public class PlaygroundController {
 
 	@Resource
 	private FibonacciNumberSolver fibonacciNumberSolver;
+
+	@Resource
+	private GoldbachConjectureSolver goldbachConjectureSolver;
 
 	@Resource
 	private CollatzConjectureSolver collatzConjectureSolver;
@@ -124,6 +139,56 @@ public class PlaygroundController {
 	public long utilitiesDate2TimestampAPI(@RequestParam String formattedDate,
 			Model model) throws ParseException {
 		return dateService.formattedDateToTimestampInSeconds(formattedDate);
+	}
+
+	@RequestMapping("/playground/utilities/url_encoder_and_decoder")
+	public String utilitiesURLEncoderAndDecoder(Model model) {
+		List<SubMenuSection> subMenuSections = menuService
+				.getSubMenu(MENU_NAME_PLAYGROUND);
+		model.addAttribute("subMenuSections", subMenuSections);
+
+		return "playground/utilities/url_encoder_and_decoder";
+	}
+
+	@RequestMapping("/playground/utilities/url_encoder_and_decoder/encode/api")
+	@ResponseBody
+	public String utilitiesURLEncoderAndDecoderEncodeAPI(
+			@RequestParam String textToEncode, Model model)
+			throws UnsupportedEncodingException {
+		return urlEncodingService.encode(textToEncode);
+	}
+
+	@RequestMapping(value = "/playground/utilities/url_encoder_and_decoder/decode/api", produces = { "text/plain; charset=UTF-8" })
+	@ResponseBody
+	public String utilitiesURLEncoderAndDecoderDecodeAPI(
+			@RequestParam String textToDecode, Model model)
+			throws ParseException, UnsupportedEncodingException {
+		return urlEncodingService.decode(textToDecode);
+	}
+
+	@RequestMapping("/playground/utilities/base64_encoder_and_decoder")
+	public String utilitiesBase64EncoderAndDecoder(Model model) {
+		List<SubMenuSection> subMenuSections = menuService
+				.getSubMenu(MENU_NAME_PLAYGROUND);
+		model.addAttribute("subMenuSections", subMenuSections);
+
+		return "playground/utilities/base64_encoder_and_decoder";
+	}
+
+	@RequestMapping("/playground/utilities/base64_encoder_and_decoder/encode/api")
+	@ResponseBody
+	public String utilitiesBase64EncoderAndDecoderEncodeAPI(
+			@RequestParam String textToEncode, Model model)
+			throws UnsupportedEncodingException {
+		return base64EncodingService.encode(textToEncode);
+	}
+
+	@RequestMapping(value = "/playground/utilities/base64_encoder_and_decoder/decode/api", produces = { "text/plain; charset=UTF-8" })
+	@ResponseBody
+	public String utilitiesBase64EncoderAndDecoderDecodeAPI(
+			@RequestParam String textToDecode, Model model)
+			throws Base64DecodingException {
+		return base64EncodingService.decode(textToDecode);
 	}
 
 	@RequestMapping("/playground/utilities/unit_conversion")
@@ -323,6 +388,22 @@ public class PlaygroundController {
 	@ResponseBody
 	public List<Long> mathFibonacciJSON(@RequestParam Long number, Model model) {
 		return fibonacciNumberSolver.solve(number);
+	}
+
+	@RequestMapping("/playground/math/goldbach")
+	public String mathGoldbach(Model model) {
+		List<SubMenuSection> subMenuSections = menuService
+				.getSubMenu(MENU_NAME_PLAYGROUND);
+		model.addAttribute("subMenuSections", subMenuSections);
+
+		return "playground/math/goldbach";
+	}
+
+	@RequestMapping("/playground/math/goldbach/json")
+	@ResponseBody
+	public List<GoldbachPartition> mathGoldbachJSON(@RequestParam Long number,
+			Model model) {
+		return goldbachConjectureSolver.solve(number);
 	}
 
 	@RequestMapping("/playground/math/collatz")

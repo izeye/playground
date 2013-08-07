@@ -3,13 +3,12 @@ var convertToDate = function () {
 	$.get('/playground/utilities/timestamp2date/api', {
 		timestampInSeconds: $('#timestampInSeconds').val()
 	}).done(function (data) {
-		console.log(data);
 		$('#convertedDate').text(data);
 	});
 };
 
 var convertToTimestamp = function () {
-	$.get('/playground/utilities/date2timestamp/api',{
+	$.get('/playground/utilities/date2timestamp/api', {
 		formattedDate: $('#formattedDate').val()
 	}).done(function (data) {
 		$('#convertedTimestamp').text(data);

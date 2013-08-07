@@ -1,5 +1,7 @@
 package com.izeye.playground.support.math.prime.service;
 
+import static com.izeye.playground.support.math.prime.domain.PrimeConstants.FIRST_PRIME;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,12 +12,10 @@ import com.izeye.playground.support.math.prime.domain.PrimeFactor;
 @Service("primeSolver")
 public class DefaultPrimeSolver implements PrimeSolver {
 
-	private static final long SMALLEST_PRIME = 2L;
-
 	@Override
 	public List<Long> getAllPrimesWithin(long n) {
 		List<Long> primes = new ArrayList<Long>();
-		long prime = SMALLEST_PRIME;
+		long prime = FIRST_PRIME;
 		while (prime <= n) {
 			primes.add(prime);
 			prime = getNextPrime(prime, primes);
@@ -23,9 +23,11 @@ public class DefaultPrimeSolver implements PrimeSolver {
 		return primes;
 	}
 
+	// NOTE:
+	// It uses trial division.
 	@Override
 	public boolean isPrime(long n) {
-		if (n < SMALLEST_PRIME) {
+		if (n < FIRST_PRIME) {
 			return false;
 		}
 

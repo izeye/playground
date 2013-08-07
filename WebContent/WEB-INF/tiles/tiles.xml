@@ -30,6 +30,16 @@
 		<put-attribute name="body" value="/WEB-INF/views/playground/utilities/date/date.jsp" />
 	</definition>
 
+	<definition name="playground/utilities/url_encoder_and_decoder" extends="playground/playground">
+		<put-attribute name="body_title" value="URL Encoder &amp; Decoder" />
+		<put-attribute name="body" value="/WEB-INF/views/playground/utilities/url_encoder_and_decoder/url_encoder_and_decoder.jsp" />
+	</definition>
+
+	<definition name="playground/utilities/base64_encoder_and_decoder" extends="playground/playground">
+		<put-attribute name="body_title" value="Base64 Encoder &amp; Decoder" />
+		<put-attribute name="body" value="/WEB-INF/views/playground/utilities/base64_encoder_and_decoder/base64_encoder_and_decoder.jsp" />
+	</definition>
+
 	<definition name="playground/utilities/unit_conversion" extends="playground/playground">
 		<put-attribute name="body_title" value="Unit Conversion" />
 		<put-attribute name="body" value="/WEB-INF/views/playground/utilities/unit/unit.jsp" />
@@ -88,6 +98,11 @@
 	<definition name="playground/math/collatz" extends="playground/playground">
 		<put-attribute name="body_title" value="Collatz Conjecture" />
 		<put-attribute name="body" value="/WEB-INF/views/playground/math/collatz/collatz.jsp" />
+	</definition>
+
+	<definition name="playground/math/goldbach" extends="playground/playground">
+		<put-attribute name="body_title" value="Goldbach's Conjecture" />
+		<put-attribute name="body" value="/WEB-INF/views/playground/math/goldbach/goldbach.jsp" />
 	</definition>
 
 	<definition name="playground/demo/webcam.definition" template="/WEB-INF/views/playground/demo/webcam/webcam.jsp">
