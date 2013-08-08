@@ -121,10 +121,12 @@ public enum Base {
 
 	private final String name;
 	private final int base;
+	private final String displayName;
 
 	private Base(String name, int base) {
 		this.name = name;
 		this.base = base;
+		this.displayName = name + " (" + base + ")";
 	}
 
 	public String getName() {
@@ -133,6 +135,10 @@ public enum Base {
 
 	public int getBase() {
 		return base;
+	}
+
+	public String getDisplayName() {
+		return displayName;
 	}
 
 	public abstract String toBinary(String value);

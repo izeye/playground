@@ -70,6 +70,11 @@
 		<put-attribute name="body" value="/WEB-INF/views/playground/math/fractals/fractals.jsp" />
 	</definition>
 
+	<definition name="playground/math/base_converter" extends="playground/playground">
+		<put-attribute name="body_title" value="Base Converter" />
+		<put-attribute name="body" value="/WEB-INF/views/playground/math/base_converter/base_converter.jsp" />
+	</definition>
+
 	<definition name="playground/math/gcd_and_lcm" extends="playground/playground">
 		<put-attribute name="body_title" value="GCD &amp; LCM" />
 		<put-attribute name="body" value="/WEB-INF/views/playground/math/gcd_and_lcm/gcd_and_lcm.jsp" />

@@ -11,6 +11,7 @@ import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_N
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_AUDIENCE_QR_CODE_GENERATION_LOGS;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_AUDIENCE_USER_AGENTS;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_BASE64_ENCODER_AND_DECODER;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_BASE_CONVERTER;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_COLLATZ;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_FACTORIAL;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_FIBONACCI;
@@ -33,6 +34,7 @@ import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_U
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_AUDIENCE_QR_CODE_GENERATION_LOGS;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_AUDIENCE_USER_AGENTS;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_BASE64_ENCODER_AND_DECODER;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_BASE_CONVERTER;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_COLLATZ;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_FACTORIAL;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_FIBONACCI;
@@ -98,6 +100,8 @@ public class DefaultMenuService implements MenuService {
 		subMenuSection = new SubMenuSection(SUB_MENU_HEADER_MATH);
 		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_FRACTALS,
 				SUB_MENU_ITEM_URL_FRACTALS);
+		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_BASE_CONVERTER,
+				SUB_MENU_ITEM_URL_BASE_CONVERTER);
 		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_GCD_AND_LCM,
 				SUB_MENU_ITEM_URL_GCD_AND_LCM);
 		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_PRIME,

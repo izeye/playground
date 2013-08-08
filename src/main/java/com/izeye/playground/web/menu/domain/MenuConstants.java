@@ -39,6 +39,9 @@ public interface MenuConstants {
 	String SUB_MENU_ITEM_NAME_FRACTALS = "Fractals";
 	String SUB_MENU_ITEM_URL_FRACTALS = "/playground/math/fractals";
 
+	String SUB_MENU_ITEM_NAME_BASE_CONVERTER = "Base Converter";
+	String SUB_MENU_ITEM_URL_BASE_CONVERTER = "/playground/math/base_converter";
+
 	String SUB_MENU_ITEM_NAME_GCD_AND_LCM = "GCD & LCM";
 	String SUB_MENU_ITEM_URL_GCD_AND_LCM = "/playground/math/gcd_and_lcm";
 

@@ -32,6 +32,7 @@ import com.izeye.playground.support.encode.base64.service.Base64EncodingService;
 import com.izeye.playground.support.encode.url.service.URLEncodingService;
 import com.izeye.playground.support.ip.domain.IPInfo;
 import com.izeye.playground.support.ip.service.IPAnalyzer;
+import com.izeye.playground.support.math.base.domain.Base;
 import com.izeye.playground.support.math.collatz.service.CollatzConjectureSolver;
 import com.izeye.playground.support.math.factorial.service.FactorialSolver;
 import com.izeye.playground.support.math.fibonacci.service.FibonacciNumberSolver;
@@ -303,6 +304,25 @@ public class PlaygroundController {
 		model.addAttribute("subMenuSections", subMenuSections);
 
 		return "playground/math/fractals";
+	}
+
+	@RequestMapping("/playground/math/base_converter")
+	public String mathBaseConverter(Model model) {
+		List<SubMenuSection> subMenuSections = menuService
+				.getSubMenu(MENU_NAME_PLAYGROUND);
+		model.addAttribute("subMenuSections", subMenuSections);
+
+		model.addAttribute("bases", Base.values());
+
+		return "playground/math/base_converter";
+	}
+
+	@RequestMapping("/playground/math/base_converter/api")
+	@ResponseBody
+	public String mathBaseConverter(@RequestParam Base sourceBase,
+			@RequestParam Base targetBase,
+			@RequestParam String numberToConvert, Model model) {
+		return targetBase.convert(numberToConvert, sourceBase);
 	}
 
 	@RequestMapping("/playground/math/prime")
