@@ -65,6 +65,11 @@
 		<put-attribute name="body" value="/WEB-INF/views/playground/utilities/clock/clock.jsp" />
 	</definition>
 
+	<definition name="playground/utilities/multi_word_notation_converter" extends="playground/playground">
+		<put-attribute name="body_title" value="Multi-word Notation Converter" />
+		<put-attribute name="body" value="/WEB-INF/views/playground/utilities/multi_word_notation_converter/multi_word_notation_converter.jsp" />
+	</definition>
+
 	<definition name="playground/math/fractals" extends="playground/playground">
 		<put-attribute name="body_title" value="Fractals" />
 		<put-attribute name="body" value="/WEB-INF/views/playground/math/fractals/fractals.jsp" />

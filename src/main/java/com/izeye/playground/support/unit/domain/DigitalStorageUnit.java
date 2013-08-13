@@ -1,6 +1,8 @@
 package com.izeye.playground.support.unit.domain;
 
-public enum DigitalStorageUnit {
+import java.math.BigDecimal;
+
+public enum DigitalStorageUnit implements Unit<DigitalStorageUnit> {
 
 	BIT("Bit"), BYTE("Byte"), KILOBIT("Kilobit"), KILOBYTE("Kilobyte"), MEGABIT(
 			"Megabit"), MEGABYTE("Megabyte"), GIGABIT("Gigabit"), GIGABYTE(
@@ -13,8 +15,21 @@ public enum DigitalStorageUnit {
 		this.name = name;
 	}
 
+	@Override
 	public String getName() {
 		return name;
+	}
+
+	@Override
+	public String getKey() {
+		return name();
+	}
+
+	@Override
+	public BigDecimal convert(BigDecimal sourceDigitalStorage,
+			DigitalStorageUnit sourceUnit) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

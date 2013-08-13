@@ -2,7 +2,7 @@ package com.izeye.playground.support.unit.domain;
 
 import java.math.BigDecimal;
 
-public enum MassUnit {
+public enum MassUnit implements Unit<MassUnit> {
 
 	METRIC_TON("Metric ton") {
 		@Override
@@ -343,38 +343,32 @@ public enum MassUnit {
 	SHORT_TON("Short ton") {
 		@Override
 		public BigDecimal toMetricTon(BigDecimal m) {
-			// TODO Auto-generated method stub
-			return null;
+			return m.multiply(SHORT_TON_TO_GRAM).multiply(GRAM_TO_METRIC_TON);
 		}
 
 		@Override
 		public BigDecimal toKilogram(BigDecimal m) {
-			// TODO Auto-generated method stub
-			return null;
+			return m.multiply(SHORT_TON_TO_GRAM).multiply(GRAM_TO_KILOGRAM);
 		}
 
 		@Override
 		public BigDecimal toGram(BigDecimal m) {
-			// TODO Auto-generated method stub
-			return null;
+			return m.multiply(SHORT_TON_TO_GRAM);
 		}
 
 		@Override
 		public BigDecimal toMilligram(BigDecimal m) {
-			// TODO Auto-generated method stub
-			return null;
+			return m.multiply(SHORT_TON_TO_GRAM).multiply(GRAM_TO_MILLIGRAM);
 		}
 
 		@Override
 		public BigDecimal toMcg(BigDecimal m) {
-			// TODO Auto-generated method stub
-			return null;
+			return m.multiply(SHORT_TON_TO_GRAM).multiply(GRAM_TO_MCG);
 		}
 
 		@Override
 		public BigDecimal toLongTon(BigDecimal m) {
-			// TODO Auto-generated method stub
-			return null;
+			return m.multiply(SHORT_TON_TO_GRAM).multiply(GRAM_TO_LONG_TON);
 		}
 
 		@Override
@@ -384,20 +378,17 @@ public enum MassUnit {
 
 		@Override
 		public BigDecimal toStone(BigDecimal m) {
-			// TODO Auto-generated method stub
-			return null;
+			return m.multiply(SHORT_TON_TO_GRAM).multiply(GRAM_TO_STONE);
 		}
 
 		@Override
 		public BigDecimal toPound(BigDecimal m) {
-			// TODO Auto-generated method stub
-			return null;
+			return m.multiply(SHORT_TON_TO_GRAM).multiply(GRAM_TO_POUND);
 		}
 
 		@Override
 		public BigDecimal toOunce(BigDecimal m) {
-			// TODO Auto-generated method stub
-			return null;
+			return m.multiply(SHORT_TON_TO_GRAM).multiply(GRAM_TO_OUNCE);
 		}
 
 		@Override
@@ -408,44 +399,37 @@ public enum MassUnit {
 	STONE("Stone") {
 		@Override
 		public BigDecimal toMetricTon(BigDecimal m) {
-			// TODO Auto-generated method stub
-			return null;
+			return m.multiply(STONE_TO_GRAM).multiply(GRAM_TO_METRIC_TON);
 		}
 
 		@Override
 		public BigDecimal toKilogram(BigDecimal m) {
-			// TODO Auto-generated method stub
-			return null;
+			return m.multiply(STONE_TO_GRAM).multiply(GRAM_TO_KILOGRAM);
 		}
 
 		@Override
 		public BigDecimal toGram(BigDecimal m) {
-			// TODO Auto-generated method stub
-			return null;
+			return m.multiply(STONE_TO_GRAM);
 		}
 
 		@Override
 		public BigDecimal toMilligram(BigDecimal m) {
-			// TODO Auto-generated method stub
-			return null;
+			return m.multiply(STONE_TO_GRAM).multiply(GRAM_TO_MILLIGRAM);
 		}
 
 		@Override
 		public BigDecimal toMcg(BigDecimal m) {
-			// TODO Auto-generated method stub
-			return null;
+			return m.multiply(STONE_TO_GRAM).multiply(GRAM_TO_MCG);
 		}
 
 		@Override
 		public BigDecimal toLongTon(BigDecimal m) {
-			// TODO Auto-generated method stub
-			return null;
+			return m.multiply(STONE_TO_GRAM).multiply(GRAM_TO_LONG_TON);
 		}
 
 		@Override
 		public BigDecimal toShortTon(BigDecimal m) {
-			// TODO Auto-generated method stub
-			return null;
+			return m.multiply(STONE_TO_GRAM).multiply(GRAM_TO_SHORT_TON);
 		}
 
 		@Override
@@ -455,14 +439,12 @@ public enum MassUnit {
 
 		@Override
 		public BigDecimal toPound(BigDecimal m) {
-			// TODO Auto-generated method stub
-			return null;
+			return m.multiply(STONE_TO_GRAM).multiply(GRAM_TO_POUND);
 		}
 
 		@Override
 		public BigDecimal toOunce(BigDecimal m) {
-			// TODO Auto-generated method stub
-			return null;
+			return m.multiply(STONE_TO_GRAM).multiply(GRAM_TO_OUNCE);
 		}
 
 		@Override
@@ -473,50 +455,42 @@ public enum MassUnit {
 	POUND("Pound") {
 		@Override
 		public BigDecimal toMetricTon(BigDecimal m) {
-			// TODO Auto-generated method stub
-			return null;
+			return m.multiply(POUND_TO_GRAM).multiply(GRAM_TO_METRIC_TON);
 		}
 
 		@Override
 		public BigDecimal toKilogram(BigDecimal m) {
-			// TODO Auto-generated method stub
-			return null;
+			return m.multiply(POUND_TO_GRAM).multiply(GRAM_TO_KILOGRAM);
 		}
 
 		@Override
 		public BigDecimal toGram(BigDecimal m) {
-			// TODO Auto-generated method stub
-			return null;
+			return m.multiply(POUND_TO_GRAM);
 		}
 
 		@Override
 		public BigDecimal toMilligram(BigDecimal m) {
-			// TODO Auto-generated method stub
-			return null;
+			return m.multiply(POUND_TO_GRAM).multiply(GRAM_TO_MILLIGRAM);
 		}
 
 		@Override
 		public BigDecimal toMcg(BigDecimal m) {
-			// TODO Auto-generated method stub
-			return null;
+			return m.multiply(POUND_TO_GRAM).multiply(GRAM_TO_MCG);
 		}
 
 		@Override
 		public BigDecimal toLongTon(BigDecimal m) {
-			// TODO Auto-generated method stub
-			return null;
+			return m.multiply(POUND_TO_GRAM).multiply(GRAM_TO_LONG_TON);
 		}
 
 		@Override
 		public BigDecimal toShortTon(BigDecimal m) {
-			// TODO Auto-generated method stub
-			return null;
+			return m.multiply(POUND_TO_GRAM).multiply(GRAM_TO_SHORT_TON);
 		}
 
 		@Override
 		public BigDecimal toStone(BigDecimal m) {
-			// TODO Auto-generated method stub
-			return null;
+			return m.multiply(POUND_TO_GRAM).multiply(GRAM_TO_STONE);
 		}
 
 		@Override
@@ -526,8 +500,7 @@ public enum MassUnit {
 
 		@Override
 		public BigDecimal toOunce(BigDecimal m) {
-			// TODO Auto-generated method stub
-			return null;
+			return m.multiply(POUND_TO_GRAM).multiply(GRAM_TO_OUNCE);
 		}
 
 		@Override
@@ -538,56 +511,47 @@ public enum MassUnit {
 	OUNCE("Ounce") {
 		@Override
 		public BigDecimal toMetricTon(BigDecimal m) {
-			// TODO Auto-generated method stub
-			return null;
+			return m.multiply(OUNCE_TO_GRAM).multiply(GRAM_TO_METRIC_TON);
 		}
 
 		@Override
 		public BigDecimal toKilogram(BigDecimal m) {
-			// TODO Auto-generated method stub
-			return null;
+			return m.multiply(OUNCE_TO_GRAM).multiply(GRAM_TO_KILOGRAM);
 		}
 
 		@Override
 		public BigDecimal toGram(BigDecimal m) {
-			// TODO Auto-generated method stub
-			return null;
+			return m.multiply(OUNCE_TO_GRAM);
 		}
 
 		@Override
 		public BigDecimal toMilligram(BigDecimal m) {
-			// TODO Auto-generated method stub
-			return null;
+			return m.multiply(OUNCE_TO_GRAM).multiply(GRAM_TO_MILLIGRAM);
 		}
 
 		@Override
 		public BigDecimal toMcg(BigDecimal m) {
-			// TODO Auto-generated method stub
-			return null;
+			return m.multiply(OUNCE_TO_GRAM).multiply(GRAM_TO_MCG);
 		}
 
 		@Override
 		public BigDecimal toLongTon(BigDecimal m) {
-			// TODO Auto-generated method stub
-			return null;
+			return m.multiply(OUNCE_TO_GRAM).multiply(GRAM_TO_LONG_TON);
 		}
 
 		@Override
 		public BigDecimal toShortTon(BigDecimal m) {
-			// TODO Auto-generated method stub
-			return null;
+			return m.multiply(OUNCE_TO_GRAM).multiply(GRAM_TO_SHORT_TON);
 		}
 
 		@Override
 		public BigDecimal toStone(BigDecimal m) {
-			// TODO Auto-generated method stub
-			return null;
+			return m.multiply(OUNCE_TO_GRAM).multiply(GRAM_TO_STONE);
 		}
 
 		@Override
 		public BigDecimal toPound(BigDecimal m) {
-			// TODO Auto-generated method stub
-			return null;
+			return m.multiply(OUNCE_TO_GRAM).multiply(GRAM_TO_POUND);
 		}
 
 		@Override
@@ -607,8 +571,14 @@ public enum MassUnit {
 		this.name = name;
 	}
 
+	@Override
 	public String getName() {
 		return name;
+	}
+
+	@Override
+	public String getKey() {
+		return name();
 	}
 
 	public abstract BigDecimal toMetricTon(BigDecimal m);

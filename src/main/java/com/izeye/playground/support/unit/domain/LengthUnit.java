@@ -2,7 +2,7 @@ package com.izeye.playground.support.unit.domain;
 
 import java.math.BigDecimal;
 
-public enum LengthUnit {
+public enum LengthUnit implements Unit<LengthUnit> {
 
 	KILOMETER("Kilometer") {
 		@Override
@@ -478,8 +478,14 @@ public enum LengthUnit {
 		this.name = name;
 	}
 
+	@Override
 	public String getName() {
 		return name;
+	}
+
+	@Override
+	public String getKey() {
+		return name();
 	}
 
 	public abstract BigDecimal toKilometer(BigDecimal l);

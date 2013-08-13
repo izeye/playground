@@ -23,6 +23,7 @@ This page provides converting among bases of 2, 8, 10, and 16.
 	<option value="${base}">${base.getDisplayName()}</option>
 </c:forEach>
 </select>
+
 <label for="targetBase">Target base:</label>
 <select id="targetBase">
 <c:forEach var="base" items="${bases}">

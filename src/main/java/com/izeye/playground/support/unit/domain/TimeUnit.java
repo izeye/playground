@@ -1,6 +1,8 @@
 package com.izeye.playground.support.unit.domain;
 
-public enum TimeUnit {
+import java.math.BigDecimal;
+
+public enum TimeUnit implements Unit<TimeUnit> {
 
 	NANOSECOND("Nanosecond"), MICROSECOND("Microsecond"), MILLISECOND(
 			"Millisecond"), SECOND("Second"), MINUTE("Minute"), HOUR("Hour"), DAY(
@@ -13,8 +15,20 @@ public enum TimeUnit {
 		this.name = name;
 	}
 
+	@Override
 	public String getName() {
 		return name;
+	}
+
+	@Override
+	public String getKey() {
+		return name();
+	}
+
+	@Override
+	public BigDecimal convert(BigDecimal sourceTime, TimeUnit sourceUnit) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

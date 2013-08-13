@@ -34,6 +34,9 @@ public interface MenuConstants {
 	String SUB_MENU_ITEM_NAME_WORLD_CLOCK = "World Clock";
 	String SUB_MENU_ITEM_URL_WORLD_CLOCK = "/playground/utilities/world_clock";
 
+	String SUB_MENU_ITEM_NAME_MULTI_WORD_NOTATION_CONVERTER = "Multi-word Notation Converter";
+	String SUB_MENU_ITEM_URL_MULTI_WORD_NOTATION_CONVERTER = "/playground/utilities/multi_word_notation_converter";
+
 	String SUB_MENU_HEADER_MATH = "Math";
 
 	String SUB_MENU_ITEM_NAME_FRACTALS = "Fractals";

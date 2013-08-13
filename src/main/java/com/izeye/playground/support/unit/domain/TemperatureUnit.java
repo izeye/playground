@@ -3,7 +3,7 @@ package com.izeye.playground.support.unit.domain;
 import java.math.BigDecimal;
 import java.math.MathContext;
 
-public enum TemperatureUnit {
+public enum TemperatureUnit implements Unit<TemperatureUnit> {
 
 	CELSIUS("Celsius") {
 		@Override
@@ -11,19 +11,15 @@ public enum TemperatureUnit {
 			return t;
 		}
 
-		// NOTE:
-		// F = C * 1.8 + 32
 		@Override
 		public BigDecimal toFahrenheit(BigDecimal t) {
-			return t.multiply(BigDecimal.valueOf(1.8))
-					.add(BigDecimal.valueOf(32)).stripTrailingZeros();
+			return t.multiply(CELSIUS_TO_FAHRENHEIT).add(
+					CELSIUS_TO_FAHRENHEIT_BASE);
 		}
 
-		// NOTE:
-		// K = C + 273.15
 		@Override
 		public BigDecimal toKelvin(BigDecimal t) {
-			return t.add(BigDecimal.valueOf(273.15));
+			return t.add(CELSIUS_TO_KELVIN_BASE);
 		}
 
 		@Override
@@ -32,13 +28,10 @@ public enum TemperatureUnit {
 		}
 	},
 	FAHRENHEIT("Fahrenheit") {
-		// NOTE:
-		// C = (F - 32) / 1.8
 		@Override
 		public BigDecimal toCelsius(BigDecimal t) {
-			return t.subtract(BigDecimal.valueOf(32))
-					.divide(BigDecimal.valueOf(1.8), MathContext.DECIMAL128)
-					.stripTrailingZeros();
+			return t.add(FAHRENHEIT_TO_CELSIUS_BASE).multiply(
+					FAHRENHEIT_TO_CELSIUS);
 		}
 
 		@Override
@@ -57,11 +50,9 @@ public enum TemperatureUnit {
 		}
 	},
 	KELVIN("Kelvin") {
-		// NOTE:
-		// C = K - 273.15
 		@Override
 		public BigDecimal toCelsius(BigDecimal t) {
-			return t.subtract(BigDecimal.valueOf(273.15));
+			return t.add(KELVIN_TO_CELSIUS_BASE);
 		}
 
 		@Override
@@ -86,8 +77,14 @@ public enum TemperatureUnit {
 		this.name = name;
 	}
 
+	@Override
 	public String getName() {
 		return name;
+	}
+
+	@Override
+	public String getKey() {
+		return name();
 	}
 
 	public abstract BigDecimal toCelsius(BigDecimal t);
@@ -98,5 +95,19 @@ public enum TemperatureUnit {
 
 	public abstract BigDecimal convert(BigDecimal sourceTemperature,
 			TemperatureUnit sourceUnit);
+
+	private static final BigDecimal CELSIUS_TO_FAHRENHEIT_BASE = BigDecimal
+			.valueOf(32);
+	private static final BigDecimal CELSIUS_TO_FAHRENHEIT = BigDecimal
+			.valueOf(1.8);
+	private static final BigDecimal CELSIUS_TO_KELVIN_BASE = BigDecimal
+			.valueOf(273.15);
+
+	private static final BigDecimal FAHRENHEIT_TO_CELSIUS_BASE = CELSIUS_TO_FAHRENHEIT_BASE
+			.negate();
+	private static final BigDecimal FAHRENHEIT_TO_CELSIUS = BigDecimal.ONE
+			.divide(CELSIUS_TO_FAHRENHEIT, MathContext.DECIMAL128);
+	private static final BigDecimal KELVIN_TO_CELSIUS_BASE = CELSIUS_TO_KELVIN_BASE
+			.negate();
 
 }

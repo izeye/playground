@@ -4,6 +4,7 @@ import static com.izeye.playground.web.menu.domain.MenuConstants.MENU_NAME_PLAYG
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.text.ParseException;
 import java.util.Date;
@@ -27,6 +28,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.zxing.WriterException;
+import com.izeye.playground.support.code.domain.MultiWordNotationType;
 import com.izeye.playground.support.date.service.DateService;
 import com.izeye.playground.support.encode.base64.service.Base64EncodingService;
 import com.izeye.playground.support.encode.url.service.URLEncodingService;
@@ -46,15 +48,7 @@ import com.izeye.playground.support.qrcode.domain.QRCodeGenerationRequest;
 import com.izeye.playground.support.qrcode.service.QRCodeService;
 import com.izeye.playground.support.ua.domain.UserAgent;
 import com.izeye.playground.support.ua.service.UserAgentAnalyzer;
-import com.izeye.playground.support.unit.domain.AreaUnit;
-import com.izeye.playground.support.unit.domain.DigitalStorageUnit;
-import com.izeye.playground.support.unit.domain.FuelConsumptionUnit;
-import com.izeye.playground.support.unit.domain.LengthUnit;
-import com.izeye.playground.support.unit.domain.MassUnit;
-import com.izeye.playground.support.unit.domain.SpeedUnit;
-import com.izeye.playground.support.unit.domain.TemperatureUnit;
 import com.izeye.playground.support.unit.domain.UnitType;
-import com.izeye.playground.support.unit.domain.VolumeUnit;
 import com.izeye.playground.web.menu.domain.SubMenuSection;
 import com.izeye.playground.web.menu.service.MenuService;
 import com.sun.org.apache.xml.internal.security.exceptions.Base64DecodingException;
@@ -199,19 +193,17 @@ public class PlaygroundController {
 		model.addAttribute("subMenuSections", subMenuSections);
 
 		model.addAttribute("unitTypes", UnitType.values());
-		model.addAttribute("temperatureUnits", TemperatureUnit.values());
-		model.addAttribute("lengthUnits", LengthUnit.values());
-		model.addAttribute("massUnits", MassUnit.values());
-		model.addAttribute("speedUnits", SpeedUnit.values());
-		model.addAttribute("volumeUnits", VolumeUnit.values());
-		model.addAttribute("areaUnits", AreaUnit.values());
-		model.addAttribute("fuelConsumptionUnits", FuelConsumptionUnit.values());
-
-		// FIXME: Use mine.
-		model.addAttribute("timeUnits", TimeUnit.values());
-		model.addAttribute("digitalStorageUnits", DigitalStorageUnit.values());
 
 		return "playground/utilities/unit_conversion";
+	}
+
+	@RequestMapping("/playground/utilities/unit_conversion/json")
+	@ResponseBody
+	public BigDecimal utilitiesUnitConversionJSON(
+			@RequestParam UnitType unitType, @RequestParam String sourceUnit,
+			@RequestParam String targetUnit,
+			@RequestParam BigDecimal valueToConvert, Model model) {
+		return unitType.convert(sourceUnit, valueToConvert, targetUnit);
 	}
 
 	@RequestMapping("/playground/utilities/text2qrcode")
@@ -297,6 +289,26 @@ public class PlaygroundController {
 		return "playground/utilities/world_clock";
 	}
 
+	@RequestMapping("/playground/utilities/multi_word_notation_converter")
+	public String utilitiesMultiWordNotationConverter(Model model) {
+		List<SubMenuSection> subMenuSections = menuService
+				.getSubMenu(MENU_NAME_PLAYGROUND);
+		model.addAttribute("subMenuSections", subMenuSections);
+
+		model.addAttribute("notations", MultiWordNotationType.values());
+
+		return "playground/utilities/multi_word_notation_converter";
+	}
+
+	@RequestMapping("/playground/utilities/multi_word_notation_converter/api")
+	@ResponseBody
+	public String utilitiesMultiWordNotationConverterApi(
+			@RequestParam MultiWordNotationType sourceNotation,
+			@RequestParam MultiWordNotationType targetNotation,
+			@RequestParam String stringToConvert, Model model) {
+		return targetNotation.convert(stringToConvert, sourceNotation);
+	}
+
 	@RequestMapping("/playground/math/fractals")
 	public String mathFractals(Model model) {
 		List<SubMenuSection> subMenuSections = menuService
@@ -319,7 +331,7 @@ public class PlaygroundController {
 
 	@RequestMapping("/playground/math/base_converter/api")
 	@ResponseBody
-	public String mathBaseConverter(@RequestParam Base sourceBase,
+	public String mathBaseConverterApi(@RequestParam Base sourceBase,
 			@RequestParam Base targetBase,
 			@RequestParam String numberToConvert, Model model) {
 		return targetBase.convert(numberToConvert, sourceBase);

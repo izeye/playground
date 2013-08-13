@@ -1,6 +1,6 @@
 package com.izeye.playground.web.menu.service;
 
-import static com.izeye.playground.web.menu.domain.MenuConstants.MENU_NAME_ADMIN;
+import static com.izeye.playground.web.menu.domain.MenuConstants.*;
 import static com.izeye.playground.web.menu.domain.MenuConstants.MENU_NAME_PLAYGROUND;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_HEADER_ANALYTICS;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_HEADER_DEMO;
@@ -94,6 +94,9 @@ public class DefaultMenuService implements MenuService {
 				SUB_MENU_ITEM_URL_UA_ANALYZER);
 		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_WORLD_CLOCK,
 				SUB_MENU_ITEM_URL_WORLD_CLOCK);
+		subMenuSection.addMenuItem(
+				SUB_MENU_ITEM_NAME_MULTI_WORD_NOTATION_CONVERTER,
+				SUB_MENU_ITEM_URL_MULTI_WORD_NOTATION_CONVERTER);
 		subMenuSections.add(subMenuSection);
 
 		// Playground -> Math
