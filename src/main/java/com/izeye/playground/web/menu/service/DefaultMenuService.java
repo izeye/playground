@@ -21,6 +21,7 @@ import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_N
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_HTML_ESCAPE_AND_UNESCAPE;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_IP_ANALYZER;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_KAKAO_LINK;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_KOREAN_UNICODE_TABLE;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_MULTI_WORD_NOTATION_CONVERTER;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_PRIME;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_PRIME_FACTORIZATION;
@@ -47,6 +48,7 @@ import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_U
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_HTML_ESCAPE_AND_UNESCAPE;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_IP_ANALYZER;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_KAKAO_LINK;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_KOREAN_UNICODE_TABLE;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_MULTI_WORD_NOTATION_CONVERTER;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_PRIME;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_PRIME_FACTORIZATION;
@@ -93,6 +95,9 @@ public class DefaultMenuService implements MenuService {
 		subMenuSection.addMenuItem(
 				SUB_MENU_ITEM_NAME_UNICODE_ENCODER_AND_DECODER,
 				SUB_MENU_ITEM_URL_UNICODE_ENCODER_AND_DECODER);
+		subMenuSection.addMenuItem(
+				SUB_MENU_ITEM_NAME_KOREAN_UNICODE_TABLE,
+				SUB_MENU_ITEM_URL_KOREAN_UNICODE_TABLE);
 		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_HTML_ESCAPE_AND_UNESCAPE,
 				SUB_MENU_ITEM_URL_HTML_ESCAPE_AND_UNESCAPE);
 		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_UNIT_CONVERSION,

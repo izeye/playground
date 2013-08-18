@@ -36,6 +36,9 @@ import com.izeye.playground.support.encode.unicode.service.UnicodeEncodingServic
 import com.izeye.playground.support.encode.url.service.URLEncodingService;
 import com.izeye.playground.support.ip.domain.IPInfo;
 import com.izeye.playground.support.ip.service.IPAnalyzer;
+import com.izeye.playground.support.lang.ko.unicode.domain.KoreanUnicodeConstants;
+import com.izeye.playground.support.lang.ko.unicode.domain.Unicode;
+import com.izeye.playground.support.lang.ko.unicode.service.KoreanUnicodeService;
 import com.izeye.playground.support.math.base.domain.Base;
 import com.izeye.playground.support.math.collatz.service.CollatzConjectureSolver;
 import com.izeye.playground.support.math.factorial.service.FactorialSolver;
@@ -72,6 +75,9 @@ public class PlaygroundController {
 
 	@Resource
 	private UnicodeEncodingService unicodeEncodingService;
+
+	@Resource
+	private KoreanUnicodeService koreanUnicodeService;
 
 	@Resource
 	private QRCodeService qrCodeService;
@@ -160,7 +166,7 @@ public class PlaygroundController {
 
 	@RequestMapping(value = "/playground/utilities/url_encoder_and_decoder/decode/api", produces = { "text/plain; charset=UTF-8" })
 	@ResponseBody
-	public String utilitiesUnicodeEncoderAndDecoderDecodeAPI(
+	public String utilitiesURLEncoderAndDecoderDecodeAPI(
 			@RequestParam String textToDecode, Model model)
 			throws ParseException, UnsupportedEncodingException {
 		return urlEncodingService.decode(textToDecode);
@@ -210,10 +216,27 @@ public class PlaygroundController {
 
 	@RequestMapping(value = "/playground/utilities/unicode_encoder_and_decoder/decode/api", produces = { "text/plain; charset=UTF-8" })
 	@ResponseBody
-	public String utilitiesURLEncoderAndDecoderDecodeAPI(
+	public String utilitiesUnicodeEncoderAndDecoderDecodeAPI(
 			@RequestParam String textToDecode, Model model)
 			throws ParseException, UnsupportedEncodingException {
 		return unicodeEncodingService.decode(textToDecode);
+	}
+
+	@RequestMapping("/playground/utilities/korean_unicode_table")
+	public String utilitiesKoreanUnicodeTable(Model model) {
+		List<SubMenuSection> subMenuSections = menuService
+				.getSubMenu(MENU_NAME_PLAYGROUND);
+		model.addAttribute("subMenuSections", subMenuSections);
+
+		model.addAttribute("unicodeKoreanSylableStart",
+				(int) KoreanUnicodeConstants.UNICODE_KOREAN_SYLABLE_START);
+		model.addAttribute("unicodeKoreanSylableEnd",
+				(int) KoreanUnicodeConstants.UNICODE_KOREAN_SYLABLE_END);
+
+		List<Unicode> allUnicodes = koreanUnicodeService.getAllUnicodes();
+		model.addAttribute("allUnicodes", allUnicodes);
+
+		return "playground/utilities/korean_unicode_table";
 	}
 
 	@RequestMapping("/playground/utilities/html_escape_and_unescape")
