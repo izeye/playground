@@ -29,16 +29,18 @@ public enum BrowserType {
 			"Eolin.Net.ExtHTTPRequest", "Eolin Net Bot", BOT), BINGBOT(
 			"bingbot", "Bingbot", BOT), SEMRUSH_BOT("SemrushBot",
 			"Semrush Bot", BOT), BAIDUSPIDER("Baiduspider", "Baiduspider", BOT), ZUM_BOT(
-			"ZumBot", "Zum Bot", BOT), JAVA("Java", "Java", BOT), DAUM_BOT(
-			"Daumoa-feedfetcher", "Daum Bot", BOT), YANDEX_BOT("YandexBot",
-			"Yandex Bot", BOT), YETI_BOT("Yeti", "Yeti Bot", BOT) /* Naver */, NUMZ_HUB_CRAWLER(
+			"ZumBot", "Zum Bot", BOT), DAUM_BOT("Daumoa-feedfetcher",
+			"Daum Bot", BOT), YANDEX_BOT("YandexBot", "Yandex Bot", BOT), YETI_BOT(
+			"Yeti", "Yeti Bot", BOT) /* Naver */, NUMZ_HUB_CRAWLER(
 			"NumzHUBcrawler", "Numz HUB Crawler", BOT), DOCOMO("DoCoMo",
 			"DoCoMo", BOT), FACEBOOK_EXTERNAL_HIT("facebookexternalhit",
 			"Facebook External Hit", BOT), SHOWYOU_BOT("ShowyouBot",
 			"Showyou Bot", BOT), MSN_BOT("msnbot", "MSN Bot", BOT), ALEXA_CRAWLER(
 			"ia_archiver", "Alexa Crawler", BOT), EZOOMS_BOT("Ezooms",
-			"Ezooms Bot", BOT), AHREFS_BOT("AhrefsBot", "Ahrefs Bot", BOT), CHROME(
-			"Chrome", "Chrome", NORMAL), IE("MSIE", "Internet Explorer", NORMAL), FIREFOX(
+			"Ezooms Bot", BOT), AHREFS_BOT("AhrefsBot", "Ahrefs Bot", BOT), EXABOT(
+			"Exabot", "Exabot", BOT), JAVA("Java", "Java", BOT), PYTHON(
+			"python-requests", "Python", BOT), CHROME("Chrome", "Chrome",
+			NORMAL), IE("MSIE", "Internet Explorer", NORMAL), FIREFOX(
 			"Firefox", "Firefox", NORMAL), SAFARI("Safari", "Safari", NORMAL), NOT_AVAILABLE(
 			StringConstants.NOT_AVAILABLE, StringConstants.NOT_AVAILABLE,
 			BrowserCategory.NOT_AVAILABLE);

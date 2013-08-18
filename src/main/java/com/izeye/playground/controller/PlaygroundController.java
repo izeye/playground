@@ -15,6 +15,7 @@ import java.util.concurrent.TimeUnit;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -184,6 +185,29 @@ public class PlaygroundController {
 			@RequestParam String textToDecode, Model model)
 			throws Base64DecodingException {
 		return base64EncodingService.decode(textToDecode);
+	}
+
+	@RequestMapping("/playground/utilities/html_escape_and_unescape")
+	public String utilitiesHTMLEscapeAndUnescape(Model model) {
+		List<SubMenuSection> subMenuSections = menuService
+				.getSubMenu(MENU_NAME_PLAYGROUND);
+		model.addAttribute("subMenuSections", subMenuSections);
+
+		return "playground/utilities/html_escape_and_unescape";
+	}
+
+	@RequestMapping("/playground/utilities/html_escape_and_unescape/escape/api")
+	@ResponseBody
+	public String utilitiesHTMLEscapeAndUnescapeEscapeAPI(
+			@RequestParam String textToEscape, Model model) {
+		return StringEscapeUtils.escapeHtml4(textToEscape);
+	}
+
+	@RequestMapping("/playground/utilities/html_escape_and_unescape/unescape/api")
+	@ResponseBody
+	public String utilitiesHTMLEscapeAndUnescapeUnescapeAPI(
+			@RequestParam String textToUnescape, Model model) {
+		return StringEscapeUtils.unescapeHtml4(textToUnescape);
 	}
 
 	@RequestMapping("/playground/utilities/unit_conversion")

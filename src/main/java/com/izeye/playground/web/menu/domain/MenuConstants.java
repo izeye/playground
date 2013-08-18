@@ -19,6 +19,9 @@ public interface MenuConstants {
 	String SUB_MENU_ITEM_NAME_BASE64_ENCODER_AND_DECODER = "Base64 Encoder & Decoder";
 	String SUB_MENU_ITEM_URL_BASE64_ENCODER_AND_DECODER = "/playground/utilities/base64_encoder_and_decoder";
 
+	String SUB_MENU_ITEM_NAME_HTML_ESCAPE_AND_UNESCAPE = "HTML Escape & Unescape";
+	String SUB_MENU_ITEM_URL_HTML_ESCAPE_AND_UNESCAPE = "/playground/utilities/html_escape_and_unescape";
+
 	String SUB_MENU_ITEM_NAME_UNIT_CONVERSION = "Unit Conversion";
 	String SUB_MENU_ITEM_URL_UNIT_CONVERSION = "/playground/utilities/unit_conversion";
 

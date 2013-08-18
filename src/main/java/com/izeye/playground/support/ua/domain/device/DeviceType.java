@@ -28,8 +28,11 @@ public enum DeviceType {
 			"GT-N7000", "Galaxy Note N7000", SAMSUNG,
 			CarrierType.NOT_AVAILABLE, true), GALAXY_NOTE_II_SKT("SHV-E250S",
 			"Galaxy Note II", SAMSUNG, SKT, true), GALAXY_NOTE_II_KT(
-			"SHV-E250K", "Galaxy Note II", SAMSUNG, KT, true), SKY_VEGA_RACER_KT(
-			"IM-A770K", "SKY Vega Racer", PANTECH, KT, true), NOT_AVAILABLE(
+			"SHV-E250K", "Galaxy Note II", SAMSUNG, KT, true), GALAXY_M_STYLE(
+			"SHW-M340S", "Galaxy M Style", SAMSUNG, SKT, true), OPTIMUS_G_PRO(
+			"LG-F240K", "Optimus G Pro", LG, KT, true), OPTIMUS_VU("LG-F100L",
+			"Optimus Vu", LG, LG_U_PLUS, true), SKY_VEGA_RACER_KT("IM-A770K",
+			"SKY Vega Racer", PANTECH, KT, true), NOT_AVAILABLE(
 			StringConstants.NOT_AVAILABLE, StringConstants.NOT_AVAILABLE,
 			DeviceVendor.NOT_AVAILABLE, CarrierType.NOT_AVAILABLE, false);
 

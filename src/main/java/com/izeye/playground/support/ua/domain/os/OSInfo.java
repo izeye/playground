@@ -49,6 +49,9 @@ public class OSInfo {
 	private static String WINDOWS_XP_VERSION = "NT 5.1";
 	private static String WINDOWS_XP_ALIAS = "XP";
 
+	private static String WINDOWS_SERVER_2003_VERSION = "NT 5.2";
+	private static String WINDOWS_SERVER_2003_ALIAS = "Server 2003 or XP x64 Edition";
+
 	private static String WINDOWS_VISTA_VERSION = "NT 6.0";
 	private static String WINDOWS_VISTA_ALIAS = "Vista";
 
@@ -94,6 +97,8 @@ public class OSInfo {
 				return WINDOWS_NT_ALIAS;
 			} else if (version.equals(WINDOWS_XP_VERSION)) {
 				return WINDOWS_XP_ALIAS;
+			} else if (version.equals(WINDOWS_SERVER_2003_VERSION)) {
+				return WINDOWS_SERVER_2003_ALIAS;
 			} else if (version.equals(WINDOWS_VISTA_VERSION)) {
 				return WINDOWS_VISTA_ALIAS;
 			} else if (version.equals(WINDOWS_7_VERSION)) {

@@ -2,6 +2,8 @@ package com.izeye.playground.log.access.domain;
 
 import java.util.Date;
 
+import org.apache.commons.lang3.StringEscapeUtils;
+
 public class AccessLog {
 
 	private long id;
@@ -49,6 +51,10 @@ public class AccessLog {
 
 	public void setUserAgent(String userAgent) {
 		this.userAgent = userAgent;
+	}
+
+	public String getEscapedUserAgent() {
+		return StringEscapeUtils.escapeHtml4(userAgent);
 	}
 
 	public String getReferer() {

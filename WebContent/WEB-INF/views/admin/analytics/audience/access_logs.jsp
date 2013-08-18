@@ -31,7 +31,7 @@
 					pattern="yyyy-MM-dd HH:mm:ss" /></td>
 			<td title="${ipAnalyzer.analyze(ip).getLocation()}">${ip}</td>
 			<td>${accessLog.getUrl()}</td>
-			<td title="${userAgentAnalyzer.analyze(userAgent).getDisplayName()}">${userAgent}</td>
+			<td title="${userAgentAnalyzer.analyze(userAgent).getDisplayName()}">${accessLog.getEscapedUserAgent()}</td>
 			<td>${accessLog.getReferer()}</td>
 		</tr>
 	</c:forEach>

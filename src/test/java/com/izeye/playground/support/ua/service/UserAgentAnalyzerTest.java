@@ -82,9 +82,19 @@ public class UserAgentAnalyzerTest {
 
 			if (userAgent.getOsInfo().getType() == OSType.ANDROID
 					&& userAgent.getDeviceType() == DeviceType.NOT_AVAILABLE) {
+				if (isUserAgentWithoutDeviceInfo(userAgentAsString)) {
+					continue;
+				}
+
 				fail("Need to update this device type: " + userAgentAsString);
 			}
 		}
 		br.close();
 	}
+
+	private boolean isUserAgentWithoutDeviceInfo(String userAgent) {
+		return userAgent
+				.equals("Mozilla/5.0 (Linux; U; Android 2.2) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1");
+	}
+
 }

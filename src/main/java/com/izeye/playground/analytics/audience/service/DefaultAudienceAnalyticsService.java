@@ -1,5 +1,6 @@
 package com.izeye.playground.analytics.audience.service;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -14,6 +15,7 @@ import com.izeye.playground.log.access.dao.AccessLogDao;
 import com.izeye.playground.log.access.domain.AccessLog;
 import com.izeye.playground.log.access.domain.DailyCount;
 import com.izeye.playground.log.access.domain.UserAgentCount;
+import com.izeye.playground.support.spam.ua.service.UserAgentSpamFilter;
 
 @Service("audienceAnalyticsService")
 public class DefaultAudienceAnalyticsService implements
@@ -21,6 +23,9 @@ public class DefaultAudienceAnalyticsService implements
 
 	@Resource
 	private AccessLogDao accessLogDao;
+
+	@Resource
+	private UserAgentSpamFilter userAgentSpamFilter;
 
 	@Override
 	public VisitStat getVisitStatInSpecificDate(String date) {
@@ -52,7 +57,22 @@ public class DefaultAudienceAnalyticsService implements
 
 	@Override
 	public List<UserAgentCount> getUserAgentCounts() {
-		return accessLogDao.getUserAgentCounts();
+		List<UserAgentCount> userAgentCounts = accessLogDao
+				.getUserAgentCounts();
+
+		filterSpams(userAgentCounts);
+
+		return userAgentCounts;
+	}
+
+	private void filterSpams(List<UserAgentCount> userAgentCounts) {
+		List<UserAgentCount> filteredUserAgentCounts = new ArrayList<UserAgentCount>();
+		for (UserAgentCount userAgentCount : userAgentCounts) {
+			if (userAgentSpamFilter.filter(userAgentCount.getUserAgent())) {
+				filteredUserAgentCounts.add(userAgentCount);
+			}
+		}
+		userAgentCounts.removeAll(filteredUserAgentCounts);
 	}
 
 }

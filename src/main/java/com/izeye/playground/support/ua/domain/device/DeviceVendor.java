@@ -4,7 +4,7 @@ import com.izeye.playground.common.util.StringConstants;
 
 public enum DeviceVendor {
 
-	APPLE("Apple"), SAMSUNG("Samsung"), PANTECH("Pantech"), NOT_AVAILABLE(
+	APPLE("Apple"), SAMSUNG("Samsung"), PANTECH("Pantech"), LG("LG"), NOT_AVAILABLE(
 			StringConstants.NOT_AVAILABLE);
 
 	private final String name;

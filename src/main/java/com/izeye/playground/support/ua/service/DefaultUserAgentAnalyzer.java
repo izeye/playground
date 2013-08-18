@@ -238,6 +238,7 @@ public class DefaultUserAgentAnalyzer implements UserAgentAnalyzer {
 			case YANDEX_BOT:
 			case EZOOMS_BOT:
 			case AHREFS_BOT:
+			case EXABOT:
 				browserInfo = productBasedBrowserInfoParser
 						.parse(splitSystemAndBrowserToken[1].trim());
 				break;
