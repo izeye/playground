@@ -17,6 +17,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.izeye.playground.common.util.StringConstants;
+import com.izeye.playground.support.spam.ua.service.UserAgentSpamFilter;
 import com.izeye.playground.support.ua.domain.UnidentifiableUserAgentException;
 import com.izeye.playground.support.ua.domain.UserAgent;
 import com.izeye.playground.support.ua.domain.UserAgentToken;
@@ -64,6 +65,9 @@ public class DefaultUserAgentAnalyzer implements UserAgentAnalyzer {
 	@Resource
 	private FacebookAppParser facebookAppParser;
 
+	@Resource
+	private UserAgentSpamFilter userAgentSpamFilter;
+
 	private static final String MOZILLA = "Mozilla";
 
 	private static final Set<String> validMozillaVersionSet;
@@ -80,6 +84,10 @@ public class DefaultUserAgentAnalyzer implements UserAgentAnalyzer {
 		// NOTE:
 		// Suspicious user agent!
 		if (userAgent.equals(USER_AGENT_EMPTY)) {
+			return UserAgent.NOT_AVAILABLE;
+		}
+
+		if (userAgentSpamFilter.filter(userAgent)) {
 			return UserAgent.NOT_AVAILABLE;
 		}
 

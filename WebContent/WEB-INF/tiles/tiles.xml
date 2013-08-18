@@ -40,6 +40,11 @@
 		<put-attribute name="body" value="/WEB-INF/views/playground/utilities/base64_encoder_and_decoder/base64_encoder_and_decoder.jsp" />
 	</definition>
 
+	<definition name="playground/utilities/unicode_encoder_and_decoder" extends="playground/playground">
+		<put-attribute name="body_title" value="Unicode Encoder &amp; Decoder" />
+		<put-attribute name="body" value="/WEB-INF/views/playground/utilities/unicode_encoder_and_decoder/unicode_encoder_and_decoder.jsp" />
+	</definition>
+
 	<definition name="playground/utilities/html_escape_and_unescape" extends="playground/playground">
 		<put-attribute name="body_title" value="HTML Escape &amp; Unescape" />
 		<put-attribute name="body" value="/WEB-INF/views/playground/utilities/html_escape_and_unescape/html_escape_and_unescape.jsp" />

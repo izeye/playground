@@ -32,6 +32,7 @@ import com.google.zxing.WriterException;
 import com.izeye.playground.support.code.domain.MultiWordNotationType;
 import com.izeye.playground.support.date.service.DateService;
 import com.izeye.playground.support.encode.base64.service.Base64EncodingService;
+import com.izeye.playground.support.encode.unicode.service.UnicodeEncodingService;
 import com.izeye.playground.support.encode.url.service.URLEncodingService;
 import com.izeye.playground.support.ip.domain.IPInfo;
 import com.izeye.playground.support.ip.service.IPAnalyzer;
@@ -68,6 +69,9 @@ public class PlaygroundController {
 
 	@Resource
 	private Base64EncodingService base64EncodingService;
+
+	@Resource
+	private UnicodeEncodingService unicodeEncodingService;
 
 	@Resource
 	private QRCodeService qrCodeService;
@@ -156,7 +160,7 @@ public class PlaygroundController {
 
 	@RequestMapping(value = "/playground/utilities/url_encoder_and_decoder/decode/api", produces = { "text/plain; charset=UTF-8" })
 	@ResponseBody
-	public String utilitiesURLEncoderAndDecoderDecodeAPI(
+	public String utilitiesUnicodeEncoderAndDecoderDecodeAPI(
 			@RequestParam String textToDecode, Model model)
 			throws ParseException, UnsupportedEncodingException {
 		return urlEncodingService.decode(textToDecode);
@@ -185,6 +189,31 @@ public class PlaygroundController {
 			@RequestParam String textToDecode, Model model)
 			throws Base64DecodingException {
 		return base64EncodingService.decode(textToDecode);
+	}
+
+	@RequestMapping("/playground/utilities/unicode_encoder_and_decoder")
+	public String utilitiesUnicodeEncoderAndDecoder(Model model) {
+		List<SubMenuSection> subMenuSections = menuService
+				.getSubMenu(MENU_NAME_PLAYGROUND);
+		model.addAttribute("subMenuSections", subMenuSections);
+
+		return "playground/utilities/unicode_encoder_and_decoder";
+	}
+
+	@RequestMapping("/playground/utilities/unicode_encoder_and_decoder/encode/api")
+	@ResponseBody
+	public String utilitiesUnicodeEncoderAndDecoderEncodeAPI(
+			@RequestParam String textToEncode, Model model)
+			throws UnsupportedEncodingException {
+		return unicodeEncodingService.encode(textToEncode);
+	}
+
+	@RequestMapping(value = "/playground/utilities/unicode_encoder_and_decoder/decode/api", produces = { "text/plain; charset=UTF-8" })
+	@ResponseBody
+	public String utilitiesURLEncoderAndDecoderDecodeAPI(
+			@RequestParam String textToDecode, Model model)
+			throws ParseException, UnsupportedEncodingException {
+		return unicodeEncodingService.decode(textToDecode);
 	}
 
 	@RequestMapping("/playground/utilities/html_escape_and_unescape")

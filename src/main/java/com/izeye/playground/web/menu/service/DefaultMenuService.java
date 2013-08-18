@@ -1,6 +1,6 @@
 package com.izeye.playground.web.menu.service;
 
-import static com.izeye.playground.web.menu.domain.MenuConstants.*;
+import static com.izeye.playground.web.menu.domain.MenuConstants.MENU_NAME_ADMIN;
 import static com.izeye.playground.web.menu.domain.MenuConstants.MENU_NAME_PLAYGROUND;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_HEADER_ANALYTICS;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_HEADER_DEMO;
@@ -18,13 +18,16 @@ import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_N
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_FRACTALS;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_GCD_AND_LCM;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_GOLDBACH;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_HTML_ESCAPE_AND_UNESCAPE;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_IP_ANALYZER;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_KAKAO_LINK;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_MULTI_WORD_NOTATION_CONVERTER;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_PRIME;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_PRIME_FACTORIZATION;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_TEXT_2_QR_CODE;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_TIMESTAMP_2_DATE;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_UA_ANALYZER;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_UNICODE_ENCODER_AND_DECODER;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_UNIT_CONVERSION;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_URL_ENCODER_AND_DECODER;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_WEBCAM;
@@ -41,13 +44,16 @@ import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_U
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_FRACTALS;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_GCD_AND_LCM;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_GOLDBACH;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_HTML_ESCAPE_AND_UNESCAPE;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_IP_ANALYZER;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_KAKAO_LINK;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_MULTI_WORD_NOTATION_CONVERTER;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_PRIME;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_PRIME_FACTORIZATION;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_TEXT_2_QR_CODE;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_TIMESTAMP_2_DATE;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_UA_ANALYZER;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_UNICODE_ENCODER_AND_DECODER;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_UNIT_CONVERSION;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_URL_ENCODER_AND_DECODER;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_WEBCAM;
@@ -84,6 +90,9 @@ public class DefaultMenuService implements MenuService {
 		subMenuSection.addMenuItem(
 				SUB_MENU_ITEM_NAME_BASE64_ENCODER_AND_DECODER,
 				SUB_MENU_ITEM_URL_BASE64_ENCODER_AND_DECODER);
+		subMenuSection.addMenuItem(
+				SUB_MENU_ITEM_NAME_UNICODE_ENCODER_AND_DECODER,
+				SUB_MENU_ITEM_URL_UNICODE_ENCODER_AND_DECODER);
 		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_HTML_ESCAPE_AND_UNESCAPE,
 				SUB_MENU_ITEM_URL_HTML_ESCAPE_AND_UNESCAPE);
 		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_UNIT_CONVERSION,
