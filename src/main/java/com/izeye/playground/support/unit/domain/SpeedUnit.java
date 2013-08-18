@@ -41,8 +41,8 @@ public enum SpeedUnit implements Unit<SpeedUnit> {
 	FEET_PER_SEC("Feet/sec") {
 		@Override
 		public BigDecimal toMilesPerHour(BigDecimal s) {
-			// TODO Auto-generated method stub
-			return null;
+			return s.multiply(FEET_PER_SEC_TO_METERS_PER_SEC).multiply(
+					METERS_PER_SEC_TO_MILES_PER_HOUR);
 		}
 
 		@Override
@@ -52,20 +52,19 @@ public enum SpeedUnit implements Unit<SpeedUnit> {
 
 		@Override
 		public BigDecimal toMetersPerSec(BigDecimal s) {
-			// TODO Auto-generated method stub
-			return null;
+			return s.multiply(FEET_PER_SEC_TO_METERS_PER_SEC);
 		}
 
 		@Override
 		public BigDecimal toKmPerHour(BigDecimal s) {
-			// TODO Auto-generated method stub
-			return null;
+			return s.multiply(FEET_PER_SEC_TO_METERS_PER_SEC).multiply(
+					METERS_PER_SEC_TO_KM_PER_HOUR);
 		}
 
 		@Override
 		public BigDecimal toKnot(BigDecimal s) {
-			// TODO Auto-generated method stub
-			return null;
+			return s.multiply(FEET_PER_SEC_TO_METERS_PER_SEC).multiply(
+					METERS_PER_SEC_TO_KNOT);
 		}
 
 		@Override
@@ -76,14 +75,12 @@ public enum SpeedUnit implements Unit<SpeedUnit> {
 	METERS_PER_SEC("Meters/sec") {
 		@Override
 		public BigDecimal toMilesPerHour(BigDecimal s) {
-			// TODO Auto-generated method stub
-			return null;
+			return s.multiply(METERS_PER_SEC_TO_MILES_PER_HOUR);
 		}
 
 		@Override
 		public BigDecimal toFeetPerSec(BigDecimal s) {
-			// TODO Auto-generated method stub
-			return null;
+			return s.multiply(METERS_PER_SEC_TO_FEET_PER_SEC);
 		}
 
 		@Override
@@ -93,14 +90,12 @@ public enum SpeedUnit implements Unit<SpeedUnit> {
 
 		@Override
 		public BigDecimal toKmPerHour(BigDecimal s) {
-			// TODO Auto-generated method stub
-			return null;
+			return s.multiply(METERS_PER_SEC_TO_KM_PER_HOUR);
 		}
 
 		@Override
 		public BigDecimal toKnot(BigDecimal s) {
-			// TODO Auto-generated method stub
-			return null;
+			return s.multiply(METERS_PER_SEC_TO_KNOT);
 		}
 
 		@Override
@@ -111,20 +106,19 @@ public enum SpeedUnit implements Unit<SpeedUnit> {
 	KM_PER_HOUR("Km/hour") {
 		@Override
 		public BigDecimal toMilesPerHour(BigDecimal s) {
-			// TODO Auto-generated method stub
-			return null;
+			return s.multiply(KM_PER_HOUR_TO_METERS_PER_SEC).multiply(
+					METERS_PER_SEC_TO_MILES_PER_HOUR);
 		}
 
 		@Override
 		public BigDecimal toFeetPerSec(BigDecimal s) {
-			// TODO Auto-generated method stub
-			return null;
+			return s.multiply(KM_PER_HOUR_TO_METERS_PER_SEC).multiply(
+					METERS_PER_SEC_TO_FEET_PER_SEC);
 		}
 
 		@Override
 		public BigDecimal toMetersPerSec(BigDecimal s) {
-			// TODO Auto-generated method stub
-			return null;
+			return s.multiply(KM_PER_HOUR_TO_METERS_PER_SEC);
 		}
 
 		@Override
@@ -134,8 +128,8 @@ public enum SpeedUnit implements Unit<SpeedUnit> {
 
 		@Override
 		public BigDecimal toKnot(BigDecimal s) {
-			// TODO Auto-generated method stub
-			return null;
+			return s.multiply(KM_PER_HOUR_TO_METERS_PER_SEC).multiply(
+					METERS_PER_SEC_TO_KNOT);
 		}
 
 		@Override
@@ -146,26 +140,25 @@ public enum SpeedUnit implements Unit<SpeedUnit> {
 	KNOT("Knot") {
 		@Override
 		public BigDecimal toMilesPerHour(BigDecimal s) {
-			// TODO Auto-generated method stub
-			return null;
+			return s.multiply(KNOT_TO_METERS_PER_SEC).multiply(
+					METERS_PER_SEC_TO_MILES_PER_HOUR);
 		}
 
 		@Override
 		public BigDecimal toFeetPerSec(BigDecimal s) {
-			// TODO Auto-generated method stub
-			return null;
+			return s.multiply(KNOT_TO_METERS_PER_SEC).multiply(
+					METERS_PER_SEC_TO_FEET_PER_SEC);
 		}
 
 		@Override
 		public BigDecimal toMetersPerSec(BigDecimal s) {
-			// TODO Auto-generated method stub
-			return null;
+			return s.multiply(KNOT_TO_METERS_PER_SEC);
 		}
 
 		@Override
 		public BigDecimal toKmPerHour(BigDecimal s) {
-			// TODO Auto-generated method stub
-			return null;
+			return s.multiply(KNOT_TO_METERS_PER_SEC).multiply(
+					METERS_PER_SEC_TO_KM_PER_HOUR);
 		}
 
 		@Override

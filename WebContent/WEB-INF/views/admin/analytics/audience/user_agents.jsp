@@ -12,6 +12,7 @@
 			<td>${i + 1}</td>
 			<td>${userAgentCount.getUserAgent()}</td>
 			<td>${userAgentCount.getCount()}</td>
+			<td><pre><a>test</a></pre></td>
 		</tr>
 	</c:forEach>
 </table>
