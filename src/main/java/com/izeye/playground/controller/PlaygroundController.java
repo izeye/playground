@@ -7,6 +7,7 @@ import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
@@ -36,7 +37,7 @@ import com.izeye.playground.support.encode.unicode.service.UnicodeEncodingServic
 import com.izeye.playground.support.encode.url.service.URLEncodingService;
 import com.izeye.playground.support.ip.domain.IPInfo;
 import com.izeye.playground.support.ip.service.IPAnalyzer;
-import com.izeye.playground.support.lang.ko.unicode.domain.KoreanUnicodeConstants;
+import com.izeye.playground.support.lang.ko.phoneme.service.KoreanPhonemeService;
 import com.izeye.playground.support.lang.ko.unicode.domain.Unicode;
 import com.izeye.playground.support.lang.ko.unicode.service.KoreanUnicodeService;
 import com.izeye.playground.support.math.base.domain.Base;
@@ -78,6 +79,9 @@ public class PlaygroundController {
 
 	@Resource
 	private KoreanUnicodeService koreanUnicodeService;
+
+	@Resource
+	private KoreanPhonemeService koreanPhonemeService;
 
 	@Resource
 	private QRCodeService qrCodeService;
@@ -209,16 +213,14 @@ public class PlaygroundController {
 	@RequestMapping("/playground/utilities/unicode_encoder_and_decoder/encode/api")
 	@ResponseBody
 	public String utilitiesUnicodeEncoderAndDecoderEncodeAPI(
-			@RequestParam String textToEncode, Model model)
-			throws UnsupportedEncodingException {
+			@RequestParam String textToEncode, Model model) {
 		return unicodeEncodingService.encode(textToEncode);
 	}
 
 	@RequestMapping(value = "/playground/utilities/unicode_encoder_and_decoder/decode/api", produces = { "text/plain; charset=UTF-8" })
 	@ResponseBody
 	public String utilitiesUnicodeEncoderAndDecoderDecodeAPI(
-			@RequestParam String textToDecode, Model model)
-			throws ParseException, UnsupportedEncodingException {
+			@RequestParam String textToDecode, Model model) {
 		return unicodeEncodingService.decode(textToDecode);
 	}
 
@@ -228,15 +230,37 @@ public class PlaygroundController {
 				.getSubMenu(MENU_NAME_PLAYGROUND);
 		model.addAttribute("subMenuSections", subMenuSections);
 
-		model.addAttribute("unicodeKoreanSylableStart",
-				(int) KoreanUnicodeConstants.UNICODE_KOREAN_SYLABLE_START);
-		model.addAttribute("unicodeKoreanSylableEnd",
-				(int) KoreanUnicodeConstants.UNICODE_KOREAN_SYLABLE_END);
-
 		List<Unicode> allUnicodes = koreanUnicodeService.getAllUnicodes();
 		model.addAttribute("allUnicodes", allUnicodes);
 
 		return "playground/utilities/korean_unicode_table";
+	}
+
+	@RequestMapping("/playground/utilities/korean_phoneme_composer_and_decomposer")
+	public String utilitiesKoreanPhonemeComposerAndDecomposer(Model model) {
+		List<SubMenuSection> subMenuSections = menuService
+				.getSubMenu(MENU_NAME_PLAYGROUND);
+		model.addAttribute("subMenuSections", subMenuSections);
+
+		return "playground/utilities/korean_phoneme_composer_and_decomposer";
+	}
+
+	@RequestMapping(value = "/playground/utilities/korean_phoneme_composer_and_decomposer/compose/api", produces = { "text/plain; charset=UTF-8" })
+	@ResponseBody
+	public String utilitiesKoreanPhonemeComposerAndDecomposerComposeAPI(
+			@RequestParam String commaSeparatedPhonemes, Model model) {
+		List<Character> phonemes = new ArrayList<Character>();
+		for (String phoneme : commaSeparatedPhonemes.split(",")) {
+			phonemes.add(phoneme.charAt(0));
+		}
+		return koreanPhonemeService.compose(phonemes);
+	}
+
+	@RequestMapping("/playground/utilities/korean_phoneme_composer_and_decomposer/decompose/api")
+	@ResponseBody
+	public List<Character> utilitiesKoreanPhonemeComposerAndDecomposerDecomposeAPI(
+			@RequestParam String wordToDecompose, Model model) {
+		return koreanPhonemeService.decompose(wordToDecompose);
 	}
 
 	@RequestMapping("/playground/utilities/html_escape_and_unescape")

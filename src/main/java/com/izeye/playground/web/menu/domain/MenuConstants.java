@@ -25,6 +25,9 @@ public interface MenuConstants {
 	String SUB_MENU_ITEM_NAME_KOREAN_UNICODE_TABLE = "Korean Unicode Table";
 	String SUB_MENU_ITEM_URL_KOREAN_UNICODE_TABLE = "/playground/utilities/korean_unicode_table";
 
+	String SUB_MENU_ITEM_NAME_KOREAN_PHONEME_COMPOSER_AND_DECOMPOSER = "Korean Phoneme Composer & Decomposer";
+	String SUB_MENU_ITEM_URL_KOREAN_PHONEME_COMPOSER_AND_DECOMPOSER = "/playground/utilities/korean_phoneme_composer_and_decomposer";
+
 	String SUB_MENU_ITEM_NAME_HTML_ESCAPE_AND_UNESCAPE = "HTML Escape & Unescape";
 	String SUB_MENU_ITEM_URL_HTML_ESCAPE_AND_UNESCAPE = "/playground/utilities/html_escape_and_unescape";
 

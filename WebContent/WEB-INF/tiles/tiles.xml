@@ -50,6 +50,11 @@
 		<put-attribute name="body" value="/WEB-INF/views/playground/utilities/korean_unicode_table/korean_unicode_table.jsp" />
 	</definition>
 
+	<definition name="playground/utilities/korean_phoneme_composer_and_decomposer" extends="playground/playground">
+		<put-attribute name="body_title" value="Korean Phoneme Composer &amp; Decomposer" />
+		<put-attribute name="body" value="/WEB-INF/views/playground/utilities/korean_phoneme_composer_and_decomposer/korean_phoneme_composer_and_decomposer.jsp" />
+	</definition>
+
 	<definition name="playground/utilities/html_escape_and_unescape" extends="playground/playground">
 		<put-attribute name="body_title" value="HTML Escape &amp; Unescape" />
 		<put-attribute name="body" value="/WEB-INF/views/playground/utilities/html_escape_and_unescape/html_escape_and_unescape.jsp" />
