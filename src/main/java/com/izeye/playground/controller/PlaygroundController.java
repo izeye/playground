@@ -37,6 +37,7 @@ import com.izeye.playground.support.encode.unicode.service.UnicodeEncodingServic
 import com.izeye.playground.support.encode.url.service.URLEncodingService;
 import com.izeye.playground.support.ip.domain.IPInfo;
 import com.izeye.playground.support.ip.service.IPAnalyzer;
+import com.izeye.playground.support.keyboard.domain.Dubeolsik;
 import com.izeye.playground.support.lang.ko.phoneme.service.KoreanPhonemeService;
 import com.izeye.playground.support.lang.ko.unicode.domain.Unicode;
 import com.izeye.playground.support.lang.ko.unicode.service.KoreanUnicodeService;
@@ -79,6 +80,9 @@ public class PlaygroundController {
 
 	@Resource
 	private KoreanUnicodeService koreanUnicodeService;
+
+	@Resource
+	private Dubeolsik dubeolsik;
 
 	@Resource
 	private KoreanPhonemeService koreanPhonemeService;
@@ -234,6 +238,29 @@ public class PlaygroundController {
 		model.addAttribute("allUnicodes", allUnicodes);
 
 		return "playground/utilities/korean_unicode_table";
+	}
+
+	@RequestMapping("/playground/utilities/korean_english_language_switch_typo_fixer")
+	public String utilitiesKoreanEnglishLanguageSwitchTypoFixer(Model model) {
+		List<SubMenuSection> subMenuSections = menuService
+				.getSubMenu(MENU_NAME_PLAYGROUND);
+		model.addAttribute("subMenuSections", subMenuSections);
+
+		return "playground/utilities/korean_english_language_switch_typo_fixer";
+	}
+
+	@RequestMapping("/playground/utilities/korean_english_language_switch_typo_fixer/korean2english/api")
+	@ResponseBody
+	public String utilitiesKoreanEnglishLanguageSwitchTypoFixerKorean2EnglishAPI(
+			@RequestParam String korean, Model model) {
+		return dubeolsik.korean2English(korean);
+	}
+
+	@RequestMapping(value = "/playground/utilities/korean_english_language_switch_typo_fixer/english2korean/api", produces = { "text/plain; charset=UTF-8" })
+	@ResponseBody
+	public String utilitiesKoreanEnglishLanguageSwitchTypoFixerEnglish2KoreanAPI(
+			@RequestParam String english, Model model) {
+		return dubeolsik.english2Korean(english);
 	}
 
 	@RequestMapping("/playground/utilities/korean_phoneme_composer_and_decomposer")

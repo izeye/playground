@@ -13,7 +13,6 @@ var decompose = function () {
 	$.get('/playground/utilities/korean_phoneme_composer_and_decomposer/decompose/api', {
 		wordToDecompose: $('#wordToDecompose').val()
 	}).done(function (data) {
-		console.log(data);
 		$('#decomposedPhonemes').text(data);
 	});
 };

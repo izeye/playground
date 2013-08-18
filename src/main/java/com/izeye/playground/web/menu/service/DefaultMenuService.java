@@ -1,6 +1,6 @@
 package com.izeye.playground.web.menu.service;
 
-import static com.izeye.playground.web.menu.domain.MenuConstants.MENU_NAME_ADMIN;
+import static com.izeye.playground.web.menu.domain.MenuConstants.*;
 import static com.izeye.playground.web.menu.domain.MenuConstants.MENU_NAME_PLAYGROUND;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_HEADER_ANALYTICS;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_HEADER_DEMO;
@@ -99,6 +99,9 @@ public class DefaultMenuService implements MenuService {
 				SUB_MENU_ITEM_URL_UNICODE_ENCODER_AND_DECODER);
 		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_KOREAN_UNICODE_TABLE,
 				SUB_MENU_ITEM_URL_KOREAN_UNICODE_TABLE);
+		subMenuSection.addMenuItem(
+				SUB_MENU_ITEM_NAME_KOREAN_ENGLISH_LANGUAGE_SWITCH_TYPO_FIXER,
+				SUB_MENU_ITEM_URL_KOREAN_ENGLISH_LANGUAGE_SWITCH_TYPO_FIXER);
 		subMenuSection.addMenuItem(
 				SUB_MENU_ITEM_NAME_KOREAN_PHONEME_COMPOSER_AND_DECOMPOSER,
 				SUB_MENU_ITEM_URL_KOREAN_PHONEME_COMPOSER_AND_DECOMPOSER);

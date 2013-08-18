@@ -13,7 +13,6 @@ var decode = function () {
 	$.get('/playground/utilities/unicode_encoder_and_decoder/decode/api', {
 		textToDecode: $('#textToDecode').val()
 	}).done(function (data) {
-		console.log(data);
 		$('#decodedText').text(data);
 	});
 };

@@ -13,7 +13,6 @@ var unescape = function () {
 	$.get('/playground/utilities/html_escape_and_unescape/unescape/api', {
 		textToUnescape: $('#textToUnescape').val()
 	}).done(function (data) {
-		console.log(data);
 		$('#unescapedText').text(data);
 	});
 };
