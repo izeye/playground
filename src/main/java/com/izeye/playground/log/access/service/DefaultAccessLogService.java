@@ -1,5 +1,6 @@
 package com.izeye.playground.log.access.service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -9,12 +10,16 @@ import org.springframework.stereotype.Service;
 
 import com.izeye.playground.log.access.dao.AccessLogDao;
 import com.izeye.playground.log.access.domain.AccessLog;
+import com.izeye.playground.support.spam.ip.service.SpamIPFilter;
 
 @Service("accessLogService")
 public class DefaultAccessLogService implements AccessLogService {
 
 	@Resource
 	private AccessLogDao accessLogDao;
+
+	@Resource
+	private SpamIPFilter spamIPFilter;
 
 	@Override
 	public void log(String ip, String url, String userAgent, String referer) {
@@ -34,12 +39,27 @@ public class DefaultAccessLogService implements AccessLogService {
 
 	@Override
 	public List<AccessLog> getLatestAccessLogs(int count) {
-		return accessLogDao.getLatestAccessLogs(count);
+		List<AccessLog> latestAccessLogs = accessLogDao
+				.getLatestAccessLogs(count);
+
+		filterSpams(latestAccessLogs);
+
+		return latestAccessLogs;
 	}
 
 	@Override
 	public List<AccessLog> getLatestAccessLogs(long exclusiveBaseId, int count) {
 		return accessLogDao.getLatestAccessLogs(exclusiveBaseId, count);
+	}
+
+	private void filterSpams(List<AccessLog> accessLogs) {
+		List<AccessLog> filteredAccessLogs = new ArrayList<AccessLog>();
+		for (AccessLog accessLog : accessLogs) {
+			if (spamIPFilter.filter(accessLog.getIp())) {
+				filteredAccessLogs.add(accessLog);
+			}
+		}
+		accessLogs.removeAll(filteredAccessLogs);
 	}
 
 }

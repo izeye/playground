@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.izeye.playground.analytics.audience.service.AudienceAnalyticsService;
 import com.izeye.playground.log.access.domain.AccessLog;
 import com.izeye.playground.log.access.domain.DailyCount;
+import com.izeye.playground.log.access.domain.IPCount;
 import com.izeye.playground.log.access.domain.UserAgentCount;
 import com.izeye.playground.log.access.service.AccessLogService;
 import com.izeye.playground.support.ip.service.IPAnalyzer;
@@ -99,6 +100,17 @@ public class AdminController {
 		model.addAttribute("userAgentCounts", userAgentCounts);
 
 		return "admin/analytics/audience/user_agents";
+	}
+
+	@RequestMapping("/admin/analytics/audience/user_agent_spam_ips")
+	public String analyticsAudienceUserAgentSpamIPs(Model model) {
+		model.addAttribute("subMenuSections", subMenuSections);
+
+		List<IPCount> userAgentSpamIPCounts = audienceAnalyticsService
+				.getUserAgentSpamIPCounts();
+		model.addAttribute("userAgentSpamIPCounts", userAgentSpamIPCounts);
+
+		return "admin/analytics/audience/user_agent_spam_ips";
 	}
 
 	@RequestMapping("/admin/analytics/qrcode/qrcode_generation_logs")

@@ -103,6 +103,9 @@ public interface MenuConstants {
 	String SUB_MENU_ITEM_NAME_AUDIENCE_USER_AGENTS = "Audience User Agents";
 	String SUB_MENU_ITEM_URL_AUDIENCE_USER_AGENTS = "/admin/analytics/audience/user_agents";
 
+	String SUB_MENU_ITEM_NAME_AUDIENCE_USER_AGENT_SPAM_IPS = "User Agent Spam IPs";
+	String SUB_MENU_ITEM_URL_AUDIENCE_USER_AGENT_SPAM_IPS = "/admin/analytics/audience/user_agent_spam_ips";
+
 	String SUB_MENU_ITEM_NAME_AUDIENCE_QR_CODE_GENERATION_LOGS = "QR Code Generation Logs";
 	String SUB_MENU_ITEM_URL_AUDIENCE_QR_CODE_GENERATION_LOGS = "/admin/analytics/qrcode/qrcode_generation_logs";
 

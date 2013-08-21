@@ -13,6 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.izeye.playground.log.access.domain.AccessLog;
 import com.izeye.playground.log.access.domain.DailyCount;
+import com.izeye.playground.log.access.domain.IPCount;
 import com.izeye.playground.log.access.domain.UserAgentCount;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -89,6 +90,13 @@ public class AccessLogDaoTest {
 		List<AccessLog> latestAccessLogs = accessLogDao.getLatestAccessLogs(
 				exclusiveBaseId, count);
 		System.out.println(latestAccessLogs);
+	}
+
+	@Test
+	public void getUserAgentSpamIPCounts() {
+		List<IPCount> userAgentSpamIPCount = accessLogDao
+				.getUserAgentSpamIPCounts();
+		System.out.println(userAgentSpamIPCount);
 	}
 
 }

@@ -7,6 +7,7 @@ import java.util.Set;
 
 import javax.annotation.Resource;
 
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.izeye.playground.analytics.audience.domain.VisitStat;
@@ -14,6 +15,7 @@ import com.izeye.playground.common.util.DateUtils;
 import com.izeye.playground.log.access.dao.AccessLogDao;
 import com.izeye.playground.log.access.domain.AccessLog;
 import com.izeye.playground.log.access.domain.DailyCount;
+import com.izeye.playground.log.access.domain.IPCount;
 import com.izeye.playground.log.access.domain.UserAgentCount;
 import com.izeye.playground.support.spam.ua.service.UserAgentSpamFilter;
 
@@ -63,6 +65,22 @@ public class DefaultAudienceAnalyticsService implements
 		filterSpams(userAgentCounts);
 
 		return userAgentCounts;
+	}
+
+	@Override
+	public List<IPCount> getUserAgentSpamIPCounts() {
+		return accessLogDao.getUserAgentSpamIPCounts();
+	}
+
+	@Override
+	@Cacheable(value = "accessLogCache", key = "{#root.methodName}")
+	public Set<String> getUserAgentSpamIPSet() {
+		Set<String> userAgentSpamIPSet = new HashSet<String>();
+		List<IPCount> ipCounts = getUserAgentSpamIPCounts();
+		for (IPCount ipCount : ipCounts) {
+			userAgentSpamIPSet.add(ipCount.getIp());
+		}
+		return userAgentSpamIPSet;
 	}
 
 	private void filterSpams(List<UserAgentCount> userAgentCounts) {

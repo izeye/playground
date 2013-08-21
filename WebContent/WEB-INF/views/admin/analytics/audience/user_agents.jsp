@@ -6,10 +6,10 @@
 		<th>User Agent</th>
 		<th>Count</th>
 	</tr>
-	<c:forEach var="i" begin="0" end="${userAgentCounts.size() - 1}" step="1">
-		<c:set var="userAgentCount" value="${userAgentCounts.get(i)}" />
+	<c:forEach var="i" begin="1" end="${userAgentCounts.size()}" step="1">
+		<c:set var="userAgentCount" value="${userAgentCounts.get(i - 1)}" />
 		<tr>
-			<td>${i + 1}</td>
+			<td>${i}</td>
 			<td>${userAgentCount.getUserAgent()}</td>
 			<td>${userAgentCount.getCount()}</td>
 		</tr>

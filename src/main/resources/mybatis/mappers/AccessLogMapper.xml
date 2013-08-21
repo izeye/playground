@@ -48,4 +48,16 @@
 		GROUP BY user_agent
 		ORDER BY count DESC
 	</select>
+	<select id="getUserAgentSpamIPCounts" resultType="IPCount">
+	<![CDATA[
+		SELECT
+			ip, COUNT(1) AS count
+		FROM
+			tb_access_log
+		WHERE
+			user_agent LIKE '%<a%'
+		GROUP BY ip
+		ORDER BY count DESC, ip ASC
+	]]>
+	</select>
 </mapper>

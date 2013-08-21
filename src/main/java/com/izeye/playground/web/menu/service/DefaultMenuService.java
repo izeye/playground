@@ -10,6 +10,7 @@ import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_N
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_AUDIENCE_OVERVIEW;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_AUDIENCE_QR_CODE_GENERATION_LOGS;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_AUDIENCE_USER_AGENTS;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_AUDIENCE_USER_AGENT_SPAM_IPS;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_BASE64_ENCODER_AND_DECODER;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_BASE_CONVERTER;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_COLLATZ;
@@ -40,6 +41,7 @@ import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_U
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_AUDIENCE_OVERVIEW;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_AUDIENCE_QR_CODE_GENERATION_LOGS;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_AUDIENCE_USER_AGENTS;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_AUDIENCE_USER_AGENT_SPAM_IPS;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_BASE64_ENCODER_AND_DECODER;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_BASE_CONVERTER;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_COLLATZ;
@@ -172,6 +174,8 @@ public class DefaultMenuService implements MenuService {
 				SUB_MENU_ITEM_URL_AUDIENCE_ACCESS_LOGS);
 		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_AUDIENCE_USER_AGENTS,
 				SUB_MENU_ITEM_URL_AUDIENCE_USER_AGENTS);
+		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_AUDIENCE_USER_AGENT_SPAM_IPS,
+				SUB_MENU_ITEM_URL_AUDIENCE_USER_AGENT_SPAM_IPS);
 		subMenuSection.addMenuItem(
 				SUB_MENU_ITEM_NAME_AUDIENCE_QR_CODE_GENERATION_LOGS,
 				SUB_MENU_ITEM_URL_AUDIENCE_QR_CODE_GENERATION_LOGS);

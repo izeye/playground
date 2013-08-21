@@ -198,6 +198,10 @@
 		<put-attribute name="body" value="/WEB-INF/views/admin/analytics/audience/user_agents.jsp" />
 	</definition>
 
+	<definition name="admin/analytics/audience/user_agent_spam_ips" extends="admin/admin">
+		<put-attribute name="body" value="/WEB-INF/views/admin/analytics/audience/user_agent_spam_ips.jsp" />
+	</definition>
+
 	<definition name="admin/analytics/qrcode/qrcode_generation_logs" extends="admin/admin">
 		<put-attribute name="body" value="/WEB-INF/views/admin/analytics/qrcode/qrcode_generation_logs.jsp" />
 	</definition>

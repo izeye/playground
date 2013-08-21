@@ -73,6 +73,10 @@ public class UserAgent {
 		return typeInfo.getType() == UserAgentType.SPAM_BOT;
 	}
 
+	public boolean isBot() {
+		return typeInfo.getType() == UserAgentType.BOT;
+	}
+
 	@Override
 	public String toString() {
 		return "UserAgent [typeInfo=" + typeInfo + ", osInfo=" + osInfo
