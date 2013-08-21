@@ -1,6 +1,6 @@
 package com.izeye.playground.web.menu.service;
 
-import static com.izeye.playground.web.menu.domain.MenuConstants.*;
+import static com.izeye.playground.web.menu.domain.MenuConstants.MENU_NAME_ADMIN;
 import static com.izeye.playground.web.menu.domain.MenuConstants.MENU_NAME_PLAYGROUND;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_HEADER_ANALYTICS;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_HEADER_DEMO;
@@ -21,7 +21,9 @@ import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_N
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_HTML_ESCAPE_AND_UNESCAPE;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_IP_ANALYZER;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_KAKAO_LINK;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_KOREAN_ENGLISH_LANGUAGE_SWITCH_TYPO_FIXER;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_KOREAN_PHONEME_COMPOSER_AND_DECOMPOSER;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_KOREAN_ROMANIZATION;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_KOREAN_UNICODE_TABLE;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_MULTI_WORD_NOTATION_CONVERTER;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_PRIME;
@@ -49,7 +51,9 @@ import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_U
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_HTML_ESCAPE_AND_UNESCAPE;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_IP_ANALYZER;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_KAKAO_LINK;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_KOREAN_ENGLISH_LANGUAGE_SWITCH_TYPO_FIXER;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_KOREAN_PHONEME_COMPOSER_AND_DECOMPOSER;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_KOREAN_ROMANIZATION;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_KOREAN_UNICODE_TABLE;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_MULTI_WORD_NOTATION_CONVERTER;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_PRIME;
@@ -99,6 +103,8 @@ public class DefaultMenuService implements MenuService {
 				SUB_MENU_ITEM_URL_UNICODE_ENCODER_AND_DECODER);
 		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_KOREAN_UNICODE_TABLE,
 				SUB_MENU_ITEM_URL_KOREAN_UNICODE_TABLE);
+		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_KOREAN_ROMANIZATION,
+				SUB_MENU_ITEM_URL_KOREAN_ROMANIZATION);
 		subMenuSection.addMenuItem(
 				SUB_MENU_ITEM_NAME_KOREAN_ENGLISH_LANGUAGE_SWITCH_TYPO_FIXER,
 				SUB_MENU_ITEM_URL_KOREAN_ENGLISH_LANGUAGE_SWITCH_TYPO_FIXER);

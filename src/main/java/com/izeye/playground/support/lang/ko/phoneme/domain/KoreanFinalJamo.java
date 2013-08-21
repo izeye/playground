@@ -35,4 +35,17 @@ public enum KoreanFinalJamo {
 		return finalJamo == null ? NO_JAMO : finalJamo;
 	}
 
+	private static final Map<Character, KoreanPhoneme> valueAndPhonemeMap = new HashMap<Character, KoreanPhoneme>();
+	static {
+		for (KoreanFinalJamo finalJamo : values()) {
+			char finalJamoValue = finalJamo.getValue();
+			valueAndPhonemeMap.put(finalJamoValue, new KoreanPhoneme(
+					KoreanPhonemeType.FINAL_JAMO, finalJamoValue));
+		}
+	}
+
+	public KoreanPhoneme getPhoneme() {
+		return valueAndPhonemeMap.get(value);
+	}
+
 }

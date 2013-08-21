@@ -45,4 +45,17 @@ public enum KoreanVowel {
 		return valueMap.get(c);
 	}
 
+	private static final Map<Character, KoreanPhoneme> valueAndPhonemeMap = new HashMap<Character, KoreanPhoneme>();
+	static {
+		for (KoreanVowel vowel : values()) {
+			char vowelValue = vowel.getValue();
+			valueAndPhonemeMap.put(vowelValue, new KoreanPhoneme(
+					KoreanPhonemeType.MEDIAL_JAMO, vowelValue));
+		}
+	}
+
+	public KoreanPhoneme getPhoneme() {
+		return valueAndPhonemeMap.get(value);
+	}
+
 }

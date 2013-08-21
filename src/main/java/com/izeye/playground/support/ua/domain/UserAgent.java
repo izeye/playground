@@ -7,21 +7,35 @@ import com.izeye.playground.support.ua.domain.os.OSInfo;
 public class UserAgent {
 
 	public static final UserAgent NOT_AVAILABLE = new UserAgent(
-			OSInfo.NOT_AVAILABLE, BrowserInfo.NOT_AVAILABLE,
-			DeviceType.NOT_AVAILABLE);
+			UserAgentTypeInfo.NOT_AVAILABLE);
 
-	private OSInfo osInfo = OSInfo.NOT_AVAILABLE;
-	private BrowserInfo browserInfo = BrowserInfo.NOT_AVAILABLE;
-	private DeviceType deviceType = DeviceType.NOT_AVAILABLE;
+	public static final UserAgent SUSPICIOUS = new UserAgent(
+			UserAgentTypeInfo.SUSPICIOUS);
 
-	public UserAgent() {
-	}
+	public static final UserAgent SPAM_BOT = new UserAgent(
+			UserAgentTypeInfo.SPAM_BOT);
 
-	public UserAgent(OSInfo osInfo, BrowserInfo browserInfo,
-			DeviceType deviceType) {
+	private final UserAgentTypeInfo typeInfo;
+
+	private OSInfo osInfo;
+	private BrowserInfo browserInfo;
+	private DeviceType deviceType;
+
+	public UserAgent(UserAgentTypeInfo typeInfo, OSInfo osInfo,
+			BrowserInfo browserInfo, DeviceType deviceType) {
+		this.typeInfo = typeInfo;
 		this.osInfo = osInfo;
 		this.browserInfo = browserInfo;
 		this.deviceType = deviceType;
+	}
+
+	public UserAgent(UserAgentTypeInfo typeInfo) {
+		this(typeInfo, OSInfo.NOT_AVAILABLE, BrowserInfo.NOT_AVAILABLE,
+				DeviceType.NOT_AVAILABLE);
+	}
+
+	public UserAgentTypeInfo getTypeInfo() {
+		return typeInfo;
 	}
 
 	public OSInfo getOsInfo() {
@@ -49,15 +63,21 @@ public class UserAgent {
 	}
 
 	public String getDisplayName() {
-		return "OS: " + osInfo.getDisplayName() + ", browser: "
+		return "Type: " + typeInfo.getDisplayName() + ", OS: "
+				+ osInfo.getDisplayName() + ", browser: "
 				+ browserInfo.getDisplayName() + ", device: "
 				+ deviceType.getDisplayName();
 	}
 
+	public boolean isSpam() {
+		return typeInfo.getType() == UserAgentType.SPAM_BOT;
+	}
+
 	@Override
 	public String toString() {
-		return "UserAgent [osInfo=" + osInfo + ", browserInfo=" + browserInfo
-				+ ", deviceType=" + deviceType + "]";
+		return "UserAgent [typeInfo=" + typeInfo + ", osInfo=" + osInfo
+				+ ", browserInfo=" + browserInfo + ", deviceType=" + deviceType
+				+ "]";
 	}
 
 }

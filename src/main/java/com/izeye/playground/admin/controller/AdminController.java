@@ -69,7 +69,8 @@ public class AdminController {
 		return "admin/analytics/audience/overview";
 	}
 
-	private static final int DEFAULT_ACCESS_LOG_PAGE_SIZE = 100;
+	// private static final int DEFAULT_ACCESS_LOG_PAGE_SIZE = 100;
+	private static final int DEFAULT_ACCESS_LOG_PAGE_SIZE = 500;
 
 	@RequestMapping("/admin/analytics/audience/access_logs")
 	public String analyticsAudienceAccessLogs(Model model) {

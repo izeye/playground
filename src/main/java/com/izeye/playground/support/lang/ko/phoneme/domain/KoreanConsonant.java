@@ -46,4 +46,17 @@ public enum KoreanConsonant {
 		return valueMap.get(c);
 	}
 
+	private static final Map<Character, KoreanPhoneme> valueAndPhonemeMap = new HashMap<Character, KoreanPhoneme>();
+	static {
+		for (KoreanConsonant consonant : values()) {
+			char consonantValue = consonant.getValue();
+			valueAndPhonemeMap.put(consonantValue, new KoreanPhoneme(
+					KoreanPhonemeType.INITIAL_JAMO, consonantValue));
+		}
+	}
+
+	public KoreanPhoneme getPhoneme() {
+		return valueAndPhonemeMap.get(value);
+	}
+
 }

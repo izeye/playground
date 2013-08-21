@@ -41,7 +41,8 @@ public enum BrowserType {
 			"Exabot", "Exabot", BOT), JAVA("Java", "Java", BOT), PYTHON(
 			"python-requests", "Python", BOT), CHROME("Chrome", "Chrome",
 			NORMAL), IE("MSIE", "Internet Explorer", NORMAL), FIREFOX(
-			"Firefox", "Firefox", NORMAL), SAFARI("Safari", "Safari", NORMAL), NOT_AVAILABLE(
+			"Firefox", "Firefox", NORMAL), SAFARI("Safari", "Safari", NORMAL), OPERA(
+			"Opera", "Opera", NORMAL), NOT_AVAILABLE(
 			StringConstants.NOT_AVAILABLE, StringConstants.NOT_AVAILABLE,
 			BrowserCategory.NOT_AVAILABLE);
 

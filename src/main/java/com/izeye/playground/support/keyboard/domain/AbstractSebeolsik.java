@@ -7,27 +7,27 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-
-import org.springframework.stereotype.Component;
+import java.util.Set;
 
 import com.izeye.playground.support.lang.ko.phoneme.domain.KoreanPhoneme;
+import com.izeye.playground.support.lang.ko.phoneme.domain.KoreanPhonemeType;
 
-@Component("dubeolsik")
-public class Dubeolsik extends AbstractKoreanKeyboardLayout {
+public abstract class AbstractSebeolsik extends AbstractKoreanKeyboardLayout {
 
-	private Map<Character, Character> english2KoreanMap;
-	private Map<Character, Character> korean2EnglishMap;
+	private Map<Character, KoreanPhoneme> english2KoreanMap;
+	private Map<KoreanPhoneme, Character> korean2EnglishMap;
 
-	public Dubeolsik() {
-		super(KoreanKeyboardLayoutType.DUBEOLSIK);
+	public AbstractSebeolsik(KoreanKeyboardLayoutType type) {
+		super(type);
 	}
 
 	@Override
 	protected void loadKeyboardLayout(File keyboardLayoutFile) {
-		english2KoreanMap = new HashMap<Character, Character>();
-		korean2EnglishMap = new HashMap<Character, Character>();
+		english2KoreanMap = new HashMap<Character, KoreanPhoneme>();
+		korean2EnglishMap = new HashMap<KoreanPhoneme, Character>();
 
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(
@@ -35,10 +35,14 @@ public class Dubeolsik extends AbstractKoreanKeyboardLayout {
 			String line;
 			while ((line = br.readLine()) != null) {
 				String[] splitLine = line.split(" ");
-				char englishPhoneme = splitLine[0].charAt(0);
-				char koreanPhoneme = splitLine[1].charAt(0);
-				english2KoreanMap.put(englishPhoneme, koreanPhoneme);
-				korean2EnglishMap.put(koreanPhoneme, englishPhoneme);
+				char englishPhonemeValue = splitLine[0].charAt(0);
+				char koreanPhonemeValue = splitLine[1].charAt(0);
+				KoreanPhonemeType koreanPhonemeType = KoreanPhonemeType
+						.valueOf(splitLine[2]);
+				KoreanPhoneme koreanPhoneme = new KoreanPhoneme(
+						koreanPhonemeType, koreanPhonemeValue);
+				english2KoreanMap.put(englishPhonemeValue, koreanPhoneme);
+				korean2EnglishMap.put(koreanPhoneme, englishPhonemeValue);
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -51,17 +55,39 @@ public class Dubeolsik extends AbstractKoreanKeyboardLayout {
 
 	@Override
 	public Character english2Korean(char englishPhoneme) {
-		return english2KoreanMap.get(englishPhoneme);
+		KoreanPhoneme koreanPhoneme = english2KoreanMap.get(englishPhoneme);
+		return koreanPhoneme == null ? null : koreanPhoneme.getValue();
 	}
 
 	@Override
 	public Character korean2English(char koreanPhoneme) {
-		return korean2EnglishMap.get(koreanPhoneme);
+		Set<KoreanPhoneme> possiblePhonemes = koreanPhonemeService
+				.getPossiblePhonemes(koreanPhoneme);
+		Iterator<KoreanPhoneme> it = possiblePhonemes.iterator();
+		switch (possiblePhonemes.size()) {
+		case 1:
+			return korean2EnglishMap.get(it.next());
+
+		case 2:
+			// NOTE:
+			// When it is ambiguous,
+			// handle it as initial Jamo.
+			KoreanPhoneme phoneme = it.next();
+			if (phoneme.getType() == KoreanPhonemeType.INITIAL_JAMO) {
+				return korean2EnglishMap.get(phoneme);
+			} else {
+				return korean2EnglishMap.get(it.next());
+			}
+
+		default:
+			throw new IllegalArgumentException("Illegal Korean phoneme: "
+					+ koreanPhoneme);
+		}
 	}
 
 	@Override
 	public Character korean2English(KoreanPhoneme koreanPhoneme) {
-		return korean2EnglishMap.get(koreanPhoneme.getValue());
+		return korean2EnglishMap.get(koreanPhoneme);
 	}
 
 	@Override
@@ -92,10 +118,10 @@ public class Dubeolsik extends AbstractKoreanKeyboardLayout {
 
 		for (char koreanSylable : korean.toCharArray()) {
 			if (koreanUnicodeService.isKoreanSyllable(koreanSylable)) {
-				List<Character> koreanPhonemes = koreanPhonemeService
-						.decomposeAsCharacters(koreanSylable);
-				for (Character koreanPhoneme : koreanPhonemes) {
-					sb.append(korean2English(koreanPhoneme));
+				List<KoreanPhoneme> koreanPhonemes = koreanPhonemeService
+						.decompose(koreanSylable);
+				for (KoreanPhoneme koreanPhoneme : koreanPhonemes) {
+					sb.append(korean2EnglishMap.get(koreanPhoneme));
 				}
 			} else if (koreanUnicodeService.isKoreanJamo(koreanSylable)) {
 				sb.append(korean2English(koreanSylable));

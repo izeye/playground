@@ -9,6 +9,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.annotation.Resource;
 
@@ -47,9 +49,23 @@ public class UserAgentAnalyzerTest {
 		System.out.println(userAgent);
 	}
 
+	@Test
+	public void analyzeOpera() {
+		String userAgentAsString = "Opera/9.80 (Windows NT 6.2; Win64; x64) Presto/2.12.388 Version/12.15";
+		UserAgent userAgent = userAgentAnalyzer.analyze(userAgentAsString);
+		System.out.println(userAgent);
+	}
+
 	// NOTE:
 	// Daum app doesn't provide any information in iPhone.
 	private static final String USER_AGENT_DAUM_APP = "Mozilla/5.0 (iPhone; CPU iPhone OS 6_1_3 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Mobile/10B329";
+
+	private static final Set<String> invalidUserAgentSet = new HashSet<String>();
+	static {
+		invalidUserAgentSet.add(USER_AGENT_DAUM_APP);
+		invalidUserAgentSet
+				.add("Mozilla/5.0 (iPhone; CPU iPhone OS 5_1_1 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Mobile/9B208");
+	}
 
 	@Test
 	public void analyzeAllFromFile() throws IOException {
@@ -65,7 +81,7 @@ public class UserAgentAnalyzerTest {
 			System.out.println(userAgent);
 
 			if (userAgentAsString.isEmpty()
-					|| userAgentAsString.equals(USER_AGENT_DAUM_APP)) {
+					|| invalidUserAgentSet.contains(userAgentAsString)) {
 				continue;
 			}
 

@@ -46,6 +46,9 @@ public class OSInfo {
 	private static String WINDOWS_NT_VERSION = "NT";
 	private static String WINDOWS_NT_ALIAS = "NT";
 
+	private static String WINDOWS_2000_VERSION = "NT 5.0";
+	private static String WINDOWS_2000_ALIAS = "2000";
+
 	private static String WINDOWS_XP_VERSION = "NT 5.1";
 	private static String WINDOWS_XP_ALIAS = "XP";
 
@@ -95,6 +98,8 @@ public class OSInfo {
 				return WINDOWS_98_ALIAS;
 			} else if (version.equals(WINDOWS_NT_VERSION)) {
 				return WINDOWS_NT_ALIAS;
+			} else if (version.equals(WINDOWS_2000_VERSION)) {
+				return WINDOWS_2000_ALIAS;
 			} else if (version.equals(WINDOWS_XP_VERSION)) {
 				return WINDOWS_XP_ALIAS;
 			} else if (version.equals(WINDOWS_SERVER_2003_VERSION)) {

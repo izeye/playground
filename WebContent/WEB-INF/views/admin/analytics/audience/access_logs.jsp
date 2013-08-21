@@ -23,16 +23,25 @@
 		<th>Referrer</th>
 	</tr>
 	<c:forEach var="accessLog" items="${latestAccessLogs}">
-		<c:set var="ip" value="${accessLog.getIp()}"></c:set>
-		<c:set var="userAgent" value="${accessLog.getUserAgent()}"></c:set>
+		<c:set var="ip" value="${accessLog.getIp()}" />
+		<c:set var="userAgent" value="${accessLog.getUserAgent()}" />
+		<c:set var="analyzedUserAgent" value="${userAgentAnalyzer.analyze(userAgent)}" />
 		<tr>
 			<td>${accessLog.getId()}</td>
 			<td><fmt:formatDate value="${accessLog.getAccessTime()}"
 					pattern="yyyy-MM-dd HH:mm:ss" /></td>
 			<td title="${ipAnalyzer.analyze(ip).getLocation()}">${ip}</td>
 			<td>${accessLog.getUrl()}</td>
-			<td title="${userAgentAnalyzer.analyze(userAgent).getDisplayName()}">${accessLog.getEscapedUserAgent()}</td>
-			<td>${accessLog.getReferer()}</td>
+			<c:choose>
+			<c:when test="${analyzedUserAgent.isSpam()}">
+				<td><span class="label label-warning">Blocked spam</span></td>
+				<td><span class="label label-warning">Blocked spam</span></td>
+			</c:when>
+			<c:otherwise>
+				<td title="${analyzedUserAgent.getDisplayName()}">${accessLog.getEscapedUserAgent()}</td>
+				<td>${accessLog.getReferer()}</td>
+			</c:otherwise>
+			</c:choose>
 		</tr>
 	</c:forEach>
 </table>

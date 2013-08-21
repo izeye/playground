@@ -1,11 +1,7 @@
 package com.izeye.playground.support.ua.service;
 
-import static com.izeye.playground.support.ua.domain.UserAgentConstants.COMMENT_DELIMITER;
 import static com.izeye.playground.support.ua.domain.UserAgentConstants.PRODUCT_DELIMITER;
-import static com.izeye.playground.support.ua.domain.UserAgentConstants.SECURITY_VALUE_STRONG_SECURITY;
 import static com.izeye.playground.support.ua.domain.UserAgentConstants.USER_AGENT_EMPTY;
-import static com.izeye.playground.support.ua.domain.UserAgentTokenType.COMMENT;
-import static com.izeye.playground.support.ua.domain.UserAgentTokenType.PRODUCT;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -21,23 +17,9 @@ import com.izeye.playground.support.spam.ua.service.UserAgentSpamFilter;
 import com.izeye.playground.support.ua.domain.UnidentifiableUserAgentException;
 import com.izeye.playground.support.ua.domain.UserAgent;
 import com.izeye.playground.support.ua.domain.UserAgentToken;
-import com.izeye.playground.support.ua.domain.UserAgentTokenType;
-import com.izeye.playground.support.ua.domain.browser.BrowserInfo;
-import com.izeye.playground.support.ua.domain.browser.BrowserType;
-import com.izeye.playground.support.ua.domain.device.DeviceType;
-import com.izeye.playground.support.ua.domain.os.OSInfo;
-import com.izeye.playground.support.ua.domain.os.OSType;
-import com.izeye.playground.support.ua.service.browser.FacebookAppParser;
-import com.izeye.playground.support.ua.service.browser.IEParser;
-import com.izeye.playground.support.ua.service.browser.NaverAppParser;
-import com.izeye.playground.support.ua.service.browser.ProductBasedBrowserInfoParser;
-import com.izeye.playground.support.ua.service.os.AndroidOSInfoParser;
-import com.izeye.playground.support.ua.service.os.AppleOSInfoParser;
-import com.izeye.playground.support.ua.service.os.WindowsParser;
+import com.izeye.playground.support.ua.domain.UserAgentType;
+import com.izeye.playground.support.ua.domain.UserAgentTypeInfo;
 
-// Reference:
-// http://en.wikipedia.org/wiki/User_agent
-// Mozilla/[version] ([system and browser information]) [platform] ([platform details]) [extensions]
 @Service("userAgentAnalyzer")
 public class DefaultUserAgentAnalyzer implements UserAgentAnalyzer {
 
@@ -45,274 +27,122 @@ public class DefaultUserAgentAnalyzer implements UserAgentAnalyzer {
 	private UserAgentTokenizer userAgentTokenizer;
 
 	@Resource
-	private AppleOSInfoParser appleOSInfoParser;
-
-	@Resource
-	private AndroidOSInfoParser androidOSInfoParser;
-
-	@Resource
-	private WindowsParser windowsParser;
-
-	@Resource
-	private ProductBasedBrowserInfoParser productBasedBrowserInfoParser;
-
-	@Resource
-	private IEParser ieParser;
-
-	@Resource
-	private NaverAppParser naverAppParser;
-
-	@Resource
-	private FacebookAppParser facebookAppParser;
-
-	@Resource
 	private UserAgentSpamFilter userAgentSpamFilter;
 
-	private static final String MOZILLA = "Mozilla";
+	@Resource
+	private MozillaParser mozillaParser;
+
+	@Resource
+	private OperaParser operaParser;
+
+	@Resource
+	private BotParser botParser;
 
 	private static final Set<String> validMozillaVersionSet;
 	static {
-		Set<String> mozillaTokens = new HashSet<String>();
-		mozillaTokens.add("4.0");
-		mozillaTokens.add("5.0");
+		Set<String> versionSet = new HashSet<String>();
+		versionSet.add("4.0");
+		versionSet.add("5.0");
 
-		validMozillaVersionSet = Collections.unmodifiableSet(mozillaTokens);
+		validMozillaVersionSet = Collections.unmodifiableSet(versionSet);
+	}
+
+	private static final Set<String> validOperaVersionSet;
+	static {
+		Set<String> versionSet = new HashSet<String>();
+		versionSet.add("9.80");
+
+		validOperaVersionSet = Collections.unmodifiableSet(versionSet);
 	}
 
 	@Override
-	public UserAgent analyze(String userAgent) {
+	public UserAgent analyze(String userAgent)
+			throws UnidentifiableUserAgentException {
+		List<UserAgentToken> userAgentTokens = userAgentTokenizer
+				.tokenize(userAgent);
+
+		UserAgentTypeInfo userAgentTypeAndNameAndVersion = getUserAgentTypeAndNameAndVersion(
+				userAgent, userAgentTokens);
+		UserAgentType userAgentType = userAgentTypeAndNameAndVersion.getType();
+		switch (userAgentType) {
+		case MOZILLA:
+			return mozillaParser.parse(userAgent, userAgentTokens,
+					userAgentTypeAndNameAndVersion);
+
+		case OPERA:
+			return operaParser.parse(userAgent, userAgentTokens,
+					userAgentTypeAndNameAndVersion);
+
+		case BOT:
+			return botParser.parse(userAgent, userAgentTokens,
+					userAgentTypeAndNameAndVersion);
+
+		case SPAM_BOT:
+			return UserAgent.SPAM_BOT;
+
+		case SUSPICIOUS:
+			return UserAgent.SUSPICIOUS;
+
+		case NOT_AVAILABLE:
+			return UserAgent.NOT_AVAILABLE;
+
+		default:
+			throw new IllegalStateException("Unexpected user agent type: "
+					+ userAgentType);
+		}
+	}
+
+	private UserAgentTypeInfo getUserAgentTypeAndNameAndVersion(
+			String userAgent, List<UserAgentToken> userAgentTokens) {
 		// NOTE:
 		// Suspicious user agent!
 		if (userAgent.equals(USER_AGENT_EMPTY)) {
-			return UserAgent.NOT_AVAILABLE;
+			return UserAgentTypeInfo.SUSPICIOUS;
 		}
 
 		if (userAgentSpamFilter.filter(userAgent)) {
-			return UserAgent.NOT_AVAILABLE;
+			return UserAgentTypeInfo.SPAM_BOT;
 		}
 
-		UserAgent analyzedUserAgent = new UserAgent();
+		UserAgentToken firstUserAgentToken = userAgentTokens.get(0);
+		String firstUserAgentTokenValue = firstUserAgentToken.getValue();
+		String[] split = firstUserAgentTokenValue.split(PRODUCT_DELIMITER);
+		String name = split[0];
 
-		try {
-			OSType osType = OSType.extractFromUserAgent(userAgent);
-			BrowserType browserType = BrowserType
-					.extractFromUserAgent(userAgent);
-			DeviceType deviceType = DeviceType.extractFromUserAgent(userAgent);
-			analyzedUserAgent.setDeviceType(deviceType);
-			switch (deviceType) {
-			case IPHONE:
-			case IPAD:
-				osType = OSType.IOS;
-				break;
-			}
+		// NOTE:
+		// Remove the trailing semicolon for Google Producer.
+		if (name.endsWith(";")) {
+			name = name.substring(0, name.length() - 1);
+		}
 
-			List<UserAgentToken> userAgentTokens = userAgentTokenizer
-					.tokenize(userAgent);
+		UserAgentType userAgentType = UserAgentType.getByPrefix(name);
+		String version = split.length == 2 ? split[1]
+				: StringConstants.NOT_AVAILABLE;
 
-			// Mozilla/[version]
-			UserAgentToken mozillaToken = userAgentTokens.remove(0);
-			String mozillaTokenValue = mozillaToken.getValue();
-
-			String[] splitMozillaTokenValue = mozillaTokenValue
-					.split(PRODUCT_DELIMITER);
-			String mozilla = splitMozillaTokenValue[0];
-
-			// NOTE:
-			// Remove the trailing semicolon for Google Producer.
-			if (mozilla.endsWith(";")) {
-				mozilla = mozilla.substring(0, mozilla.length() - 1);
-			}
-
-			String mozillaVersion = StringConstants.NOT_AVAILABLE;
-
-			// NOTE:
-			// The Google Producer doesn't have the version part.
-			if (splitMozillaTokenValue.length == 2) {
-				mozillaVersion = splitMozillaTokenValue[1];
-			}
-
-			// Handle some bots.
-			if (BrowserType.isBot(mozilla)) {
-				analyzedUserAgent.setBrowserInfo(new BrowserInfo(browserType,
-						mozillaVersion));
-				return analyzedUserAgent;
-			}
-
-			if (!mozilla.equals(MOZILLA)
-					|| !validMozillaVersionSet.contains(mozillaVersion)) {
+		// NOTE:
+		// Validate user agent's type and version pair.
+		switch (userAgentType) {
+		case MOZILLA:
+			if (!validMozillaVersionSet.contains(version)) {
 				throw new UnidentifiableUserAgentException(
-						"Unexpected mozilla token: " + mozillaToken
+						"Unexpected mozilla token: " + firstUserAgentToken
 								+ ", user agent: " + userAgent);
 			}
+			break;
 
-			// ([system and browser information])
-			UserAgentToken systemAndBrowserToken = userAgentTokens.remove(0);
-			if (systemAndBrowserToken.getType() != COMMENT) {
+		case OPERA:
+			if (!validOperaVersionSet.contains(version)) {
 				throw new UnidentifiableUserAgentException(
-						"Unexpected system and browser token: "
-								+ systemAndBrowserToken + ", user agent: "
-								+ userAgent);
+						"Unexpected opera token: " + firstUserAgentToken
+								+ ", user agent: " + userAgent);
 			}
+			break;
 
-			String[] splitSystemAndBrowserToken = systemAndBrowserToken
-					.getValue().split(COMMENT_DELIMITER);
-
-			OSInfo osInfo = OSInfo.NOT_AVAILABLE;
-			switch (osType) {
-			case MAC_OS_X:
-				String osInfoCandidate = splitSystemAndBrowserToken[1].trim();
-				if (osInfoCandidate.equals(SECURITY_VALUE_STRONG_SECURITY)) {
-					osInfoCandidate = splitSystemAndBrowserToken[2].trim();
-				}
-				osInfo = appleOSInfoParser.parse(osInfoCandidate);
-				analyzedUserAgent.setDeviceType(DeviceType.MACINTOSH);
-				break;
-
-			case WINDOWS:
-				switch (browserType) {
-				case IE:
-					osInfo = windowsParser.parse(splitSystemAndBrowserToken[2]
-							.trim());
-					break;
-
-				case CHROME:
-					osInfo = windowsParser.parse(splitSystemAndBrowserToken[0]
-							.trim());
-					break;
-				}
-				analyzedUserAgent.setDeviceType(DeviceType.PC);
-				break;
-
-			case IOS:
-				osInfoCandidate = splitSystemAndBrowserToken[1].trim();
-				if (osInfoCandidate.equals(SECURITY_VALUE_STRONG_SECURITY)) {
-					osInfoCandidate = splitSystemAndBrowserToken[2].trim();
-				}
-				osInfo = appleOSInfoParser.parse(osInfoCandidate);
-				break;
-
-			case ANDROID:
-				osInfoCandidate = splitSystemAndBrowserToken[1].trim();
-				if (osInfoCandidate.equals(SECURITY_VALUE_STRONG_SECURITY)) {
-					osInfoCandidate = splitSystemAndBrowserToken[2].trim();
-				}
-				osInfo = androidOSInfoParser.parse(osInfoCandidate);
-				break;
-			}
-			analyzedUserAgent.setOsInfo(osInfo);
-
-			UserAgentToken platformToken = null;
-			if (userAgentTokens.size() != 0) {
-				// [platform]
-				platformToken = userAgentTokens.remove(0);
-				if (platformToken.getType() != PRODUCT) {
-					throw new UnidentifiableUserAgentException(
-							"Unexpected platform token: " + platformToken
-									+ ", user agent: " + userAgent);
-				}
-
-				// UserAgentToken platformDetailsToken = null;
-				if (userAgentTokens.size() != 0) {
-					// ([platform details])
-					UserAgentToken platformDetailsTokenCandidate = userAgentTokens
-							.get(0);
-					if (platformDetailsTokenCandidate.getType() == UserAgentTokenType.COMMENT) {
-						// platformDetailsToken = platformDetailsTokenCandidate;
-						userAgentTokens.remove(0);
-					}
-				}
-			}
-
-			// [extensions]
-			List<UserAgentToken> extensionsTokens = userAgentTokens;
-
-			BrowserInfo browserInfo = BrowserInfo.NOT_AVAILABLE;
-			switch (browserType) {
-			case IE:
-				browserInfo = ieParser.parse(splitSystemAndBrowserToken[1]
-						.trim());
-				break;
-
-			case CHROME:
-				browserInfo = productBasedBrowserInfoParser
-						.parse(extensionsTokens.get(0).getValue());
-				break;
-
-			case GOOGLEBOT:
-			case EOLIN_NET_BOT:
-			case BINGBOT:
-			case SEMRUSH_BOT:
-			case BAIDUSPIDER:
-			case YANDEX_BOT:
-			case EZOOMS_BOT:
-			case AHREFS_BOT:
-			case EXABOT:
-				browserInfo = productBasedBrowserInfoParser
-						.parse(splitSystemAndBrowserToken[1].trim());
-				break;
-
-			case DAUM_BOT:
-				browserInfo = productBasedBrowserInfoParser.parse(platformToken
-						.getValue().trim());
-				break;
-
-			case GOOGLE_BOT_MOBILE:
-				browserInfo = productBasedBrowserInfoParser
-						.parse(extensionsTokens.get(3).getValue().split(";")[1]
-								.trim());
-				break;
-
-			case FIREFOX:
-				browserInfo = productBasedBrowserInfoParser
-						.parse(extensionsTokens.get(0).getValue());
-				break;
-
-			case SAFARI:
-				browserInfo = productBasedBrowserInfoParser
-						.parse(extensionsTokens
-								.get(extensionsTokens.size() - 1).getValue());
-				break;
-
-			case NAVER_APP:
-				boolean succeeded = false;
-				for (int i = 0; i < extensionsTokens.size(); i++) {
-					String extensionsTokenValue = extensionsTokens.get(i)
-							.getValue();
-					if (extensionsTokenValue.equals(BrowserType.NAVER_APP
-							.getKeyInUserAgent())) {
-						browserInfo = naverAppParser.parse(extensionsTokens
-								.get(i + 1).getValue());
-						succeeded = true;
-						break;
-					}
-				}
-				if (!succeeded) {
-					throw new UnidentifiableUserAgentException(
-							"Unexpected Naver app signature: " + userAgent);
-				}
-				break;
-
-			case FACEBOOK_APP:
-				browserInfo = facebookAppParser.parse(extensionsTokens.get(1)
-						.getValue());
-				break;
-
-			case DAUM_APP:
-				browserInfo = productBasedBrowserInfoParser
-						.parse(extensionsTokens
-								.get(extensionsTokens.size() - 1).getValue());
-				break;
-
-			default:
-				break;
-			}
-
-			analyzedUserAgent.setBrowserInfo(browserInfo);
-		} catch (UnidentifiableUserAgentException e) {
-			e.printStackTrace();
+		default:
+			break;
 		}
 
-		return analyzedUserAgent;
+		return new UserAgentTypeInfo(userAgentType, name, version);
 	}
 
 }
