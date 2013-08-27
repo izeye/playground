@@ -10,6 +10,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
@@ -41,6 +42,8 @@ import com.izeye.playground.support.keyboard.domain.KoreanKeyboardLayoutType;
 import com.izeye.playground.support.keyboard.service.KoreanKeyboardLayoutSelector;
 import com.izeye.playground.support.lang.ko.phoneme.service.KoreanPhonemeService;
 import com.izeye.playground.support.lang.ko.roman.domain.KoreanRomanizationScheme;
+import com.izeye.playground.support.lang.ko.roman.domain.RomanizationType;
+import com.izeye.playground.support.lang.ko.roman.service.KoreanRomanizationService;
 import com.izeye.playground.support.lang.ko.unicode.domain.Unicode;
 import com.izeye.playground.support.lang.ko.unicode.service.KoreanUnicodeService;
 import com.izeye.playground.support.math.base.domain.Base;
@@ -85,6 +88,9 @@ public class PlaygroundController {
 
 	@Resource
 	private KoreanPhonemeService koreanPhonemeService;
+
+	@Resource
+	private KoreanRomanizationService koreanRomanizationService;
 
 	@Resource
 	private KoreanKeyboardLayoutSelector koreanKeyboardLayoutSelector;
@@ -250,28 +256,29 @@ public class PlaygroundController {
 
 		model.addAttribute("romanizationSchemes",
 				KoreanRomanizationScheme.values());
+		model.addAttribute("romanizationTypes", RomanizationType.values());
 
 		return "playground/utilities/korean_romanization";
 	}
 
-	@RequestMapping("/playground/utilities/korean_romanization/korean2roman/api")
+	@RequestMapping(value = "/playground/utilities/korean_romanization/korean2roman/api", produces = { "text/plain; charset=UTF-8" })
 	@ResponseBody
 	public String utilitiesKoreanRomanizationKorean2RomanAPI(
 			@RequestParam KoreanRomanizationScheme romanizationScheme,
+			@RequestParam RomanizationType romanizationType,
 			@RequestParam String korean, Model model) {
-		// return koreanKeyboardLayoutSelector.select(keyboardLayoutType)
-		// .korean2English(korean);
-		return "";
+		return koreanRomanizationService.korean2Roman(romanizationScheme,
+				romanizationType, korean);
 	}
 
-	@RequestMapping(value = "/playground/utilities/korean_romanization/roman2korean/api", produces = { "text/plain; charset=UTF-8" })
+	@RequestMapping("/playground/utilities/korean_romanization/roman2korean/api")
 	@ResponseBody
-	public String utilitiesKoreanRomanizationRoman2KoreanAPI(
+	public Set<String> utilitiesKoreanRomanizationRoman2KoreanAPI(
 			@RequestParam KoreanRomanizationScheme romanizationScheme,
+			@RequestParam RomanizationType romanizationType,
 			@RequestParam String roman, Model model) {
-		// return koreanKeyboardLayoutSelector.select(keyboardLayoutType)
-		// .english2Korean(english);
-		return "";
+		return koreanRomanizationService.roman2PossibleKoreanSet(
+				romanizationScheme, romanizationType, roman);
 	}
 
 	@RequestMapping("/playground/utilities/korean_english_language_switch_typo_fixer")
@@ -321,7 +328,7 @@ public class PlaygroundController {
 		for (String phoneme : commaSeparatedPhonemes.split(",")) {
 			phonemes.add(phoneme.charAt(0));
 		}
-		return koreanPhonemeService.compose(phonemes);
+		return koreanPhonemeService.composeCharsStrictly(phonemes);
 	}
 
 	@RequestMapping("/playground/utilities/korean_phoneme_composer_and_decomposer/decompose/api")

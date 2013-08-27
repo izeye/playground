@@ -3,7 +3,7 @@ package com.izeye.playground.support.ua.domain;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.izeye.playground.common.util.StringConstants;
+import com.izeye.playground.common.domain.StringConstants;
 import com.izeye.playground.support.ua.domain.browser.BrowserType;
 
 public enum UserAgentType {

@@ -3,7 +3,7 @@ package com.izeye.playground.support.ua.domain.os;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 import com.izeye.playground.common.EnumObjectSerializer;
-import com.izeye.playground.common.util.StringConstants;
+import com.izeye.playground.common.domain.StringConstants;
 
 @JsonSerialize(using = EnumObjectSerializer.class)
 public enum OSType {

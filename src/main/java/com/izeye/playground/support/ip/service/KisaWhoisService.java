@@ -24,9 +24,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
+import com.izeye.playground.common.domain.StringConstants;
 import com.izeye.playground.common.util.HTTPUtils;
 import com.izeye.playground.common.util.JDOMUtils;
-import com.izeye.playground.common.util.StringConstants;
 import com.izeye.playground.common.util.URLUtils;
 import com.izeye.playground.support.country.domain.Country;
 import com.izeye.playground.support.country.service.CountryService;

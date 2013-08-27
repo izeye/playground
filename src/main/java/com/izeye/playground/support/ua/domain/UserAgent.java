@@ -1,5 +1,6 @@
 package com.izeye.playground.support.ua.domain;
 
+import com.izeye.playground.support.ua.domain.browser.BrowserCategory;
 import com.izeye.playground.support.ua.domain.browser.BrowserInfo;
 import com.izeye.playground.support.ua.domain.device.DeviceType;
 import com.izeye.playground.support.ua.domain.os.OSInfo;
@@ -74,7 +75,7 @@ public class UserAgent {
 	}
 
 	public boolean isBot() {
-		return typeInfo.getType() == UserAgentType.BOT;
+		return browserInfo.getType().getCategory() == BrowserCategory.BOT;
 	}
 
 	@Override

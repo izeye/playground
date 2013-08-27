@@ -29,9 +29,9 @@ public class Dubeolsik extends AbstractKoreanKeyboardLayout {
 		english2KoreanMap = new HashMap<Character, Character>();
 		korean2EnglishMap = new HashMap<Character, Character>();
 
+		BufferedReader br = null;
 		try {
-			BufferedReader br = new BufferedReader(new FileReader(
-					keyboardLayoutFile));
+			br = new BufferedReader(new FileReader(keyboardLayoutFile));
 			String line;
 			while ((line = br.readLine()) != null) {
 				String[] splitLine = line.split(" ");
@@ -46,6 +46,12 @@ public class Dubeolsik extends AbstractKoreanKeyboardLayout {
 		} catch (IOException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
+		} finally {
+			try {
+				br.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -72,7 +78,7 @@ public class Dubeolsik extends AbstractKoreanKeyboardLayout {
 		for (char englishPhoneme : english.toCharArray()) {
 			Character koreanPhoneme = english2Korean(englishPhoneme);
 			if (koreanPhoneme == null) {
-				sb.append(koreanPhonemeService.compose(phonemes));
+				sb.append(koreanPhonemeService.composeCharsStrictly(phonemes));
 				phonemes.clear();
 				sb.append(englishPhoneme);
 			} else {
@@ -80,7 +86,7 @@ public class Dubeolsik extends AbstractKoreanKeyboardLayout {
 			}
 		}
 		if (!phonemes.isEmpty()) {
-			sb.append(koreanPhonemeService.compose(phonemes));
+			sb.append(koreanPhonemeService.composeCharsStrictly(phonemes));
 		}
 
 		return sb.toString();

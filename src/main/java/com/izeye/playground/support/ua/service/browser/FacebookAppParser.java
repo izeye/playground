@@ -2,7 +2,7 @@ package com.izeye.playground.support.ua.service.browser;
 
 import org.springframework.stereotype.Service;
 
-import com.izeye.playground.common.util.StringConstants;
+import com.izeye.playground.common.domain.StringConstants;
 import com.izeye.playground.support.ua.domain.browser.BrowserInfo;
 import com.izeye.playground.support.ua.domain.browser.BrowserType;
 import com.izeye.playground.support.ua.domain.carrier.CarrierType;

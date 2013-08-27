@@ -12,7 +12,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.izeye.playground.common.util.StringConstants;
+import com.izeye.playground.common.domain.StringConstants;
 import com.izeye.playground.support.spam.ua.service.UserAgentSpamFilter;
 import com.izeye.playground.support.ua.domain.UnidentifiableUserAgentException;
 import com.izeye.playground.support.ua.domain.UserAgent;

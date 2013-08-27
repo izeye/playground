@@ -1,6 +1,6 @@
 package com.izeye.playground.support.ua.domain;
 
-import com.izeye.playground.common.util.StringConstants;
+import com.izeye.playground.common.domain.StringConstants;
 
 public class UserAgentTypeInfo {
 

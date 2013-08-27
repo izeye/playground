@@ -22,6 +22,7 @@ import com.izeye.playground.support.ua.domain.device.DeviceType;
 import com.izeye.playground.support.ua.domain.os.OSInfo;
 import com.izeye.playground.support.ua.domain.os.OSType;
 import com.izeye.playground.support.ua.service.browser.FacebookAppParser;
+import com.izeye.playground.support.ua.service.browser.GoogleAppEngineParser;
 import com.izeye.playground.support.ua.service.browser.IEParser;
 import com.izeye.playground.support.ua.service.browser.NaverAppParser;
 import com.izeye.playground.support.ua.service.browser.ProductBasedBrowserInfoParser;
@@ -55,6 +56,9 @@ public class MozillaParser implements UserAgentParser {
 
 	@Resource
 	private FacebookAppParser facebookAppParser;
+
+	@Resource
+	private GoogleAppEngineParser googleAppEngineParser;
 
 	@Override
 	public UserAgent parse(String userAgent,
@@ -193,6 +197,7 @@ public class MozillaParser implements UserAgentParser {
 			case EZOOMS_BOT:
 			case AHREFS_BOT:
 			case EXABOT:
+			case ABONTI:
 				browserInfo = productBasedBrowserInfoParser
 						.parse(splitSystemAndBrowserToken[1].trim());
 				break;
@@ -254,6 +259,11 @@ public class MozillaParser implements UserAgentParser {
 				browserInfo = productBasedBrowserInfoParser
 						.parse(extensionsTokens
 								.get(extensionsTokens.size() - 1).getValue());
+				break;
+
+			case GOOGLE_APP_ENGINE:
+				browserInfo = googleAppEngineParser.parse(extensionsTokens.get(
+						extensionsTokens.size() - 1).getValue());
 				break;
 
 			default:

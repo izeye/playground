@@ -1,6 +1,6 @@
 package com.izeye.playground.support.ua.domain.browser;
 
-import com.izeye.playground.common.util.StringConstants;
+import com.izeye.playground.common.domain.StringConstants;
 import com.izeye.playground.support.ua.domain.carrier.CarrierType;
 
 public class BrowserInfo {

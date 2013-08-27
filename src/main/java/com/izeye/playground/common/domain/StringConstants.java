@@ -1,4 +1,4 @@
-package com.izeye.playground.common.util;
+package com.izeye.playground.common.domain;
 
 public interface StringConstants {
 

@@ -1,6 +1,6 @@
 package com.izeye.playground.support.ua.domain.carrier;
 
-import com.izeye.playground.common.util.StringConstants;
+import com.izeye.playground.common.domain.StringConstants;
 
 // FIXME:
 // Carrier type can be provided by some apps or some device model names.

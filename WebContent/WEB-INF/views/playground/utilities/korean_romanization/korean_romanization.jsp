@@ -5,6 +5,7 @@
 var korean2Roman = function () {
 	$.get('/playground/utilities/korean_romanization/korean2roman/api', {
 		romanizationScheme: $('#romanizationScheme').val(),
+		romanizationType: $('#romanizationType').val(),
 		korean: $('#korean').val()
 	}).done(function (data) {
 		$('#romanizedKorean').text(data);
@@ -12,11 +13,12 @@ var korean2Roman = function () {
 };
 
 var roman2Korean = function () {
-	$.get('/playground/utilities/korean_romanization/roman2korean/api', {
+	$.getJSON('/playground/utilities/korean_romanization/roman2korean/api', {
 		romanizationScheme: $('#romanizationScheme').val(),
+		romanizationType: $('#romanizationType').val(),
 		roman: $('#roman').val()
 	}).done(function (data) {
-		$('#transliteratedRoman').text(data);
+		$('#revertedRoman').text(data);
 	});
 };
 </script>
@@ -27,11 +29,24 @@ This page provides Korean romanization with various schemes:
 <a href="http://en.wikipedia.org/wiki/Yale_Romanization#Korean">Yale</a>, and
 <a href="http://en.wikipedia.org/wiki/McCune-Reischauer">McCune-Reischauer</a>.
 </p>
+<p>
+Romanization has two types.
+One is transliteration and the other is transcription.
+Transliteration is for writing and transcription is for pronunciation.
+Note that the Yale scheme doesn't support transcription.
+</p>
 
-<label for="romanizationScheme">Select a Korean romanization shceme:</label>
+<label for="romanizationScheme">Select a Korean romanization scheme:</label>
 <select id="romanizationScheme">
 <c:forEach var="romanizationScheme" items="${romanizationSchemes}">
 	<option value="${romanizationScheme}">${romanizationScheme.getName()}</option>
+</c:forEach>
+</select>
+
+<label for="romanizationType">Select a romanization type:</label>
+<select id="romanizationType">
+<c:forEach var="romanizationType" items="${romanizationTypes}">
+	<option value="${romanizationType}">${romanizationType.getName()}</option>
 </c:forEach>
 </select>
 
@@ -43,10 +58,17 @@ This page provides Korean romanization with various schemes:
 <div id="romanizedKorean" class="well">
 </div>
 
-<label for="roman">Enter roman characters to transliterate to Korean:</label>
+<label for="roman">Enter roman characters to revert to Korean:</label>
 <input id="roman" type="text" value="annyeonghaseyo" /><br/>
-<input type="button" value="Transliterate to Korean" onclick="roman2Korean();" /><br/><br/>
+<input type="button" value="Revert to Korean" onclick="roman2Korean();" /><br/><br/>
 
-<label for="transliteratedRoman">Transliterated Roman:</label>
-<div id="transliteratedRoman" class="well">
+<label for="revertedRoman">Reverted Korean:</label>
+<div id="revertedRoman" class="well">
+</div>
+
+<div class="well">
+<span class="label label-important">Note</span>
+I guess this might be quite buggy because of my ignorance on Korean romanization.
+So let me know by email (izeye@naver.com) when any problem occurs.
+Then I'll fix it ASAP :-)
 </div>

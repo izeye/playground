@@ -10,7 +10,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import com.izeye.playground.support.lang.ko.phoneme.domain.KoreanPhoneme;
 import com.izeye.playground.support.lang.ko.phoneme.domain.KoreanPhonemeType;
@@ -29,9 +28,9 @@ public abstract class AbstractSebeolsik extends AbstractKoreanKeyboardLayout {
 		english2KoreanMap = new HashMap<Character, KoreanPhoneme>();
 		korean2EnglishMap = new HashMap<KoreanPhoneme, Character>();
 
+		BufferedReader br = null;
 		try {
-			BufferedReader br = new BufferedReader(new FileReader(
-					keyboardLayoutFile));
+			br = new BufferedReader(new FileReader(keyboardLayoutFile));
 			String line;
 			while ((line = br.readLine()) != null) {
 				String[] splitLine = line.split(" ");
@@ -50,6 +49,12 @@ public abstract class AbstractSebeolsik extends AbstractKoreanKeyboardLayout {
 		} catch (IOException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
+		} finally {
+			try {
+				br.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -61,10 +66,10 @@ public abstract class AbstractSebeolsik extends AbstractKoreanKeyboardLayout {
 
 	@Override
 	public Character korean2English(char koreanPhoneme) {
-		Set<KoreanPhoneme> possiblePhonemes = koreanPhonemeService
-				.getPossiblePhonemes(koreanPhoneme);
-		Iterator<KoreanPhoneme> it = possiblePhonemes.iterator();
-		switch (possiblePhonemes.size()) {
+		Map<KoreanPhonemeType, KoreanPhoneme> possiblePhonemeMap = koreanPhonemeService
+				.getPossiblePhonemeMap(koreanPhoneme);
+		Iterator<KoreanPhoneme> it = possiblePhonemeMap.values().iterator();
+		switch (possiblePhonemeMap.size()) {
 		case 1:
 			return korean2EnglishMap.get(it.next());
 
@@ -72,12 +77,8 @@ public abstract class AbstractSebeolsik extends AbstractKoreanKeyboardLayout {
 			// NOTE:
 			// When it is ambiguous,
 			// handle it as initial Jamo.
-			KoreanPhoneme phoneme = it.next();
-			if (phoneme.getType() == KoreanPhonemeType.INITIAL_JAMO) {
-				return korean2EnglishMap.get(phoneme);
-			} else {
-				return korean2EnglishMap.get(it.next());
-			}
+			return korean2EnglishMap.get(possiblePhonemeMap
+					.get(KoreanPhonemeType.INITIAL_JAMO));
 
 		default:
 			throw new IllegalArgumentException("Illegal Korean phoneme: "
@@ -98,7 +99,7 @@ public abstract class AbstractSebeolsik extends AbstractKoreanKeyboardLayout {
 		for (char englishPhoneme : english.toCharArray()) {
 			Character koreanPhoneme = english2Korean(englishPhoneme);
 			if (koreanPhoneme == null) {
-				sb.append(koreanPhonemeService.compose(phonemes));
+				sb.append(koreanPhonemeService.composeCharsStrictly(phonemes));
 				phonemes.clear();
 				sb.append(englishPhoneme);
 			} else {
@@ -106,7 +107,7 @@ public abstract class AbstractSebeolsik extends AbstractKoreanKeyboardLayout {
 			}
 		}
 		if (!phonemes.isEmpty()) {
-			sb.append(koreanPhonemeService.compose(phonemes));
+			sb.append(koreanPhonemeService.composeCharsStrictly(phonemes));
 		}
 
 		return sb.toString();
