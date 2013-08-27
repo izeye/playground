@@ -65,6 +65,11 @@
 		<put-attribute name="body" value="/WEB-INF/views/playground/utilities/korean_phoneme_composer_and_decomposer/korean_phoneme_composer_and_decomposer.jsp" />
 	</definition>
 
+	<definition name="playground/utilities/english_lowercase_uppercase_converter" extends="playground/playground">
+		<put-attribute name="body_title" value="English LowerCase/UpperCase Converter" />
+		<put-attribute name="body" value="/WEB-INF/views/playground/utilities/english_lowercase_uppercase_converter/english_lowercase_uppercase_converter.jsp" />
+	</definition>
+
 	<definition name="playground/utilities/html_escape_and_unescape" extends="playground/playground">
 		<put-attribute name="body_title" value="HTML Escape &amp; Unescape" />
 		<put-attribute name="body" value="/WEB-INF/views/playground/utilities/html_escape_and_unescape/html_escape_and_unescape.jsp" />

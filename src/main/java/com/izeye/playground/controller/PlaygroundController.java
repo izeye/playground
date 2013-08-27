@@ -40,6 +40,7 @@ import com.izeye.playground.support.ip.domain.IPInfo;
 import com.izeye.playground.support.ip.service.IPAnalyzer;
 import com.izeye.playground.support.keyboard.domain.KoreanKeyboardLayoutType;
 import com.izeye.playground.support.keyboard.service.KoreanKeyboardLayoutSelector;
+import com.izeye.playground.support.lang.en.alphabet.service.EnglishAlphabetService;
 import com.izeye.playground.support.lang.ko.phoneme.service.KoreanPhonemeService;
 import com.izeye.playground.support.lang.ko.roman.domain.KoreanRomanizationScheme;
 import com.izeye.playground.support.lang.ko.roman.domain.RomanizationType;
@@ -94,6 +95,9 @@ public class PlaygroundController {
 
 	@Resource
 	private KoreanKeyboardLayoutSelector koreanKeyboardLayoutSelector;
+
+	@Resource
+	private EnglishAlphabetService englishAlphabetService;
 
 	@Resource
 	private QRCodeService qrCodeService;
@@ -336,6 +340,29 @@ public class PlaygroundController {
 	public List<Character> utilitiesKoreanPhonemeComposerAndDecomposerDecomposeAPI(
 			@RequestParam String wordToDecompose, Model model) {
 		return koreanPhonemeService.decomposeAsCharacters(wordToDecompose);
+	}
+
+	@RequestMapping("/playground/utilities/english_lowercase_uppercase_converter")
+	public String utilitiesEnglishLowerCaseUpperCaseConverter(Model model) {
+		List<SubMenuSection> subMenuSections = menuService
+				.getSubMenu(MENU_NAME_PLAYGROUND);
+		model.addAttribute("subMenuSections", subMenuSections);
+
+		return "playground/utilities/english_lowercase_uppercase_converter";
+	}
+
+	@RequestMapping("/playground/utilities/english_lowercase_uppercase_converter/to_lowercase/api")
+	@ResponseBody
+	public String utilitiesEnglishLowerCaseUpperCaseConverterToLowerCaseAPI(
+			@RequestParam String textToBeLowerCase, Model model) {
+		return englishAlphabetService.toLowerCase(textToBeLowerCase);
+	}
+
+	@RequestMapping("/playground/utilities/english_lowercase_uppercase_converter/to_uppercase/api")
+	@ResponseBody
+	public String utilitiesEnglishLowerCaseUpperCaseConverterToUpperCaseAPI(
+			@RequestParam String textToBeUpperCase, Model model) {
+		return englishAlphabetService.toUpperCase(textToBeUpperCase);
 	}
 
 	@RequestMapping("/playground/utilities/html_escape_and_unescape")

@@ -34,6 +34,9 @@ public interface MenuConstants {
 	String SUB_MENU_ITEM_NAME_KOREAN_PHONEME_COMPOSER_AND_DECOMPOSER = "Korean Phoneme Composer & Decomposer";
 	String SUB_MENU_ITEM_URL_KOREAN_PHONEME_COMPOSER_AND_DECOMPOSER = "/playground/utilities/korean_phoneme_composer_and_decomposer";
 
+	String SUB_MENU_ITEM_NAME_ENGLISH_LOWERCASE_UPPERCASE_CONVERTER = "English LowerCase/UpperCase Converter";
+	String SUB_MENU_ITEM_URL_ENGLISH_LOWERCASE_UPPERCASE_CONVERTER = "/playground/utilities/english_lowercase_uppercase_converter";
+
 	String SUB_MENU_ITEM_NAME_HTML_ESCAPE_AND_UNESCAPE = "HTML Escape & Unescape";
 	String SUB_MENU_ITEM_URL_HTML_ESCAPE_AND_UNESCAPE = "/playground/utilities/html_escape_and_unescape";
 

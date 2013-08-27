@@ -3,10 +3,16 @@
 
 <script type="text/javascript">
 var convert = function () {
+	var number = $('#numberToConvert').val();
+	if (number == '') {
+		alert("Number must be specified.");
+		return;
+	}
+	
 	$.get('/playground/math/base_converter/api', {
 		sourceBase: $('#sourceBase').val(),
 		targetBase: $('#targetBase').val(),
-		numberToConvert: $('#numberToConvert').val()
+		numberToConvert: number
 	}).done(function (data) {
 		$('#convertedNumber').text(data);
 	});

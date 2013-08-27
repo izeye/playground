@@ -14,6 +14,7 @@ import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_N
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_BASE64_ENCODER_AND_DECODER;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_BASE_CONVERTER;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_COLLATZ;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_ENGLISH_LOWERCASE_UPPERCASE_CONVERTER;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_FACTORIAL;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_FIBONACCI;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_NAME_FRACTALS;
@@ -45,6 +46,7 @@ import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_U
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_BASE64_ENCODER_AND_DECODER;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_BASE_CONVERTER;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_COLLATZ;
+import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_ENGLISH_LOWERCASE_UPPERCASE_CONVERTER;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_FACTORIAL;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_FIBONACCI;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_FRACTALS;
@@ -113,6 +115,9 @@ public class DefaultMenuService implements MenuService {
 		subMenuSection.addMenuItem(
 				SUB_MENU_ITEM_NAME_KOREAN_PHONEME_COMPOSER_AND_DECOMPOSER,
 				SUB_MENU_ITEM_URL_KOREAN_PHONEME_COMPOSER_AND_DECOMPOSER);
+		subMenuSection.addMenuItem(
+				SUB_MENU_ITEM_NAME_ENGLISH_LOWERCASE_UPPERCASE_CONVERTER,
+				SUB_MENU_ITEM_URL_ENGLISH_LOWERCASE_UPPERCASE_CONVERTER);
 		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_HTML_ESCAPE_AND_UNESCAPE,
 				SUB_MENU_ITEM_URL_HTML_ESCAPE_AND_UNESCAPE);
 		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_UNIT_CONVERSION,
@@ -174,7 +179,8 @@ public class DefaultMenuService implements MenuService {
 				SUB_MENU_ITEM_URL_AUDIENCE_ACCESS_LOGS);
 		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_AUDIENCE_USER_AGENTS,
 				SUB_MENU_ITEM_URL_AUDIENCE_USER_AGENTS);
-		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_AUDIENCE_USER_AGENT_SPAM_IPS,
+		subMenuSection.addMenuItem(
+				SUB_MENU_ITEM_NAME_AUDIENCE_USER_AGENT_SPAM_IPS,
 				SUB_MENU_ITEM_URL_AUDIENCE_USER_AGENT_SPAM_IPS);
 		subMenuSection.addMenuItem(
 				SUB_MENU_ITEM_NAME_AUDIENCE_QR_CODE_GENERATION_LOGS,
