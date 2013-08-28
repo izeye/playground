@@ -1,15 +1,20 @@
 package com.izeye.playground.controller;
 
+import static com.izeye.playground.support.http.domain.HTTPConstants.HEADER_DELIMITER;
+import static com.izeye.playground.support.http.domain.HTTPConstants.PARAMETER_DELIMITER;
 import static com.izeye.playground.web.menu.domain.MenuConstants.MENU_NAME_PLAYGROUND;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.net.MalformedURLException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
@@ -36,6 +41,11 @@ import com.izeye.playground.support.date.service.DateService;
 import com.izeye.playground.support.encode.base64.service.Base64EncodingService;
 import com.izeye.playground.support.encode.unicode.service.UnicodeEncodingService;
 import com.izeye.playground.support.encode.url.service.URLEncodingService;
+import com.izeye.playground.support.http.client.domain.HTTPMethod;
+import com.izeye.playground.support.http.client.domain.HTTPRequest;
+import com.izeye.playground.support.http.client.domain.HTTPRequestAndResponsePair;
+import com.izeye.playground.support.http.client.domain.HTTPResponse;
+import com.izeye.playground.support.http.client.service.HTTPClient;
 import com.izeye.playground.support.ip.domain.IPInfo;
 import com.izeye.playground.support.ip.service.IPAnalyzer;
 import com.izeye.playground.support.keyboard.domain.KoreanKeyboardLayoutType;
@@ -98,6 +108,9 @@ public class PlaygroundController {
 
 	@Resource
 	private EnglishAlphabetService englishAlphabetService;
+
+	@Resource
+	private HTTPClient httpClient;
 
 	@Resource
 	private QRCodeService qrCodeService;
@@ -406,6 +419,62 @@ public class PlaygroundController {
 			@RequestParam String targetUnit,
 			@RequestParam BigDecimal valueToConvert, Model model) {
 		return unitType.convert(sourceUnit, valueToConvert, targetUnit);
+	}
+
+	@RequestMapping("/playground/utilities/http_client")
+	public String utilitiesHTTPClient(Model model) {
+		List<SubMenuSection> subMenuSections = menuService
+				.getSubMenu(MENU_NAME_PLAYGROUND);
+		model.addAttribute("subMenuSections", subMenuSections);
+
+		model.addAttribute("methods", HTTPMethod.values());
+
+		return "playground/utilities/http_client";
+	}
+
+	@RequestMapping("/playground/utilities/http_client/send/api")
+	@ResponseBody
+	public HTTPRequestAndResponsePair utilitiesHTTPClientSendAPI(
+			@RequestParam HTTPMethod method, @RequestParam String url,
+			@RequestParam String headers, @RequestParam String parameters,
+			Model model) throws MalformedURLException {
+		HTTPRequest request = new HTTPRequest(method, url);
+
+		headers = headers.trim();
+		if (!headers.isEmpty()) {
+			Map<String, String> headerMap = new HashMap<String, String>();
+
+			String[] splitHeaders = headers.split("\n");
+			for (String header : splitHeaders) {
+				String[] splitHeader = header.split(HEADER_DELIMITER);
+				String headerName = splitHeader[0].trim();
+				String headerValue = splitHeader[1].trim();
+				for (int i = 2; i < splitHeader.length; i++) {
+					headerValue += HEADER_DELIMITER + splitHeader[i];
+				}
+				headerMap.put(headerName, headerValue);
+			}
+
+			request.setHeaders(headerMap);
+		}
+
+		parameters = parameters.trim();
+		if (!parameters.isEmpty()) {
+			Map<String, String> parameterMap = new HashMap<String, String>();
+
+			String[] splitParameters = parameters.split("\n");
+			for (String parameter : splitParameters) {
+				String[] splitParameter = parameter.split(PARAMETER_DELIMITER);
+				String parameterName = splitParameter[0].trim();
+				String parameterValue = splitParameter[1].trim();
+				parameterMap.put(parameterName, parameterValue);
+			}
+
+			request.setParameters(parameterMap);
+		}
+
+		HTTPResponse response = httpClient.send(request);
+		return new HTTPRequestAndResponsePair(request, response);
 	}
 
 	@RequestMapping("/playground/utilities/text2qrcode")

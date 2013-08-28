@@ -1,0 +1,97 @@
+package com.izeye.playground.support.http.client.service;
+
+import static com.izeye.playground.support.http.client.domain.HTTPClientConstants.DEFAULT_RESPONSE_CONTENT_LENGTH_LIMIT;
+import static com.izeye.playground.support.http.domain.HTTPConstants.CRLF;
+import static com.izeye.playground.support.http.domain.HTTPConstants.HEADER_CONTENT_LENGTH;
+import static com.izeye.playground.support.http.domain.HTTPConstants.HEADER_DELIMITER;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
+
+import com.izeye.playground.support.http.client.domain.HTTPClientFailureException;
+import com.izeye.playground.support.http.client.domain.HTTPResponse;
+
+@Service("httpResponseParser")
+public class DefaultHTTPResponseParser implements HTTPResponseParser {
+
+	@Override
+	public HTTPResponse parse(InputStream is) throws HTTPClientFailureException {
+		return parse(is, false);
+	}
+
+	@Override
+	public HTTPResponse parse(InputStream is, boolean contentLengthLimited)
+			throws HTTPClientFailureException {
+		HTTPResponse response = new HTTPResponse();
+
+		BufferedReader br = null;
+		try {
+			StringBuilder sbRawResponse = new StringBuilder();
+			br = new BufferedReader(new InputStreamReader(is));
+
+			String line = br.readLine();
+			sbRawResponse.append(line);
+			sbRawResponse.append(CRLF);
+
+			String[] splitLine = line.split(" ");
+			String version = splitLine[0].split("/")[1];
+			HttpStatus status = HttpStatus.valueOf(Integer
+					.valueOf(splitLine[1]));
+			response.setVersion(version);
+			response.setStatus(status);
+
+			Map<String, String> headers = new HashMap<String, String>();
+			while (!(line = br.readLine()).isEmpty()) {
+				sbRawResponse.append(line);
+				sbRawResponse.append(CRLF);
+
+				splitLine = line.split(HEADER_DELIMITER);
+				String headerName = splitLine[0];
+				String headerValue = splitLine[1].trim();
+				headers.put(headerName, headerValue);
+			}
+			if (contentLengthLimited) {
+				int contentLength = Integer.parseInt(headers
+						.get(HEADER_CONTENT_LENGTH));
+				if (contentLength > DEFAULT_RESPONSE_CONTENT_LENGTH_LIMIT) {
+					throw new HTTPClientFailureException(
+							"Content length is too big: " + contentLength
+									+ " (Max content length: "
+									+ DEFAULT_RESPONSE_CONTENT_LENGTH_LIMIT
+									+ ")");
+				}
+			}
+			sbRawResponse.append(CRLF);
+
+			response.setHeaders(headers);
+
+			StringBuilder sbBody = new StringBuilder();
+			while ((line = br.readLine()) != null) {
+				sbBody.append(line);
+				sbBody.append("\n");
+			}
+			if (sbBody.length() != 0) {
+				sbBody.deleteCharAt(sbBody.length() - 1);
+			}
+			String body = sbBody.toString();
+			sbRawResponse.append(body);
+
+			response.setBody(body);
+
+			String rawResponse = sbRawResponse.toString();
+			response.setRawResponse(rawResponse);
+			return response;
+		} catch (IOException e) {
+			e.printStackTrace();
+			throw new HTTPClientFailureException(e);
+		}
+	}
+
+}

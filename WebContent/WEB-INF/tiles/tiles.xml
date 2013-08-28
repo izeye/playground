@@ -85,6 +85,11 @@
 		<put-attribute name="body" value="/WEB-INF/views/playground/utilities/qrcode/qrcode.jsp" />
 	</definition>
 
+	<definition name="playground/utilities/http_client" extends="playground/playground">
+		<put-attribute name="body_title" value="HTTP Client" />
+		<put-attribute name="body" value="/WEB-INF/views/playground/utilities/http_client/http_client.jsp" />
+	</definition>
+
 	<definition name="playground/utilities/ip" extends="playground/playground">
 		<put-attribute name="body_title" value="IP Analyzer" />
 		<put-attribute name="body" value="/WEB-INF/views/playground/utilities/ip/ip.jsp" />

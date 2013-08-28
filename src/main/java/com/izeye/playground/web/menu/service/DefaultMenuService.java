@@ -1,6 +1,6 @@
 package com.izeye.playground.web.menu.service;
 
-import static com.izeye.playground.web.menu.domain.MenuConstants.MENU_NAME_ADMIN;
+import static com.izeye.playground.web.menu.domain.MenuConstants.*;
 import static com.izeye.playground.web.menu.domain.MenuConstants.MENU_NAME_PLAYGROUND;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_HEADER_ANALYTICS;
 import static com.izeye.playground.web.menu.domain.MenuConstants.SUB_MENU_HEADER_DEMO;
@@ -122,6 +122,8 @@ public class DefaultMenuService implements MenuService {
 				SUB_MENU_ITEM_URL_HTML_ESCAPE_AND_UNESCAPE);
 		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_UNIT_CONVERSION,
 				SUB_MENU_ITEM_URL_UNIT_CONVERSION);
+		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_HTTP_CLIENT,
+				SUB_MENU_ITEM_URL_HTTP_CLIENT);
 		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_TEXT_2_QR_CODE,
 				SUB_MENU_ITEM_URL_TEXT_2_QR_CODE);
 		subMenuSection.addMenuItem(SUB_MENU_ITEM_NAME_IP_ANALYZER,
