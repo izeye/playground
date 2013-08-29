@@ -48,6 +48,8 @@ public enum BrowserType {
 	ABONTI("Abonti", "Abonti", BOT), //
 	JAVA("Java", "Java", BOT), //
 	PYTHON("python-requests", "Python", BOT), //
+	IZEYE_HTTP_CLIENT("izeye-http-client", "izeye's HTTP Client", BOT), //
+	WEB_SNIFFER("Web-sniffer", "Web Sniffer", BOT), //
 	CHROME("Chrome", "Chrome", NORMAL), //
 	IE("MSIE", "Internet Explorer", NORMAL), //
 	FIREFOX("Firefox", "Firefox", NORMAL), //

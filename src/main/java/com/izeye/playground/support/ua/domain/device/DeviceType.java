@@ -38,7 +38,8 @@ public enum DeviceType {
 	OPTIMUS_G_PRO_LG_U_PLUS("LG-F240L", "Optimus G Pro", LG, KT, true), //
 	OPTIMUS_VU("LG-F100L", "Optimus Vu", LG, LG_U_PLUS, true), //
 	OPTIMUS_3D("LG-SU760", "Optimus 3D", LG, CarrierType.NOT_AVAILABLE, true), //
-	SKY_VEGA_RACER_KT("IM-A770K", "SKY Vega Racer", PANTECH, KT, true), //
+	VEGA_RACER_KT("IM-A770K", "Vega Racer", PANTECH, KT, true), //
+	VEGA_R3_SKT("IM-A850S", "Vega R3", PANTECH, SKT, true), //
 	HTC_DESIRE_A8181("Desire_A8181", "HTC Desire A8181 (Bravo)", //
 			HTC, CarrierType.NOT_AVAILABLE, true), //
 	NOT_AVAILABLE(StringConstants.NOT_AVAILABLE, StringConstants.NOT_AVAILABLE,

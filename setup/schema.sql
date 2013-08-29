@@ -22,3 +22,42 @@ CREATE TABLE tb_qrcode_generation_log (
 	generated_time DATETIME NOT NULL,
 	PRIMARY KEY (id)
 );
+
+CREATE TABLE tb_menu_item (
+	id INT AUTO_INCREMENT,
+	name VARCHAR(128) NOT NULL,
+	path VARCHAR(128) NOT NULL,
+	description VARCHAR(1024) NOT NULL,
+	sequence INT NOT NULL,
+	PRIMARY KEY (id)
+);
+INSERT INTO tb_menu_item (name, path, description, sequence) VALUES ('Home', '/', 'This is for the home.', 1);
+INSERT INTO tb_menu_item (name, path, description, sequence) VALUES ('Playground', '/playground', 'This is for the playground.', 2);
+INSERT INTO tb_menu_item (name, path, description, sequence) VALUES ('Utilities', '/utilities', 'This is for utilities.', 3);
+INSERT INTO tb_menu_item (name, path, description, sequence) VALUES ('About', '/about', 'This is about me.', 4);
+INSERT INTO tb_menu_item (name, path, description, sequence) VALUES ('Admin', '/admin', 'This is for the administration.', 5);
+
+CREATE TABLE tb_submenu_item_group (
+	id INT AUTO_INCREMENT,
+	menu_id INT NOT NULL,
+	name VARCHAR(128) NOT NULL,
+	description VARCHAR(1024) NOT NULL,
+	sequence INT NOT NULL,
+	PRIMARY KEY (id)
+);
+INSERT INTO tb_submenu_item_group (menu_id, name, description, sequence) VALUES (2, '?', '?', 1);
+INSERT INTO tb_submenu_item_group (menu_id, name, description, sequence) VALUES (3, 'Computer', 'There are utilities for computer.', 1);
+INSERT INTO tb_submenu_item_group (menu_id, name, description, sequence) VALUES (3, 'Math', 'There are utilities for mathematics.', 1);
+INSERT INTO tb_submenu_item_group (menu_id, name, description, sequence) VALUES (3, 'Life', 'There are utilities for life.', 2);
+INSERT INTO tb_submenu_item_group (menu_id, name, description, sequence) VALUES (3, 'Linguistics', 'There are utilities for linguistics.', 1);
+# Fill the remainings.
+
+CREATE TABLE tb_submenu_item (
+	id INT AUTO_INCREMENT,
+	group_id INT,
+	name VARCHAR(128) NOT NULL,
+	path VARCHAR(128) NOT NULL,
+	description VARCHAR(1024) NOT NULL,
+	sequence INT NOT NULL,
+	PRIMARY KEY (id)
+);

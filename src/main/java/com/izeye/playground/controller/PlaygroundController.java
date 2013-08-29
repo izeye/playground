@@ -69,6 +69,8 @@ import com.izeye.playground.support.math.prime.domain.PrimeFactor;
 import com.izeye.playground.support.math.prime.service.PrimeSolver;
 import com.izeye.playground.support.qrcode.domain.QRCodeGenerationRequest;
 import com.izeye.playground.support.qrcode.service.QRCodeService;
+import com.izeye.playground.support.text.domain.TextCount;
+import com.izeye.playground.support.text.service.TextService;
 import com.izeye.playground.support.ua.domain.UserAgent;
 import com.izeye.playground.support.ua.service.UserAgentAnalyzer;
 import com.izeye.playground.support.unit.domain.UnitType;
@@ -111,6 +113,9 @@ public class PlaygroundController {
 
 	@Resource
 	private HTTPClient httpClient;
+
+	@Resource
+	private TextService textService;
 
 	@Resource
 	private QRCodeService qrCodeService;
@@ -475,6 +480,22 @@ public class PlaygroundController {
 
 		HTTPResponse response = httpClient.send(request);
 		return new HTTPRequestAndResponsePair(request, response);
+	}
+
+	@RequestMapping("/playground/utilities/text_counter")
+	public String utilitiesTextCounter(Model model) {
+		List<SubMenuSection> subMenuSections = menuService
+				.getSubMenu(MENU_NAME_PLAYGROUND);
+		model.addAttribute("subMenuSections", subMenuSections);
+
+		return "playground/utilities/text_counter";
+	}
+
+	@RequestMapping("/playground/utilities/text_counter/count/api")
+	@ResponseBody
+	public TextCount utilitiesTextCounterCountApi(@RequestParam String text,
+			Model model) {
+		return textService.countAll(text);
 	}
 
 	@RequestMapping("/playground/utilities/text2qrcode")

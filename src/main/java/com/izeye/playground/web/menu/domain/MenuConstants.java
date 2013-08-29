@@ -46,6 +46,9 @@ public interface MenuConstants {
 	String SUB_MENU_ITEM_NAME_HTTP_CLIENT = "HTTP Client";
 	String SUB_MENU_ITEM_URL_HTTP_CLIENT = "/playground/utilities/http_client";
 
+	String SUB_MENU_ITEM_NAME_TEXT_COUNTER = "Text Counter";
+	String SUB_MENU_ITEM_URL_TEXT_COUNTER = "/playground/utilities/text_counter";
+
 	String SUB_MENU_ITEM_NAME_TEXT_2_QR_CODE = "Text 2 QR Code";
 	String SUB_MENU_ITEM_URL_TEXT_2_QR_CODE = "/playground/utilities/text2qrcode";
 
