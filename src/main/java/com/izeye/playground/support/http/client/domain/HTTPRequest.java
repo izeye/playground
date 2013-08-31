@@ -143,7 +143,10 @@ public class HTTPRequest {
 	}
 
 	public void setHeaders(Map<String, String> headers) {
-		this.headers = headers;
+		// NOTE:
+		// Doesn't replace, but override the default headers.
+		// this.headers = headers;
+		this.headers.putAll(headers);
 	}
 
 	public Map<String, String> getParameters() {

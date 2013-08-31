@@ -15,7 +15,7 @@ public class IPInfo {
 	}
 
 	public String getLocation() {
-		Country country = whois.getCountry();
+		Country country = getCountry();
 		if (country == Country.NOT_AVAILABLE
 				|| !country.getCode().equalsIgnoreCase(
 						KisaWhoisConstants.COUNTRY_CODE_KR)) {
@@ -23,6 +23,10 @@ public class IPInfo {
 		} else {
 			return whois.getKoreanDetail().getUserAddr();
 		}
+	}
+
+	public Country getCountry() {
+		return whois.getCountry();
 	}
 
 	@Override

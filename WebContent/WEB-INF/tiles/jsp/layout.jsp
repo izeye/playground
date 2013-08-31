@@ -25,7 +25,7 @@ body {
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 </head>
 <body>
-	<tiles:insertAttribute name="main_menu" />
+	<tiles:insertAttribute name="menu" />
 	<div class="container-fluid">
 		<div class="row-fluid">
 			<div class="span3">

@@ -30,11 +30,13 @@
 			<td>${accessLog.getId()}</td>
 			<td><fmt:formatDate value="${accessLog.getAccessTime()}"
 					pattern="yyyy-MM-dd HH:mm:ss" /></td>
-			<td title="${ipAnalyzer.analyze(ip).getLocation()}">
+			<c:set var="analyzedIp" value="${ipAnalyzer.analyze(ip)}"></c:set>
+			<td title="${analyzedIp.getLocation()}">
 			${ip}
 			<c:if test="${analyzedUserAgent.isBot()}">
 				<span class="label label-info">Bot</span>
 			</c:if>
+			<span class="label label-info">${analyzedIp.getCountry().getName()}</span>
 			</td>
 			<td>${accessLog.getUrl()}</td>
 			<c:choose>

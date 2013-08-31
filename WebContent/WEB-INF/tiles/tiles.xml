@@ -5,159 +5,21 @@
 <tiles-definitions>
 	<definition name="base.definition" template="/WEB-INF/tiles/jsp/layout.jsp">
 		<put-attribute name="title" value="izeye's Playground" />
-		<put-attribute name="main_menu" value="/WEB-INF/tiles/jsp/main_menu.jsp" />
-		<put-attribute name="sub_menu" value="" />
+		<put-attribute name="menu" value="/WEB-INF/tiles/jsp/menu.jsp" />
+		<put-attribute name="sub_menu" value="/WEB-INF/tiles/jsp/sub_menu.jsp" />
 		<put-attribute name="body_title" value="" />
-		<put-attribute name="facebook_like" value="" />
-		<put-attribute name="facebook_share" value="" />
+		<put-attribute name="facebook_like" value="/WEB-INF/tiles/jsp/facebook_like.jsp" />
+		<put-attribute name="facebook_share" value="/WEB-INF/tiles/jsp/facebook_share.jsp" />
 		<put-attribute name="body" value="" />
 		<put-attribute name="footer" value="/WEB-INF/tiles/jsp/footer.jsp" />
 	</definition>
 
-	<definition name="home/home" extends="base.definition">
+	<definition name="home" extends="base.definition">
 		<put-attribute name="body" value="/WEB-INF/views/home/home.jsp" />
 	</definition>
 	
-	<definition name="playground/playground" extends="base.definition">
-		<put-attribute name="sub_menu" value="/WEB-INF/tiles/jsp/sub_menu.jsp" />
-		<put-attribute name="facebook_like" value="/WEB-INF/tiles/jsp/facebook_like.jsp" />
-		<put-attribute name="facebook_share" value="/WEB-INF/tiles/jsp/facebook_share.jsp" />
+	<definition name="playground" extends="base.definition">
 		<put-attribute name="body" value="/WEB-INF/views/playground/playground.jsp" />
-	</definition>
-
-	<definition name="playground/utilities/timestamp2date" extends="playground/playground">
-		<put-attribute name="body_title" value="Timestamp 2 Date" />
-		<put-attribute name="body" value="/WEB-INF/views/playground/utilities/date/date.jsp" />
-	</definition>
-
-	<definition name="playground/utilities/url_encoder_and_decoder" extends="playground/playground">
-		<put-attribute name="body_title" value="URL Encoder &amp; Decoder" />
-		<put-attribute name="body" value="/WEB-INF/views/playground/utilities/url_encoder_and_decoder/url_encoder_and_decoder.jsp" />
-	</definition>
-
-	<definition name="playground/utilities/base64_encoder_and_decoder" extends="playground/playground">
-		<put-attribute name="body_title" value="Base64 Encoder &amp; Decoder" />
-		<put-attribute name="body" value="/WEB-INF/views/playground/utilities/base64_encoder_and_decoder/base64_encoder_and_decoder.jsp" />
-	</definition>
-
-	<definition name="playground/utilities/unicode_encoder_and_decoder" extends="playground/playground">
-		<put-attribute name="body_title" value="Unicode Encoder &amp; Decoder" />
-		<put-attribute name="body" value="/WEB-INF/views/playground/utilities/unicode_encoder_and_decoder/unicode_encoder_and_decoder.jsp" />
-	</definition>
-
-	<definition name="playground/utilities/korean_unicode_table" extends="playground/playground">
-		<put-attribute name="body_title" value="Korean Unicode Table" />
-		<put-attribute name="body" value="/WEB-INF/views/playground/utilities/korean_unicode_table/korean_unicode_table.jsp" />
-	</definition>
-
-	<definition name="playground/utilities/korean_romanization" extends="playground/playground">
-		<put-attribute name="body_title" value="Korean Romanization" />
-		<put-attribute name="body" value="/WEB-INF/views/playground/utilities/korean_romanization/korean_romanization.jsp" />
-	</definition>
-
-	<definition name="playground/utilities/korean_english_language_switch_typo_fixer" extends="playground/playground">
-		<put-attribute name="body_title" value="Korean/English Language Switch Type Fixer" />
-		<put-attribute name="body" value="/WEB-INF/views/playground/utilities/korean_english_language_switch_typo_fixer/korean_english_language_switch_typo_fixer.jsp" />
-	</definition>
-
-	<definition name="playground/utilities/korean_phoneme_composer_and_decomposer" extends="playground/playground">
-		<put-attribute name="body_title" value="Korean Phoneme Composer &amp; Decomposer" />
-		<put-attribute name="body" value="/WEB-INF/views/playground/utilities/korean_phoneme_composer_and_decomposer/korean_phoneme_composer_and_decomposer.jsp" />
-	</definition>
-
-	<definition name="playground/utilities/english_lowercase_uppercase_converter" extends="playground/playground">
-		<put-attribute name="body_title" value="English LowerCase/UpperCase Converter" />
-		<put-attribute name="body" value="/WEB-INF/views/playground/utilities/english_lowercase_uppercase_converter/english_lowercase_uppercase_converter.jsp" />
-	</definition>
-
-	<definition name="playground/utilities/html_escape_and_unescape" extends="playground/playground">
-		<put-attribute name="body_title" value="HTML Escape &amp; Unescape" />
-		<put-attribute name="body" value="/WEB-INF/views/playground/utilities/html_escape_and_unescape/html_escape_and_unescape.jsp" />
-	</definition>
-
-	<definition name="playground/utilities/unit_conversion" extends="playground/playground">
-		<put-attribute name="body_title" value="Unit Conversion" />
-		<put-attribute name="body" value="/WEB-INF/views/playground/utilities/unit/unit.jsp" />
-	</definition>
-
-	<definition name="playground/utilities/http_client" extends="playground/playground">
-		<put-attribute name="body_title" value="HTTP Client" />
-		<put-attribute name="body" value="/WEB-INF/views/playground/utilities/http_client/http_client.jsp" />
-	</definition>
-
-	<definition name="playground/utilities/text_counter" extends="playground/playground">
-		<put-attribute name="body_title" value="Text Counter" />
-		<put-attribute name="body" value="/WEB-INF/views/playground/utilities/text_counter/text_counter.jsp" />
-	</definition>
-
-	<definition name="playground/utilities/text2qrcode" extends="playground/playground">
-		<put-attribute name="body_title" value="Text 2 QR Code" />
-		<put-attribute name="body" value="/WEB-INF/views/playground/utilities/qrcode/qrcode.jsp" />
-	</definition>
-
-	<definition name="playground/utilities/ip" extends="playground/playground">
-		<put-attribute name="body_title" value="IP Analyzer" />
-		<put-attribute name="body" value="/WEB-INF/views/playground/utilities/ip/ip.jsp" />
-	</definition>
-
-	<definition name="playground/utilities/ua" extends="playground/playground">
-		<put-attribute name="body_title" value="UA (User Agent) Analyzer" />
-		<put-attribute name="body" value="/WEB-INF/views/playground/utilities/ua/ua.jsp" />
-	</definition>
-
-	<definition name="playground/utilities/world_clock" extends="playground/playground">
-		<put-attribute name="body_title" value="World Clock" />
-		<put-attribute name="body" value="/WEB-INF/views/playground/utilities/clock/clock.jsp" />
-	</definition>
-
-	<definition name="playground/utilities/multi_word_notation_converter" extends="playground/playground">
-		<put-attribute name="body_title" value="Multi-word Notation Converter" />
-		<put-attribute name="body" value="/WEB-INF/views/playground/utilities/multi_word_notation_converter/multi_word_notation_converter.jsp" />
-	</definition>
-
-	<definition name="playground/math/fractals" extends="playground/playground">
-		<put-attribute name="body_title" value="Fractals" />
-		<put-attribute name="body" value="/WEB-INF/views/playground/math/fractals/fractals.jsp" />
-	</definition>
-
-	<definition name="playground/math/base_converter" extends="playground/playground">
-		<put-attribute name="body_title" value="Base Converter" />
-		<put-attribute name="body" value="/WEB-INF/views/playground/math/base_converter/base_converter.jsp" />
-	</definition>
-
-	<definition name="playground/math/gcd_and_lcm" extends="playground/playground">
-		<put-attribute name="body_title" value="GCD &amp; LCM" />
-		<put-attribute name="body" value="/WEB-INF/views/playground/math/gcd_and_lcm/gcd_and_lcm.jsp" />
-	</definition>
-
-	<definition name="playground/math/prime" extends="playground/playground">
-		<put-attribute name="body_title" value="Prime" />
-		<put-attribute name="body" value="/WEB-INF/views/playground/math/prime/prime.jsp" />
-	</definition>
-
-	<definition name="playground/math/prime_factorization" extends="playground/playground">
-		<put-attribute name="body_title" value="Prime Factorization" />
-		<put-attribute name="body" value="/WEB-INF/views/playground/math/prime/prime_factorization.jsp" />
-	</definition>
-
-	<definition name="playground/math/factorial" extends="playground/playground">
-		<put-attribute name="body_title" value="Factorial" />
-		<put-attribute name="body" value="/WEB-INF/views/playground/math/factorial/factorial.jsp" />
-	</definition>
-
-	<definition name="playground/math/fibonacci" extends="playground/playground">
-		<put-attribute name="body_title" value="Fibonacci Number" />
-		<put-attribute name="body" value="/WEB-INF/views/playground/math/fibonacci/fibonacci.jsp" />
-	</definition>
-
-	<definition name="playground/math/collatz" extends="playground/playground">
-		<put-attribute name="body_title" value="Collatz Conjecture" />
-		<put-attribute name="body" value="/WEB-INF/views/playground/math/collatz/collatz.jsp" />
-	</definition>
-
-	<definition name="playground/math/goldbach" extends="playground/playground">
-		<put-attribute name="body_title" value="Goldbach's Conjecture" />
-		<put-attribute name="body" value="/WEB-INF/views/playground/math/goldbach/goldbach.jsp" />
 	</definition>
 
 	<definition name="playground/demo/webcam.definition" template="/WEB-INF/views/playground/demo/webcam/webcam.jsp">
@@ -173,51 +35,198 @@
 		<put-attribute name="sub_body" value="/WEB-INF/views/playground/demo/webcam/snapshots.jsp" />
 	</definition>
 
-	<definition name="playground/demo/webcam/live" extends="playground/playground">
+	<definition name="playground/demo/webcam/live" extends="playground">
 		<put-attribute name="body_title" value="Webcam" />
 		<put-attribute name="body" value="playground/demo/webcam/live.body" />
 	</definition>
 
-	<definition name="playground/demo/webcam/snapshots" extends="playground/playground">
+	<definition name="playground/demo/webcam/snapshots" extends="playground">
 		<put-attribute name="body_title" value="Webcam" />
 		<put-attribute name="body" value="playground/demo/webcam/snapshots.body" />
 	</definition>
 
-	<definition name="playground/demo/kakao_link" extends="playground/playground">
+	<definition name="playground/demo/kakao_link" extends="playground">
 		<put-attribute name="body_title" value="KakaoLink" />
 		<put-attribute name="body" value="/WEB-INF/views/playground/demo/kakao/kakao.jsp" />
 	</definition>
 
-	<definition name="about/about" extends="base.definition">
+	<definition name="tools" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/views/tools/tools.jsp" />
+	</definition>
+
+	<definition name="tools/life/unit_converter" extends="tools">
+		<put-attribute name="body_title" value="Unit Converter" />
+		<put-attribute name="body" value="/WEB-INF/views/tools/life/unit_converter/unit_converter.jsp" />
+	</definition>
+
+	<definition name="tools/life/text_counter" extends="tools">
+		<put-attribute name="body_title" value="Text Counter" />
+		<put-attribute name="body" value="/WEB-INF/views/tools/life/text_counter/text_counter.jsp" />
+	</definition>
+
+	<definition name="tools/life/text2qrcode" extends="tools">
+		<put-attribute name="body_title" value="Text 2 QR Code" />
+		<put-attribute name="body" value="/WEB-INF/views/tools/life/text2qrcode/text2qrcode.jsp" />
+	</definition>
+
+	<definition name="tools/life/world_clock" extends="tools">
+		<put-attribute name="body_title" value="World Clock" />
+		<put-attribute name="body" value="/WEB-INF/views/tools/life/world_clock/world_clock.jsp" />
+	</definition>
+
+	<definition name="tools/computer/timestamp2datetime" extends="tools">
+		<put-attribute name="body_title" value="Timestamp 2 Date&amp;Time" />
+		<put-attribute name="body" value="/WEB-INF/views/tools/computer/timestamp2datetime/timestamp2datetime.jsp" />
+	</definition>
+
+	<definition name="tools/computer/url_encoder_and_decoder" extends="tools">
+		<put-attribute name="body_title" value="URL Encoder&amp;Decoder" />
+		<put-attribute name="body" value="/WEB-INF/views/tools/computer/url_encoder_and_decoder/url_encoder_and_decoder.jsp" />
+	</definition>
+
+	<definition name="tools/computer/base64_encoder_and_decoder" extends="tools">
+		<put-attribute name="body_title" value="Base64 Encoder&amp;Decoder" />
+		<put-attribute name="body" value="/WEB-INF/views/tools/computer/base64_encoder_and_decoder/base64_encoder_and_decoder.jsp" />
+	</definition>
+
+	<definition name="tools/computer/unicode_encoder_and_decoder" extends="tools">
+		<put-attribute name="body_title" value="Unicode Encoder&amp;Decoder" />
+		<put-attribute name="body" value="/WEB-INF/views/tools/computer/unicode_encoder_and_decoder/unicode_encoder_and_decoder.jsp" />
+	</definition>
+
+	<definition name="tools/computer/korean_unicode_table" extends="tools">
+		<put-attribute name="body_title" value="Korean Unicode Table" />
+		<put-attribute name="body" value="/WEB-INF/views/tools/computer/korean_unicode_table/korean_unicode_table.jsp" />
+	</definition>
+
+	<definition name="tools/computer/html_escape_and_unescape" extends="tools">
+		<put-attribute name="body_title" value="HTML Escape&amp;Unescape" />
+		<put-attribute name="body" value="/WEB-INF/views/tools/computer/html_escape_and_unescape/html_escape_and_unescape.jsp" />
+	</definition>
+
+	<definition name="tools/computer/http_client" extends="tools">
+		<put-attribute name="body_title" value="HTTP Client" />
+		<put-attribute name="body" value="/WEB-INF/views/tools/computer/http_client/http_client.jsp" />
+	</definition>
+
+	<definition name="tools/computer/ip_analyzer" extends="tools">
+		<put-attribute name="body_title" value="IP Analyzer" />
+		<put-attribute name="body" value="/WEB-INF/views/tools/computer/ip_analyzer/ip_analyzer.jsp" />
+	</definition>
+
+	<definition name="tools/computer/ua_analyzer" extends="tools">
+		<put-attribute name="body_title" value="UA (User Agent) Analyzer" />
+		<put-attribute name="body" value="/WEB-INF/views/tools/computer/ua_analyzer/ua_analyzer.jsp" />
+	</definition>
+
+	<definition name="tools/computer/multi_word_notation_converter" extends="tools">
+		<put-attribute name="body_title" value="Multi-word Notation Converter" />
+		<put-attribute name="body" value="/WEB-INF/views/tools/computer/multi_word_notation_converter/multi_word_notation_converter.jsp" />
+	</definition>
+
+	<definition name="tools/computer/base_converter" extends="tools">
+		<put-attribute name="body_title" value="Base Converter" />
+		<put-attribute name="body" value="/WEB-INF/views/tools/computer/base_converter/base_converter.jsp" />
+	</definition>
+
+	<definition name="tools/linguistics/korean_romanization" extends="tools">
+		<put-attribute name="body_title" value="Korean Romanization" />
+		<put-attribute name="body" value="/WEB-INF/views/tools/linguistics/korean_romanization/korean_romanization.jsp" />
+	</definition>
+
+	<definition name="tools/linguistics/korean_english_language_switch_typo_fixer" extends="tools">
+		<put-attribute name="body_title" value="Korean/English Language Switch Typo Fixer" />
+		<put-attribute name="body" value="/WEB-INF/views/tools/linguistics/korean_english_language_switch_typo_fixer/korean_english_language_switch_typo_fixer.jsp" />
+	</definition>
+
+	<definition name="tools/linguistics/korean_phoneme_composer_and_decomposer" extends="tools">
+		<put-attribute name="body_title" value="Korean Phoneme Composer&amp;Decomposer" />
+		<put-attribute name="body" value="/WEB-INF/views/tools/linguistics/korean_phoneme_composer_and_decomposer/korean_phoneme_composer_and_decomposer.jsp" />
+	</definition>
+
+	<definition name="tools/linguistics/english_lowercase_uppercase_converter" extends="tools">
+		<put-attribute name="body_title" value="English LowerCase/UpperCase Converter" />
+		<put-attribute name="body" value="/WEB-INF/views/tools/linguistics/english_lowercase_uppercase_converter/english_lowercase_uppercase_converter.jsp" />
+	</definition>
+
+	<definition name="math" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/views/math/math.jsp" />
+	</definition>
+
+	<definition name="math/algebra/prime" extends="math">
+		<put-attribute name="body_title" value="Prime" />
+		<put-attribute name="body" value="/WEB-INF/views/math/algebra/prime/prime.jsp" />
+	</definition>
+
+	<definition name="math/algebra/prime_factorization" extends="math">
+		<put-attribute name="body_title" value="Prime Factorization" />
+		<put-attribute name="body" value="/WEB-INF/views/math/algebra/prime/prime_factorization.jsp" />
+	</definition>
+
+	<definition name="math/algebra/gcd_and_lcm" extends="math">
+		<put-attribute name="body_title" value="GCD&amp;LCM" />
+		<put-attribute name="body" value="/WEB-INF/views/math/algebra/gcd_and_lcm/gcd_and_lcm.jsp" />
+	</definition>
+
+	<definition name="math/algebra/factorial" extends="math">
+		<put-attribute name="body_title" value="Factorial" />
+		<put-attribute name="body" value="/WEB-INF/views/math/algebra/factorial/factorial.jsp" />
+	</definition>
+
+	<definition name="math/algebra/fibonacci" extends="math">
+		<put-attribute name="body_title" value="Fibonacci Number" />
+		<put-attribute name="body" value="/WEB-INF/views/math/algebra/fibonacci/fibonacci.jsp" />
+	</definition>
+
+	<definition name="math/algebra/goldbach" extends="math">
+		<put-attribute name="body_title" value="Goldbach's Conjecture" />
+		<put-attribute name="body" value="/WEB-INF/views/math/algebra/goldbach/goldbach.jsp" />
+	</definition>
+
+	<definition name="math/algebra/collatz" extends="math">
+		<put-attribute name="body_title" value="Collatz Conjecture" />
+		<put-attribute name="body" value="/WEB-INF/views/math/algebra/collatz/collatz.jsp" />
+	</definition>
+
+	<definition name="math/geometry/fractals" extends="math">
+		<put-attribute name="body_title" value="Fractals" />
+		<put-attribute name="body" value="/WEB-INF/views/math/geometry/fractals/fractals.jsp" />
+	</definition>
+
+	<definition name="about" extends="base.definition">
 		<put-attribute name="body" value="/WEB-INF/views/about/about.jsp" />
 	</definition>
 
-	<definition name="links/links" extends="base.definition">
-		<put-attribute name="body" value="/WEB-INF/views/links/links.jsp" />
+	<definition name="about/about_me/about_me" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/views/about/about_me/about_me.jsp" />
 	</definition>
 
-	<definition name="admin/admin" extends="base.definition">
+	<definition name="about/links/links" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/views/about/links/links.jsp" />
+	</definition>
+
+	<definition name="admin" extends="base.definition">
 		<put-attribute name="sub_menu" value="/WEB-INF/tiles/jsp/sub_menu.jsp" />
 		<put-attribute name="body" value="/WEB-INF/views/admin/admin.jsp" />
 	</definition>
 
-	<definition name="admin/analytics/audience/overview" extends="admin/admin">
+	<definition name="admin/analytics/audience/overview" extends="admin">
 		<put-attribute name="body" value="/WEB-INF/views/admin/analytics/audience/overview.jsp" />
 	</definition>
 
-	<definition name="admin/analytics/audience/access_logs" extends="admin/admin">
+	<definition name="admin/analytics/audience/access_logs" extends="admin">
 		<put-attribute name="body" value="/WEB-INF/views/admin/analytics/audience/access_logs.jsp" />
 	</definition>
 
-	<definition name="admin/analytics/audience/user_agents" extends="admin/admin">
+	<definition name="admin/analytics/audience/user_agents" extends="admin">
 		<put-attribute name="body" value="/WEB-INF/views/admin/analytics/audience/user_agents.jsp" />
 	</definition>
 
-	<definition name="admin/analytics/audience/user_agent_spam_ips" extends="admin/admin">
+	<definition name="admin/analytics/audience/user_agent_spam_ips" extends="admin">
 		<put-attribute name="body" value="/WEB-INF/views/admin/analytics/audience/user_agent_spam_ips.jsp" />
 	</definition>
 
-	<definition name="admin/analytics/qrcode/qrcode_generation_logs" extends="admin/admin">
+	<definition name="admin/analytics/qrcode/qrcode_generation_logs" extends="admin">
 		<put-attribute name="body" value="/WEB-INF/views/admin/analytics/qrcode/qrcode_generation_logs.jsp" />
 	</definition>
 </tiles-definitions>

@@ -1,0 +1,1 @@
+This page provides solutions to various mathematical problems.
