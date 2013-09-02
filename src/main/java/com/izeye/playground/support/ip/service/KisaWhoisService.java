@@ -25,7 +25,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.izeye.playground.common.domain.StringConstants;
-import com.izeye.playground.common.util.HTTPUtils;
+import com.izeye.playground.common.util.HttpUtils;
 import com.izeye.playground.common.util.JDOMUtils;
 import com.izeye.playground.common.util.URLUtils;
 import com.izeye.playground.support.country.domain.Country;
@@ -55,7 +55,7 @@ public class KisaWhoisService implements WhoisService {
 
 		String apiUrl = URLUtils.createURL(KISA_WHOIS_API_URL_PREFIX, params);
 		try {
-			InputStream is = HTTPUtils.urlToInputStream(apiUrl);
+			InputStream is = HttpUtils.urlToInputStream(apiUrl);
 			Element root = JDOMUtils.inputStreamToRootElement(is);
 			Element countryCode = root.getChild(COUNTRY_CODE);
 

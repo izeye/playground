@@ -5,8 +5,6 @@ import java.util.Date;
 
 import org.joda.time.DateTime;
 
-import com.sun.org.apache.bcel.internal.generic.NEW;
-
 public class DateUtils {
 
 	private static final ThreadLocal<SimpleDateFormat> DEFAULT_DATE_FORMAT = new ThreadLocal<SimpleDateFormat>() {

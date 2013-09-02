@@ -7,7 +7,7 @@ import java.net.URL;
 import javax.servlet.http.HttpServletRequest;
 import static com.izeye.playground.common.domain.HttpConstants.*;
 
-public class HTTPUtils {
+public class HttpUtils {
 
 	public static String getUserAgent(HttpServletRequest request) {
 		return request.getHeader(HEADER_USER_AGENT);

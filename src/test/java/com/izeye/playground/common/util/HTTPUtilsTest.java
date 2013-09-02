@@ -7,12 +7,12 @@ import java.io.InputStreamReader;
 
 import org.junit.Test;
 
-public class HTTPUtilsTest {
+public class HttpUtilsTest {
 
 	@Test
 	public void urlToInputStream() throws IOException {
 		String urlAsString = "http://devday.tistory.com";
-		InputStream is = HTTPUtils.urlToInputStream(urlAsString);
+		InputStream is = HttpUtils.urlToInputStream(urlAsString);
 		BufferedReader br = new BufferedReader(new InputStreamReader(is));
 		String line;
 		while ((line = br.readLine()) != null) {
