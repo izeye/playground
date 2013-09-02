@@ -4,6 +4,10 @@ import java.util.Date;
 
 import org.apache.commons.lang3.StringEscapeUtils;
 
+import com.izeye.playground.common.util.DateUtils;
+import com.izeye.playground.support.ip.domain.IPInfo;
+import com.izeye.playground.support.ua.domain.UserAgent;
+
 public class AccessLog {
 
 	private long id;
@@ -12,6 +16,9 @@ public class AccessLog {
 	private String url;
 	private String userAgent;
 	private String referer;
+
+	private IPInfo analyzedIp;
+	private UserAgent analyzedUserAgent;
 
 	public long getId() {
 		return id;
@@ -27,6 +34,10 @@ public class AccessLog {
 
 	public void setAccessTime(Date accessTime) {
 		this.accessTime = accessTime;
+	}
+
+	public String getFormattedAccessTime() {
+		return DateUtils.formatDateTime(accessTime);
 	}
 
 	public String getIp() {
@@ -65,11 +76,28 @@ public class AccessLog {
 		this.referer = referer;
 	}
 
+	public IPInfo getAnalyzedIp() {
+		return analyzedIp;
+	}
+
+	public void setAnalyzedIp(IPInfo analyzedIp) {
+		this.analyzedIp = analyzedIp;
+	}
+
+	public UserAgent getAnalyzedUserAgent() {
+		return analyzedUserAgent;
+	}
+
+	public void setAnalyzedUserAgent(UserAgent analyzedUserAgent) {
+		this.analyzedUserAgent = analyzedUserAgent;
+	}
+
 	@Override
 	public String toString() {
 		return "AccessLog [id=" + id + ", accessTime=" + accessTime + ", ip="
 				+ ip + ", url=" + url + ", userAgent=" + userAgent
-				+ ", referer=" + referer + "]";
+				+ ", referer=" + referer + ", analyzedIp=" + analyzedIp
+				+ ", analyzedUserAgent=" + analyzedUserAgent + "]";
 	}
 
 }

@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 
 import com.izeye.playground.log.access.dao.AccessLogDao;
 import com.izeye.playground.log.access.domain.AccessLog;
+import com.izeye.playground.support.ip.service.IPAnalyzer;
 import com.izeye.playground.support.spam.ip.service.SpamIPFilter;
+import com.izeye.playground.support.ua.service.UserAgentAnalyzer;
 
 @Service("accessLogService")
 public class DefaultAccessLogService implements AccessLogService {
@@ -20,6 +22,12 @@ public class DefaultAccessLogService implements AccessLogService {
 
 	@Resource
 	private SpamIPFilter spamIPFilter;
+
+	@Resource
+	private IPAnalyzer ipAnalyzer;
+
+	@Resource
+	private UserAgentAnalyzer userAgentAnalyzer;
 
 	@Override
 	public void log(String ip, String url, String userAgent, String referer) {
@@ -52,6 +60,15 @@ public class DefaultAccessLogService implements AccessLogService {
 		return accessLogDao.getLatestAccessLogs(exclusiveBaseId, count);
 	}
 
+	@Override
+	public List<AccessLog> getAccessLogsInSpecificDate(String date) {
+		List<AccessLog> accessLogs = accessLogDao
+				.getAccessLogsInSpecificDate(date);
+		filterSpams(accessLogs);
+		analyze(accessLogs);
+		return accessLogs;
+	}
+
 	private void filterSpams(List<AccessLog> accessLogs) {
 		List<AccessLog> filteredAccessLogs = new ArrayList<AccessLog>();
 		for (AccessLog accessLog : accessLogs) {
@@ -60,6 +77,14 @@ public class DefaultAccessLogService implements AccessLogService {
 			}
 		}
 		accessLogs.removeAll(filteredAccessLogs);
+	}
+
+	private void analyze(List<AccessLog> accessLogs) {
+		for (AccessLog accessLog : accessLogs) {
+			accessLog.setAnalyzedIp(ipAnalyzer.analyze(accessLog.getIp()));
+			accessLog.setAnalyzedUserAgent(userAgentAnalyzer.analyze(accessLog
+					.getUserAgent()));
+		}
 	}
 
 }

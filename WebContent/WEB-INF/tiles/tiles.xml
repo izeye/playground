@@ -188,6 +188,11 @@
 		<put-attribute name="body" value="/WEB-INF/views/math/algebra/collatz/collatz.jsp" />
 	</definition>
 
+	<definition name="math/algebra/mean" extends="math">
+		<put-attribute name="body_title" value="Mean" />
+		<put-attribute name="body" value="/WEB-INF/views/math/algebra/mean/mean.jsp" />
+	</definition>
+
 	<definition name="math/geometry/fractals" extends="math">
 		<put-attribute name="body_title" value="Fractals" />
 		<put-attribute name="body" value="/WEB-INF/views/math/geometry/fractals/fractals.jsp" />

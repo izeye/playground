@@ -38,6 +38,9 @@ public class OSInfo {
 	private static String MAC_OS_X_MOUNTAIN_MAVERICKS_VERSION = "10.9";
 	private static String MAC_OS_X_MOUNTAIN_MAVERICKS_ALIAS = "Mavericks";
 
+	private static String WINDOWS_95_VERSION = "95";
+	private static String WINDOWS_95_ALIAS = "95";
+
 	private static String WINDOWS_98_VERSION = "98";
 	private static String WINDOWS_98_ALIAS = "98";
 
@@ -94,7 +97,9 @@ public class OSInfo {
 			}
 
 		case WINDOWS:
-			if (version.equals(WINDOWS_98_VERSION)) {
+			if (version.equals(WINDOWS_95_VERSION)) {
+				return WINDOWS_95_ALIAS;
+			} else if (version.equals(WINDOWS_98_VERSION)) {
 				return WINDOWS_98_ALIAS;
 			} else if (version.equals(WINDOWS_NT_VERSION)) {
 				return WINDOWS_NT_ALIAS;

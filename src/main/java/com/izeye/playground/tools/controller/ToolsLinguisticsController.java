@@ -68,7 +68,7 @@ public class ToolsLinguisticsController extends AbstractToolsController {
 	public String koreanRomanizationKorean2RomanApi(
 			@RequestParam KoreanRomanizationScheme romanizationScheme,
 			@RequestParam RomanizationType romanizationType,
-			@RequestParam String korean, Model model) {
+			@RequestParam String korean) {
 		return koreanRomanizationService.korean2Roman(romanizationScheme,
 				romanizationType, korean);
 	}
@@ -78,7 +78,7 @@ public class ToolsLinguisticsController extends AbstractToolsController {
 	public Set<String> koreanRomanizationRoman2KoreanApi(
 			@RequestParam KoreanRomanizationScheme romanizationScheme,
 			@RequestParam RomanizationType romanizationType,
-			@RequestParam String roman, Model model) {
+			@RequestParam String roman) {
 		return koreanRomanizationService.roman2PossibleKoreanSet(
 				romanizationScheme, romanizationType, roman);
 	}
@@ -103,7 +103,7 @@ public class ToolsLinguisticsController extends AbstractToolsController {
 	@ResponseBody
 	public String koreanEnglishLanguageSwitchTypoFixerKorean2EnglishApi(
 			@RequestParam KoreanKeyboardLayoutType keyboardLayoutType,
-			@RequestParam String korean, Model model) {
+			@RequestParam String korean) {
 		return koreanKeyboardLayoutSelector.select(keyboardLayoutType)
 				.korean2English(korean);
 	}
@@ -112,7 +112,7 @@ public class ToolsLinguisticsController extends AbstractToolsController {
 	@ResponseBody
 	public String koreanEnglishLanguageSwitchTypoFixerEnglish2KoreanApi(
 			@RequestParam KoreanKeyboardLayoutType keyboardLayoutType,
-			@RequestParam String english, Model model) {
+			@RequestParam String english) {
 		return koreanKeyboardLayoutSelector.select(keyboardLayoutType)
 				.english2Korean(english);
 	}
@@ -133,7 +133,7 @@ public class ToolsLinguisticsController extends AbstractToolsController {
 	@RequestMapping(value = API_PATH_KOREAN_PHONEME_COMPOSER_AND_DECOMPOSER_COMPOSE, produces = { "text/plain; charset=UTF-8" })
 	@ResponseBody
 	public String koreanPhonemeComposerAndDecomposerComposeApi(
-			@RequestParam String commaSeparatedPhonemes, Model model) {
+			@RequestParam String commaSeparatedPhonemes) {
 		List<Character> phonemes = new ArrayList<Character>();
 		for (String phoneme : commaSeparatedPhonemes.split(",")) {
 			phonemes.add(phoneme.charAt(0));
@@ -144,7 +144,7 @@ public class ToolsLinguisticsController extends AbstractToolsController {
 	@RequestMapping(API_PATH_KOREAN_PHONEME_COMPOSER_AND_DECOMPOSER_DECOMPOSE)
 	@ResponseBody
 	public List<Character> koreanPhonemeComposerAndDecomposerDecomposeApi(
-			@RequestParam String wordToDecompose, Model model) {
+			@RequestParam String wordToDecompose) {
 		return koreanPhonemeService.decomposeAsCharacters(wordToDecompose);
 	}
 
@@ -164,14 +164,14 @@ public class ToolsLinguisticsController extends AbstractToolsController {
 	@RequestMapping(API_PATH_ENGLISH_LOWERCASE_UPPERCASE_CONVERTER_TO_LOWERCASE)
 	@ResponseBody
 	public String englishLowerCaseUpperCaseConverterToLowerCaseApi(
-			@RequestParam String textToBeLowerCase, Model model) {
+			@RequestParam String textToBeLowerCase) {
 		return englishAlphabetService.toLowerCase(textToBeLowerCase);
 	}
 
 	@RequestMapping(API_PATH_ENGLISH_LOWERCASE_UPPERCASE_CONVERTER_TO_UPPERCASE)
 	@ResponseBody
 	public String englishLowerCaseUpperCaseConverterToUpperCaseApi(
-			@RequestParam String textToBeUpperCase, Model model) {
+			@RequestParam String textToBeUpperCase) {
 		return englishAlphabetService.toUpperCase(textToBeUpperCase);
 	}
 

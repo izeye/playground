@@ -5,6 +5,8 @@ import java.util.Date;
 
 import org.joda.time.DateTime;
 
+import com.sun.org.apache.bcel.internal.generic.NEW;
+
 public class DateUtils {
 
 	private static final ThreadLocal<SimpleDateFormat> DEFAULT_DATE_FORMAT = new ThreadLocal<SimpleDateFormat>() {
@@ -13,8 +15,22 @@ public class DateUtils {
 		};
 	};
 
+	private static final ThreadLocal<SimpleDateFormat> DEFAULT_DATE_TIME_FORMAT = new ThreadLocal<SimpleDateFormat>() {
+		protected SimpleDateFormat initialValue() {
+			return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		};
+	};
+
 	public static String formatDate(Date date) {
 		return DEFAULT_DATE_FORMAT.get().format(date);
+	}
+
+	public static String formatDateTime(Date date) {
+		return DEFAULT_DATE_TIME_FORMAT.get().format(date);
+	}
+
+	public static String formatDateTime(long timestamp) {
+		return DEFAULT_DATE_TIME_FORMAT.get().format(new Date(timestamp));
 	}
 
 	public static String getToday() {

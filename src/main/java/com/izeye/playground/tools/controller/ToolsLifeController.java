@@ -56,7 +56,7 @@ public class ToolsLifeController extends AbstractToolsController {
 	@ResponseBody
 	public BigDecimal unitConverterApi(@RequestParam UnitType unitType,
 			@RequestParam String sourceUnit, @RequestParam String targetUnit,
-			@RequestParam BigDecimal valueToConvert, Model model) {
+			@RequestParam BigDecimal valueToConvert) {
 		return unitType.convert(sourceUnit, valueToConvert, targetUnit);
 	}
 
@@ -69,7 +69,7 @@ public class ToolsLifeController extends AbstractToolsController {
 
 	@RequestMapping(API_PATH_TEXT_COUNTER)
 	@ResponseBody
-	public TextCount textCounterApi(@RequestParam String text, Model model) {
+	public TextCount textCounterApi(@RequestParam String text) {
 		return textService.countAll(text);
 	}
 
@@ -83,7 +83,7 @@ public class ToolsLifeController extends AbstractToolsController {
 	@RequestMapping(API_PATH_TEXT_2_QR_CODE)
 	public ResponseEntity<byte[]> utilitiesText2QRCodeAPI(
 			@ModelAttribute("ipAddress") String ipAddress,
-			@RequestParam String text, @RequestParam int size, Model model)
+			@RequestParam String text, @RequestParam int size)
 			throws WriterException, IOException {
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.IMAGE_PNG);

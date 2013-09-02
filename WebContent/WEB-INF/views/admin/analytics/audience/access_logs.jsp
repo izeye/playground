@@ -9,10 +9,49 @@
 	}
 </style>
 
+<script type="text/javascript">
+var bot = "<span class=\"label label-info\">Bot</span>";
+
+var today = '${today}';
+var nDaysBefore = 1;
+var more = function () {
+	$.getJSON('${API_PATH_AUDIENCE_ACCESS_LOGS}', {
+		today: today,
+		nDaysBefore: nDaysBefore
+	}).done(function (data) {
+		for (var i in data) {
+			var accessLog = data[i];
+			var referer = accessLog.referer;
+			var analyzedIp = accessLog.analyzedIp;
+			var analyzedUserAgent = accessLog.analyzedUserAgent;
+			
+			var row = '<tr><td>' + accessLog.id;
+			if (analyzedUserAgent.bot) {
+				row += ' ' + bot;
+			}
+			row += '</td><td>' + accessLog.formattedAccessTime +
+					'</td><td title=\"' + analyzedIp.location +
+					'\">' + accessLog.ip +
+					' <span class="label">' + analyzedIp.country.name +
+					'</span></td><td>' + accessLog.url +
+					'</td><td title=\"' + analyzedUserAgent.displayName +
+					'\">' + accessLog.userAgent +
+					'</td><td>';
+			row += referer == null ? '&nbsp;' : referer;
+			row += '</td></tr>';
+			$('#result').append(row);
+		}
+		
+		nDaysBefore += 1;
+		$('#moreButton').val('Show ' + nDaysBefore + ' days before');
+	});
+};
+</script>
+
 <p>
 	<b>Access Logs (Delayed. At most 1 minute.)</b>
 </p>
-<table class="table table-striped table-bordered table-condensed"
+<table id="result" class="table table-striped table-bordered table-condensed"
 	style="font-size: 12px">
 	<tr>
 		<th style="width: 30px">ID</th>
@@ -27,28 +66,24 @@
 		<c:set var="userAgent" value="${accessLog.getUserAgent()}" />
 		<c:set var="analyzedUserAgent" value="${userAgentAnalyzer.analyze(userAgent)}" />
 		<tr>
-			<td>${accessLog.getId()}</td>
+			<td>
+				${accessLog.getId()}
+				<c:if test="${analyzedUserAgent.isBot()}">
+					<span class="label label-info">Bot</span>
+				</c:if>
+			</td>
 			<td><fmt:formatDate value="${accessLog.getAccessTime()}"
 					pattern="yyyy-MM-dd HH:mm:ss" /></td>
 			<c:set var="analyzedIp" value="${ipAnalyzer.analyze(ip)}"></c:set>
 			<td title="${analyzedIp.getLocation()}">
 			${ip}
-			<c:if test="${analyzedUserAgent.isBot()}">
-				<span class="label label-info">Bot</span>
-			</c:if>
-			<span class="label label-info">${analyzedIp.getCountry().getName()}</span>
+			<span class="label">${analyzedIp.getCountry().getName()}</span>
 			</td>
 			<td>${accessLog.getUrl()}</td>
-			<c:choose>
-			<c:when test="${analyzedUserAgent.isSpam()}">
-				<td><span class="label label-warning">Blocked spam</span></td>
-				<td><span class="label label-warning">Blocked spam</span></td>
-			</c:when>
-			<c:otherwise>
-				<td title="${analyzedUserAgent.getDisplayName()}">${accessLog.getEscapedUserAgent()}</td>
-				<td>${accessLog.getReferer()}</td>
-			</c:otherwise>
-			</c:choose>
+			<td title="${analyzedUserAgent.getDisplayName()}">${accessLog.getEscapedUserAgent()}</td>
+			<td>${accessLog.getReferer()}</td>
 		</tr>
 	</c:forEach>
 </table>
+
+<input id="moreButton" type="button" value="Show 1 day before" onclick="more()" />

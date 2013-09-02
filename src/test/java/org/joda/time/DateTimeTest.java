@@ -13,4 +13,11 @@ public class DateTimeTest {
 		System.out.println(date);
 	}
 
+	@Test
+	public void parse() {
+		String date = "2013-09-02";
+		DateTime dateTime = DateTime.parse(date);
+		System.out.println(dateTime);
+	}
+
 }

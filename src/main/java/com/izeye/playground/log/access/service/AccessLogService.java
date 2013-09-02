@@ -14,4 +14,6 @@ public interface AccessLogService {
 
 	List<AccessLog> getLatestAccessLogs(long exclusiveBaseId, int count);
 
+	List<AccessLog> getAccessLogsInSpecificDate(String date);
+
 }

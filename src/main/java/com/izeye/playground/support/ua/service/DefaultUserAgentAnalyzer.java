@@ -58,6 +58,10 @@ public class DefaultUserAgentAnalyzer implements UserAgentAnalyzer {
 	@Override
 	public UserAgent analyze(String userAgent)
 			throws UnidentifiableUserAgentException {
+		if (userAgent == null || userAgent.isEmpty()) {
+			return UserAgent.NOT_AVAILABLE;
+		}
+
 		List<UserAgentToken> userAgentTokens = userAgentTokenizer
 				.tokenize(userAgent);
 

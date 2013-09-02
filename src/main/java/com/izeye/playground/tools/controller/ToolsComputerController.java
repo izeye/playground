@@ -117,16 +117,15 @@ public class ToolsComputerController extends AbstractToolsController {
 
 	@RequestMapping(API_PATH_TIMESTAMP_2_DATE_AND_TIME)
 	@ResponseBody
-	public String timestamp2DateAndTimeApi(
-			@RequestParam long timestampInSeconds, Model model) {
+	public String timestamp2DateAndTimeApi(@RequestParam long timestampInSeconds) {
 		return dateService
 				.timestampInSecondsToFormattedDate(timestampInSeconds);
 	}
 
 	@RequestMapping(API_PATH_DATE_AND_TIME_2_TIMESTAMP)
 	@ResponseBody
-	public long dateAndTime2TimestampApi(@RequestParam String formattedDate,
-			Model model) throws ParseException {
+	public long dateAndTime2TimestampApi(@RequestParam String formattedDate)
+			throws ParseException {
 		return dateService.formattedDateToTimestampInSeconds(formattedDate);
 	}
 
@@ -143,7 +142,7 @@ public class ToolsComputerController extends AbstractToolsController {
 	@RequestMapping(API_PATH_URL_ENCODER_AND_DECODER_ENCODE)
 	@ResponseBody
 	public String urlEncoderAndDecoderEncodeApi(
-			@RequestParam String textToEncode, Model model)
+			@RequestParam String textToEncode)
 			throws UnsupportedEncodingException {
 		return urlEncodingService.encode(textToEncode);
 	}
@@ -151,8 +150,8 @@ public class ToolsComputerController extends AbstractToolsController {
 	@RequestMapping(value = API_PATH_URL_ENCODER_AND_DECODER_DECODE, produces = { "text/plain; charset=UTF-8" })
 	@ResponseBody
 	public String urlEncoderAndDecoderDecodeApi(
-			@RequestParam String textToDecode, Model model)
-			throws ParseException, UnsupportedEncodingException {
+			@RequestParam String textToDecode) throws ParseException,
+			UnsupportedEncodingException {
 		return urlEncodingService.decode(textToDecode);
 	}
 
@@ -170,7 +169,7 @@ public class ToolsComputerController extends AbstractToolsController {
 	@RequestMapping(API_PATH_BASE64_ENCODER_AND_DECODER_ENCODE)
 	@ResponseBody
 	public String base64EncoderAndDecoderEncodeApi(
-			@RequestParam String textToEncode, Model model)
+			@RequestParam String textToEncode)
 			throws UnsupportedEncodingException {
 		return base64EncodingService.encode(textToEncode);
 	}
@@ -178,8 +177,7 @@ public class ToolsComputerController extends AbstractToolsController {
 	@RequestMapping(value = API_PATH_BASE64_ENCODER_AND_DECODER_DECODE, produces = { "text/plain; charset=UTF-8" })
 	@ResponseBody
 	public String base64EncoderAndDecoderDecodeApi(
-			@RequestParam String textToDecode, Model model)
-			throws Base64DecodingException {
+			@RequestParam String textToDecode) throws Base64DecodingException {
 		return base64EncodingService.decode(textToDecode);
 	}
 
@@ -197,14 +195,14 @@ public class ToolsComputerController extends AbstractToolsController {
 	@RequestMapping(API_PATH_UNICODE_ENCODER_AND_DECODER_ENCODE)
 	@ResponseBody
 	public String unicodeEncoderAndDecoderEncodeApi(
-			@RequestParam String textToEncode, Model model) {
+			@RequestParam String textToEncode) {
 		return unicodeEncodingService.encode(textToEncode);
 	}
 
 	@RequestMapping(value = API_PATH_UNICODE_ENCODER_AND_DECODER_DECODE, produces = { "text/plain; charset=UTF-8" })
 	@ResponseBody
 	public String unicodeEncoderAndDecoderDecodeApi(
-			@RequestParam String textToDecode, Model model) {
+			@RequestParam String textToDecode) {
 		return unicodeEncodingService.decode(textToDecode);
 	}
 
@@ -230,14 +228,14 @@ public class ToolsComputerController extends AbstractToolsController {
 	@RequestMapping(API_PATH_HTML_ESCAPE_AND_UNESCAPE_ESCAPE)
 	@ResponseBody
 	public String htmlEscapeAndUnescapeEscapeApi(
-			@RequestParam String textToEscape, Model model) {
+			@RequestParam String textToEscape) {
 		return StringEscapeUtils.escapeHtml4(textToEscape);
 	}
 
 	@RequestMapping(API_PATH_HTML_ESCAPE_AND_UNESCAPE_UNESCAPE)
 	@ResponseBody
 	public String htmlEscapeAndUnescapeUnescapeApi(
-			@RequestParam String textToUnescape, Model model) {
+			@RequestParam String textToUnescape) {
 		return StringEscapeUtils.unescapeHtml4(textToUnescape);
 	}
 
@@ -254,8 +252,8 @@ public class ToolsComputerController extends AbstractToolsController {
 	@ResponseBody
 	public HTTPRequestAndResponsePair httpClientApi(
 			@RequestParam HTTPMethod method, @RequestParam String url,
-			@RequestParam String headers, @RequestParam String parameters,
-			Model model) throws MalformedURLException {
+			@RequestParam String headers, @RequestParam String parameters)
+			throws MalformedURLException {
 		HTTPRequest request = new HTTPRequest(method, url);
 
 		headers = headers.trim();
@@ -307,7 +305,7 @@ public class ToolsComputerController extends AbstractToolsController {
 
 	@RequestMapping(API_PATH_IP_ANALYZER)
 	@ResponseBody
-	public IPInfo ipAnalyzerApi(@RequestParam String ipAddress, Model model) {
+	public IPInfo ipAnalyzerApi(@RequestParam String ipAddress) {
 		return ipAnalyzer.analyze(ipAddress);
 	}
 
@@ -325,7 +323,7 @@ public class ToolsComputerController extends AbstractToolsController {
 
 	@RequestMapping(API_PATH_UA_ANALYZER)
 	@ResponseBody
-	public UserAgent uaAnalyzerApi(@RequestParam String userAgent, Model model) {
+	public UserAgent uaAnalyzerApi(@RequestParam String userAgent) {
 		return userAgentAnalyzer.analyze(userAgent);
 	}
 
@@ -345,7 +343,7 @@ public class ToolsComputerController extends AbstractToolsController {
 	public String multiWordNotationConverterApi(
 			@RequestParam MultiWordNotationType sourceNotation,
 			@RequestParam MultiWordNotationType targetNotation,
-			@RequestParam String stringToConvert, Model model) {
+			@RequestParam String stringToConvert) {
 		return targetNotation.convert(stringToConvert, sourceNotation);
 	}
 
@@ -361,8 +359,7 @@ public class ToolsComputerController extends AbstractToolsController {
 	@RequestMapping(API_PATH_BASE_CONVERTER)
 	@ResponseBody
 	public String baseConverterApi(@RequestParam Base sourceBase,
-			@RequestParam Base targetBase,
-			@RequestParam String numberToConvert, Model model) {
+			@RequestParam Base targetBase, @RequestParam String numberToConvert) {
 		return targetBase.convert(numberToConvert, sourceBase);
 	}
 

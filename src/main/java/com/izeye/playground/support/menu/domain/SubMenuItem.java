@@ -46,6 +46,8 @@ import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_IT
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_KOREAN_UNICODE_TABLE_PATH;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_LINKS_NAME;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_LINKS_PATH;
+import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_MEAN_NAME;
+import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_MEAN_PATH;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_MULTI_WORD_NOTATION_CONVERTER_NAME;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_MULTI_WORD_NOTATION_CONVERTER_PATH;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_PRIME_FACTORIZATION_NAME;
@@ -149,12 +151,13 @@ public enum SubMenuItem {
 	MATH_ALGEBRA_GOLDBACH(SUB_MENU_ITEM_GOLDBACH_NAME,
 			SUB_MENU_ITEM_GOLDBACH_PATH), //
 	MATH_ALGEBRA_COLLATZ(SUB_MENU_ITEM_COLLATZ_NAME, SUB_MENU_ITEM_COLLATZ_PATH), //
+	MATH_ALGEBRA_MEAN(SUB_MENU_ITEM_MEAN_NAME, SUB_MENU_ITEM_MEAN_PATH), //
 	MATH_GEOMETRY_FRACTALS(SUB_MENU_ITEM_FRACTALS_NAME,
 			SUB_MENU_ITEM_FRACTALS_PATH), //
 	ABOUT_ABOUT_ME_ABOUT_ME_PATH(SUB_MENU_ITEM_ABOUT_ME_NAME,
 			SUB_MENU_ITEM_ABOUT_ME_PATH), //
 	ABOUT_LINKS_LINKS_PATH(SUB_MENU_ITEM_LINKS_NAME, SUB_MENU_ITEM_LINKS_PATH), //
-	ADMIN_ANALYTICS_AUDIENCE_OVERVIEW_PATH(
+	ADMIN_ANALYTICS_AUDIENCE_OVERVIEW(
 			SUB_MENU_ITEM_AUDIENCE_OVERVIEW_NAME,
 			SUB_MENU_ITEM_AUDIENCE_OVERVIEW_PATH), //
 	ADMIN_ANALYTICS_AUDIENCE_ACCESS_LOGS(
