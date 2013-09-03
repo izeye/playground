@@ -38,6 +38,8 @@ import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_IT
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_KAKAO_LINK_PATH;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_KOREAN_ENGLISH_LANGUAGE_SWITCH_TYPE_FIXER_NAME;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_KOREAN_ENGLISH_LANGUAGE_SWITCH_TYPE_FIXER_PATH;
+import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_KOREAN_LOTTO_NAME;
+import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_KOREAN_LOTTO_PATH;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_KOREAN_PHONEME_COMPOSER_AND_DECOMPOSER_NAME;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_KOREAN_PHONEME_COMPOSER_AND_DECOMPOSER_PATH;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_KOREAN_ROMANIZATION_NAME;
@@ -84,6 +86,8 @@ import java.util.List;
 // The menu starting with underscore (_) is a hidden menu.
 public enum SubMenuItem {
 
+	PLAYGROUND_ENTERTAINMENT_KOREAN_LOTTO(SUB_MENU_ITEM_KOREAN_LOTTO_NAME,
+			SUB_MENU_ITEM_KOREAN_LOTTO_PATH), //
 	PLAYGROUND_DEMO_WEBCAM_LIVE(SUB_MENU_ITEM_WEBCAM_LIVE_NAME,
 			SUB_MENU_ITEM_WEBCAM_LIVE_PATH), //
 	_PLAYGROUND_DEMO_WEBCAM_SNAPSHOTS(SUB_MENU_ITEM_WEBCAM_SNAPSHOTS_NAME,
@@ -157,8 +161,7 @@ public enum SubMenuItem {
 	ABOUT_ABOUT_ME_ABOUT_ME_PATH(SUB_MENU_ITEM_ABOUT_ME_NAME,
 			SUB_MENU_ITEM_ABOUT_ME_PATH), //
 	ABOUT_LINKS_LINKS_PATH(SUB_MENU_ITEM_LINKS_NAME, SUB_MENU_ITEM_LINKS_PATH), //
-	ADMIN_ANALYTICS_AUDIENCE_OVERVIEW(
-			SUB_MENU_ITEM_AUDIENCE_OVERVIEW_NAME,
+	ADMIN_ANALYTICS_AUDIENCE_OVERVIEW(SUB_MENU_ITEM_AUDIENCE_OVERVIEW_NAME,
 			SUB_MENU_ITEM_AUDIENCE_OVERVIEW_PATH), //
 	ADMIN_ANALYTICS_AUDIENCE_ACCESS_LOGS(
 			SUB_MENU_ITEM_AUDIENCE_ACCESS_LOGS_NAME,

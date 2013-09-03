@@ -8,7 +8,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.izeye.playground.support.ua.domain.os.OSInfo;
+import com.izeye.playground.support.ua.domain.os.OsInfo;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:applicationContext.xml")
@@ -16,12 +16,12 @@ import com.izeye.playground.support.ua.domain.os.OSInfo;
 public class AppleOSInfoParserTest {
 
 	@Resource
-	private AppleOSInfoParser macOSXParser;
+	private AppleOsInfoParser macOSXParser;
 
 	@Test
 	public void parse() {
 		String osInfoInUserAgent = "Intel Mac OS X 10_8_4";
-		OSInfo osInfo = macOSXParser.parse(osInfoInUserAgent);
+		OsInfo osInfo = macOSXParser.parse(osInfoInUserAgent);
 		System.out.println(osInfo);
 		System.out.println(osInfo.getDisplayName());
 

@@ -3,7 +3,7 @@ package com.izeye.playground.support.ua.domain;
 import com.izeye.playground.support.ua.domain.browser.BrowserCategory;
 import com.izeye.playground.support.ua.domain.browser.BrowserInfo;
 import com.izeye.playground.support.ua.domain.device.DeviceType;
-import com.izeye.playground.support.ua.domain.os.OSInfo;
+import com.izeye.playground.support.ua.domain.os.OsInfo;
 
 public class UserAgent {
 
@@ -18,11 +18,11 @@ public class UserAgent {
 
 	private final UserAgentTypeInfo typeInfo;
 
-	private OSInfo osInfo;
+	private OsInfo osInfo;
 	private BrowserInfo browserInfo;
 	private DeviceType deviceType;
 
-	public UserAgent(UserAgentTypeInfo typeInfo, OSInfo osInfo,
+	public UserAgent(UserAgentTypeInfo typeInfo, OsInfo osInfo,
 			BrowserInfo browserInfo, DeviceType deviceType) {
 		this.typeInfo = typeInfo;
 		this.osInfo = osInfo;
@@ -31,7 +31,7 @@ public class UserAgent {
 	}
 
 	public UserAgent(UserAgentTypeInfo typeInfo) {
-		this(typeInfo, OSInfo.NOT_AVAILABLE, BrowserInfo.NOT_AVAILABLE,
+		this(typeInfo, OsInfo.NOT_AVAILABLE, BrowserInfo.NOT_AVAILABLE,
 				DeviceType.NOT_AVAILABLE);
 	}
 
@@ -39,11 +39,11 @@ public class UserAgent {
 		return typeInfo;
 	}
 
-	public OSInfo getOsInfo() {
+	public OsInfo getOsInfo() {
 		return osInfo;
 	}
 
-	public void setOsInfo(OSInfo osInfo) {
+	public void setOsInfo(OsInfo osInfo) {
 		this.osInfo = osInfo;
 	}
 

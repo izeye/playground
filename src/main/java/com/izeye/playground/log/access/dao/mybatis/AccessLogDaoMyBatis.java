@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.izeye.playground.log.access.dao.AccessLogDao;
 import com.izeye.playground.log.access.domain.AccessLog;
 import com.izeye.playground.log.access.domain.DailyCount;
-import com.izeye.playground.log.access.domain.IPCount;
+import com.izeye.playground.log.access.domain.IpCount;
 import com.izeye.playground.log.access.domain.UserAgentCount;
 
 @Repository("accessLogDao")
@@ -69,7 +69,7 @@ public class AccessLogDaoMyBatis implements AccessLogDao {
 
 	@Override
 	@Cacheable(value = "accessLogCache", key = "{#root.methodName}")
-	public List<IPCount> getUserAgentSpamIPCounts() {
+	public List<IpCount> getUserAgentSpamIpCounts() {
 		AccessLogMapper mapper = sqlSession.getMapper(AccessLogMapper.class);
 		return mapper.getUserAgentSpamIPCounts();
 	}

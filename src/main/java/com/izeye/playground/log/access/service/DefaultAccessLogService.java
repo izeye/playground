@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.izeye.playground.log.access.dao.AccessLogDao;
 import com.izeye.playground.log.access.domain.AccessLog;
-import com.izeye.playground.support.ip.service.IPAnalyzer;
+import com.izeye.playground.support.ip.service.IpAnalyzer;
 import com.izeye.playground.support.spam.ip.service.SpamIPFilter;
 import com.izeye.playground.support.ua.service.UserAgentAnalyzer;
 
@@ -24,7 +24,7 @@ public class DefaultAccessLogService implements AccessLogService {
 	private SpamIPFilter spamIPFilter;
 
 	@Resource
-	private IPAnalyzer ipAnalyzer;
+	private IpAnalyzer ipAnalyzer;
 
 	@Resource
 	private UserAgentAnalyzer userAgentAnalyzer;

@@ -1,4 +1,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<p>
+Total: ${userAgentCounts.size()}
+</p>
+
 <table class="table table-striped table-bordered table-condensed"
 	style="font-size: 12px">
 	<tr>

@@ -6,7 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.izeye.playground.analytics.audience.service.AudienceAnalyticsService;
+import com.izeye.playground.admin.analytics.audience.service.AudienceAnalyticsService;
 
 @Service("spamIPFilter")
 public class DefaultSpamIPFilter implements SpamIPFilter {

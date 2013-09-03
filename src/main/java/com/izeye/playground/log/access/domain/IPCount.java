@@ -1,9 +1,13 @@
 package com.izeye.playground.log.access.domain;
 
-public class IPCount {
+import com.izeye.playground.support.ip.domain.IpInfo;
+
+public class IpCount {
 
 	private String ip;
 	private int count;
+
+	private IpInfo analyzedIp;
 
 	public String getIp() {
 		return ip;
@@ -21,9 +25,18 @@ public class IPCount {
 		this.count = count;
 	}
 
+	public IpInfo getAnalyzedIp() {
+		return analyzedIp;
+	}
+
+	public void setAnalyzedIp(IpInfo analyzedIp) {
+		this.analyzedIp = analyzedIp;
+	}
+
 	@Override
 	public String toString() {
-		return "IPCount [ip=" + ip + ", count=" + count + "]";
+		return "IpCount [ip=" + ip + ", count=" + count + ", analyzedIp="
+				+ analyzedIp + "]";
 	}
 
 }

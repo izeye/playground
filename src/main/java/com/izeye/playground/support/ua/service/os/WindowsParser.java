@@ -2,18 +2,18 @@ package com.izeye.playground.support.ua.service.os;
 
 import org.springframework.stereotype.Service;
 
-import com.izeye.playground.support.ua.domain.os.OSInfo;
-import com.izeye.playground.support.ua.domain.os.OSType;
+import com.izeye.playground.support.ua.domain.os.OsInfo;
+import com.izeye.playground.support.ua.domain.os.OsType;
 
 @Service("windowsParser")
-public class WindowsParser implements OSInfoParser {
+public class WindowsParser implements OsInfoParser {
 
 	@Override
-	public OSInfo parse(String osInfoInUserAgent) {
-		String keyInUserAgent = OSType.WINDOWS.getKeyInUserAgent();
+	public OsInfo parse(String osInfoInUserAgent) {
+		String keyInUserAgent = OsType.WINDOWS.getKeyInUserAgent();
 		String osVersion = osInfoInUserAgent
 				.substring(keyInUserAgent.length() + 1);
-		return new OSInfo(OSType.WINDOWS, osVersion);
+		return new OsInfo(OsType.WINDOWS, osVersion);
 	}
 
 }

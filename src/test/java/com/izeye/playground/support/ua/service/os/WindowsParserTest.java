@@ -8,7 +8,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.izeye.playground.support.ua.domain.os.OSInfo;
+import com.izeye.playground.support.ua.domain.os.OsInfo;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:applicationContext.xml")
@@ -21,7 +21,7 @@ public class WindowsParserTest {
 	@Test
 	public void parse() {
 		String osInfoInUserAgent = "Windows NT 5.1";
-		OSInfo osInfo = windowsParser.parse(osInfoInUserAgent);
+		OsInfo osInfo = windowsParser.parse(osInfoInUserAgent);
 		System.out.println(osInfo);
 		System.out.println(osInfo.getDisplayName());
 	}

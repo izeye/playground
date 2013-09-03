@@ -2,11 +2,11 @@ package com.izeye.playground.support.ip.domain;
 
 import com.izeye.playground.support.country.domain.Country;
 
-public class IPInfo {
+public class IpInfo {
 
 	private Whois whois;
 
-	public IPInfo(Whois whois) {
+	public IpInfo(Whois whois) {
 		this.whois = whois;
 	}
 

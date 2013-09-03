@@ -16,18 +16,18 @@ import com.google.zxing.WriterException;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
-import com.izeye.playground.support.qrcode.dao.QRCodeDao;
-import com.izeye.playground.support.qrcode.domain.QRCodeGenerationLog;
-import com.izeye.playground.support.qrcode.domain.QRCodeGenerationRequest;
+import com.izeye.playground.support.qrcode.dao.QrCodeDao;
+import com.izeye.playground.support.qrcode.domain.QrCodeGenerationLog;
+import com.izeye.playground.support.qrcode.domain.QrCodeGenerationRequest;
 
 @Service("qrCodeService")
-public class DefaultQRCodeService implements QRCodeService {
+public class DefaultQrCodeService implements QrCodeService {
 
 	@Resource
-	private QRCodeDao qrCodeDao;
+	private QrCodeDao qrCodeDao;
 
 	@Override
-	public byte[] text2QRCode(QRCodeGenerationRequest request)
+	public byte[] text2QrCode(QrCodeGenerationRequest request)
 			throws UnsupportedEncodingException, WriterException, IOException {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		text2QRCodeInternal(request.getText(), request.getSize(),
@@ -38,25 +38,25 @@ public class DefaultQRCodeService implements QRCodeService {
 	}
 
 	@Override
-	public void text2QRCode(String text, int size, String filename)
+	public void text2QrCode(String text, int size, String filename)
 			throws WriterException, IOException {
 		text2QRCodeInternal(text, size, size, filename);
 	}
 
 	@Override
-	public void text2QRCode(String text, int size, OutputStream os)
+	public void text2QrCode(String text, int size, OutputStream os)
 			throws WriterException, IOException {
 		text2QRCodeInternal(text, size, size, os);
 	}
 
 	@Override
-	public void text2QRCode(String text, int width, int height, String filename)
+	public void text2QrCode(String text, int width, int height, String filename)
 			throws WriterException, IOException {
 		text2QRCodeInternal(text, width, height, filename);
 	}
 
 	@Override
-	public void text2QRCode(String text, int width, int height, OutputStream os)
+	public void text2QrCode(String text, int width, int height, OutputStream os)
 			throws WriterException, IOException {
 		text2QRCodeInternal(text, width, height, os);
 	}
@@ -86,8 +86,8 @@ public class DefaultQRCodeService implements QRCodeService {
 	}
 
 	@Override
-	public List<QRCodeGenerationLog> getAllQRCodeGenerationLogs() {
-		return qrCodeDao.getAllQRCodeGenerationLogs();
+	public List<QrCodeGenerationLog> getAllQRCodeGenerationLogs() {
+		return qrCodeDao.getAllQrCodeGenerationLogs();
 	}
 
 }

@@ -6,7 +6,7 @@ import com.izeye.playground.common.EnumObjectSerializer;
 import com.izeye.playground.common.domain.StringConstants;
 
 @JsonSerialize(using = EnumObjectSerializer.class)
-public enum OSType {
+public enum OsType {
 
 	MAC_OS_X("Intel Mac OS X", "Mac OS X"), WINDOWS("Windows", "Windows"), IOS(
 			"None", "iOS"), ANDROID("Android", "Android"), NOT_AVAILABLE(
@@ -15,7 +15,7 @@ public enum OSType {
 	private final String keyInUserAgent;
 	private final String name;
 
-	private OSType(String keyInUserAgent, String name) {
+	private OsType(String keyInUserAgent, String name) {
 		this.keyInUserAgent = keyInUserAgent;
 		this.name = name;
 	}
@@ -28,13 +28,13 @@ public enum OSType {
 		return name;
 	}
 
-	public static OSType extractFromUserAgent(String userAgent) {
-		for (OSType osType : values()) {
+	public static OsType extractFromUserAgent(String userAgent) {
+		for (OsType osType : values()) {
 			if (userAgent.contains(osType.getKeyInUserAgent())) {
 				return osType;
 			}
 		}
-		return OSType.NOT_AVAILABLE;
+		return OsType.NOT_AVAILABLE;
 	}
 
 }

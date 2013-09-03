@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.izeye.playground.log.access.domain.AccessLog;
 import com.izeye.playground.log.access.domain.DailyCount;
-import com.izeye.playground.log.access.domain.IPCount;
+import com.izeye.playground.log.access.domain.IpCount;
 import com.izeye.playground.log.access.domain.UserAgentCount;
 
 public interface AccessLogMapper {
@@ -27,6 +27,6 @@ public interface AccessLogMapper {
 
 	List<UserAgentCount> getUserAgentCounts();
 
-	List<IPCount> getUserAgentSpamIPCounts();
+	List<IpCount> getUserAgentSpamIPCounts();
 
 }

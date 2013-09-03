@@ -1,12 +1,12 @@
 package com.izeye.playground.support.qrcode.domain;
 
-public class QRCodeGenerationRequest {
+public class QrCodeGenerationRequest {
 
 	private final String text;
 	private final int size;
 	private final String ip;
 
-	public QRCodeGenerationRequest(String text, int size, String ip) {
+	public QrCodeGenerationRequest(String text, int size, String ip) {
 		this.text = text;
 		this.size = size;
 		this.ip = ip;

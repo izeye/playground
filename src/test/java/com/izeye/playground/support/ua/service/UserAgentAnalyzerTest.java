@@ -24,7 +24,7 @@ import org.springframework.util.ResourceUtils;
 import com.izeye.playground.support.ua.domain.UserAgent;
 import com.izeye.playground.support.ua.domain.browser.BrowserInfo;
 import com.izeye.playground.support.ua.domain.device.DeviceType;
-import com.izeye.playground.support.ua.domain.os.OSType;
+import com.izeye.playground.support.ua.domain.os.OsType;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:applicationContext.xml")
@@ -96,7 +96,7 @@ public class UserAgentAnalyzerTest {
 			}
 			System.out.println(browserInfo.getDisplayName());
 
-			if (userAgent.getOsInfo().getType() == OSType.ANDROID
+			if (userAgent.getOsInfo().getType() == OsType.ANDROID
 					&& userAgent.getDeviceType() == DeviceType.NOT_AVAILABLE) {
 				if (isUserAgentWithoutDeviceInfo(userAgentAsString)) {
 					continue;

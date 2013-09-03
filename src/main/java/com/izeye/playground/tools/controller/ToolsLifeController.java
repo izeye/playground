@@ -28,8 +28,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.zxing.WriterException;
 import com.izeye.playground.support.menu.domain.SubMenuItem;
-import com.izeye.playground.support.qrcode.domain.QRCodeGenerationRequest;
-import com.izeye.playground.support.qrcode.service.QRCodeService;
+import com.izeye.playground.support.qrcode.domain.QrCodeGenerationRequest;
+import com.izeye.playground.support.qrcode.service.QrCodeService;
 import com.izeye.playground.support.text.domain.TextCount;
 import com.izeye.playground.support.text.service.TextService;
 import com.izeye.playground.support.unit.domain.UnitType;
@@ -41,7 +41,7 @@ public class ToolsLifeController extends AbstractToolsController {
 	private TextService textService;
 
 	@Resource
-	private QRCodeService qrCodeService;
+	private QrCodeService qrCodeService;
 
 	@RequestMapping(SUB_MENU_ITEM_UNIT_CONVERTER_PATH)
 	public String unitConverter(Model model) {
@@ -88,9 +88,9 @@ public class ToolsLifeController extends AbstractToolsController {
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.IMAGE_PNG);
 
-		QRCodeGenerationRequest request = new QRCodeGenerationRequest(text,
+		QrCodeGenerationRequest request = new QrCodeGenerationRequest(text,
 				size, ipAddress);
-		byte[] qrcode = qrCodeService.text2QRCode(request);
+		byte[] qrcode = qrCodeService.text2QrCode(request);
 		return new ResponseEntity<byte[]>(qrcode, headers, HttpStatus.CREATED);
 	}
 

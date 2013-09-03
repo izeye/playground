@@ -2,13 +2,13 @@ package com.izeye.playground.support.qrcode.dao.mybatis;
 
 import java.util.List;
 
-import com.izeye.playground.support.qrcode.domain.QRCodeGenerationLog;
-import com.izeye.playground.support.qrcode.domain.QRCodeGenerationRequest;
+import com.izeye.playground.support.qrcode.domain.QrCodeGenerationLog;
+import com.izeye.playground.support.qrcode.domain.QrCodeGenerationRequest;
 
-public interface QRCodeMapper {
+public interface QrCodeMapper {
 
-	void insert(QRCodeGenerationRequest qrCodeGenerationRequest);
+	void insert(QrCodeGenerationRequest qrCodeGenerationRequest);
 
-	List<QRCodeGenerationLog> getAllQRCodeGenerationLogs();
+	List<QrCodeGenerationLog> getAllQrCodeGenerationLogs();
 
 }

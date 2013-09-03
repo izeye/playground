@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.izeye.playground.log.access.domain.AccessLog;
 import com.izeye.playground.log.access.domain.DailyCount;
-import com.izeye.playground.log.access.domain.IPCount;
+import com.izeye.playground.log.access.domain.IpCount;
 import com.izeye.playground.log.access.domain.UserAgentCount;
 
 public interface AccessLogDao {
@@ -23,6 +23,6 @@ public interface AccessLogDao {
 
 	List<UserAgentCount> getUserAgentCounts();
 
-	List<IPCount> getUserAgentSpamIPCounts();
+	List<IpCount> getUserAgentSpamIpCounts();
 
 }

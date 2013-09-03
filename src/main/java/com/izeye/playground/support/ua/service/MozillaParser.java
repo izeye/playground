@@ -19,15 +19,15 @@ import com.izeye.playground.support.ua.domain.UserAgentTypeInfo;
 import com.izeye.playground.support.ua.domain.browser.BrowserInfo;
 import com.izeye.playground.support.ua.domain.browser.BrowserType;
 import com.izeye.playground.support.ua.domain.device.DeviceType;
-import com.izeye.playground.support.ua.domain.os.OSInfo;
-import com.izeye.playground.support.ua.domain.os.OSType;
+import com.izeye.playground.support.ua.domain.os.OsInfo;
+import com.izeye.playground.support.ua.domain.os.OsType;
 import com.izeye.playground.support.ua.service.browser.FacebookAppParser;
 import com.izeye.playground.support.ua.service.browser.GoogleAppEngineParser;
 import com.izeye.playground.support.ua.service.browser.IEParser;
 import com.izeye.playground.support.ua.service.browser.NaverAppParser;
 import com.izeye.playground.support.ua.service.browser.ProductBasedBrowserInfoParser;
-import com.izeye.playground.support.ua.service.os.AndroidOSInfoParser;
-import com.izeye.playground.support.ua.service.os.AppleOSInfoParser;
+import com.izeye.playground.support.ua.service.os.AndroidOsInfoParser;
+import com.izeye.playground.support.ua.service.os.AppleOsInfoParser;
 import com.izeye.playground.support.ua.service.os.WindowsParser;
 
 // NOTE:
@@ -37,10 +37,10 @@ import com.izeye.playground.support.ua.service.os.WindowsParser;
 public class MozillaParser implements UserAgentParser {
 
 	@Resource
-	private AppleOSInfoParser appleOSInfoParser;
+	private AppleOsInfoParser appleOSInfoParser;
 
 	@Resource
-	private AndroidOSInfoParser androidOSInfoParser;
+	private AndroidOsInfoParser androidOSInfoParser;
 
 	@Resource
 	private WindowsParser windowsParser;
@@ -68,7 +68,7 @@ public class MozillaParser implements UserAgentParser {
 		UserAgent analyzedUserAgent = new UserAgent(userAgentTypeAndVersion);
 
 		try {
-			OSType osType = OSType.extractFromUserAgent(userAgent);
+			OsType osType = OsType.extractFromUserAgent(userAgent);
 			BrowserType browserType = BrowserType
 					.extractFromUserAgent(userAgent);
 			DeviceType deviceType = DeviceType.extractFromUserAgent(userAgent);
@@ -76,7 +76,7 @@ public class MozillaParser implements UserAgentParser {
 			switch (deviceType) {
 			case IPHONE:
 			case IPAD:
-				osType = OSType.IOS;
+				osType = OsType.IOS;
 				break;
 			}
 
@@ -95,7 +95,7 @@ public class MozillaParser implements UserAgentParser {
 			String[] splitSystemAndBrowserToken = systemAndBrowserToken
 					.getValue().split(COMMENT_DELIMITER);
 
-			OSInfo osInfo = OSInfo.NOT_AVAILABLE;
+			OsInfo osInfo = OsInfo.NOT_AVAILABLE;
 			switch (osType) {
 			case MAC_OS_X:
 				String osInfoCandidate = splitSystemAndBrowserToken[1].trim();

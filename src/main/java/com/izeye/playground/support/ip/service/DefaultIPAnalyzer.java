@@ -4,17 +4,17 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.izeye.playground.support.ip.domain.IPInfo;
+import com.izeye.playground.support.ip.domain.IpInfo;
 
 @Service("ipAnalyzer")
-public class DefaultIPAnalyzer implements IPAnalyzer {
+public class DefaultIpAnalyzer implements IpAnalyzer {
 
 	@Resource
 	private WhoisService whoisService;
 
 	@Override
-	public IPInfo analyze(String ip) {
-		return new IPInfo(whoisService.whois(ip));
+	public IpInfo analyze(String ip) {
+		return new IpInfo(whoisService.whois(ip));
 	}
 
 }

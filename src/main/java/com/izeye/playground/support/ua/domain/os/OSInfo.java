@@ -5,20 +5,20 @@ import com.izeye.playground.support.ua.domain.UnidentifiableUserAgentException;
 
 // Reference:
 // http://msdn.microsoft.com/en-us/library/ms537503%28v=vs.85%29.aspx
-public class OSInfo {
+public class OsInfo {
 
-	public static final OSInfo NOT_AVAILABLE = new OSInfo(OSType.NOT_AVAILABLE,
+	public static final OsInfo NOT_AVAILABLE = new OsInfo(OsType.NOT_AVAILABLE,
 			StringConstants.NOT_AVAILABLE);
 
-	private final OSType type;
+	private final OsType type;
 	private final String version;
 
-	public OSInfo(OSType type, String version) {
+	public OsInfo(OsType type, String version) {
 		this.type = type;
 		this.version = version;
 	}
 
-	public OSType getType() {
+	public OsType getType() {
 		return type;
 	}
 
@@ -121,13 +121,13 @@ public class OSInfo {
 			}
 
 		case IOS:
-			return OSType.IOS.getName();
+			return OsType.IOS.getName();
 
 		case ANDROID:
-			return OSType.ANDROID.getName();
+			return OsType.ANDROID.getName();
 
 		case NOT_AVAILABLE:
-			return OSType.NOT_AVAILABLE.getName();
+			return OsType.NOT_AVAILABLE.getName();
 
 		default:
 			throw new UnidentifiableUserAgentException(

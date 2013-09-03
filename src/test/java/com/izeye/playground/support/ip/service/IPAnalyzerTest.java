@@ -8,7 +8,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.izeye.playground.support.ip.domain.IPInfo;
+import com.izeye.playground.support.ip.domain.IpInfo;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:applicationContext.xml")
@@ -16,12 +16,12 @@ import com.izeye.playground.support.ip.domain.IPInfo;
 public class IPAnalyzerTest {
 
 	@Resource
-	private IPAnalyzer ipAnalyzer;
+	private IpAnalyzer ipAnalyzer;
 
 	@Test
 	public void analyze() {
 		String ip = "125.186.211.36";
-		IPInfo ipInfo = ipAnalyzer.analyze(ip);
+		IpInfo ipInfo = ipAnalyzer.analyze(ip);
 		System.out.println(ipInfo);
 	}
 

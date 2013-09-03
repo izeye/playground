@@ -21,7 +21,7 @@
 		<th style="width: 30px">Size</th>
 		<th>IP Address</th>
 	</tr>
-	<c:forEach var="qrCodeGenerationLog" items="${allQRCodeGenerationLogs}">
+	<c:forEach var="qrCodeGenerationLog" items="${allQrCodeGenerationLogs}">
 		<tr>
 			<td>${qrCodeGenerationLog.getId()}</td>
 			<td><fmt:formatDate value="${qrCodeGenerationLog.getGeneratedTime()}"

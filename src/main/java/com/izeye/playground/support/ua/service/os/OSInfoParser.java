@@ -1,9 +1,9 @@
 package com.izeye.playground.support.ua.service.os;
 
-import com.izeye.playground.support.ua.domain.os.OSInfo;
+import com.izeye.playground.support.ua.domain.os.OsInfo;
 
-public interface OSInfoParser {
+public interface OsInfoParser {
 
-	OSInfo parse(String osInfoInUserAgent);
+	OsInfo parse(String osInfoInUserAgent);
 
 }

@@ -22,6 +22,11 @@
 		<put-attribute name="body" value="/WEB-INF/views/playground/playground.jsp" />
 	</definition>
 
+	<definition name="playground/entertainment/korean_lotto" extends="playground">
+		<put-attribute name="body_title" value="Korean Lotto" />
+		<put-attribute name="body" value="/WEB-INF/views/playground/entertainment/korean_lotto/korean_lotto.jsp" />
+	</definition>
+
 	<definition name="playground/demo/webcam.definition" template="/WEB-INF/views/playground/demo/webcam/webcam.jsp">
 	</definition>
 

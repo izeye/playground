@@ -8,8 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.izeye.playground.analytics.audience.domain.VisitStat;
-import com.izeye.playground.analytics.audience.service.AudienceAnalyticsService;
+import com.izeye.playground.admin.analytics.audience.domain.VisitStat;
+import com.izeye.playground.admin.analytics.audience.service.AudienceAnalyticsService;
 import com.izeye.playground.controller.AbstractController;
 import com.izeye.playground.support.menu.domain.MenuItem;
 import com.izeye.playground.support.menu.domain.SubMenu;

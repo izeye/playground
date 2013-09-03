@@ -1,9 +1,9 @@
 package com.izeye.playground.support.ip.service;
 
-import com.izeye.playground.support.ip.domain.IPInfo;
+import com.izeye.playground.support.ip.domain.IpInfo;
 
-public interface IPAnalyzer {
+public interface IpAnalyzer {
 
-	IPInfo analyze(String ip);
+	IpInfo analyze(String ip);
 
 }

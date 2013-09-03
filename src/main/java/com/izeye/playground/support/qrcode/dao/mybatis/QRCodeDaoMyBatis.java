@@ -7,26 +7,26 @@ import javax.annotation.Resource;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.izeye.playground.support.qrcode.dao.QRCodeDao;
-import com.izeye.playground.support.qrcode.domain.QRCodeGenerationLog;
-import com.izeye.playground.support.qrcode.domain.QRCodeGenerationRequest;
+import com.izeye.playground.support.qrcode.dao.QrCodeDao;
+import com.izeye.playground.support.qrcode.domain.QrCodeGenerationLog;
+import com.izeye.playground.support.qrcode.domain.QrCodeGenerationRequest;
 
 @Repository("qrCodeDao")
-public class QRCodeDaoMyBatis implements QRCodeDao {
+public class QrCodeDaoMyBatis implements QrCodeDao {
 
 	@Resource
 	private SqlSession sqlSession;
 
 	@Override
-	public void insert(QRCodeGenerationRequest qrCodeGenerationRequest) {
-		QRCodeMapper mapper = sqlSession.getMapper(QRCodeMapper.class);
+	public void insert(QrCodeGenerationRequest qrCodeGenerationRequest) {
+		QrCodeMapper mapper = sqlSession.getMapper(QrCodeMapper.class);
 		mapper.insert(qrCodeGenerationRequest);
 	}
 
 	@Override
-	public List<QRCodeGenerationLog> getAllQRCodeGenerationLogs() {
-		QRCodeMapper mapper = sqlSession.getMapper(QRCodeMapper.class);
-		return mapper.getAllQRCodeGenerationLogs();
+	public List<QrCodeGenerationLog> getAllQrCodeGenerationLogs() {
+		QrCodeMapper mapper = sqlSession.getMapper(QrCodeMapper.class);
+		return mapper.getAllQrCodeGenerationLogs();
 	}
 
 }

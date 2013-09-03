@@ -5,6 +5,7 @@ import java.util.List;
 
 public enum SubMenuItemGroup {
 
+	PLAYGROUND_ENTERTAINMENT("Entertainment"), //
 	PLAYGROUND_DEMO("Demo"), //
 	TOOLS_LIFE("Life"), //
 	TOOLS_COMPUTER("Computer"), //

@@ -14,7 +14,7 @@ import com.izeye.playground.support.ua.domain.UserAgentTypeInfo;
 import com.izeye.playground.support.ua.domain.browser.BrowserInfo;
 import com.izeye.playground.support.ua.domain.browser.BrowserType;
 import com.izeye.playground.support.ua.domain.device.DeviceType;
-import com.izeye.playground.support.ua.domain.os.OSInfo;
+import com.izeye.playground.support.ua.domain.os.OsInfo;
 import com.izeye.playground.support.ua.service.os.WindowsParser;
 
 // NOTE:
@@ -42,7 +42,7 @@ public class OperaParser implements UserAgentParser {
 
 		// FIXME:
 		// Assume that OS is Windows.
-		OSInfo osInfo = windowsParser.parse(splitOSTokenValue[0]);
+		OsInfo osInfo = windowsParser.parse(splitOSTokenValue[0]);
 		analyzedUserAgent.setOsInfo(osInfo);
 
 		// FIXME:

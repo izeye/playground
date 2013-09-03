@@ -5,7 +5,7 @@ import java.util.Date;
 import org.apache.commons.lang3.StringEscapeUtils;
 
 import com.izeye.playground.common.util.DateUtils;
-import com.izeye.playground.support.ip.domain.IPInfo;
+import com.izeye.playground.support.ip.domain.IpInfo;
 import com.izeye.playground.support.ua.domain.UserAgent;
 
 public class AccessLog {
@@ -17,7 +17,7 @@ public class AccessLog {
 	private String userAgent;
 	private String referer;
 
-	private IPInfo analyzedIp;
+	private IpInfo analyzedIp;
 	private UserAgent analyzedUserAgent;
 
 	public long getId() {
@@ -76,11 +76,11 @@ public class AccessLog {
 		this.referer = referer;
 	}
 
-	public IPInfo getAnalyzedIp() {
+	public IpInfo getAnalyzedIp() {
 		return analyzedIp;
 	}
 
-	public void setAnalyzedIp(IPInfo analyzedIp) {
+	public void setAnalyzedIp(IpInfo analyzedIp) {
 		this.analyzedIp = analyzedIp;
 	}
 

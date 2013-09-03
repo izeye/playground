@@ -59,8 +59,8 @@ import com.izeye.playground.support.http.client.domain.HTTPRequest;
 import com.izeye.playground.support.http.client.domain.HTTPRequestAndResponsePair;
 import com.izeye.playground.support.http.client.domain.HTTPResponse;
 import com.izeye.playground.support.http.client.service.HTTPClient;
-import com.izeye.playground.support.ip.domain.IPInfo;
-import com.izeye.playground.support.ip.service.IPAnalyzer;
+import com.izeye.playground.support.ip.domain.IpInfo;
+import com.izeye.playground.support.ip.service.IpAnalyzer;
 import com.izeye.playground.support.lang.ko.unicode.domain.Unicode;
 import com.izeye.playground.support.lang.ko.unicode.service.KoreanUnicodeService;
 import com.izeye.playground.support.math.base.domain.Base;
@@ -91,7 +91,7 @@ public class ToolsComputerController extends AbstractToolsController {
 	private HTTPClient httpClient;
 
 	@Resource
-	private IPAnalyzer ipAnalyzer;
+	private IpAnalyzer ipAnalyzer;
 
 	@Resource
 	private UserAgentAnalyzer userAgentAnalyzer;
@@ -295,7 +295,7 @@ public class ToolsComputerController extends AbstractToolsController {
 
 	@RequestMapping(SUB_MENU_ITEM_IP_ANALYZER_PATH)
 	public String ipAnalyzer(HttpServletRequest request, Model model) {
-		IPInfo ipInfo = ipAnalyzer.analyze(request.getRemoteAddr());
+		IpInfo ipInfo = ipAnalyzer.analyze(request.getRemoteAddr());
 		model.addAttribute("ipInfo", ipInfo);
 
 		model.addAttribute("API_PATH_IP_ANALYZER", API_PATH_IP_ANALYZER);
@@ -305,7 +305,7 @@ public class ToolsComputerController extends AbstractToolsController {
 
 	@RequestMapping(API_PATH_IP_ANALYZER)
 	@ResponseBody
-	public IPInfo ipAnalyzerApi(@RequestParam String ipAddress) {
+	public IpInfo ipAnalyzerApi(@RequestParam String ipAddress) {
 		return ipAnalyzer.analyze(ipAddress);
 	}
 

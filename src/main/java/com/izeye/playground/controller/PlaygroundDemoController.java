@@ -14,17 +14,17 @@ import com.izeye.playground.support.menu.domain.SubMenuItem;
 public class PlaygroundDemoController extends AbstractPlaygroundController {
 
 	@RequestMapping(SUB_MENU_ITEM_WEBCAM_LIVE_PATH)
-	public String demoWebcamLive(Model model) {
+	public String webcamLive(Model model) {
 		return SubMenuItem.PLAYGROUND_DEMO_WEBCAM_LIVE.getViewName();
 	}
 
 	@RequestMapping(SUB_MENU_ITEM_WEBCAM_SNAPSHOTS_PATH)
-	public String demoWebcamSnapshots(Model model) {
+	public String webcamSnapshots(Model model) {
 		return SubMenuItem._PLAYGROUND_DEMO_WEBCAM_SNAPSHOTS.getViewName();
 	}
 
 	@RequestMapping(SUB_MENU_ITEM_KAKAO_LINK_PATH)
-	public String demoKakaoLink(Model model) {
+	public String kakaoLink(Model model) {
 		return SubMenuItem.PLAYGROUND_DEMO_KAKAO_LINK.getViewName();
 	}
 

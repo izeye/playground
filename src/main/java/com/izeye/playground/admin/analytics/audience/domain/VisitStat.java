@@ -1,4 +1,4 @@
-package com.izeye.playground.analytics.audience.domain;
+package com.izeye.playground.admin.analytics.audience.domain;
 
 public class VisitStat {
 

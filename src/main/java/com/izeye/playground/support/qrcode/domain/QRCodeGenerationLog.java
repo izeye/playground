@@ -2,7 +2,7 @@ package com.izeye.playground.support.qrcode.domain;
 
 import java.util.Date;
 
-public class QRCodeGenerationLog {
+public class QrCodeGenerationLog {
 
 	private long id;
 	private String text;

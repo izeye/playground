@@ -8,7 +8,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.izeye.playground.support.ua.domain.os.OSInfo;
+import com.izeye.playground.support.ua.domain.os.OsInfo;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:applicationContext.xml")
@@ -16,12 +16,12 @@ import com.izeye.playground.support.ua.domain.os.OSInfo;
 public class AndroidOSInfoParserTest {
 
 	@Resource
-	private AndroidOSInfoParser androidOSInfoParser;
+	private AndroidOsInfoParser androidOSInfoParser;
 
 	@Test
 	public void parse() {
 		String osInfoInUserAgent = "Android 4.1.2";
-		OSInfo osInfo = androidOSInfoParser.parse(osInfoInUserAgent);
+		OsInfo osInfo = androidOSInfoParser.parse(osInfoInUserAgent);
 		System.out.println(osInfo);
 		System.out.println(osInfo.getDisplayName());
 	}
