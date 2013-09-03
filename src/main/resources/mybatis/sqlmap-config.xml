@@ -7,5 +7,6 @@
 	<typeAliases>
 		<package name="com.izeye.playground.log.access.domain" />
 		<package name="com.izeye.playground.support.qrcode.domain" />
+		<package name="com.izeye.playground.support.lotto.domain" />
 	</typeAliases>
 </configuration>

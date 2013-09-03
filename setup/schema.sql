@@ -23,6 +23,14 @@ CREATE TABLE tb_qrcode_generation_log (
 	PRIMARY KEY (id)
 );
 
+CREATE TABLE tb_korean_lotto_log (
+	id INT AUTO_INCREMENT,
+	numbers VARCHAR(1024) NOT NULL,
+	ip VARCHAR(128) NOT NULL,
+	generated_time DATETIME NOT NULL,
+	PRIMARY KEY (id)
+);
+
 CREATE TABLE tb_menu_item (
 	id INT AUTO_INCREMENT,
 	name VARCHAR(128) NOT NULL,

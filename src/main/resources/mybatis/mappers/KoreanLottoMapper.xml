@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.izeye.playground.support.lotto.dao.mybatis.KoreanLottoMapper">
+	<insert id="insert">
+		INSERT INTO
+			tb_korean_lotto_log (numbers, ip, generated_time)
+		VALUES
+			(#{numbers}, #{ip}, NOW())
+	</insert>
+	<select id="getAllKoreanLottoLogs" resultType="KoreanLottoLog">
+		SELECT * FROM tb_korean_lotto_log ORDER BY generated_time DESC
+	</select>
+</mapper>

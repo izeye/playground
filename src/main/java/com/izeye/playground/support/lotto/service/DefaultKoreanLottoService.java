@@ -8,7 +8,14 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Service;
+
+import com.izeye.playground.support.lotto.dao.KoreanLottoDao;
+import com.izeye.playground.support.lotto.domain.KoreanLottoLog;
+import com.izeye.playground.support.lotto.domain.KoreanLottoRequest;
+import com.izeye.playground.support.lotto.domain.KoreanLottoResponse;
 
 @Service("lottoService")
 public class DefaultKoreanLottoService implements KoreanLottoService {
@@ -26,8 +33,11 @@ public class DefaultKoreanLottoService implements KoreanLottoService {
 		}
 	}
 
+	@Resource
+	private KoreanLottoDao koreanLottoDao;
+
 	@Override
-	public List<Integer> getLuckyNumbers() {
+	public KoreanLottoResponse getLuckyNumbers(KoreanLottoRequest request) {
 		List<Integer> selectedNumbers = new ArrayList<Integer>();
 
 		List<Integer> numbers = new ArrayList<Integer>(NUMBERS);
@@ -35,10 +45,16 @@ public class DefaultKoreanLottoService implements KoreanLottoService {
 			selectedNumbers.add(numbers.remove(RANDOM.get().nextInt(
 					numbers.size())));
 		}
-
 		Collections.sort(selectedNumbers);
 
-		return selectedNumbers;
+		KoreanLottoResponse response = new KoreanLottoResponse(selectedNumbers);
+		koreanLottoDao.insert(request, response);
+		return response;
+	}
+
+	@Override
+	public List<KoreanLottoLog> getAllKoreanLottoLogs() {
+		return koreanLottoDao.getAllKoreanLottoLogs();
 	}
 
 }

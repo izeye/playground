@@ -1,4 +1,4 @@
-package com.izeye.playground.support.lotto.service;
+package com.izeye.playground.support.lotto.dao;
 
 import java.util.List;
 
@@ -6,9 +6,9 @@ import com.izeye.playground.support.lotto.domain.KoreanLottoLog;
 import com.izeye.playground.support.lotto.domain.KoreanLottoRequest;
 import com.izeye.playground.support.lotto.domain.KoreanLottoResponse;
 
-public interface KoreanLottoService {
+public interface KoreanLottoDao {
 
-	KoreanLottoResponse getLuckyNumbers(KoreanLottoRequest request);
+	void insert(KoreanLottoRequest request, KoreanLottoResponse response);
 
 	List<KoreanLottoLog> getAllKoreanLottoLogs();
 

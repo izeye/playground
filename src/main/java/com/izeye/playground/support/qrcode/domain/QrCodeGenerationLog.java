@@ -52,7 +52,7 @@ public class QrCodeGenerationLog {
 
 	@Override
 	public String toString() {
-		return "QRCodeGenerationLog [id=" + id + ", text=" + text + ", size="
+		return "QrCodeGenerationLog [id=" + id + ", text=" + text + ", size="
 				+ size + ", ip=" + ip + ", generatedTime=" + generatedTime
 				+ "]";
 	}
