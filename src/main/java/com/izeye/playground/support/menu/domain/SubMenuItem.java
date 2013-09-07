@@ -14,6 +14,8 @@ import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_IT
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_BASE64_ENCODER_AND_DECODER_PATH;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_BASE_CONVERTER_NAME;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_BASE_CONVERTER_PATH;
+import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_BOOKMARKLETS_NAME;
+import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_BOOKMARKLETS_PATH;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_COLLATZ_NAME;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_COLLATZ_PATH;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_ENGLISH_LOWERCASE_UPPERCASE_CONVERTER_NAME;
@@ -58,8 +60,12 @@ import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_IT
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_PRIME_PATH;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_QR_CODE_GENERATION_LOGS_NAME;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_QR_CODE_GENERATION_LOGS_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_TEXT_2_QR_CODE_NAME;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_TEXT_2_QR_CODE_PATH;
+import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_QUOTA_NAME;
+import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_QUOTA_PATH;
+import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_TEXT_2_QR_CODE_IN_JAVASCRIPT_NAME;
+import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_TEXT_2_QR_CODE_IN_JAVASCRIPT_PATH;
+import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_TEXT_2_QR_CODE_IN_JAVA_NAME;
+import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_TEXT_2_QR_CODE_IN_JAVA_PATH;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_TEXT_COUNTER_NAME;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_TEXT_COUNTER_PATH;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_TIMESTAMP_2_DATE_AND_TIME_NAME;
@@ -98,10 +104,16 @@ public enum SubMenuItem {
 			SUB_MENU_ITEM_UNIT_CONVERTER_PATH), //
 	TOOLS_LIFE_TEXT_COUNTER(SUB_MENU_ITEM_TEXT_COUNTER_NAME,
 			SUB_MENU_ITEM_TEXT_COUNTER_PATH), //
-	TOOLS_LIFE_TEXT_2_QR_CODE(SUB_MENU_ITEM_TEXT_2_QR_CODE_NAME,
-			SUB_MENU_ITEM_TEXT_2_QR_CODE_PATH), //
+	TOOLS_LIFE_TEXT_2_QR_CODE_IN_JAVA(
+			SUB_MENU_ITEM_TEXT_2_QR_CODE_IN_JAVA_NAME,
+			SUB_MENU_ITEM_TEXT_2_QR_CODE_IN_JAVA_PATH), //
+	_TOOLS_LIFE_TEXT_2_QR_CODE_IN_JAVASCRIPT(
+			SUB_MENU_ITEM_TEXT_2_QR_CODE_IN_JAVASCRIPT_NAME,
+			SUB_MENU_ITEM_TEXT_2_QR_CODE_IN_JAVASCRIPT_PATH), //
 	TOOLS_LIFE_WORLD_CLOCK(SUB_MENU_ITEM_WORLD_CLOCK_NAME,
 			SUB_MENU_ITEM_WORLD_CLOCK_PATH), //
+	TOOLS_LIFE_BOOKMARKLETS(SUB_MENU_ITEM_BOOKMARKLETS_NAME,
+			SUB_MENU_ITEM_BOOKMARKLETS_PATH), //
 	TOOLS_COMPUTER_TIMESTAMP_2_DATE_AND_TIME(
 			SUB_MENU_ITEM_TIMESTAMP_2_DATE_AND_TIME_NAME,
 			SUB_MENU_ITEM_TIMESTAMP_2_DATE_AND_TIME_PATH), //
@@ -174,7 +186,8 @@ public enum SubMenuItem {
 			SUB_MENU_ITEM_AUDIENCE_USER_AGENT_SPAM_IPS_PATH), //
 	ADMIN_ANALYTICS_QR_CODE_GENERATION_LOGS(
 			SUB_MENU_ITEM_QR_CODE_GENERATION_LOGS_NAME,
-			SUB_MENU_ITEM_QR_CODE_GENERATION_LOGS_PATH);
+			SUB_MENU_ITEM_QR_CODE_GENERATION_LOGS_PATH), //
+	ADMIN_MONITORING_QUOTA(SUB_MENU_ITEM_QUOTA_NAME, SUB_MENU_ITEM_QUOTA_PATH);
 
 	private final String name;
 	private final String path;

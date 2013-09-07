@@ -17,6 +17,7 @@ public enum DeviceType {
 	IPHONE("iPhone", "iPhone", APPLE, CarrierType.NOT_AVAILABLE, true), //
 	IPAD("iPad", "iPad", APPLE, CarrierType.NOT_AVAILABLE, false), //
 	PC("PC", "PC", DeviceVendor.NOT_AVAILABLE, CarrierType.NOT_AVAILABLE, false), //
+	GALAXY_ACE("SHW-M240S", "Galaxy Ace", SAMSUNG, SKT, true), //
 	GALAXY_S_II_SKT("SHW-M250S", "Galaxy S II", SAMSUNG, SKT, true), //
 	GALAXY_S_II_KT("SHW-M250K", "Galaxy S II", SAMSUNG, KT, true), //
 	GALAXY_S_II_DOCOMO("SC-02C", "Galaxy S II", SAMSUNG, DOCOMO, true), //

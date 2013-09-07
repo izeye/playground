@@ -31,6 +31,14 @@ CREATE TABLE tb_korean_lotto_log (
 	PRIMARY KEY (id)
 );
 
+CREATE TABLE tb_whois (
+	id INT AUTO_INCREMENT,
+	ip VARCHAR(128) NOT NULL UNIQUE,
+	whois VARCHAR(2048) NOT NULL,
+	created_time DATETIME NOT NULL,
+	PRIMARY KEY (id)
+);
+
 CREATE TABLE tb_menu_item (
 	id INT AUTO_INCREMENT,
 	name VARCHAR(128) NOT NULL,

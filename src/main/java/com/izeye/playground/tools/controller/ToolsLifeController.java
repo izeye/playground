@@ -1,9 +1,11 @@
 package com.izeye.playground.tools.controller;
 
-import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_TEXT_2_QR_CODE;
+import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_TEXT_2_QR_CODE_IN_JAVA;
 import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_TEXT_COUNTER;
 import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_UNIT_CONVERTER;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_TEXT_2_QR_CODE_PATH;
+import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_BOOKMARKLETS_PATH;
+import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_TEXT_2_QR_CODE_IN_JAVASCRIPT_PATH;
+import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_TEXT_2_QR_CODE_IN_JAVA_PATH;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_TEXT_COUNTER_PATH;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_UNIT_CONVERTER_PATH;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_WORLD_CLOCK_PATH;
@@ -73,15 +75,16 @@ public class ToolsLifeController extends AbstractToolsController {
 		return textService.countAll(text);
 	}
 
-	@RequestMapping(SUB_MENU_ITEM_TEXT_2_QR_CODE_PATH)
-	public String utilitiesText2QRCode(Model model) {
-		model.addAttribute("API_PATH_TEXT_2_QR_CODE", API_PATH_TEXT_2_QR_CODE);
+	@RequestMapping(SUB_MENU_ITEM_TEXT_2_QR_CODE_IN_JAVA_PATH)
+	public String text2QfCode(Model model) {
+		model.addAttribute("API_PATH_TEXT_2_QR_CODE_IN_JAVA",
+				API_PATH_TEXT_2_QR_CODE_IN_JAVA);
 
-		return SubMenuItem.TOOLS_LIFE_TEXT_2_QR_CODE.getViewName();
+		return SubMenuItem.TOOLS_LIFE_TEXT_2_QR_CODE_IN_JAVA.getViewName();
 	}
 
-	@RequestMapping(API_PATH_TEXT_2_QR_CODE)
-	public ResponseEntity<byte[]> utilitiesText2QRCodeAPI(
+	@RequestMapping(API_PATH_TEXT_2_QR_CODE_IN_JAVA)
+	public ResponseEntity<byte[]> text2QRCodeAPI(
 			@ModelAttribute("ipAddress") String ipAddress,
 			@RequestParam String text, @RequestParam int size)
 			throws WriterException, IOException {
@@ -92,6 +95,17 @@ public class ToolsLifeController extends AbstractToolsController {
 				size, ipAddress);
 		byte[] qrcode = qrCodeService.text2QrCode(request);
 		return new ResponseEntity<byte[]>(qrcode, headers, HttpStatus.CREATED);
+	}
+
+	@RequestMapping(SUB_MENU_ITEM_TEXT_2_QR_CODE_IN_JAVASCRIPT_PATH)
+	public String text2QrCodeInJavaScript(Model model) {
+		return SubMenuItem._TOOLS_LIFE_TEXT_2_QR_CODE_IN_JAVASCRIPT
+				.getViewName();
+	}
+
+	@RequestMapping(SUB_MENU_ITEM_BOOKMARKLETS_PATH)
+	public String worldClock() {
+		return SubMenuItem.TOOLS_LIFE_BOOKMARKLETS.getViewName();
 	}
 
 	@RequestMapping(SUB_MENU_ITEM_WORLD_CLOCK_PATH)

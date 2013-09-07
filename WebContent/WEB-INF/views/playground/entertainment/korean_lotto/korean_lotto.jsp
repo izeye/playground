@@ -39,7 +39,7 @@ var getHistory = function () {
 </script>
 
 <p>
-This page generates Korean Lotto numbers :-)
+This page generates Korean Lotto numbers.
 </p>
 
 <input type="button" value="Get lucky numbers" onclick="getLuckyNumbers();"><br/><br/>
@@ -51,7 +51,7 @@ This page generates Korean Lotto numbers :-)
 	<tr>
 		<th style="width: 30px">ID</th>
 		<th style="width: 120px">Time</th>
-		<th style="width: 500px">Numbers</th>
+		<th style="width: 150px">Numbers</th>
 		<th>IP Address</th>
 	</tr>
 	<c:forEach var="allKoreanLottoLog" items="${allKoreanLottoLogs}">

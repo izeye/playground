@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <div class="well sidebar-nav">
 	<ul class="nav nav-list">
 		<c:forEach var="subMenuItemGroup" items="${subMenu.getSubMenuItemGroups()}">

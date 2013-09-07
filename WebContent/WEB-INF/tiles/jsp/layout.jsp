@@ -35,14 +35,15 @@ body {
 				<h2><tiles:insertAttribute name="body_title" /></h2>
 				<tiles:insertAttribute name="facebook_like" />
 				<tiles:insertAttribute name="facebook_share" /><br/>
-				<tiles:insertAttribute name="body" />
+				<tiles:insertAttribute name="body" /><br/>
+				<tiles:insertAttribute name="facebook_comments" />
 			</div>
 		</div>
 		<hr />
 		<tiles:insertAttribute name="footer" />
 	</div>
 	<script type="text/javascript"
-		src="<c:url value="/resources/bootstrap/2.3.2/js/bootstrap.min.js" />"></script>
+		src="<c:url value="/resources/bootstrap/2.3.2/js/bootstrap.js" />"></script>
 	<script>
 		(function(i, s, o, g, r, a, m) {
 			i['GoogleAnalyticsObject'] = r;

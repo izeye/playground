@@ -4,6 +4,8 @@ import com.izeye.playground.support.country.domain.Country;
 
 public class IpInfo {
 
+	public static final IpInfo NOT_AVAILABLE = new IpInfo(Whois.NOT_AVAILABLE);
+
 	private Whois whois;
 
 	public IpInfo(Whois whois) {

@@ -8,7 +8,7 @@ import java.util.Map;
 
 import org.junit.Test;
 
-public class URLUtilsTest {
+public class UrlUtilsTest {
 
 	@Test
 	public void createURL() {
@@ -18,7 +18,7 @@ public class URLUtilsTest {
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("query", "125.186.211.36");
 		params.put("key", "1234");
-		String url = URLUtils.createURL(urlPrefix, params);
+		String url = UrlUtils.createUrl(urlPrefix, params);
 
 		assertThat(url, is(expectedURL));
 	}

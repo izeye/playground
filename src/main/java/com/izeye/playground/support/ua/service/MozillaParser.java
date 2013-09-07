@@ -83,6 +83,11 @@ public class MozillaParser implements UserAgentParser {
 			// Mozilla/[version]
 			userAgentTokens.remove(0);
 
+			if (userAgentTokens.isEmpty()) {
+				throw new UnidentifiableUserAgentException(
+						"Unexpected Mozilla user agent: " + userAgent);
+			}
+
 			// ([system and browser information])
 			UserAgentToken systemAndBrowserToken = userAgentTokens.remove(0);
 			if (systemAndBrowserToken.getType() != COMMENT) {

@@ -63,7 +63,7 @@ Total: ${accessLogs.size()}
 <table id="result" class="table table-striped table-bordered table-condensed"
 	style="font-size: 12px">
 	<tr>
-		<th style="width: 30px">ID</th>
+		<th style="width: 40px">ID</th>
 		<th style="width: 120px">Time</th>
 		<th style="width: 100px">IP</th>
 		<th>URL</th>

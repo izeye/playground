@@ -8,18 +8,25 @@
 		<put-attribute name="menu" value="/WEB-INF/tiles/jsp/menu.jsp" />
 		<put-attribute name="sub_menu" value="/WEB-INF/tiles/jsp/sub_menu.jsp" />
 		<put-attribute name="body_title" value="" />
-		<put-attribute name="facebook_like" value="/WEB-INF/tiles/jsp/facebook_like.jsp" />
-		<put-attribute name="facebook_share" value="/WEB-INF/tiles/jsp/facebook_share.jsp" />
+		<put-attribute name="facebook_like" value="" />
+		<put-attribute name="facebook_share" value="" />
 		<put-attribute name="body" value="" />
+		<put-attribute name="facebook_comments" value="" />
 		<put-attribute name="footer" value="/WEB-INF/tiles/jsp/footer.jsp" />
 	</definition>
 
 	<definition name="home" extends="base.definition">
+		<put-attribute name="facebook_like" value="/WEB-INF/tiles/jsp/facebook_like.jsp" />
+		<put-attribute name="facebook_share" value="/WEB-INF/tiles/jsp/facebook_share.jsp" />
 		<put-attribute name="body" value="/WEB-INF/views/home/home.jsp" />
+		<put-attribute name="facebook_comments" value="/WEB-INF/tiles/jsp/facebook_comments.jsp" />
 	</definition>
 	
 	<definition name="playground" extends="base.definition">
+		<put-attribute name="facebook_like" value="/WEB-INF/tiles/jsp/facebook_like.jsp" />
+		<put-attribute name="facebook_share" value="/WEB-INF/tiles/jsp/facebook_share.jsp" />
 		<put-attribute name="body" value="/WEB-INF/views/playground/playground.jsp" />
+		<put-attribute name="facebook_comments" value="/WEB-INF/tiles/jsp/facebook_comments.jsp" />
 	</definition>
 
 	<definition name="playground/entertainment/korean_lotto" extends="playground">
@@ -56,7 +63,10 @@
 	</definition>
 
 	<definition name="tools" extends="base.definition">
+		<put-attribute name="facebook_like" value="/WEB-INF/tiles/jsp/facebook_like.jsp" />
+		<put-attribute name="facebook_share" value="/WEB-INF/tiles/jsp/facebook_share.jsp" />
 		<put-attribute name="body" value="/WEB-INF/views/tools/tools.jsp" />
+		<put-attribute name="facebook_comments" value="/WEB-INF/tiles/jsp/facebook_comments.jsp" />
 	</definition>
 
 	<definition name="tools/life/unit_converter" extends="tools">
@@ -69,14 +79,37 @@
 		<put-attribute name="body" value="/WEB-INF/views/tools/life/text_counter/text_counter.jsp" />
 	</definition>
 
-	<definition name="tools/life/text2qrcode" extends="tools">
-		<put-attribute name="body_title" value="Text 2 QR Code" />
-		<put-attribute name="body" value="/WEB-INF/views/tools/life/text2qrcode/text2qrcode.jsp" />
+	<definition name="tools/life/text2qrcode.definition" template="/WEB-INF/views/tools/life/text2qrcode/text2qrcode.jsp">
+	</definition>
+
+	<definition name="tools/life/text2qrcode/java.body" extends="tools/life/text2qrcode.definition">
+		<put-attribute name="selected_tab" value="tab_java" />
+		<put-attribute name="sub_body" value="/WEB-INF/views/tools/life/text2qrcode/text2qrcode_in_java.jsp" />
+	</definition>
+
+	<definition name="tools/life/text2qrcode/js.body" extends="tools/life/text2qrcode.definition">
+		<put-attribute name="selected_tab" value="tab_javascript" />
+		<put-attribute name="sub_body" value="/WEB-INF/views/tools/life/text2qrcode/text2qrcode_in_js.jsp" />
+	</definition>
+
+	<definition name="tools/life/text2qrcode_in_java" extends="tools">
+		<put-attribute name="body_title" value="Text 2 QR Code (Java)" />
+		<put-attribute name="body" value="tools/life/text2qrcode/java.body" />
+	</definition>
+
+	<definition name="tools/life/text2qrcode_in_js" extends="tools">
+		<put-attribute name="body_title" value="Text 2 QR Code (JavaScript)" />
+		<put-attribute name="body" value="tools/life/text2qrcode/js.body" />
 	</definition>
 
 	<definition name="tools/life/world_clock" extends="tools">
 		<put-attribute name="body_title" value="World Clock" />
 		<put-attribute name="body" value="/WEB-INF/views/tools/life/world_clock/world_clock.jsp" />
+	</definition>
+
+	<definition name="tools/life/bookmarklets" extends="tools">
+		<put-attribute name="body_title" value="Bookmarklets" />
+		<put-attribute name="body" value="/WEB-INF/views/tools/life/bookmarklets/bookmarklets.jsp" />
 	</definition>
 
 	<definition name="tools/computer/timestamp2datetime" extends="tools">
@@ -155,7 +188,10 @@
 	</definition>
 
 	<definition name="math" extends="base.definition">
+		<put-attribute name="facebook_like" value="/WEB-INF/tiles/jsp/facebook_like.jsp" />
+		<put-attribute name="facebook_share" value="/WEB-INF/tiles/jsp/facebook_share.jsp" />
 		<put-attribute name="body" value="/WEB-INF/views/math/math.jsp" />
+		<put-attribute name="facebook_comments" value="/WEB-INF/tiles/jsp/facebook_comments.jsp" />
 	</definition>
 
 	<definition name="math/algebra/prime" extends="math">
@@ -204,14 +240,17 @@
 	</definition>
 
 	<definition name="about" extends="base.definition">
+		<put-attribute name="facebook_like" value="/WEB-INF/tiles/jsp/facebook_like.jsp" />
+		<put-attribute name="facebook_share" value="/WEB-INF/tiles/jsp/facebook_share.jsp" />
 		<put-attribute name="body" value="/WEB-INF/views/about/about.jsp" />
+		<put-attribute name="facebook_comments" value="/WEB-INF/tiles/jsp/facebook_comments.jsp" />
 	</definition>
 
-	<definition name="about/about_me/about_me" extends="base.definition">
+	<definition name="about/about_me/about_me" extends="about">
 		<put-attribute name="body" value="/WEB-INF/views/about/about_me/about_me.jsp" />
 	</definition>
 
-	<definition name="about/links/links" extends="base.definition">
+	<definition name="about/links/links" extends="about">
 		<put-attribute name="body" value="/WEB-INF/views/about/links/links.jsp" />
 	</definition>
 
@@ -238,5 +277,9 @@
 
 	<definition name="admin/analytics/qrcode/qrcode_generation_logs" extends="admin">
 		<put-attribute name="body" value="/WEB-INF/views/admin/analytics/qrcode/qrcode_generation_logs.jsp" />
+	</definition>
+
+	<definition name="admin/monitoring/quota" extends="admin">
+		<put-attribute name="body" value="/WEB-INF/views/admin/monitoring/quota/quota.jsp" />
 	</definition>
 </tiles-definitions>

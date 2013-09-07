@@ -4,7 +4,11 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:cache="http://www.springframework.org/schema/cache"
 	xmlns:p="http://www.springframework.org/schema/p"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-3.2.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 
@@ -20,6 +24,12 @@
 		<property name="minIdle" value="0" />
 		<property name="maxWait" value="100" />
 	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="configLocation" value="classpath:mybatis/sqlmap-config.xml" />
@@ -41,7 +51,30 @@
 	<bean id="ehcache"
 		class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean"
 		p:config-location="classpath:ehcache/ehcache.xml" />
-
+	
+	<aop:aspectj-autoproxy />
+	
+	<security:debug />
+	
+	<security:http pattern="/resources/**" security="none" />
+	
+	<security:http use-expressions="true">
+		<security:intercept-url pattern="/admin/**" access="hasRole('supervisor')" />
+		<security:intercept-url pattern="/**" access="permitAll"/>
+		<security:form-login />
+		<security:logout logout-success-url="/" delete-cookies="JSESSIONID" />
+		<security:remember-me />
+	</security:http>
+	
+	<security:authentication-manager>
+		<security:authentication-provider>
+			<security:user-service>
+				<security:user name="admin" password="admin123" authorities="supervisor, user"/>
+				<security:user name="izeye" password="izeye345" authorities="user"/>
+			</security:user-service>
+		</security:authentication-provider>
+	</security:authentication-manager>
+	
 	<beans profile="dev">
 		<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 			<property name="locations">

@@ -39,4 +39,7 @@ public class DateUtils {
 		return DateUtils.formatDate(new DateTime().minusDays(1).toDate());
 	}
 
+	public static boolean isToday(Date date) {
+		return formatDate(date).equals(formatDate(new Date()));
+	}
 }

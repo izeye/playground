@@ -5,6 +5,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.izeye.playground.support.ip.domain.IpInfo;
+import com.izeye.playground.support.ip.domain.WhoisFailException;
 
 @Service("ipAnalyzer")
 public class DefaultIpAnalyzer implements IpAnalyzer {
@@ -14,7 +15,12 @@ public class DefaultIpAnalyzer implements IpAnalyzer {
 
 	@Override
 	public IpInfo analyze(String ip) {
-		return new IpInfo(whoisService.whois(ip));
+		try {
+			return new IpInfo(whoisService.whois(ip));
+		} catch (WhoisFailException e) {
+			e.printStackTrace();
+			return IpInfo.NOT_AVAILABLE;
+		}
 	}
 
 }

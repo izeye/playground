@@ -2,20 +2,20 @@ package com.izeye.playground.common.util;
 
 import java.util.Map;
 
-public class URLUtils {
+public class UrlUtils {
 
-	public static String createURL(String urlPrefix, Map<String, Object> params) {
-		StringBuilder sbURL = new StringBuilder(urlPrefix);
+	public static String createUrl(String urlPrefix, Map<String, Object> params) {
+		StringBuilder sbUrl = new StringBuilder(urlPrefix);
 		for (Map.Entry<String, Object> param : params.entrySet()) {
-			sbURL.append(param.getKey());
-			sbURL.append('=');
+			sbUrl.append(param.getKey());
+			sbUrl.append('=');
 			Object value = param.getValue();
 			// sbParams.append(value == null ? "" : value);
-			sbURL.append(value);
-			sbURL.append('&');
+			sbUrl.append(value);
+			sbUrl.append('&');
 		}
-		sbURL.deleteCharAt(sbURL.length() - 1);
-		return sbURL.toString();
+		sbUrl.deleteCharAt(sbUrl.length() - 1);
+		return sbUrl.toString();
 	}
 
 }

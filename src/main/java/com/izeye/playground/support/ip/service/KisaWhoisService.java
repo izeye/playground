@@ -21,19 +21,19 @@ import javax.annotation.Resource;
 import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.izeye.playground.common.domain.StringConstants;
 import com.izeye.playground.common.util.HttpUtils;
 import com.izeye.playground.common.util.JDOMUtils;
-import com.izeye.playground.common.util.URLUtils;
+import com.izeye.playground.common.util.UrlUtils;
 import com.izeye.playground.support.country.domain.Country;
 import com.izeye.playground.support.country.service.CountryService;
 import com.izeye.playground.support.ip.domain.Whois;
 import com.izeye.playground.support.ip.domain.WhoisDetail;
+import com.izeye.playground.support.ip.domain.WhoisFailException;
 
-@Service("kisaWhoiseService")
+@Service("kisaWhoisService")
 public class KisaWhoisService implements WhoisService {
 
 	private static final String KISA_WHOIS_API_URL_PREFIX = "http://whois.kisa.or.kr/openapi/whois.jsp?";
@@ -47,13 +47,12 @@ public class KisaWhoisService implements WhoisService {
 	private String apiKey;
 
 	@Override
-	@Cacheable("whoisCache")
-	public Whois whois(String ip) {
+	public Whois whois(String ip) throws WhoisFailException {
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put(PARAM_QUERY, ip);
 		params.put(PARAM_KEY, apiKey);
 
-		String apiUrl = URLUtils.createURL(KISA_WHOIS_API_URL_PREFIX, params);
+		String apiUrl = UrlUtils.createUrl(KISA_WHOIS_API_URL_PREFIX, params);
 		try {
 			InputStream is = HttpUtils.urlToInputStream(apiUrl);
 			Element root = JDOMUtils.inputStreamToRootElement(is);
@@ -82,10 +81,11 @@ public class KisaWhoisService implements WhoisService {
 			return whois;
 		} catch (IOException e) {
 			e.printStackTrace();
+			throw new WhoisFailException("IP: " + ip, e);
 		} catch (JDOMException e) {
 			e.printStackTrace();
+			throw new WhoisFailException("IP: " + ip, e);
 		}
-		return null;
 	}
 
 	private WhoisDetail getDetail(Element language) {

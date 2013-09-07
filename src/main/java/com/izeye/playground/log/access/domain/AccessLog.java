@@ -17,8 +17,8 @@ public class AccessLog {
 	private String userAgent;
 	private String referer;
 
-	private IpInfo analyzedIp;
-	private UserAgent analyzedUserAgent;
+	private IpInfo analyzedIp = IpInfo.NOT_AVAILABLE;
+	private UserAgent analyzedUserAgent = UserAgent.NOT_AVAILABLE;
 
 	public long getId() {
 		return id;
