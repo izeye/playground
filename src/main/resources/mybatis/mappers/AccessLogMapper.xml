@@ -7,9 +7,6 @@
 		VALUES
 			(#{accessTime}, #{ip}, #{url}, #{userAgent}, #{referer})
 	</insert>
-	<select id="getAllAccessLogs" resultType="AccessLog">
-		SELECT * FROM tb_access_log ORDER BY access_time DESC
-	</select>
 	<select id="getLatestAccessLogs" resultType="AccessLog">
 		SELECT * FROM tb_access_log ORDER BY access_time DESC LIMIT #{count}
 	</select>

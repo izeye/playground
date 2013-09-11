@@ -4,14 +4,14 @@ import java.util.Date;
 
 import com.izeye.playground.common.util.DateUtils;
 
-public class KoreanLottoLog {
+public class KoreanLottoGenerationLog {
 
 	private long id;
 	private String numbers;
 	private String ip;
 	private Date generatedTime;
 
-	public KoreanLottoLog() {
+	public KoreanLottoGenerationLog() {
 	}
 
 	public long getId() {

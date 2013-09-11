@@ -10,13 +10,13 @@ public class DateUtils {
 	private static final ThreadLocal<SimpleDateFormat> DEFAULT_DATE_FORMAT = new ThreadLocal<SimpleDateFormat>() {
 		protected SimpleDateFormat initialValue() {
 			return new SimpleDateFormat("yyyy-MM-dd");
-		};
+		}
 	};
 
 	private static final ThreadLocal<SimpleDateFormat> DEFAULT_DATE_TIME_FORMAT = new ThreadLocal<SimpleDateFormat>() {
 		protected SimpleDateFormat initialValue() {
 			return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		};
+		}
 	};
 
 	public static String formatDate(Date date) {

@@ -2,14 +2,22 @@ package com.izeye.playground.support.lotto.service;
 
 import java.util.List;
 
-import com.izeye.playground.support.lotto.domain.KoreanLottoLog;
-import com.izeye.playground.support.lotto.domain.KoreanLottoRequest;
-import com.izeye.playground.support.lotto.domain.KoreanLottoResponse;
+import com.izeye.playground.support.lotto.domain.KoreanLottoGenerationLog;
+import com.izeye.playground.support.lotto.domain.KoreanLottoGenerationRequest;
+import com.izeye.playground.support.lotto.domain.KoreanLottoGenerationResponse;
+import com.izeye.playground.support.lotto.domain.KoreanLottoNumbers;
+import com.izeye.playground.support.lotto.domain.KoreanLottoWinningNumbers;
 
 public interface KoreanLottoService {
 
-	KoreanLottoResponse getLuckyNumbers(KoreanLottoRequest request);
+	KoreanLottoGenerationResponse getLuckyNumbers(
+			KoreanLottoGenerationRequest request);
 
-	List<KoreanLottoLog> getAllKoreanLottoLogs();
+	List<KoreanLottoGenerationLog> getAllKoreanLottoLogs();
+
+	Integer getRank(KoreanLottoNumbers numbers,
+			KoreanLottoWinningNumbers winningNumbers);
+
+	Integer getRank(String numbers, String winningNumbers);
 
 }

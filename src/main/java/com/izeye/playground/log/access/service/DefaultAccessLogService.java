@@ -41,11 +41,6 @@ public class DefaultAccessLogService implements AccessLogService {
 	}
 
 	@Override
-	public List<AccessLog> getAllAccessLogs() {
-		return accessLogDao.getAllAccessLogs();
-	}
-
-	@Override
 	public List<AccessLog> getLatestAccessLogs(int count) {
 		List<AccessLog> latestAccessLogs = accessLogDao
 				.getLatestAccessLogs(count);
@@ -61,6 +56,8 @@ public class DefaultAccessLogService implements AccessLogService {
 	}
 
 	@Override
+	// @Secured("ROLE_SUPERVISOR")
+	// @PreAuthorize("hasRole('ROLE_SUPERVISOR')")
 	public List<AccessLog> getAccessLogsInSpecificDate(String date) {
 		List<AccessLog> accessLogs = accessLogDao
 				.getAccessLogsInSpecificDate(date);

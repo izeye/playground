@@ -7,15 +7,18 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
 import com.izeye.playground.support.lotto.dao.KoreanLottoDao;
-import com.izeye.playground.support.lotto.domain.KoreanLottoLog;
-import com.izeye.playground.support.lotto.domain.KoreanLottoRequest;
-import com.izeye.playground.support.lotto.domain.KoreanLottoResponse;
+import com.izeye.playground.support.lotto.domain.KoreanLottoGenerationLog;
+import com.izeye.playground.support.lotto.domain.KoreanLottoGenerationRequest;
+import com.izeye.playground.support.lotto.domain.KoreanLottoGenerationResponse;
+import com.izeye.playground.support.lotto.domain.KoreanLottoNumbers;
+import com.izeye.playground.support.lotto.domain.KoreanLottoWinningNumbers;
 
 @Service("lottoService")
 public class DefaultKoreanLottoService implements KoreanLottoService {
@@ -36,8 +39,12 @@ public class DefaultKoreanLottoService implements KoreanLottoService {
 	@Resource
 	private KoreanLottoDao koreanLottoDao;
 
+	@Resource
+	private KoreanLottoParser koreanLottoParser;
+
 	@Override
-	public KoreanLottoResponse getLuckyNumbers(KoreanLottoRequest request) {
+	public KoreanLottoGenerationResponse getLuckyNumbers(
+			KoreanLottoGenerationRequest request) {
 		List<Integer> selectedNumbers = new ArrayList<Integer>();
 
 		List<Integer> numbers = new ArrayList<Integer>(NUMBERS);
@@ -47,14 +54,46 @@ public class DefaultKoreanLottoService implements KoreanLottoService {
 		}
 		Collections.sort(selectedNumbers);
 
-		KoreanLottoResponse response = new KoreanLottoResponse(selectedNumbers);
+		KoreanLottoGenerationResponse response = new KoreanLottoGenerationResponse(
+				selectedNumbers);
 		koreanLottoDao.insert(request, response);
 		return response;
 	}
 
 	@Override
-	public List<KoreanLottoLog> getAllKoreanLottoLogs() {
-		return koreanLottoDao.getAllKoreanLottoLogs();
+	public List<KoreanLottoGenerationLog> getAllKoreanLottoLogs() {
+		return koreanLottoDao.getAllGenerationLogs();
+	}
+
+	@Override
+	public Integer getRank(KoreanLottoNumbers numbers,
+			KoreanLottoWinningNumbers winningNumbers) {
+		Set<Integer> numbersSet = numbers.getNumbers();
+		Set<Integer> winningNumberSet = winningNumbers.getNumbers()
+				.getNumbers();
+		winningNumberSet.removeAll(numbersSet);
+		switch (winningNumberSet.size()) {
+		case 0:
+			return 1;
+
+		case 1:
+			return numbersSet.contains(winningNumbers.getBonusNumber()) ? 2 : 3;
+
+		case 2:
+			return 4;
+
+		case 3:
+			return 5;
+
+		default:
+			return 6;
+		}
+	}
+
+	@Override
+	public Integer getRank(String numbers, String winningNumbers) {
+		return getRank(koreanLottoParser.parseNumbers(numbers),
+				koreanLottoParser.parseWinningNumbers(winningNumbers));
 	}
 
 }

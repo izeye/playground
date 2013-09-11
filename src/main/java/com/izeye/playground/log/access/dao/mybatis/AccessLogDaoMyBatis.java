@@ -27,13 +27,6 @@ public class AccessLogDaoMyBatis implements AccessLogDao {
 	}
 
 	@Override
-	@Cacheable(value = "accessLogCache", key = "{#root.methodName}")
-	public List<AccessLog> getAllAccessLogs() {
-		AccessLogMapper mapper = sqlSession.getMapper(AccessLogMapper.class);
-		return mapper.getAllAccessLogs();
-	}
-
-	@Override
 	public List<AccessLog> getLatestAccessLogs(int count) {
 		AccessLogMapper mapper = sqlSession.getMapper(AccessLogMapper.class);
 		return mapper.getLatestAccessLogs(count);

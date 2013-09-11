@@ -18,8 +18,16 @@ import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_IT
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_BOOKMARKLETS_PATH;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_COLLATZ_NAME;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_COLLATZ_PATH;
+import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_CSV_PARSER_NAME;
+import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_CSV_PARSER_PATH;
+import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_CTBRG_SEARCH_NAME;
+import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_CTBRG_SEARCH_PATH;
+import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_DEVDAY_SEARCH_NAME;
+import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_DEVDAY_SEARCH_PATH;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_ENGLISH_LOWERCASE_UPPERCASE_CONVERTER_NAME;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_ENGLISH_LOWERCASE_UPPERCASE_CONVERTER_PATH;
+import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_EXECUTE_TEMPORARILY_NAME;
+import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_EXECUTE_TEMPORARILY_PATH;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_FACTORIAL_NAME;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_FACTORIAL_PATH;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_FIBONACCI_NAME;
@@ -54,6 +62,8 @@ import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_IT
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_MEAN_PATH;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_MULTI_WORD_NOTATION_CONVERTER_NAME;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_MULTI_WORD_NOTATION_CONVERTER_PATH;
+import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_PLAYGROUND_SEARCH_NAME;
+import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_PLAYGROUND_SEARCH_PATH;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_PRIME_FACTORIZATION_NAME;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_PRIME_FACTORIZATION_PATH;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_PRIME_NAME;
@@ -114,6 +124,8 @@ public enum SubMenuItem {
 			SUB_MENU_ITEM_WORLD_CLOCK_PATH), //
 	TOOLS_LIFE_BOOKMARKLETS(SUB_MENU_ITEM_BOOKMARKLETS_NAME,
 			SUB_MENU_ITEM_BOOKMARKLETS_PATH), //
+	TOOLS_LIFE_CSV_PARSER(SUB_MENU_ITEM_CSV_PARSER_NAME,
+			SUB_MENU_ITEM_CSV_PARSER_PATH), //
 	TOOLS_COMPUTER_TIMESTAMP_2_DATE_AND_TIME(
 			SUB_MENU_ITEM_TIMESTAMP_2_DATE_AND_TIME_NAME,
 			SUB_MENU_ITEM_TIMESTAMP_2_DATE_AND_TIME_PATH), //
@@ -173,6 +185,12 @@ public enum SubMenuItem {
 	ABOUT_ABOUT_ME_ABOUT_ME_PATH(SUB_MENU_ITEM_ABOUT_ME_NAME,
 			SUB_MENU_ITEM_ABOUT_ME_PATH), //
 	ABOUT_LINKS_LINKS_PATH(SUB_MENU_ITEM_LINKS_NAME, SUB_MENU_ITEM_LINKS_PATH), //
+	ABOUT_SEARCH_PLAYGROUND_PATH(SUB_MENU_ITEM_PLAYGROUND_SEARCH_NAME,
+			SUB_MENU_ITEM_PLAYGROUND_SEARCH_PATH), //
+	ABOUT_SEARCH_DEVDAY_PATH(SUB_MENU_ITEM_DEVDAY_SEARCH_NAME,
+			SUB_MENU_ITEM_DEVDAY_SEARCH_PATH), //
+	ABOUT_SEARCH_CTBRG_PATH(SUB_MENU_ITEM_CTBRG_SEARCH_NAME,
+			SUB_MENU_ITEM_CTBRG_SEARCH_PATH), //
 	ADMIN_ANALYTICS_AUDIENCE_OVERVIEW(SUB_MENU_ITEM_AUDIENCE_OVERVIEW_NAME,
 			SUB_MENU_ITEM_AUDIENCE_OVERVIEW_PATH), //
 	ADMIN_ANALYTICS_AUDIENCE_ACCESS_LOGS(
@@ -187,7 +205,10 @@ public enum SubMenuItem {
 	ADMIN_ANALYTICS_QR_CODE_GENERATION_LOGS(
 			SUB_MENU_ITEM_QR_CODE_GENERATION_LOGS_NAME,
 			SUB_MENU_ITEM_QR_CODE_GENERATION_LOGS_PATH), //
-	ADMIN_MONITORING_QUOTA(SUB_MENU_ITEM_QUOTA_NAME, SUB_MENU_ITEM_QUOTA_PATH);
+	ADMIN_MONITORING_QUOTA(SUB_MENU_ITEM_QUOTA_NAME, SUB_MENU_ITEM_QUOTA_PATH), //
+	ADMIN_MANAGEMENT_EXECUTE_TEMPORARILY(
+			SUB_MENU_ITEM_EXECUTE_TEMPORARILY_NAME,
+			SUB_MENU_ITEM_EXECUTE_TEMPORARILY_PATH);
 
 	private final String name;
 	private final String path;

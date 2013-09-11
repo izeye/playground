@@ -2,13 +2,13 @@ package com.izeye.playground.support.lotto.domain;
 
 import java.util.List;
 
-import com.izeye.playground.common.util.ListUtils;
+import com.izeye.playground.common.util.StringUtils;
 
-public class KoreanLottoResponse {
+public class KoreanLottoGenerationResponse {
 
 	private final List<Integer> numbers;
 
-	public KoreanLottoResponse(List<Integer> numbers) {
+	public KoreanLottoGenerationResponse(List<Integer> numbers) {
 		this.numbers = numbers;
 	}
 
@@ -17,7 +17,7 @@ public class KoreanLottoResponse {
 	}
 
 	public String getNumbersAsString() {
-		return ListUtils.list2CommaSeparatedStrings(numbers);
+		return StringUtils.join(numbers, ",");
 	}
 
 	@Override

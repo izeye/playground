@@ -14,8 +14,10 @@ public enum SubMenuItemGroup {
 	MATH_GEOMETRY("Geometry"), //
 	ABOUT_ABOUT_ME("About Me"), //
 	ABOUT_LINKS("Links"), //
+	ABOUT_SEARCH("Search"), //
 	ADMIN_ANALYTICS("Analytics"), //
-	ADMIN_MONITORING("Monitoring");
+	ADMIN_MONITORING("Monitoring"), //
+	ADMIN_MANAGEMENT("Management");
 
 	private final String name;
 	private final List<SubMenuItem> subMenuItem;

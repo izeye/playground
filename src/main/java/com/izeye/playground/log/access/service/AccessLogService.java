@@ -8,8 +8,6 @@ public interface AccessLogService {
 
 	void log(String ip, String url, String userAgent, String referer);
 
-	List<AccessLog> getAllAccessLogs();
-
 	List<AccessLog> getLatestAccessLogs(int count);
 
 	List<AccessLog> getLatestAccessLogs(long exclusiveBaseId, int count);

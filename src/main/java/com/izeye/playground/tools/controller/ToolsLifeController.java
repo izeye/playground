@@ -1,9 +1,11 @@
 package com.izeye.playground.tools.controller;
 
+import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_CSV_PARSER;
 import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_TEXT_2_QR_CODE_IN_JAVA;
 import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_TEXT_COUNTER;
 import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_UNIT_CONVERTER;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_BOOKMARKLETS_PATH;
+import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_CSV_PARSER_PATH;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_TEXT_2_QR_CODE_IN_JAVASCRIPT_PATH;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_TEXT_2_QR_CODE_IN_JAVA_PATH;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_TEXT_COUNTER_PATH;
@@ -29,6 +31,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.zxing.WriterException;
+import com.izeye.playground.support.csv.service.CsvParser;
 import com.izeye.playground.support.menu.domain.SubMenuItem;
 import com.izeye.playground.support.qrcode.domain.QrCodeGenerationRequest;
 import com.izeye.playground.support.qrcode.service.QrCodeService;
@@ -44,6 +47,9 @@ public class ToolsLifeController extends AbstractToolsController {
 
 	@Resource
 	private QrCodeService qrCodeService;
+
+	@Resource
+	private CsvParser csvParser;
 
 	@RequestMapping(SUB_MENU_ITEM_UNIT_CONVERTER_PATH)
 	public String unitConverter(Model model) {
@@ -114,6 +120,19 @@ public class ToolsLifeController extends AbstractToolsController {
 		model.addAttribute("timeZoneIds", TimeZone.getAvailableIDs());
 
 		return SubMenuItem.TOOLS_LIFE_WORLD_CLOCK.getViewName();
+	}
+
+	@RequestMapping(SUB_MENU_ITEM_CSV_PARSER_PATH)
+	public String csvParser(Model model) {
+		model.addAttribute("API_PATH_CSV_PARSER", API_PATH_CSV_PARSER);
+
+		return SubMenuItem.TOOLS_LIFE_CSV_PARSER.getViewName();
+	}
+
+	@RequestMapping(API_PATH_CSV_PARSER)
+	@ResponseBody
+	public String[] csvParserAPI(@RequestParam String csv) {
+		return csvParser.parse(csv);
 	}
 
 }

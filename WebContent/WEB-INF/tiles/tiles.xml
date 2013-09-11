@@ -112,6 +112,11 @@
 		<put-attribute name="body" value="/WEB-INF/views/tools/life/bookmarklets/bookmarklets.jsp" />
 	</definition>
 
+	<definition name="tools/life/csv_parser" extends="tools">
+		<put-attribute name="body_title" value="CSV Parser" />
+		<put-attribute name="body" value="/WEB-INF/views/tools/life/csv_parser/csv_parser.jsp" />
+	</definition>
+
 	<definition name="tools/computer/timestamp2datetime" extends="tools">
 		<put-attribute name="body_title" value="Timestamp 2 Date&amp;Time" />
 		<put-attribute name="body" value="/WEB-INF/views/tools/computer/timestamp2datetime/timestamp2datetime.jsp" />
@@ -254,6 +259,18 @@
 		<put-attribute name="body" value="/WEB-INF/views/about/links/links.jsp" />
 	</definition>
 
+	<definition name="about/search/playground" extends="about">
+		<put-attribute name="body" value="/WEB-INF/views/about/search/playground.jsp" />
+	</definition>
+
+	<definition name="about/search/devday" extends="about">
+		<put-attribute name="body" value="/WEB-INF/views/about/search/devday.jsp" />
+	</definition>
+
+	<definition name="about/search/ctbrg" extends="about">
+		<put-attribute name="body" value="/WEB-INF/views/about/search/ctbrg.jsp" />
+	</definition>
+
 	<definition name="admin" extends="base.definition">
 		<put-attribute name="sub_menu" value="/WEB-INF/tiles/jsp/sub_menu.jsp" />
 		<put-attribute name="body" value="/WEB-INF/views/admin/admin.jsp" />
@@ -281,5 +298,9 @@
 
 	<definition name="admin/monitoring/quota" extends="admin">
 		<put-attribute name="body" value="/WEB-INF/views/admin/monitoring/quota/quota.jsp" />
+	</definition>
+
+	<definition name="admin/management/execute_temporarily" extends="admin">
+		<put-attribute name="body" value="/WEB-INF/views/admin/management/execute_temporarily/execute_temporarily.jsp" />
 	</definition>
 </tiles-definitions>

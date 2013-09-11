@@ -4,12 +4,18 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.izeye.playground.support.lotto.domain.KoreanLottoLog;
+import com.izeye.playground.support.lotto.domain.KoreanLottoGenerationLog;
+import com.izeye.playground.support.lotto.domain.KoreanLottoWinningLog;
 
 public interface KoreanLottoMapper {
 
-	void insert(@Param("numbers") String numbers, @Param("ip") String ip);
+	void insertGenerationLog(@Param("numbers") String numbers,
+			@Param("ip") String ip);
 
-	List<KoreanLottoLog> getAllKoreanLottoLogs();
+	List<KoreanLottoGenerationLog> getAllGenerationLogs();
+
+	void insertWinningLog(KoreanLottoWinningLog winningLog);
+
+	List<KoreanLottoWinningLog> getAllWinningLogs();
 
 }

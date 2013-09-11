@@ -30,6 +30,15 @@ CREATE TABLE tb_korean_lotto_log (
 	generated_time DATETIME NOT NULL,
 	PRIMARY KEY (id)
 );
+RENAME TABLE tb_korean_lotto_log TO tb_korean_lotto_generation_log;
+
+CREATE TABLE tb_korean_lotto_winning_log (
+	id INT AUTO_INCREMENT,
+	sequence INT NOT NULL UNIQUE,
+	day DATE NOT NULL UNIQUE,
+	numbers VARCHAR(1024) NOT NULL,
+	PRIMARY KEY (id)
+);
 
 CREATE TABLE tb_whois (
 	id INT AUTO_INCREMENT,
@@ -37,6 +46,22 @@ CREATE TABLE tb_whois (
 	whois VARCHAR(2048) NOT NULL,
 	created_time DATETIME NOT NULL,
 	PRIMARY KEY (id)
+);
+
+CREATE TABLE tb_user (
+	id INT AUTO_INCREMENT,
+	user_id VARCHAR(128) NOT NULL UNIQUE,
+	password VARCHAR(128) NOT NULL,
+	nickname VARCHAR(128) NOT NULL UNIQUE,
+	country_code CAHR(2),
+	image_url VARCHAR(128),
+	-- Role
+	-- 0: Supervisor
+	-- 1: User
+	role INT DEFAULT 1,
+	create_time DATETIME NOT NULL,
+	modified_time DATETIME,
+	deleted_time DATETIME,
 );
 
 CREATE TABLE tb_menu_item (

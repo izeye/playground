@@ -8,9 +8,10 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.izeye.playground.support.lotto.dao.KoreanLottoDao;
-import com.izeye.playground.support.lotto.domain.KoreanLottoLog;
-import com.izeye.playground.support.lotto.domain.KoreanLottoRequest;
-import com.izeye.playground.support.lotto.domain.KoreanLottoResponse;
+import com.izeye.playground.support.lotto.domain.KoreanLottoGenerationLog;
+import com.izeye.playground.support.lotto.domain.KoreanLottoGenerationRequest;
+import com.izeye.playground.support.lotto.domain.KoreanLottoGenerationResponse;
+import com.izeye.playground.support.lotto.domain.KoreanLottoWinningLog;
 
 @Repository("koreanLottoDao")
 public class KoreanLottoDaoMyBatis implements KoreanLottoDao {
@@ -19,17 +20,33 @@ public class KoreanLottoDaoMyBatis implements KoreanLottoDao {
 	private SqlSession sqlSession;
 
 	@Override
-	public void insert(KoreanLottoRequest request, KoreanLottoResponse response) {
+	public void insert(KoreanLottoGenerationRequest request,
+			KoreanLottoGenerationResponse response) {
 		KoreanLottoMapper mapper = sqlSession
 				.getMapper(KoreanLottoMapper.class);
-		mapper.insert(response.getNumbersAsString(), request.getIp());
+		mapper.insertGenerationLog(response.getNumbersAsString(),
+				request.getIp());
 	}
 
 	@Override
-	public List<KoreanLottoLog> getAllKoreanLottoLogs() {
+	public List<KoreanLottoGenerationLog> getAllGenerationLogs() {
 		KoreanLottoMapper mapper = sqlSession
 				.getMapper(KoreanLottoMapper.class);
-		return mapper.getAllKoreanLottoLogs();
+		return mapper.getAllGenerationLogs();
+	}
+
+	@Override
+	public List<KoreanLottoWinningLog> getAllWinningLogs() {
+		KoreanLottoMapper mapper = sqlSession
+				.getMapper(KoreanLottoMapper.class);
+		return mapper.getAllWinningLogs();
+	}
+
+	@Override
+	public void insert(KoreanLottoWinningLog winningLog) {
+		KoreanLottoMapper mapper = sqlSession
+				.getMapper(KoreanLottoMapper.class);
+		mapper.insertWinningLog(winningLog);
 	}
 
 }

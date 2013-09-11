@@ -1,10 +1,10 @@
 package com.izeye.playground.support.lotto.domain;
 
-public class KoreanLottoRequest {
+public class KoreanLottoGenerationRequest {
 
 	private final String ip;
 
-	public KoreanLottoRequest(String ip) {
+	public KoreanLottoGenerationRequest(String ip) {
 		this.ip = ip;
 	}
 

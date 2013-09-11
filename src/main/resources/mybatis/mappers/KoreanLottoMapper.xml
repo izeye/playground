@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.izeye.playground.support.lotto.dao.mybatis.KoreanLottoMapper">
-	<insert id="insert">
+	<insert id="insertGenerationLog">
 		INSERT INTO
-			tb_korean_lotto_log (numbers, ip, generated_time)
+			tb_korean_lotto_generation_log (numbers, ip, generated_time)
 		VALUES
 			(#{numbers}, #{ip}, NOW())
 	</insert>
-	<select id="getAllKoreanLottoLogs" resultType="KoreanLottoLog">
-		SELECT * FROM tb_korean_lotto_log ORDER BY generated_time DESC
+	<select id="getAllGenerationLogs" resultType="KoreanLottoGenerationLog">
+		SELECT * FROM tb_korean_lotto_generation_log ORDER BY generated_time DESC
+	</select>
+	<insert id="insertWinningLog">
+		INSERT INTO
+			tb_korean_lotto_winning_log (sequence, day, numbers)
+		VALUES
+			(#{sequence}, #{day}, #{numbers})
+	</insert>
+	<select id="getAllWinningLogs" resultType="KoreanLottoWinningLog">
+		SELECT * FROM tb_korean_lotto_winning_log ORDER BY sequence DESC
 	</select>
 </mapper>

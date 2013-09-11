@@ -31,12 +31,6 @@ public class AccessLogServiceTest {
 	}
 
 	@Test
-	public void getAllAccessLogs() {
-		List<AccessLog> allAccessLogs = accessLogService.getAllAccessLogs();
-		System.out.println(allAccessLogs);
-	}
-
-	@Test
 	public void getAccessLogsInSpecificDate() {
 		String date = "2013-09-01";
 		List<AccessLog> accessLogs = accessLogService
