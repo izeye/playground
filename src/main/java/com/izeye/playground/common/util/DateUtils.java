@@ -1,6 +1,8 @@
 package com.izeye.playground.common.util;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import org.joda.time.DateTime;
@@ -23,12 +25,25 @@ public class DateUtils {
 		return DEFAULT_DATE_FORMAT.get().format(date);
 	}
 
+	public static String formatDate(long timestamp) {
+		return DEFAULT_DATE_FORMAT.get().format(new Date(timestamp));
+	}
+
 	public static String formatDateTime(Date date) {
 		return DEFAULT_DATE_TIME_FORMAT.get().format(date);
 	}
 
 	public static String formatDateTime(long timestamp) {
 		return DEFAULT_DATE_TIME_FORMAT.get().format(new Date(timestamp));
+	}
+
+	public static Date parseDate(String date) {
+		try {
+			return DEFAULT_DATE_FORMAT.get().parse(date);
+		} catch (ParseException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
 	}
 
 	public static String getToday() {
@@ -42,4 +57,9 @@ public class DateUtils {
 	public static boolean isToday(Date date) {
 		return formatDate(date).equals(formatDate(new Date()));
 	}
+
+	public static int getThisYear() {
+		return Calendar.getInstance().get(Calendar.YEAR);
+	}
+
 }

@@ -1,6 +1,6 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 
-<p>To run this demo, allow to use your camera above.</p>
+<p>You can generate QR code by Java or JavaScript.</p>
 
 <ul class="nav nav-tabs">
 	<li id="tab_java">

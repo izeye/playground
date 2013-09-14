@@ -11,6 +11,7 @@ import com.izeye.playground.support.lotto.dao.KoreanLottoDao;
 import com.izeye.playground.support.lotto.domain.KoreanLottoGenerationLog;
 import com.izeye.playground.support.lotto.domain.KoreanLottoGenerationRequest;
 import com.izeye.playground.support.lotto.domain.KoreanLottoGenerationResponse;
+import com.izeye.playground.support.lotto.domain.KoreanLottoSequencePeriod;
 import com.izeye.playground.support.lotto.domain.KoreanLottoWinningLog;
 
 @Repository("koreanLottoDao")
@@ -36,6 +37,14 @@ public class KoreanLottoDaoMyBatis implements KoreanLottoDao {
 	}
 
 	@Override
+	public List<KoreanLottoGenerationLog> getGenerationLogs(
+			KoreanLottoSequencePeriod sequencePeriod) {
+		KoreanLottoMapper mapper = sqlSession
+				.getMapper(KoreanLottoMapper.class);
+		return mapper.getGenerationLogs(sequencePeriod);
+	}
+
+	@Override
 	public List<KoreanLottoWinningLog> getAllWinningLogs() {
 		KoreanLottoMapper mapper = sqlSession
 				.getMapper(KoreanLottoMapper.class);
@@ -47,6 +56,35 @@ public class KoreanLottoDaoMyBatis implements KoreanLottoDao {
 		KoreanLottoMapper mapper = sqlSession
 				.getMapper(KoreanLottoMapper.class);
 		mapper.insertWinningLog(winningLog);
+	}
+
+	@Override
+	public List<KoreanLottoWinningLog> getWinningLogsInSpecificYear(String year) {
+		KoreanLottoMapper mapper = sqlSession
+				.getMapper(KoreanLottoMapper.class);
+		String nextYear = String.valueOf(Integer.parseInt(year) + 1);
+		return mapper.getWinningLogsInSpecificYear(year, nextYear);
+	}
+
+	@Override
+	public KoreanLottoWinningLog getWinningLog(int sequence) {
+		KoreanLottoMapper mapper = sqlSession
+				.getMapper(KoreanLottoMapper.class);
+		return mapper.getWinningLogWithSequence(sequence);
+	}
+
+	@Override
+	public KoreanLottoWinningLog getWinningLog(String drawingDay) {
+		KoreanLottoMapper mapper = sqlSession
+				.getMapper(KoreanLottoMapper.class);
+		return mapper.getWinningLogWithDrawingDay(drawingDay);
+	}
+
+	@Override
+	public KoreanLottoWinningLog getLatestWinningLog() {
+		KoreanLottoMapper mapper = sqlSession
+				.getMapper(KoreanLottoMapper.class);
+		return mapper.getLatestWinningLog();
 	}
 
 }

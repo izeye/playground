@@ -27,6 +27,14 @@ public class DefaultKoreanLottoWinningLogMigrationService implements
 	@Resource
 	private KoreanLottoDao koreanLottoDao;
 
+	private static final int INDEX_SEQUENCE = 1;
+	private static final int INDEX_DRAWING_DAY = 2;
+	private static final int INDEX_PRIZE_1 = 4;
+	private static final int INDEX_PRIZE_2 = 6;
+	private static final int INDEX_PRIZE_3 = 8;
+	private static final int INDEX_PRIZE_4 = 10;
+	private static final int INDEX_PRIZE_5 = 12;
+
 	@Override
 	public void file2db() {
 		BufferedReader br = null;
@@ -37,12 +45,23 @@ public class DefaultKoreanLottoWinningLogMigrationService implements
 			String line;
 			while ((line = br.readLine()) != null) {
 				String[] csv = csvParser.parse(line);
-				int sequence = Integer.parseInt(csv[1]);
-				String day = csv[2].replace(".", "-");
+				int sequence = Integer.parseInt(csv[INDEX_SEQUENCE]);
+				String day = csv[INDEX_DRAWING_DAY].replace(".", "-");
 				String numbers = StringUtils.join(
 						Arrays.copyOfRange(csv, 13, csv.length), ",");
+				long prize1 = Long.parseLong(csv[INDEX_PRIZE_1]
+						.replace(",", ""));
+				long prize2 = Long.parseLong(csv[INDEX_PRIZE_2]
+						.replace(",", ""));
+				long prize3 = Long.parseLong(csv[INDEX_PRIZE_3]
+						.replace(",", ""));
+				long prize4 = Long.parseLong(csv[INDEX_PRIZE_4]
+						.replace(",", ""));
+				long prize5 = Long.parseLong(csv[INDEX_PRIZE_5]
+						.replace(",", ""));
 				KoreanLottoWinningLog winningLog = new KoreanLottoWinningLog(
-						sequence, day, numbers);
+						sequence, day, numbers, prize1, prize2, prize3, prize4,
+						prize5);
 				koreanLottoDao.insert(winningLog);
 			}
 		} catch (FileNotFoundException e) {

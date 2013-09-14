@@ -48,8 +48,10 @@ import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_IT
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_KAKAO_LINK_PATH;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_KOREAN_ENGLISH_LANGUAGE_SWITCH_TYPE_FIXER_NAME;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_KOREAN_ENGLISH_LANGUAGE_SWITCH_TYPE_FIXER_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_KOREAN_LOTTO_NAME;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_KOREAN_LOTTO_PATH;
+import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_KOREAN_LOTTO_GENERATION_NAME;
+import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_KOREAN_LOTTO_GENERATION_PATH;
+import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_KOREAN_LOTTO_WINNING_HISTORY_NAME;
+import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_KOREAN_LOTTO_WINNING_HISTORY_PATH;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_KOREAN_PHONEME_COMPOSER_AND_DECOMPOSER_NAME;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_KOREAN_PHONEME_COMPOSER_AND_DECOMPOSER_PATH;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_KOREAN_ROMANIZATION_NAME;
@@ -102,8 +104,12 @@ import java.util.List;
 // The menu starting with underscore (_) is a hidden menu.
 public enum SubMenuItem {
 
-	PLAYGROUND_ENTERTAINMENT_KOREAN_LOTTO(SUB_MENU_ITEM_KOREAN_LOTTO_NAME,
-			SUB_MENU_ITEM_KOREAN_LOTTO_PATH), //
+	PLAYGROUND_ENTERTAINMENT_KOREAN_LOTTO_GENERATION(
+			SUB_MENU_ITEM_KOREAN_LOTTO_GENERATION_NAME,
+			SUB_MENU_ITEM_KOREAN_LOTTO_GENERATION_PATH), //
+	_PLAYGROUND_ENTERTAINMENT_KOREAN_LOTTO_WINNING_HISTORY(
+			SUB_MENU_ITEM_KOREAN_LOTTO_WINNING_HISTORY_NAME,
+			SUB_MENU_ITEM_KOREAN_LOTTO_WINNING_HISTORY_PATH), //
 	PLAYGROUND_DEMO_WEBCAM_LIVE(SUB_MENU_ITEM_WEBCAM_LIVE_NAME,
 			SUB_MENU_ITEM_WEBCAM_LIVE_PATH), //
 	_PLAYGROUND_DEMO_WEBCAM_SNAPSHOTS(SUB_MENU_ITEM_WEBCAM_SNAPSHOTS_NAME,

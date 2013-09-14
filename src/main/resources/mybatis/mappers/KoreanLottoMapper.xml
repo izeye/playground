@@ -10,13 +10,58 @@
 	<select id="getAllGenerationLogs" resultType="KoreanLottoGenerationLog">
 		SELECT * FROM tb_korean_lotto_generation_log ORDER BY generated_time DESC
 	</select>
+	<select id="getGenerationLogs" resultType="KoreanLottoGenerationLog">
+		<![CDATA[
+			SELECT
+				*
+			FROM
+				tb_korean_lotto_generation_log
+			WHERE
+				generated_time >= #{startTime} AND generated_time < #{endTime} 
+			ORDER BY generated_time DESC
+		]]>
+	</select>
 	<insert id="insertWinningLog">
 		INSERT INTO
-			tb_korean_lotto_winning_log (sequence, day, numbers)
+			tb_korean_lotto_winning_log (sequence, day, numbers, prize1, prize2, prize3, prize4, prize5)
 		VALUES
-			(#{sequence}, #{day}, #{numbers})
+			(#{sequence}, #{day}, #{numbers}, #{prize1}, #{prize2}, #{prize3}, #{prize4}, #{prize5})
 	</insert>
 	<select id="getAllWinningLogs" resultType="KoreanLottoWinningLog">
 		SELECT * FROM tb_korean_lotto_winning_log ORDER BY sequence DESC
+	</select>
+	<select id="getWinningLogsInSpecificYear" resultType="KoreanLottoWinningLog">
+		<![CDATA[
+			SELECT
+				*
+			FROM
+				tb_korean_lotto_winning_log
+			WHERE
+				day >= #{year} AND day < #{nextYear}
+			ORDER BY sequence DESC
+		]]>
+	</select>
+	<select id="getWinningLogWithSequence" resultType="KoreanLottoWinningLog">
+		SELECT
+			*
+		FROM
+			tb_korean_lotto_winning_log
+		WHERE
+			sequence = #{sequence}
+	</select>
+	<select id="getWinningLogWithDrawingDay" resultType="KoreanLottoWinningLog">
+		SELECT
+			*
+		FROM
+			tb_korean_lotto_winning_log
+		WHERE
+			day = #{drawingDay}
+	</select>
+	<select id="getLatestWinningLog" resultType="KoreanLottoWinningLog">
+		SELECT
+			*
+		FROM
+			tb_korean_lotto_winning_log
+		ORDER BY sequence DESC LIMIT 1
 	</select>
 </mapper>

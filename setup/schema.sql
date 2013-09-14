@@ -32,11 +32,17 @@ CREATE TABLE tb_korean_lotto_log (
 );
 RENAME TABLE tb_korean_lotto_log TO tb_korean_lotto_generation_log;
 
+DROP TABLE tb_korean_lotto_winning_log;
 CREATE TABLE tb_korean_lotto_winning_log (
 	id INT AUTO_INCREMENT,
 	sequence INT NOT NULL UNIQUE,
 	day DATE NOT NULL UNIQUE,
 	numbers VARCHAR(1024) NOT NULL,
+	prize1 BIGINT NOT NULL,
+	prize2 BIGINT NOT NULL,
+	prize3 BIGINT NOT NULL,
+	prize4 BIGINT NOT NULL,
+	prize5 BIGINT NOT NULL,
 	PRIMARY KEY (id)
 );
 

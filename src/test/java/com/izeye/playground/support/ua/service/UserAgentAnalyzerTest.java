@@ -16,10 +16,10 @@ import javax.annotation.Resource;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.util.ResourceUtils;
 
 import com.izeye.playground.support.ua.domain.UserAgent;
 import com.izeye.playground.support.ua.domain.browser.BrowserInfo;
@@ -67,10 +67,14 @@ public class UserAgentAnalyzerTest {
 				.add("Mozilla/5.0 (iPhone; CPU iPhone OS 5_1_1 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Mobile/9B208");
 	}
 
+	@Value("classpath:data/user_agent/user_agent.lst")
+	private org.springframework.core.io.Resource userAgentListResource;
+
 	@Test
 	public void analyzeAllFromFile() throws IOException {
-		File file = ResourceUtils
-				.getFile("classpath:data/user_agent/user_agent.lst");
+		// File file = ResourceUtils
+		// .getFile("classpath:data/user_agent/user_agent.lst");
+		File file = userAgentListResource.getFile();
 		BufferedReader br = new BufferedReader(new FileReader(file));
 		String line;
 		while ((line = br.readLine()) != null) {

@@ -2,7 +2,9 @@ package com.izeye.playground.support.lotto.domain;
 
 import java.util.Date;
 
+import com.izeye.playground.common.domain.StringConstants;
 import com.izeye.playground.common.util.DateUtils;
+import com.izeye.playground.common.util.NumberUtils;
 
 public class KoreanLottoGenerationLog {
 
@@ -10,6 +12,10 @@ public class KoreanLottoGenerationLog {
 	private String numbers;
 	private String ip;
 	private Date generatedTime;
+
+	private Integer sequence;
+	private Integer rank;
+	private Long prize;
 
 	public KoreanLottoGenerationLog() {
 	}
@@ -50,10 +56,41 @@ public class KoreanLottoGenerationLog {
 		return DateUtils.formatDateTime(generatedTime);
 	}
 
+	public Integer getSequence() {
+		return sequence;
+	}
+
+	public void setSequence(Integer sequence) {
+		this.sequence = sequence;
+	}
+
+	public Integer getRank() {
+		return rank;
+	}
+
+	public void setRank(Integer rank) {
+		this.rank = rank;
+	}
+
+	public Long getPrize() {
+		return prize;
+	}
+
+	public void setPrize(Long prize) {
+		this.prize = prize;
+	}
+
+	public String getFormattedPrize() {
+		return prize == null ? StringConstants.NOT_AVAILABLE : "₩"
+				+ NumberUtils.format(prize);
+	}
+
 	@Override
 	public String toString() {
-		return "KoreanLottoLog [id=" + id + ", numbers=" + numbers + ", ip="
-				+ ip + ", generatedTime=" + generatedTime + "]";
+		return "KoreanLottoGenerationLog [id=" + id + ", numbers=" + numbers
+				+ ", ip=" + ip + ", generatedTime=" + generatedTime
+				+ ", sequence=" + sequence + ", rank=" + rank + ", prize="
+				+ prize + "]";
 	}
 
 }

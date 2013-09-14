@@ -29,9 +29,27 @@
 		<put-attribute name="facebook_comments" value="/WEB-INF/tiles/jsp/facebook_comments.jsp" />
 	</definition>
 
-	<definition name="playground/entertainment/korean_lotto" extends="playground">
-		<put-attribute name="body_title" value="Korean Lotto" />
-		<put-attribute name="body" value="/WEB-INF/views/playground/entertainment/korean_lotto/korean_lotto.jsp" />
+	<definition name="playground/entertainment/korean_lotto.definition" template="/WEB-INF/views/playground/entertainment/korean_lotto/korean_lotto.jsp">
+	</definition>
+
+	<definition name="playground/entertainment/korean_lotto/generation.body" extends="playground/entertainment/korean_lotto.definition">
+		<put-attribute name="selected_tab" value="tab_generation" />
+		<put-attribute name="sub_body" value="/WEB-INF/views/playground/entertainment/korean_lotto/korean_lotto_generation.jsp" />
+	</definition>
+
+	<definition name="playground/entertainment/korean_lotto/winning_history.body" extends="playground/entertainment/korean_lotto.definition">
+		<put-attribute name="selected_tab" value="tab_winning_history" />
+		<put-attribute name="sub_body" value="/WEB-INF/views/playground/entertainment/korean_lotto/korean_lotto_winning_history.jsp" />
+	</definition>
+
+	<definition name="playground/entertainment/korean_lotto/generation" extends="playground">
+		<put-attribute name="body_title" value="Generation" />
+		<put-attribute name="body" value="playground/entertainment/korean_lotto/generation.body" />
+	</definition>
+
+	<definition name="playground/entertainment/korean_lotto/winning_history" extends="playground">
+		<put-attribute name="body_title" value="Winning History" />
+		<put-attribute name="body" value="playground/entertainment/korean_lotto/winning_history.body" />
 	</definition>
 
 	<definition name="playground/demo/webcam.definition" template="/WEB-INF/views/playground/demo/webcam/webcam.jsp">
