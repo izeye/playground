@@ -12,9 +12,11 @@ public enum SubMenuItemGroup {
 	TOOLS_LINGUISTICS("Linguistics"), //
 	MATH_ALGEBRA("Algebra"), //
 	MATH_GEOMETRY("Geometry"), //
+	LINKS_KID("Kid"), //
 	ABOUT_ABOUT_ME("About Me"), //
 	ABOUT_LINKS("Links"), //
 	ABOUT_SEARCH("Search"), //
+	USER_MY_INFORMATION("My Information"), //
 	ADMIN_ANALYTICS("Analytics"), //
 	ADMIN_MONITORING("Monitoring"), //
 	ADMIN_MANAGEMENT("Management");

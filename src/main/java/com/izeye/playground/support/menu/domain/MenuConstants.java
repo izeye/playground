@@ -43,6 +43,13 @@ public interface MenuConstants {
 	String SUB_MENU_ITEM_KAKAO_LINK_PATH = SUB_MENU_ITEM_GROUP_PLAYGROUND_DEMO_PATH
 			+ "/kakao_link";
 
+	String SUB_MENU_ITEM_NAVER_SEARCH_RANK_NAME = "Naver Search Rank";
+	String SUB_MENU_ITEM_NAVER_SEARCH_RANK_PATH = SUB_MENU_ITEM_GROUP_PLAYGROUND_DEMO_PATH
+			+ "/naver/search_rank";
+
+	String API_PATH_NAVER_SEARCH_RANK = SUB_MENU_ITEM_NAVER_SEARCH_RANK_PATH
+			+ "/api";
+
 	String MENU_ITEM_TOOLS_NAME = "Tools";
 	String MENU_ITEM_TOOLS_PATH = "/tools";
 
@@ -272,6 +279,15 @@ public interface MenuConstants {
 	String SUB_MENU_ITEM_FRACTALS_PATH = SUB_MENU_ITEM_GROUP_MATH_GEOMETRY_PATH
 			+ "/fractals";
 
+	String MENU_ITEM_LINKS_NAME = "Links";
+	String MENU_ITEM_LINKS_PATH = "/links";
+
+	String SUB_MENU_ITEM_GROUP_LINKS_KID_PATH = MENU_ITEM_LINKS_PATH + "/kid";
+
+	String SUB_MENU_ITEM_ROBOCAR_POLI_NAME = "Robocar Poli";
+	String SUB_MENU_ITEM_ROBOCAR_POLI_PATH = SUB_MENU_ITEM_GROUP_LINKS_KID_PATH
+			+ "/robocar_poli";
+
 	String MENU_ITEM_ABOUT_NAME = "About";
 	String MENU_ITEM_ABOUT_PATH = "/about";
 
@@ -303,6 +319,18 @@ public interface MenuConstants {
 	String SUB_MENU_ITEM_CTBRG_SEARCH_NAME = "Search in CTB Research Group";
 	String SUB_MENU_ITEM_CTBRG_SEARCH_PATH = SUB_MENU_ITEM_GROUP_ABOUT_SEARCH_PATH
 			+ "/ctbrg";
+
+	String MENU_ITEM_USER_NAME = "User";
+	String MENU_ITEM_USER_PATH = "/user";
+
+	String SUB_MENU_ITEM_GROUP_USER_MY_INFORMATION_PATH = MENU_ITEM_USER_PATH
+			+ "/my_information";
+
+	String SUB_MENU_ITEM_CHANGE_PROFILE_NAME = "Change Profile";
+	String SUB_MENU_ITEM_CHANGE_PROFILE_PATH = SUB_MENU_ITEM_GROUP_USER_MY_INFORMATION_PATH
+			+ "/profile/change";
+
+	String API_PATH_CHANGE_PROFILE = SUB_MENU_ITEM_CHANGE_PROFILE_PATH + "/api";
 
 	String MENU_ITEM_ADMIN_NAME = "Admin";
 	String MENU_ITEM_ADMIN_PATH = "/admin";

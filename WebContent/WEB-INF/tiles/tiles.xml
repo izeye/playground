@@ -80,6 +80,11 @@
 		<put-attribute name="body" value="/WEB-INF/views/playground/demo/kakao/kakao.jsp" />
 	</definition>
 
+	<definition name="playground/demo/naver/search_rank" extends="playground">
+		<put-attribute name="body_title" value="Naver Search Rank" />
+		<put-attribute name="body" value="/WEB-INF/views/playground/demo/naver/search_rank.jsp" />
+	</definition>
+
 	<definition name="tools" extends="base.definition">
 		<put-attribute name="facebook_like" value="/WEB-INF/tiles/jsp/facebook_like.jsp" />
 		<put-attribute name="facebook_share" value="/WEB-INF/tiles/jsp/facebook_share.jsp" />
@@ -262,6 +267,18 @@
 		<put-attribute name="body" value="/WEB-INF/views/math/geometry/fractals/fractals.jsp" />
 	</definition>
 
+	<definition name="links" extends="base.definition">
+		<put-attribute name="facebook_like" value="/WEB-INF/tiles/jsp/facebook_like.jsp" />
+		<put-attribute name="facebook_share" value="/WEB-INF/tiles/jsp/facebook_share.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/links/links.jsp" />
+		<put-attribute name="facebook_comments" value="/WEB-INF/tiles/jsp/facebook_comments.jsp" />
+	</definition>
+
+	<definition name="links/kid/robocar_poli" extends="links">
+		<put-attribute name="body_title" value="Robocar Poli" />
+		<put-attribute name="body" value="/WEB-INF/views/links/kid/robocar_poli.jsp" />
+	</definition>
+
 	<definition name="about" extends="base.definition">
 		<put-attribute name="facebook_like" value="/WEB-INF/tiles/jsp/facebook_like.jsp" />
 		<put-attribute name="facebook_share" value="/WEB-INF/tiles/jsp/facebook_share.jsp" />
@@ -287,6 +304,15 @@
 
 	<definition name="about/search/ctbrg" extends="about">
 		<put-attribute name="body" value="/WEB-INF/views/about/search/ctbrg.jsp" />
+	</definition>
+
+	<definition name="user" extends="base.definition">
+		<put-attribute name="sub_menu" value="/WEB-INF/tiles/jsp/sub_menu.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/user/user.jsp" />
+	</definition>
+
+	<definition name="user/my_information/profile/change" extends="user">
+		<put-attribute name="body" value="/WEB-INF/views/user/my_information/profile/change_profile.jsp" />
 	</definition>
 
 	<definition name="admin" extends="base.definition">

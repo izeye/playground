@@ -7,7 +7,9 @@
 
 	<security:debug />
 
-	<security:global-method-security secured-annotations="enabled" pre-post-annotations="enabled"/>
+	<security:global-method-security secured-annotations="enabled" pre-post-annotations="enabled">
+		<security:expression-handler ref="expHandler"/>
+	</security:global-method-security>
 	
 	<security:http pattern="/resources/**" security="none" />
 	
@@ -20,6 +22,7 @@
 		<security:intercept-url pattern="/playground/**" access="permitAll()"/>
 		<security:intercept-url pattern="/tools/**" access="permitAll()"/>
 		<security:intercept-url pattern="/math/**" access="permitAll()"/>
+		<security:intercept-url pattern="/links/**" access="permitAll()"/>
 		<security:intercept-url pattern="/about/**" access="permitAll()"/>
 		<security:intercept-url pattern="/**" access="isAuthenticated()"/>
 		<security:form-login />
@@ -31,8 +34,15 @@
 		<security:authentication-provider>
 			<security:user-service>
 				<security:user name="admin" password="admin123" authorities="ROLE_SUPERVISOR"/>
-				<security:user name="izeye" password="izeye345" authorities="ROLE_USER"/>
+				<security:user name="izeye" password="izeye123" authorities="ROLE_USER"/>
+				<security:user name="test" password="test123" authorities="ROLE_USER"/>
 			</security:user-service>
 		</security:authentication-provider>
 	</security:authentication-manager>
+	
+	<bean id="expHandler" class="org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler">
+		<property name="permissionEvaluator">
+			<bean class="com.izeye.playground.support.security.DefaultPermissionEvaluator" />
+		</property>
+	</bean>
 </beans>

@@ -53,8 +53,9 @@ public class KisaWhoisService implements WhoisService {
 		params.put(PARAM_KEY, apiKey);
 
 		String apiUrl = UrlUtils.createUrl(KISA_WHOIS_API_URL_PREFIX, params);
+		InputStream is = null;
 		try {
-			InputStream is = HttpUtils.urlToInputStream(apiUrl);
+			is = HttpUtils.urlToInputStream(apiUrl);
 			Element root = JDOMUtils.inputStreamToRootElement(is);
 			Element countryCode = root.getChild(COUNTRY_CODE);
 
@@ -85,6 +86,14 @@ public class KisaWhoisService implements WhoisService {
 		} catch (JDOMException e) {
 			e.printStackTrace();
 			throw new WhoisFailException("IP: " + ip, e);
+		} finally {
+			if (is != null) {
+				try {
+					is.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 	}
 

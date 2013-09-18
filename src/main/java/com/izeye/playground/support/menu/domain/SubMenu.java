@@ -4,7 +4,7 @@ import java.util.List;
 
 public enum SubMenu {
 
-	HOME, PLAYGROUND, TOOLS, MATH, ABOUT, ADMIN;
+	HOME, PLAYGROUND, TOOLS, MATH, LINKS, ABOUT, USER, ADMIN;
 
 	private final List<SubMenuItemGroup> subMenuItemGroup;
 

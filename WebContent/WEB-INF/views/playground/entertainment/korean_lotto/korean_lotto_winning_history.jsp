@@ -54,7 +54,7 @@ This page provides history of Korean Lotto winning numbers.
 </p>
 
 <table id="winning_history" class="table table-striped table-bordered table-condensed"
-	style="font-size: 12px">
+		style="font-size: 12px">
 	<tr>
 		<th style="width: 75px">Sequence</th>
 		<th style="width: 100px">Day</th>

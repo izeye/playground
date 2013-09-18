@@ -1,9 +1,9 @@
 package com.izeye.playground.support.user.service;
 
-import org.springframework.security.core.userdetails.User;
+import com.izeye.playground.support.user.domain.User;
 
 public interface UserService {
-	
+
 	void changeProfile(User user);
 
 }

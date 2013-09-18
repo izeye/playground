@@ -19,6 +19,8 @@ import java.util.Set;
 
 import javax.annotation.Resource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,6 +50,8 @@ public class ToolsLinguisticsController extends AbstractToolsController {
 
 	@Resource
 	private EnglishAlphabetService englishAlphabetService;
+
+	private final Logger log = LoggerFactory.getLogger(getClass());
 
 	@RequestMapping(SUB_MENU_ITEM_KOREAN_ROMANIZATION_PATH)
 	public String koreanRomanization(Model model) {
@@ -161,17 +165,21 @@ public class ToolsLinguisticsController extends AbstractToolsController {
 				.getViewName();
 	}
 
-	@RequestMapping(API_PATH_ENGLISH_LOWERCASE_UPPERCASE_CONVERTER_TO_LOWERCASE)
+	@RequestMapping(value = API_PATH_ENGLISH_LOWERCASE_UPPERCASE_CONVERTER_TO_LOWERCASE, produces = { "text/plain; charset=UTF-8" })
 	@ResponseBody
 	public String englishLowerCaseUpperCaseConverterToLowerCaseApi(
 			@RequestParam String textToBeLowerCase) {
+		log.debug(textToBeLowerCase);
+
 		return englishAlphabetService.toLowerCase(textToBeLowerCase);
 	}
 
-	@RequestMapping(API_PATH_ENGLISH_LOWERCASE_UPPERCASE_CONVERTER_TO_UPPERCASE)
+	@RequestMapping(value = API_PATH_ENGLISH_LOWERCASE_UPPERCASE_CONVERTER_TO_UPPERCASE, produces = { "text/plain; charset=UTF-8" })
 	@ResponseBody
 	public String englishLowerCaseUpperCaseConverterToUpperCaseApi(
 			@RequestParam String textToBeUpperCase) {
+		log.debug(textToBeUpperCase);
+
 		return englishAlphabetService.toUpperCase(textToBeUpperCase);
 	}
 

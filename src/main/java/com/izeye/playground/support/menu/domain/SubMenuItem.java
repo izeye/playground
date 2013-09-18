@@ -1,101 +1,6 @@
 package com.izeye.playground.support.menu.domain;
 
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_ABOUT_ME_NAME;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_ABOUT_ME_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_AUDIENCE_ACCESS_LOGS_NAME;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_AUDIENCE_ACCESS_LOGS_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_AUDIENCE_OVERVIEW_NAME;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_AUDIENCE_OVERVIEW_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_AUDIENCE_USER_AGENTS_NAME;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_AUDIENCE_USER_AGENTS_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_AUDIENCE_USER_AGENT_SPAM_IPS_NAME;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_AUDIENCE_USER_AGENT_SPAM_IPS_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_BASE64_ENCODER_AND_DECODER_NAME;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_BASE64_ENCODER_AND_DECODER_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_BASE_CONVERTER_NAME;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_BASE_CONVERTER_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_BOOKMARKLETS_NAME;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_BOOKMARKLETS_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_COLLATZ_NAME;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_COLLATZ_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_CSV_PARSER_NAME;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_CSV_PARSER_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_CTBRG_SEARCH_NAME;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_CTBRG_SEARCH_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_DEVDAY_SEARCH_NAME;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_DEVDAY_SEARCH_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_ENGLISH_LOWERCASE_UPPERCASE_CONVERTER_NAME;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_ENGLISH_LOWERCASE_UPPERCASE_CONVERTER_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_EXECUTE_TEMPORARILY_NAME;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_EXECUTE_TEMPORARILY_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_FACTORIAL_NAME;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_FACTORIAL_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_FIBONACCI_NAME;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_FIBONACCI_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_FRACTALS_NAME;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_FRACTALS_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_GCD_AND_LCM_NAME;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_GCD_AND_LCM_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_GOLDBACH_NAME;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_GOLDBACH_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_HTML_ESCAPE_AND_UNESCAPE_NAME;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_HTML_ESCAPE_AND_UNESCAPE_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_HTTP_CLIENT_NAME;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_HTTP_CLIENT_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_IP_ANALYZER_NAME;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_IP_ANALYZER_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_KAKAO_LINK_NAME;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_KAKAO_LINK_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_KOREAN_ENGLISH_LANGUAGE_SWITCH_TYPE_FIXER_NAME;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_KOREAN_ENGLISH_LANGUAGE_SWITCH_TYPE_FIXER_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_KOREAN_LOTTO_GENERATION_NAME;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_KOREAN_LOTTO_GENERATION_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_KOREAN_LOTTO_WINNING_HISTORY_NAME;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_KOREAN_LOTTO_WINNING_HISTORY_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_KOREAN_PHONEME_COMPOSER_AND_DECOMPOSER_NAME;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_KOREAN_PHONEME_COMPOSER_AND_DECOMPOSER_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_KOREAN_ROMANIZATION_NAME;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_KOREAN_ROMANIZATION_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_KOREAN_UNICODE_TABLE_NAME;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_KOREAN_UNICODE_TABLE_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_LINKS_NAME;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_LINKS_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_MEAN_NAME;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_MEAN_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_MULTI_WORD_NOTATION_CONVERTER_NAME;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_MULTI_WORD_NOTATION_CONVERTER_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_PLAYGROUND_SEARCH_NAME;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_PLAYGROUND_SEARCH_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_PRIME_FACTORIZATION_NAME;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_PRIME_FACTORIZATION_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_PRIME_NAME;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_PRIME_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_QR_CODE_GENERATION_LOGS_NAME;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_QR_CODE_GENERATION_LOGS_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_QUOTA_NAME;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_QUOTA_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_TEXT_2_QR_CODE_IN_JAVASCRIPT_NAME;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_TEXT_2_QR_CODE_IN_JAVASCRIPT_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_TEXT_2_QR_CODE_IN_JAVA_NAME;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_TEXT_2_QR_CODE_IN_JAVA_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_TEXT_COUNTER_NAME;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_TEXT_COUNTER_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_TIMESTAMP_2_DATE_AND_TIME_NAME;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_TIMESTAMP_2_DATE_AND_TIME_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_UA_ANALYZER_NAME;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_UA_ANALYZER_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_UNICODE_ENCODER_AND_DECODER_NAME;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_UNICODE_ENCODER_AND_DECODER_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_UNIT_CONVERTER_NAME;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_UNIT_CONVERTER_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_ENCODER_AND_DECODER_NAME;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_URL_ENCODER_AND_DECODER_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_WEBCAM_LIVE_NAME;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_WEBCAM_LIVE_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_WEBCAM_SNAPSHOTS_NAME;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_WEBCAM_SNAPSHOTS_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_WORLD_CLOCK_NAME;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_WORLD_CLOCK_PATH;
+import static com.izeye.playground.support.menu.domain.MenuConstants.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -115,8 +20,10 @@ public enum SubMenuItem {
 	_PLAYGROUND_DEMO_WEBCAM_SNAPSHOTS(SUB_MENU_ITEM_WEBCAM_SNAPSHOTS_NAME,
 			SUB_MENU_ITEM_WEBCAM_SNAPSHOTS_PATH), //
 	PLAYGROUND_DEMO_KAKAO_LINK(SUB_MENU_ITEM_KAKAO_LINK_NAME,
-			SUB_MENU_ITEM_KAKAO_LINK_PATH), TOOLS_LIFE_UNIT_CONVERTER(
-			SUB_MENU_ITEM_UNIT_CONVERTER_NAME,
+			SUB_MENU_ITEM_KAKAO_LINK_PATH), //
+	PLAYGROUND_DEMO_NAVER_SEARCH_RANK(SUB_MENU_ITEM_NAVER_SEARCH_RANK_NAME,
+			SUB_MENU_ITEM_NAVER_SEARCH_RANK_PATH), //
+	TOOLS_LIFE_UNIT_CONVERTER(SUB_MENU_ITEM_UNIT_CONVERTER_NAME,
 			SUB_MENU_ITEM_UNIT_CONVERTER_PATH), //
 	TOOLS_LIFE_TEXT_COUNTER(SUB_MENU_ITEM_TEXT_COUNTER_NAME,
 			SUB_MENU_ITEM_TEXT_COUNTER_PATH), //
@@ -188,6 +95,8 @@ public enum SubMenuItem {
 	MATH_ALGEBRA_MEAN(SUB_MENU_ITEM_MEAN_NAME, SUB_MENU_ITEM_MEAN_PATH), //
 	MATH_GEOMETRY_FRACTALS(SUB_MENU_ITEM_FRACTALS_NAME,
 			SUB_MENU_ITEM_FRACTALS_PATH), //
+	LINKS_KID_ROBOCAR_POLI_PATH(SUB_MENU_ITEM_ROBOCAR_POLI_NAME,
+			SUB_MENU_ITEM_ROBOCAR_POLI_PATH), //
 	ABOUT_ABOUT_ME_ABOUT_ME_PATH(SUB_MENU_ITEM_ABOUT_ME_NAME,
 			SUB_MENU_ITEM_ABOUT_ME_PATH), //
 	ABOUT_LINKS_LINKS_PATH(SUB_MENU_ITEM_LINKS_NAME, SUB_MENU_ITEM_LINKS_PATH), //
@@ -197,6 +106,8 @@ public enum SubMenuItem {
 			SUB_MENU_ITEM_DEVDAY_SEARCH_PATH), //
 	ABOUT_SEARCH_CTBRG_PATH(SUB_MENU_ITEM_CTBRG_SEARCH_NAME,
 			SUB_MENU_ITEM_CTBRG_SEARCH_PATH), //
+	USER_MY_INFORMATION_CHANGE_PROFILE(SUB_MENU_ITEM_CHANGE_PROFILE_NAME,
+			SUB_MENU_ITEM_CHANGE_PROFILE_PATH), //
 	ADMIN_ANALYTICS_AUDIENCE_OVERVIEW(SUB_MENU_ITEM_AUDIENCE_OVERVIEW_NAME,
 			SUB_MENU_ITEM_AUDIENCE_OVERVIEW_PATH), //
 	ADMIN_ANALYTICS_AUDIENCE_ACCESS_LOGS(

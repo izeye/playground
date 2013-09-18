@@ -7,12 +7,16 @@ import static com.izeye.playground.support.menu.domain.MenuConstants.MENU_ITEM_A
 import static com.izeye.playground.support.menu.domain.MenuConstants.MENU_ITEM_HOME_NAME;
 import static com.izeye.playground.support.menu.domain.MenuConstants.MENU_ITEM_HOME_PATH;
 import static com.izeye.playground.support.menu.domain.MenuConstants.MENU_ITEM_HOME_VIEW_NAME;
+import static com.izeye.playground.support.menu.domain.MenuConstants.MENU_ITEM_LINKS_NAME;
+import static com.izeye.playground.support.menu.domain.MenuConstants.MENU_ITEM_LINKS_PATH;
 import static com.izeye.playground.support.menu.domain.MenuConstants.MENU_ITEM_MATH_NAME;
 import static com.izeye.playground.support.menu.domain.MenuConstants.MENU_ITEM_MATH_PATH;
 import static com.izeye.playground.support.menu.domain.MenuConstants.MENU_ITEM_PLAYGROUND_NAME;
 import static com.izeye.playground.support.menu.domain.MenuConstants.MENU_ITEM_PLAYGROUND_PATH;
 import static com.izeye.playground.support.menu.domain.MenuConstants.MENU_ITEM_TOOLS_NAME;
 import static com.izeye.playground.support.menu.domain.MenuConstants.MENU_ITEM_TOOLS_PATH;
+import static com.izeye.playground.support.menu.domain.MenuConstants.MENU_ITEM_USER_NAME;
+import static com.izeye.playground.support.menu.domain.MenuConstants.MENU_ITEM_USER_PATH;
 
 public enum MenuItem {
 
@@ -22,7 +26,9 @@ public enum MenuItem {
 			SubMenu.PLAYGROUND), //
 	TOOLS(MENU_ITEM_TOOLS_NAME, MENU_ITEM_TOOLS_PATH, SubMenu.TOOLS), //
 	MATH(MENU_ITEM_MATH_NAME, MENU_ITEM_MATH_PATH, SubMenu.MATH), //
+	LINKS(MENU_ITEM_LINKS_NAME, MENU_ITEM_LINKS_PATH, SubMenu.LINKS), //
 	ABOUT(MENU_ITEM_ABOUT_NAME, MENU_ITEM_ABOUT_PATH, SubMenu.ABOUT), //
+	USER(MENU_ITEM_USER_NAME, MENU_ITEM_USER_PATH, SubMenu.USER), //
 	ADMIN(MENU_ITEM_ADMIN_NAME, MENU_ITEM_ADMIN_PATH, SubMenu.ADMIN);
 
 	private final String name;
