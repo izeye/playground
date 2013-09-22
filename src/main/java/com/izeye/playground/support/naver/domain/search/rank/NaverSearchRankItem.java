@@ -1,13 +1,13 @@
-package com.izeye.playground.support.naver.domain;
+package com.izeye.playground.support.naver.domain.search.rank;
 
-public class NaverSearchRank {
+public class NaverSearchRankItem {
 
 	private final int rank;
 	private final String keyword;
 	private final NaverSearchRankStatus status;
 	private final int variance;
 
-	public NaverSearchRank(int rank, String keyword,
+	public NaverSearchRankItem(int rank, String keyword,
 			NaverSearchRankStatus status, int variance) {
 		this.rank = rank;
 		this.keyword = keyword;
@@ -37,7 +37,7 @@ public class NaverSearchRank {
 
 	@Override
 	public String toString() {
-		return "NaverSearchRank [rank=" + rank + ", keyword=" + keyword
+		return "NaverSearchRankItem [rank=" + rank + ", keyword=" + keyword
 				+ ", status=" + status + ", variance=" + variance + "]";
 	}
 

@@ -45,9 +45,16 @@ public interface MenuConstants {
 
 	String SUB_MENU_ITEM_NAVER_SEARCH_RANK_NAME = "Naver Search Rank";
 	String SUB_MENU_ITEM_NAVER_SEARCH_RANK_PATH = SUB_MENU_ITEM_GROUP_PLAYGROUND_DEMO_PATH
-			+ "/naver/search_rank";
+			+ "/naver/search/rank";
 
 	String API_PATH_NAVER_SEARCH_RANK = SUB_MENU_ITEM_NAVER_SEARCH_RANK_PATH
+			+ "/api";
+
+	String SUB_MENU_ITEM_NAVER_SEARCH_BLOG_NAME = "Naver Search Blog";
+	String SUB_MENU_ITEM_NAVER_SEARCH_BLOG_PATH = SUB_MENU_ITEM_GROUP_PLAYGROUND_DEMO_PATH
+			+ "/naver/search/blog";
+
+	String API_PATH_NAVER_SEARCH_BLOG = SUB_MENU_ITEM_NAVER_SEARCH_BLOG_PATH
 			+ "/api";
 
 	String MENU_ITEM_TOOLS_NAME = "Tools";

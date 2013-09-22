@@ -94,4 +94,4 @@ This page generates Korean Lotto numbers.
 	</c:forEach>
 </table>
 
-<input id="moreButton" type="button" value="Show the sequence ${latestSequence}" onclick="more(KOREAN_LOTTO.sequence)" />
+<input id="moreButton" type="button" value="Show the sequence ${latestSequence}" onclick="more(KOREAN_LOTTO.sequence);" />

@@ -15,7 +15,6 @@ var getRanks = function () {
 	$.get('${API_PATH_NAVER_SEARCH_RANK}', {
 		rankType: $('#rankType').val()
 	}).done(function (data) {
-		console.log(data);
 		$('.rankRow').remove();
 		for (var i in data) {
 			var rank = data[i];

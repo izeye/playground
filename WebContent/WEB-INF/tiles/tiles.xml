@@ -80,9 +80,14 @@
 		<put-attribute name="body" value="/WEB-INF/views/playground/demo/kakao/kakao.jsp" />
 	</definition>
 
-	<definition name="playground/demo/naver/search_rank" extends="playground">
+	<definition name="playground/demo/naver/search/rank" extends="playground">
 		<put-attribute name="body_title" value="Naver Search Rank" />
-		<put-attribute name="body" value="/WEB-INF/views/playground/demo/naver/search_rank.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/playground/demo/naver/search/rank.jsp" />
+	</definition>
+
+	<definition name="playground/demo/naver/search/blog" extends="playground">
+		<put-attribute name="body_title" value="Naver Search Blog" />
+		<put-attribute name="body" value="/WEB-INF/views/playground/demo/naver/search/blog.jsp" />
 	</definition>
 
 	<definition name="tools" extends="base.definition">

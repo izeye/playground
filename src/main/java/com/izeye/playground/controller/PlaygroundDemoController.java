@@ -9,11 +9,14 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.izeye.playground.support.menu.domain.SubMenuItem;
-import com.izeye.playground.support.naver.domain.NaverSearchRank;
-import com.izeye.playground.support.naver.domain.NaverSearchRankType;
+import com.izeye.playground.support.naver.domain.search.blog.NaverSearchBlogRequest;
+import com.izeye.playground.support.naver.domain.search.blog.NaverSearchBlogResponse;
+import com.izeye.playground.support.naver.domain.search.rank.NaverSearchRankItem;
+import com.izeye.playground.support.naver.domain.search.rank.NaverSearchRankType;
 import com.izeye.playground.support.naver.service.NaverOpenApiService;
 
 @Controller
@@ -49,8 +52,27 @@ public class PlaygroundDemoController extends AbstractPlaygroundController {
 
 	@RequestMapping(API_PATH_NAVER_SEARCH_RANK)
 	@ResponseBody
-	public List<NaverSearchRank> naverSearchRankApi(NaverSearchRankType rankType) {
+	public List<NaverSearchRankItem> naverSearchRankApi(
+			NaverSearchRankType rankType) {
 		return naverOpenApiService.getSearchRanks(rankType);
+	}
+
+	@RequestMapping(SUB_MENU_ITEM_NAVER_SEARCH_BLOG_PATH)
+	public String naverSearchBlog(Model model) {
+		model.addAttribute("API_PATH_NAVER_SEARCH_BLOG",
+				API_PATH_NAVER_SEARCH_BLOG);
+
+		return SubMenuItem.PLAYGROUND_DEMO_NAVER_SEARCH_BLOG.getViewName();
+	}
+
+	@RequestMapping(API_PATH_NAVER_SEARCH_BLOG)
+	@ResponseBody
+	public NaverSearchBlogResponse naverSearchBlogApi(
+			@RequestParam String query, @RequestParam int display,
+			@RequestParam int start) {
+		NaverSearchBlogRequest request = new NaverSearchBlogRequest(query,
+				display, start);
+		return naverOpenApiService.search(request);
 	}
 
 }

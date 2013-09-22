@@ -1,4 +1,4 @@
-package com.izeye.playground.support.naver.domain;
+package com.izeye.playground.support.naver.domain.search.rank;
 
 public interface NaverSearchRankConstants {
 
