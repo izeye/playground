@@ -15,7 +15,7 @@ var search = function (start) {
 		$('#moreButton').show();
 	}
 	
-	$.get('${API_PATH_NAVER_SEARCH_BLOG}', {
+	$.get('${API_PATH_NAVER_SEARCH_NEWS}', {
 		query: $('#query').val(),
 		display: APP.display,
 		start: start
@@ -24,12 +24,15 @@ var search = function (start) {
 		for (var i in data.items) {
 			var item = data.items[i];
 			
-			result += '<li>' +
+			result += 
+					'<li>' +
 					'<dl>' +
-					'<dt><a href="' + item.redirectedLink + '">' + item.title + '</a></dt>' +
-					'<dd>' + item.description + '</dd>' +
-					'<dd><span><a href="' + item.redirectedLink + '">' + item.redirectedLink + '</a> ' +
-					'<a href="' + item.bloggerLink + '">' + item.bloggerName + '</a></span></dd>' +
+					'<dt><a href="' + item.originalLink + '">' + item.title + '</a></dt>' +
+					'<dd>' + item.description + '</dd>';
+			if (item.redirectedLink.match('^http://news.naver.com/')) {
+				result += '<dd><span><a href="' + item.redirectedLink + '">Show in Naver</a></span></dd>';
+			}
+			result +=
 					'</dl>' +
 					'</li>';
 		}
@@ -40,7 +43,7 @@ var search = function (start) {
 };
 </script>
 
-<p>This is a page for searching Naver blog.</p>
+<p>This is a page for searching Naver news.</p>
 
 <label for="query">Query:</label>
 <input id="query" type="text" value="test" />

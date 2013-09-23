@@ -1,5 +1,7 @@
 package com.izeye.playground.support.naver.domain.search.rank;
 
+import static com.izeye.playground.support.naver.domain.search.NaverSearchConstants.TARGET_RANK;
+import static com.izeye.playground.support.naver.domain.search.NaverSearchConstants.TARGET_RANK_THEME;
 import static com.izeye.playground.support.naver.domain.search.rank.NaverSearchRankConstants.QUERY_BOOK;
 import static com.izeye.playground.support.naver.domain.search.rank.NaverSearchRankConstants.QUERY_BROADCAST;
 import static com.izeye.playground.support.naver.domain.search.rank.NaverSearchRankConstants.QUERY_DRAMA;
@@ -8,8 +10,6 @@ import static com.izeye.playground.support.naver.domain.search.rank.NaverSearchR
 import static com.izeye.playground.support.naver.domain.search.rank.NaverSearchRankConstants.QUERY_PEOPLE;
 import static com.izeye.playground.support.naver.domain.search.rank.NaverSearchRankConstants.QUERY_PERFORMANCE;
 import static com.izeye.playground.support.naver.domain.search.rank.NaverSearchRankConstants.QUERY_SEARCH;
-import static com.izeye.playground.support.naver.domain.search.rank.NaverSearchRankConstants.TARGET_RANK;
-import static com.izeye.playground.support.naver.domain.search.rank.NaverSearchRankConstants.TARGET_RANK_THEME;
 
 public enum NaverSearchRankType {
 

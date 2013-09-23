@@ -2,9 +2,6 @@ package com.izeye.playground.support.naver.domain.search.rank;
 
 public interface NaverSearchRankConstants {
 
-	String TARGET_RANK = "rank";
-	String TARGET_RANK_THEME = "ranktheme";
-
 	String QUERY_SEARCH = "nexearch";
 	String QUERY_MOVIE = "movie";
 	String QUERY_PEOPLE = "people";

@@ -1,3 +1,5 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <script type="text/javascript">
 var APP = {};
 
@@ -15,7 +17,7 @@ var search = function (start) {
 		$('#moreButton').show();
 	}
 	
-	$.get('${API_PATH_NAVER_SEARCH_BLOG}', {
+	$.get('${API_PATH_NAVER_SEARCH_BOOK}', {
 		query: $('#query').val(),
 		display: APP.display,
 		start: start
@@ -24,12 +26,15 @@ var search = function (start) {
 		for (var i in data.items) {
 			var item = data.items[i];
 			
-			result += '<li>' +
+			var discountPercent = Math.floor((item.price - item.discount) * 100 / item.price);
+			
+			result += 
+					'<li>' +
 					'<dl>' +
 					'<dt><a href="' + item.redirectedLink + '">' + item.title + '</a></dt>' +
+					'<dd>' + item.author + '|' + item.publisher + '|' + item.formattedPublishedDate + '</dd>' +
+					'<dd><del>₩' + item.price + '</del>→₩' + item.discount + '(-' + discountPercent + '%)</dd>' +
 					'<dd>' + item.description + '</dd>' +
-					'<dd><span><a href="' + item.redirectedLink + '">' + item.redirectedLink + '</a> ' +
-					'<a href="' + item.bloggerLink + '">' + item.bloggerName + '</a></span></dd>' +
 					'</dl>' +
 					'</li>';
 		}
@@ -40,7 +45,7 @@ var search = function (start) {
 };
 </script>
 
-<p>This is a page for searching Naver blog.</p>
+<p>This is a page for searching Naver book.</p>
 
 <label for="query">Query:</label>
 <input id="query" type="text" value="test" />
