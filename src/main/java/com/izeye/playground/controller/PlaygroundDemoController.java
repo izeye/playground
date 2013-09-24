@@ -4,11 +4,13 @@ import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_NA
 import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_NAVER_SEARCH_BOOK;
 import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_NAVER_SEARCH_NEWS;
 import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_NAVER_SEARCH_RANK;
+import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_NAVER_SEARCH_RECOMMEND;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_KAKAO_LINK_PATH;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_NAVER_SEARCH_BLOG_PATH;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_NAVER_SEARCH_BOOK_PATH;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_NAVER_SEARCH_NEWS_PATH;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_NAVER_SEARCH_RANK_PATH;
+import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_NAVER_SEARCH_RECOMMEND_PATH;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_WEBCAM_LIVE_PATH;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_WEBCAM_SNAPSHOTS_PATH;
 
@@ -122,6 +124,20 @@ public class PlaygroundDemoController extends AbstractPlaygroundController {
 		NaverSearchRequest request = new NaverSearchRequest(
 				NaverSearchType.BOOK, query, display, start);
 		return naverOpenApiService.searchBook(request);
+	}
+
+	@RequestMapping(SUB_MENU_ITEM_NAVER_SEARCH_RECOMMEND_PATH)
+	public String naverSearchRecommend(Model model) {
+		model.addAttribute("API_PATH_NAVER_SEARCH_RECOMMEND",
+				API_PATH_NAVER_SEARCH_RECOMMEND);
+
+		return SubMenuItem.PLAYGROUND_DEMO_NAVER_SEARCH_RECOMMEND.getViewName();
+	}
+
+	@RequestMapping(API_PATH_NAVER_SEARCH_RECOMMEND)
+	@ResponseBody
+	public List<String> naverSearchRecommendApi(@RequestParam String query) {
+		return naverOpenApiService.getSearchRecommendations(query);
 	}
 
 }

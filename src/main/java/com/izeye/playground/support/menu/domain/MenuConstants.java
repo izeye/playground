@@ -71,6 +71,13 @@ public interface MenuConstants {
 	String API_PATH_NAVER_SEARCH_BOOK = SUB_MENU_ITEM_NAVER_SEARCH_BOOK_PATH
 			+ "/api";
 
+	String SUB_MENU_ITEM_NAVER_SEARCH_RECOMMEND_NAME = "Naver Search Recommendations";
+	String SUB_MENU_ITEM_NAVER_SEARCH_RECOMMEND_PATH = SUB_MENU_ITEM_GROUP_PLAYGROUND_DEMO_PATH
+			+ "/naver/search/recommend";
+
+	String API_PATH_NAVER_SEARCH_RECOMMEND = SUB_MENU_ITEM_NAVER_SEARCH_RECOMMEND_PATH
+			+ "/api";
+
 	String MENU_ITEM_TOOLS_NAME = "Tools";
 	String MENU_ITEM_TOOLS_PATH = "/tools";
 
