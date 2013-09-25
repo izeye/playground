@@ -2,8 +2,8 @@ package com.izeye.playground.support.naver.domain.search;
 
 import org.jdom.Element;
 
-public interface NaverSearchResponseCallback {
+public interface NaverSearchResponseCallback<T> {
 
-	void callback(Element root);
+	T callback(Element root);
 
 }

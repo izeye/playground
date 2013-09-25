@@ -24,4 +24,6 @@ public interface NaverOpenApiService {
 
 	NaverSearchCafeResponse searchCafe(NaverSearchRequest request);
 
+	boolean checkForAdults(String query);
+
 }

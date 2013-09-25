@@ -45,9 +45,16 @@ public interface NaverSearchConstants {
 	String ELEMENT_TOTAL_ARTICLES = "totalarticles";
 	String ELEMENT_NEW_ARTICLES = "newarticles";
 
+	String ELEMENT_ADULT = "adult";
+
 	String TARGET_RANK = "rank";
 	String TARGET_RANK_THEME = "ranktheme";
 
 	String TARGET_RECOMMENDATION = "recmd";
+
+	String TARGET_ADULT = "adult";
+
+	int TRUE_AS_INT = 1;
+	int FALSE_AS_INT = 0;
 
 }

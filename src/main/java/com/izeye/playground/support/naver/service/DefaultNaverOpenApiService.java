@@ -1,9 +1,10 @@
 package com.izeye.playground.support.naver.service;
 
-import static com.izeye.playground.support.naver.domain.search.NaverSearchConstants.ELEMENT_ITEM;
+import static com.izeye.playground.support.naver.domain.search.NaverSearchConstants.*;
 import static com.izeye.playground.support.naver.domain.search.NaverSearchConstants.ELEMENT_K;
 import static com.izeye.playground.support.naver.domain.search.NaverSearchConstants.ELEMENT_S;
 import static com.izeye.playground.support.naver.domain.search.NaverSearchConstants.ELEMENT_V;
+import static com.izeye.playground.support.naver.domain.search.NaverSearchConstants.TARGET_ADULT;
 import static com.izeye.playground.support.naver.domain.search.NaverSearchConstants.TARGET_RECOMMENDATION;
 
 import java.io.IOException;
@@ -71,6 +72,9 @@ public class DefaultNaverOpenApiService implements NaverOpenApiService {
 
 	private final Logger log = LoggerFactory.getLogger(getClass());
 
+	// FIXME:
+	// How can I remove these warnings?
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public List<NaverSearchRankItem> getSearchRanks(NaverSearchRankType type) {
 		Map<String, Object> params = new HashMap<String, Object>();
@@ -82,12 +86,12 @@ public class DefaultNaverOpenApiService implements NaverOpenApiService {
 				params);
 		log.debug(apiUrl);
 
-		final List<NaverSearchRankItem> ranks = new ArrayList<NaverSearchRankItem>();
-		search(apiUrl, new NaverSearchResponseCallback() {
+		return search(apiUrl, new NaverSearchResponseCallback<List>() {
 			@Override
-			public void callback(Element root) {
+			public List<NaverSearchRankItem> callback(Element root) {
+				List<NaverSearchRankItem> ranks = new ArrayList<NaverSearchRankItem>();
+
 				Element item = root.getChild(ELEMENT_ITEM);
-				@SuppressWarnings("unchecked")
 				List<Element> children = item.getChildren();
 				for (int i = 0; i < children.size(); i++) {
 					Element child = children.get(i);
@@ -100,47 +104,53 @@ public class DefaultNaverOpenApiService implements NaverOpenApiService {
 									.parseInt(variance));
 					ranks.add(rank);
 				}
+				return ranks;
 			}
-		});
-		return ranks;
+		}, List.class);
 	}
 
 	@Override
 	public NaverSearchBlogResponse searchBlog(NaverSearchRequest request) {
-		final NaverSearchBlogResponse response = new NaverSearchBlogResponse();
-		search(request, new NaverSearchResponseCallback() {
-			@Override
-			public void callback(Element root) {
-				blogResponseParser.parse(root, response);
-			}
-		});
-		return response;
+		return search(request,
+				new NaverSearchResponseCallback<NaverSearchBlogResponse>() {
+					@Override
+					public NaverSearchBlogResponse callback(Element root) {
+						NaverSearchBlogResponse response = new NaverSearchBlogResponse();
+						blogResponseParser.parse(root, response);
+						return response;
+					}
+				}, NaverSearchBlogResponse.class);
 	}
 
 	@Override
 	public NaverSearchNewsResponse searchNews(NaverSearchRequest request) {
-		final NaverSearchNewsResponse response = new NaverSearchNewsResponse();
-		search(request, new NaverSearchResponseCallback() {
-			@Override
-			public void callback(Element root) {
-				newsResponseParser.parse(root, response);
-			}
-		});
-		return response;
+		return search(request,
+				new NaverSearchResponseCallback<NaverSearchNewsResponse>() {
+					@Override
+					public NaverSearchNewsResponse callback(Element root) {
+						NaverSearchNewsResponse response = new NaverSearchNewsResponse();
+						newsResponseParser.parse(root, response);
+						return response;
+					}
+				}, NaverSearchNewsResponse.class);
 	}
 
 	@Override
 	public NaverSearchBookResponse searchBook(NaverSearchRequest request) {
-		final NaverSearchBookResponse response = new NaverSearchBookResponse();
-		search(request, new NaverSearchResponseCallback() {
-			@Override
-			public void callback(Element root) {
-				bookResponseParser.parse(root, response);
-			}
-		});
-		return response;
+		return search(request,
+				new NaverSearchResponseCallback<NaverSearchBookResponse>() {
+					@Override
+					public NaverSearchBookResponse callback(Element root) {
+						NaverSearchBookResponse response = new NaverSearchBookResponse();
+						bookResponseParser.parse(root, response);
+						return response;
+					}
+				}, NaverSearchBookResponse.class);
 	}
 
+	// FIXME:
+	// How can I remove these warnings?
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public List<String> getSearchRecommendations(String query) {
 		Map<String, Object> params = new HashMap<String, Object>();
@@ -152,34 +162,55 @@ public class DefaultNaverOpenApiService implements NaverOpenApiService {
 				params);
 		log.debug(apiUrl);
 
-		final List<String> searchRecommendations = new ArrayList<String>();
-		search(apiUrl, new NaverSearchResponseCallback() {
+		return search(apiUrl, new NaverSearchResponseCallback<List>() {
 			@Override
-			public void callback(Element root) {
-				@SuppressWarnings("unchecked")
+			public List<String> callback(Element root) {
+				List<String> searchRecommendations = new ArrayList<String>();
+
 				List<Element> itemElements = root.getChildren(ELEMENT_ITEM);
 				for (Element itemElement : itemElements) {
 					searchRecommendations.add(itemElement.getText());
 				}
+				return searchRecommendations;
 			}
-		});
-		return searchRecommendations;
+		}, List.class);
 	}
 
 	@Override
 	public NaverSearchCafeResponse searchCafe(NaverSearchRequest request) {
-		final NaverSearchCafeResponse response = new NaverSearchCafeResponse();
-		search(request, new NaverSearchResponseCallback() {
-			@Override
-			public void callback(Element root) {
-				cafeResponseParser.parse(root, response);
-			}
-		});
-		return response;
+		return search(request,
+				new NaverSearchResponseCallback<NaverSearchCafeResponse>() {
+					@Override
+					public NaverSearchCafeResponse callback(Element root) {
+						NaverSearchCafeResponse response = new NaverSearchCafeResponse();
+						cafeResponseParser.parse(root, response);
+						return response;
+					}
+				}, NaverSearchCafeResponse.class);
 	}
 
-	private void search(NaverSearchRequest request,
-			NaverSearchResponseCallback callback) {
+	@Override
+	public boolean checkForAdults(String query) {
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put(PARAM_KEY, searchApiKey);
+		params.put(PARAM_TARGET, TARGET_ADULT);
+		params.put(PARAM_QUERY, query);
+
+		String apiUrl = UrlUtils.createUrl(NAVER_SEARCH_RANK_API_URL_PREFIX,
+				params);
+		log.debug(apiUrl);
+
+		return search(apiUrl, new NaverSearchResponseCallback<Boolean>() {
+			@Override
+			public Boolean callback(Element root) {
+				Element itemElement = root.getChild(ELEMENT_ITEM);
+				return Integer.parseInt(itemElement.getChildText(ELEMENT_ADULT)) == TRUE_AS_INT;
+			}
+		}, Boolean.class);
+	}
+
+	private <T> T search(NaverSearchRequest request,
+			NaverSearchResponseCallback<T> callback, Class<T> returnType) {
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put(PARAM_KEY, searchApiKey);
 		params.put(PARAM_TARGET, request.getSearchType().getTarget());
@@ -195,15 +226,16 @@ public class DefaultNaverOpenApiService implements NaverOpenApiService {
 				params);
 		log.debug(apiUrl);
 
-		search(apiUrl, callback);
+		return search(apiUrl, callback, returnType);
 	}
 
-	private void search(String apiUrl, NaverSearchResponseCallback callback) {
+	private <T> T search(String apiUrl,
+			NaverSearchResponseCallback<T> callback, Class<T> returnType) {
 		InputStream is = null;
 		try {
 			is = HttpUtils.urlToInputStream(apiUrl);
 			Element root = JDOMUtils.inputStreamToRootElement(is);
-			callback.callback(root);
+			return returnType.cast(callback.callback(root));
 		} catch (IOException e) {
 			e.printStackTrace();
 			throw new NaverOpenApiFailException(e);

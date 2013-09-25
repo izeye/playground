@@ -147,4 +147,18 @@ public class PlaygroundDemoController extends AbstractPlaygroundController {
 		return naverOpenApiService.searchCafe(request);
 	}
 
+	@RequestMapping(SUB_MENU_ITEM_NAVER_SEARCH_ADULT_PATH)
+	public String naverSearchAdult(Model model) {
+		model.addAttribute("API_PATH_NAVER_SEARCH_ADULT",
+				API_PATH_NAVER_SEARCH_ADULT);
+
+		return SubMenuItem.PLAYGROUND_DEMO_NAVER_SEARCH_ADULT.getViewName();
+	}
+
+	@RequestMapping(API_PATH_NAVER_SEARCH_ADULT)
+	@ResponseBody
+	public boolean naverSearchAdultApi(@RequestParam String query) {
+		return naverOpenApiService.checkForAdults(query);
+	}
+
 }

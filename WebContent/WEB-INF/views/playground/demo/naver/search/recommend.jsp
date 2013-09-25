@@ -3,7 +3,6 @@ var getSearchRecommendations = function () {
 	$.get('${API_PATH_NAVER_SEARCH_RECOMMEND}', {
 		query: $('#query').val()
 	}).done(function (data) {
-		console.log(data);
 		$('#result').text(data);
 	});
 };

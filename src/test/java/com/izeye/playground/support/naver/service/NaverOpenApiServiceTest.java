@@ -1,5 +1,8 @@
 package com.izeye.playground.support.naver.service;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
+
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -104,6 +107,15 @@ public class NaverOpenApiServiceTest {
 		NaverSearchCafeResponse response = naverOpenApiService
 				.searchCafe(request);
 		System.out.println(response);
+	}
+
+	@Test
+	public void checkForAdults() {
+		String query = "소녀";
+		assertThat(naverOpenApiService.checkForAdults(query), is(false));
+
+		query = "단란주점";
+		assertThat(naverOpenApiService.checkForAdults(query), is(true));
 	}
 
 }
