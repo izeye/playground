@@ -27,12 +27,8 @@ var search = function (start) {
 			result += '<li>' +
 					'<dl>' +
 					'<dt><a href="' + item.redirectedLink + '">' + item.title + '</a></dt>' +
-					'<dd><span>' +
-					'Rank: ' + item.ranking +
-					' Member: ' + item.member +
-					' New/Total articles: ' + item.newArticles + '/' + item.totalArticles +
-					' <a href="' + item.redirectedLink + '">' + item.redirectedLink + '</a>' +
-					'</span></dd>' +
+					'<dd>' + item.description + '</dd>' +
+					'<dd><span><a href="' + item.redirectedLink + '">' + item.redirectedLink + '</a></span></dd>' +
 					'</dl>' +
 					'</li>';
 		}
@@ -43,7 +39,7 @@ var search = function (start) {
 };
 </script>
 
-<p>This is a page for searching Naver cafe.</p>
+<p>This is a page for searching Naver cafe articles.</p>
 
 <label for="query">Query:</label>
 <input id="query" type="text" value="test" />
