@@ -1,4 +1,4 @@
-package com.izeye.playground.support.naver.service.book;
+package com.izeye.playground.support.naver.service.search.book;
 
 import java.util.ArrayList;
 import java.util.List;

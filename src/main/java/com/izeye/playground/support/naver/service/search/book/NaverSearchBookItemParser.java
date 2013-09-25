@@ -1,4 +1,4 @@
-package com.izeye.playground.support.naver.service.book;
+package com.izeye.playground.support.naver.service.search.book;
 
 import static com.izeye.playground.support.naver.domain.search.NaverSearchConstants.ELEMENT_AUTHOR;
 import static com.izeye.playground.support.naver.domain.search.NaverSearchConstants.ELEMENT_BOOK_PUBLISHED_DATE;

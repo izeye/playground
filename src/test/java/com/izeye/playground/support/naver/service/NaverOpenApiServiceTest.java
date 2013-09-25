@@ -14,6 +14,7 @@ import com.izeye.playground.support.naver.domain.search.NaverSearchRequest;
 import com.izeye.playground.support.naver.domain.search.NaverSearchType;
 import com.izeye.playground.support.naver.domain.search.blog.NaverSearchBlogResponse;
 import com.izeye.playground.support.naver.domain.search.book.NaverSearchBookResponse;
+import com.izeye.playground.support.naver.domain.search.cafe.NaverSearchCafeResponse;
 import com.izeye.playground.support.naver.domain.search.news.NaverSearchNewsResponse;
 import com.izeye.playground.support.naver.domain.search.rank.NaverSearchRankItem;
 import com.izeye.playground.support.naver.domain.search.rank.NaverSearchRankType;
@@ -93,6 +94,16 @@ public class NaverOpenApiServiceTest {
 		List<String> searchRecommendations = naverOpenApiService
 				.getSearchRecommendations(query);
 		System.out.println(searchRecommendations);
+	}
+
+	@Test
+	public void searchCafe() {
+		String query = "스포츠";
+		NaverSearchRequest request = new NaverSearchRequest(
+				NaverSearchType.CAFE, query);
+		NaverSearchCafeResponse response = naverOpenApiService
+				.searchCafe(request);
+		System.out.println(response);
 	}
 
 }

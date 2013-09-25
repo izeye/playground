@@ -6,7 +6,10 @@ public enum NaverSearchSortType {
 
 	NOT_AVAILABLE(StringConstants.NOT_AVAILABLE), //
 	DATE("date"), //
-	SIMILARITY("sim");
+	SIMILARITY("sim"), //
+	MEMBER("member"), //
+	NEW_ARTICLES("newarticles"), //
+	RANK("rank");
 
 	private final String value;
 

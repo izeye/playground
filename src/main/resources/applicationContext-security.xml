@@ -28,6 +28,9 @@
 		<security:form-login />
 		<security:logout logout-success-url="/" delete-cookies="JSESSIONID" />
 		<security:remember-me />
+		<!--
+		<security:http-basic/>
+		-->
 	</security:http>
 	
 	<security:authentication-manager>

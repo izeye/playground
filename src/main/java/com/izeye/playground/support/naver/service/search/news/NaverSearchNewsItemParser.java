@@ -1,4 +1,4 @@
-package com.izeye.playground.support.naver.service.news;
+package com.izeye.playground.support.naver.service.search.news;
 
 import static com.izeye.playground.support.naver.domain.search.NaverSearchConstants.ELEMENT_NEWS_PUBLISHED_DATE;
 import static com.izeye.playground.support.naver.domain.search.NaverSearchConstants.ELEMENT_ORIGINAL_LINK;

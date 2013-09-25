@@ -31,13 +31,15 @@ import com.izeye.playground.support.naver.domain.search.NaverSearchResponseCallb
 import com.izeye.playground.support.naver.domain.search.NaverSearchSortType;
 import com.izeye.playground.support.naver.domain.search.blog.NaverSearchBlogResponse;
 import com.izeye.playground.support.naver.domain.search.book.NaverSearchBookResponse;
+import com.izeye.playground.support.naver.domain.search.cafe.NaverSearchCafeResponse;
 import com.izeye.playground.support.naver.domain.search.news.NaverSearchNewsResponse;
 import com.izeye.playground.support.naver.domain.search.rank.NaverSearchRankItem;
 import com.izeye.playground.support.naver.domain.search.rank.NaverSearchRankStatus;
 import com.izeye.playground.support.naver.domain.search.rank.NaverSearchRankType;
-import com.izeye.playground.support.naver.service.blog.NaverSearchBlogResponseParser;
-import com.izeye.playground.support.naver.service.book.NaverSearchBookResponseParser;
-import com.izeye.playground.support.naver.service.news.NaverSearchNewsResponseParser;
+import com.izeye.playground.support.naver.service.search.blog.NaverSearchBlogResponseParser;
+import com.izeye.playground.support.naver.service.search.book.NaverSearchBookResponseParser;
+import com.izeye.playground.support.naver.service.search.cafe.NaverSearchCafeResponseParser;
+import com.izeye.playground.support.naver.service.search.news.NaverSearchNewsResponseParser;
 
 @Service("naverOpenApiService")
 public class DefaultNaverOpenApiService implements NaverOpenApiService {
@@ -63,6 +65,9 @@ public class DefaultNaverOpenApiService implements NaverOpenApiService {
 
 	@Resource
 	private NaverSearchBookResponseParser bookResponseParser;
+
+	@Resource
+	private NaverSearchCafeResponseParser cafeResponseParser;
 
 	private final Logger log = LoggerFactory.getLogger(getClass());
 
@@ -159,6 +164,18 @@ public class DefaultNaverOpenApiService implements NaverOpenApiService {
 			}
 		});
 		return searchRecommendations;
+	}
+
+	@Override
+	public NaverSearchCafeResponse searchCafe(NaverSearchRequest request) {
+		final NaverSearchCafeResponse response = new NaverSearchCafeResponse();
+		search(request, new NaverSearchResponseCallback() {
+			@Override
+			public void callback(Element root) {
+				cafeResponseParser.parse(root, response);
+			}
+		});
+		return response;
 	}
 
 	private void search(NaverSearchRequest request,

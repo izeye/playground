@@ -4,7 +4,8 @@ public enum NaverSearchType {
 
 	BLOG("blog", NaverSearchSortType.SIMILARITY), //
 	NEWS("news", NaverSearchSortType.DATE), //
-	BOOK("book", NaverSearchSortType.NOT_AVAILABLE);
+	BOOK("book", NaverSearchSortType.NOT_AVAILABLE), //
+	CAFE("cafe", NaverSearchSortType.SIMILARITY);
 
 	private final String target;
 	private final NaverSearchSortType defaultSortType;

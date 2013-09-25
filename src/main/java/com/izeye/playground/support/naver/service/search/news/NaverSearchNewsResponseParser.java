@@ -1,4 +1,4 @@
-package com.izeye.playground.support.naver.service.news;
+package com.izeye.playground.support.naver.service.search.news;
 
 import java.util.ArrayList;
 import java.util.List;

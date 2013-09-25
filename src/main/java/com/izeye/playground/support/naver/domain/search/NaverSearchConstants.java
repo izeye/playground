@@ -40,6 +40,11 @@ public interface NaverSearchConstants {
 	String ELEMENT_BOOK_PUBLISHED_DATE = "pubdate";
 	String ELEMENT_ISBN = "isbn";
 
+	String ELEMENT_RANKING = "ranking";
+	String ELEMENT_MEMBER = "member";
+	String ELEMENT_TOTAL_ARTICLES = "totalarticles";
+	String ELEMENT_NEW_ARTICLES = "newarticles";
+
 	String TARGET_RANK = "rank";
 	String TARGET_RANK_THEME = "ranktheme";
 
