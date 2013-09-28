@@ -18,6 +18,9 @@ import com.izeye.playground.support.naver.domain.search.NaverSearchType;
 import com.izeye.playground.support.naver.domain.search.blog.NaverSearchBlogResponse;
 import com.izeye.playground.support.naver.domain.search.book.NaverSearchBookResponse;
 import com.izeye.playground.support.naver.domain.search.cafe.NaverSearchCafeResponse;
+import com.izeye.playground.support.naver.domain.search.encyclopedia.NaverSearchEncyclopediaResponse;
+import com.izeye.playground.support.naver.domain.search.movie.NaverSearchMovieRequest;
+import com.izeye.playground.support.naver.domain.search.movie.NaverSearchMovieResponse;
 import com.izeye.playground.support.naver.domain.search.news.NaverSearchNewsResponse;
 import com.izeye.playground.support.naver.domain.search.rank.NaverSearchRankItem;
 import com.izeye.playground.support.naver.domain.search.rank.NaverSearchRankType;
@@ -116,6 +119,25 @@ public class NaverOpenApiServiceTest {
 
 		query = "단란주점";
 		assertThat(naverOpenApiService.checkForAdults(query), is(true));
+	}
+
+	@Test
+	public void searchEncyclopedia() {
+		String query = "독도";
+		NaverSearchRequest request = new NaverSearchRequest(
+				NaverSearchType.ENCYCLOPEDIA, query);
+		NaverSearchEncyclopediaResponse response = naverOpenApiService
+				.searchEncyclopedia(request);
+		System.out.println(response);
+	}
+
+	@Test
+	public void searchMovie() {
+		String query = "벤허";
+		NaverSearchMovieRequest request = new NaverSearchMovieRequest(query);
+		NaverSearchMovieResponse response = naverOpenApiService
+				.searchMovie(request);
+		System.out.println(response);
 	}
 
 }

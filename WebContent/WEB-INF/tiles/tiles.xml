@@ -115,6 +115,16 @@
 		<put-attribute name="body" value="/WEB-INF/views/playground/demo/naver/search/adult.jsp" />
 	</definition>
 
+	<definition name="playground/demo/naver/search/encyclopedia" extends="playground">
+		<put-attribute name="body_title" value="Naver Search Encyclopedia" />
+		<put-attribute name="body" value="/WEB-INF/views/playground/demo/naver/search/encyclopedia.jsp" />
+	</definition>
+
+	<definition name="playground/demo/naver/search/movie" extends="playground">
+		<put-attribute name="body_title" value="Naver Search Movie" />
+		<put-attribute name="body" value="/WEB-INF/views/playground/demo/naver/search/movie.jsp" />
+	</definition>
+
 	<definition name="tools" extends="base.definition">
 		<put-attribute name="facebook_like" value="/WEB-INF/tiles/jsp/facebook_like.jsp" />
 		<put-attribute name="facebook_share" value="/WEB-INF/tiles/jsp/facebook_share.jsp" />

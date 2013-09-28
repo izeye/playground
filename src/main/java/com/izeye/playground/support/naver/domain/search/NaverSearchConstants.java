@@ -47,6 +47,14 @@ public interface NaverSearchConstants {
 
 	String ELEMENT_ADULT = "adult";
 
+	String ELEMENT_THUMBNAIL = "thumbnail";
+
+	String ELEMENT_SUBTITLE = "subtitle";
+	String ELEMENT_MOVIE_PUBLISHED_DATE = "pubDate";
+	String ELEMENT_DIRECTOR = "director";
+	String ELEMENT_ACTOR = "actor";
+	String ELEMENT_USER_RATING = "userRating";
+
 	String TARGET_RANK = "rank";
 	String TARGET_RANK_THEME = "ranktheme";
 
