@@ -15,7 +15,7 @@ public class DefaultPermissionEvaluator implements PermissionEvaluator {
 		if (targetDomainObject instanceof User) {
 			User user = (User) targetDomainObject;
 			if (permission.equals("changeProfile")) {
-				return authentication.getName().equals(user.getName());
+				return authentication.getName().equals(user.getUsername());
 			}
 		}
 		throw new UnsupportedOperationException("hasPermission not supported");

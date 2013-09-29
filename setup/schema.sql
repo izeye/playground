@@ -54,21 +54,43 @@ CREATE TABLE tb_whois (
 	PRIMARY KEY (id)
 );
 
-CREATE TABLE tb_user (
-	id INT AUTO_INCREMENT,
-	user_id VARCHAR(128) NOT NULL UNIQUE,
+DROP TABLE tb_users;
+CREATE TABLE tb_users (
+	id INT NOT NULL AUTO_INCREMENT,
+	username VARCHAR(128) NOT NULL UNIQUE,
 	password VARCHAR(128) NOT NULL,
 	nickname VARCHAR(128) NOT NULL UNIQUE,
-	country_code CAHR(2),
+	first_name VARCHAR(128),
+	last_name VARCHAR(128),
+	country_code CHAR(2),
 	image_url VARCHAR(128),
-	-- Role
-	-- 0: Supervisor
-	-- 1: User
-	role INT DEFAULT 1,
-	create_time DATETIME NOT NULL,
+	created_time DATETIME NOT NULL,
 	modified_time DATETIME,
 	deleted_time DATETIME,
+	enabled BOOLEAN NOT NULL DEFAULT true,
+	PRIMARY KEY(id)
 );
+
+-- NOTE: Only for test.
+INSERT INTO tb_users (username, password, nickname, created_time) VALUES ('admin@izeye.cafe24.com', '1234', 'admin', now());
+INSERT INTO tb_users (username, password, nickname, created_time) VALUES ('izeye@naver.com', '1234', 'izeye', now());
+INSERT INTO tb_users (username, password, nickname, created_time) VALUES ('test@naver.com', '1234', 'test', now());
+
+DROP TABLE tb_authorities;
+CREATE TABLE tb_authorities (
+	id INT NOT NULL AUTO_INCREMENT,
+	user_id INT NOT NULL,
+	authority VARCHAR(128) NOT NULL,
+	CONSTRAINT fk_authorities_users FOREIGN KEY (user_id) REFERENCES tb_users (id),
+	PRIMARY KEY(id)
+);
+
+-- NOTE: Only for test.
+INSERT INTO tb_authorities (user_id, authority) VALUES ((SELECT id FROM tb_users WHERE username='admin@izeye.cafe24.com'), 'ROLE_SUPERVISOR');
+INSERT INTO tb_authorities (user_id, authority) VALUES ((SELECT id FROM tb_users WHERE username='izeye@naver.com'), 'ROLE_USER');
+INSERT INTO tb_authorities (user_id, authority) VALUES ((SELECT id FROM tb_users WHERE username='test@naver.com'), 'ROLE_USER');
+
+CREATE UNIQUE INDEX ix_auth_user_id on tb_authorities (user_id, authority);
 
 CREATE TABLE tb_menu_item (
 	id INT AUTO_INCREMENT,

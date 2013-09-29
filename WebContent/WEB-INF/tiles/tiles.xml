@@ -125,6 +125,11 @@
 		<put-attribute name="body" value="/WEB-INF/views/playground/demo/naver/search/movie.jsp" />
 	</definition>
 
+	<definition name="playground/demo/naver/search/cafe_article" extends="playground">
+		<put-attribute name="body_title" value="Naver Search Cafe Article" />
+		<put-attribute name="body" value="/WEB-INF/views/playground/demo/naver/search/cafe_article.jsp" />
+	</definition>
+
 	<definition name="tools" extends="base.definition">
 		<put-attribute name="facebook_like" value="/WEB-INF/tiles/jsp/facebook_like.jsp" />
 		<put-attribute name="facebook_share" value="/WEB-INF/tiles/jsp/facebook_share.jsp" />

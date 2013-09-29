@@ -5,6 +5,7 @@ import java.util.List;
 import com.izeye.playground.support.naver.domain.search.NaverSearchRequest;
 import com.izeye.playground.support.naver.domain.search.blog.NaverSearchBlogResponse;
 import com.izeye.playground.support.naver.domain.search.book.NaverSearchBookResponse;
+import com.izeye.playground.support.naver.domain.search.cafe.NaverSearchCafeArticleResponse;
 import com.izeye.playground.support.naver.domain.search.cafe.NaverSearchCafeResponse;
 import com.izeye.playground.support.naver.domain.search.encyclopedia.NaverSearchEncyclopediaResponse;
 import com.izeye.playground.support.naver.domain.search.movie.NaverSearchMovieRequest;
@@ -33,5 +34,7 @@ public interface NaverOpenApiService {
 			NaverSearchRequest request);
 
 	NaverSearchMovieResponse searchMovie(NaverSearchMovieRequest request);
+
+	NaverSearchCafeArticleResponse searchCafeArticle(NaverSearchRequest request);
 
 }

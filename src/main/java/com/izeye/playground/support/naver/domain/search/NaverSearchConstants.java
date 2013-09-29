@@ -55,6 +55,9 @@ public interface NaverSearchConstants {
 	String ELEMENT_ACTOR = "actor";
 	String ELEMENT_USER_RATING = "userRating";
 
+	String ELEMENT_CAFE_NAME = "cafename";
+	String ELEMENT_CAFE_URL = "cafeurl";
+
 	String TARGET_RANK = "rank";
 	String TARGET_RANK_THEME = "ranktheme";
 

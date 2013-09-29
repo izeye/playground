@@ -1,6 +1,9 @@
 package com.izeye.playground.support.naver.service.search.cafe;
 
-import static com.izeye.playground.support.naver.domain.search.NaverSearchConstants.*;
+import static com.izeye.playground.support.naver.domain.search.NaverSearchConstants.ELEMENT_MEMBER;
+import static com.izeye.playground.support.naver.domain.search.NaverSearchConstants.ELEMENT_NEW_ARTICLES;
+import static com.izeye.playground.support.naver.domain.search.NaverSearchConstants.ELEMENT_RANKING;
+import static com.izeye.playground.support.naver.domain.search.NaverSearchConstants.ELEMENT_TOTAL_ARTICLES;
 
 import org.jdom.Element;
 import org.springframework.stereotype.Service;

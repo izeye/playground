@@ -31,7 +31,7 @@ public class UserMyInformationController extends AbstractUserController {
 	@ResponseBody
 	public String changeProfileApi() {
 		User user = new User();
-		user.setName("test");
+		user.setUsername("test");
 		userService.changeProfile(user);
 
 		return "Success";

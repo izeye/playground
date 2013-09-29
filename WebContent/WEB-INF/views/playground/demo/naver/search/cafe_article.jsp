@@ -15,7 +15,7 @@ var search = function (start) {
 		$('#moreButton').show();
 	}
 	
-	$.get('${API_PATH_NAVER_SEARCH_CAFE}', {
+	$.get('${API_PATH_NAVER_SEARCH_CAFE_ARTICLE}', {
 		query: $('#query').val(),
 		display: APP.display,
 		start: start
@@ -28,7 +28,7 @@ var search = function (start) {
 					'<dl>' +
 					'<dt><a href="' + item.redirectedLink + '">' + item.title + '</a></dt>' +
 					'<dd>' + item.description + '</dd>' +
-					'<dd><span><a href="' + item.redirectedLink + '">' + item.redirectedLink + '</a></span></dd>' +
+					'<dd><a href="' + item.redirectedLink + '">' + item.redirectedLink + '</a> Cafe name: <a href="' + item.cafeUrl + '">' + item.cafeName + '</a></dd>' +
 					'</dl>' +
 					'</li>';
 		}

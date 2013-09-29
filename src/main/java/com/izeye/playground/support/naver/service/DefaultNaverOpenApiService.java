@@ -1,6 +1,13 @@
 package com.izeye.playground.support.naver.service;
 
-import static com.izeye.playground.support.naver.domain.search.NaverSearchConstants.*;
+import static com.izeye.playground.support.naver.domain.search.NaverSearchConstants.ELEMENT_ADULT;
+import static com.izeye.playground.support.naver.domain.search.NaverSearchConstants.ELEMENT_ITEM;
+import static com.izeye.playground.support.naver.domain.search.NaverSearchConstants.ELEMENT_K;
+import static com.izeye.playground.support.naver.domain.search.NaverSearchConstants.ELEMENT_S;
+import static com.izeye.playground.support.naver.domain.search.NaverSearchConstants.ELEMENT_V;
+import static com.izeye.playground.support.naver.domain.search.NaverSearchConstants.TARGET_ADULT;
+import static com.izeye.playground.support.naver.domain.search.NaverSearchConstants.TARGET_RECOMMENDATION;
+import static com.izeye.playground.support.naver.domain.search.NaverSearchConstants.TRUE_AS_INT;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -27,6 +34,7 @@ import com.izeye.playground.support.naver.domain.search.NaverSearchResponseCallb
 import com.izeye.playground.support.naver.domain.search.NaverSearchSortType;
 import com.izeye.playground.support.naver.domain.search.blog.NaverSearchBlogResponse;
 import com.izeye.playground.support.naver.domain.search.book.NaverSearchBookResponse;
+import com.izeye.playground.support.naver.domain.search.cafe.NaverSearchCafeArticleResponse;
 import com.izeye.playground.support.naver.domain.search.cafe.NaverSearchCafeResponse;
 import com.izeye.playground.support.naver.domain.search.encyclopedia.NaverSearchEncyclopediaResponse;
 import com.izeye.playground.support.naver.domain.search.movie.NaverSearchMovieRequest;
@@ -37,6 +45,7 @@ import com.izeye.playground.support.naver.domain.search.rank.NaverSearchRankStat
 import com.izeye.playground.support.naver.domain.search.rank.NaverSearchRankType;
 import com.izeye.playground.support.naver.service.search.blog.NaverSearchBlogResponseParser;
 import com.izeye.playground.support.naver.service.search.book.NaverSearchBookResponseParser;
+import com.izeye.playground.support.naver.service.search.cafe.NaverSearchCafeArticleResponseParser;
 import com.izeye.playground.support.naver.service.search.cafe.NaverSearchCafeResponseParser;
 import com.izeye.playground.support.naver.service.search.encyclopedia.NaverSearchEncyclopediaResponseParser;
 import com.izeye.playground.support.naver.service.search.movie.NaverSearchMovieResponseParser;
@@ -75,6 +84,9 @@ public class DefaultNaverOpenApiService implements NaverOpenApiService {
 
 	@Resource
 	private NaverSearchMovieResponseParser movieResponseParser;
+
+	@Resource
+	private NaverSearchCafeArticleResponseParser cafeArticleResponseParser;
 
 	private final Logger log = LoggerFactory.getLogger(getClass());
 
@@ -243,6 +255,21 @@ public class DefaultNaverOpenApiService implements NaverOpenApiService {
 						return response;
 					}
 				}, NaverSearchMovieResponse.class);
+	}
+
+	@Override
+	public NaverSearchCafeArticleResponse searchCafeArticle(
+			NaverSearchRequest request) {
+		return search(
+				request,
+				new NaverSearchResponseCallback<NaverSearchCafeArticleResponse>() {
+					@Override
+					public NaverSearchCafeArticleResponse callback(Element root) {
+						NaverSearchCafeArticleResponse response = new NaverSearchCafeArticleResponse();
+						cafeArticleResponseParser.parse(root, response);
+						return response;
+					}
+				}, NaverSearchCafeArticleResponse.class);
 	}
 
 	private <T> T search(NaverSearchRequest request,

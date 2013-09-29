@@ -17,6 +17,7 @@ import com.izeye.playground.support.naver.domain.search.NaverSearchRequest;
 import com.izeye.playground.support.naver.domain.search.NaverSearchType;
 import com.izeye.playground.support.naver.domain.search.blog.NaverSearchBlogResponse;
 import com.izeye.playground.support.naver.domain.search.book.NaverSearchBookResponse;
+import com.izeye.playground.support.naver.domain.search.cafe.NaverSearchCafeArticleResponse;
 import com.izeye.playground.support.naver.domain.search.cafe.NaverSearchCafeResponse;
 import com.izeye.playground.support.naver.domain.search.encyclopedia.NaverSearchEncyclopediaResponse;
 import com.izeye.playground.support.naver.domain.search.movie.NaverSearchMovieRequest;
@@ -137,6 +138,16 @@ public class NaverOpenApiServiceTest {
 		NaverSearchMovieRequest request = new NaverSearchMovieRequest(query);
 		NaverSearchMovieResponse response = naverOpenApiService
 				.searchMovie(request);
+		System.out.println(response);
+	}
+
+	@Test
+	public void searchCafeArticle() {
+		String query = "요리";
+		NaverSearchRequest request = new NaverSearchRequest(
+				NaverSearchType.CAFE_ARTICLE, query);
+		NaverSearchCafeArticleResponse response = naverOpenApiService
+				.searchCafeArticle(request);
 		System.out.println(response);
 	}
 

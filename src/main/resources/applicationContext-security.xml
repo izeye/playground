@@ -35,11 +35,22 @@
 	
 	<security:authentication-manager>
 		<security:authentication-provider>
+			<!--
 			<security:user-service>
-				<security:user name="admin" password="admin123" authorities="ROLE_SUPERVISOR"/>
-				<security:user name="izeye" password="izeye123" authorities="ROLE_USER"/>
-				<security:user name="test" password="test123" authorities="ROLE_USER"/>
+				<security:user name="admin@izeye.cafe24.com" password="1234" authorities="ROLE_SUPERVISOR"/>
+				<security:user name="izeye@naver.com" password="1234" authorities="ROLE_USER"/>
+				<security:user name="test@naver.com" password="1234" authorities="ROLE_USER"/>
 			</security:user-service>
+			-->
+			<security:jdbc-user-service data-source-ref="dataSource"
+					users-by-username-query="
+							SELECT username, password, enabled
+							FROM tb_users
+							WHERE username=?"
+					authorities-by-username-query="
+							SELECT u.username, a.authority
+							FROM tb_users u, tb_authorities a
+							WHERE u.username=? AND u.id=a.user_id" />
 		</security:authentication-provider>
 	</security:authentication-manager>
 	
