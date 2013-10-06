@@ -15,7 +15,7 @@ var search = function (start) {
 		$('#moreButton').show();
 	}
 	
-	$.get('${API_PATH_NAVER_SEARCH_ENCYCLOPEDIA}', {
+	$.get('${API_PATH_NAVER_SEARCH_CAR}', {
 		query: $('#query').val(),
 		display: APP.display,
 		start: start
@@ -32,7 +32,7 @@ var search = function (start) {
 			result +=
 					'<dl>' +
 					'<dt><a href="' + item.redirectedLink + '">' + item.title + '</a></dt>' +
-					'<dd>' + item.description + '</dd>' +
+					'<dd>Maker: ' + item.maker + ' | Type: ' + item.type + '</dd>' +
 					'</dl>' +
 					'</li>';
 		}
