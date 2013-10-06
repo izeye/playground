@@ -16,10 +16,13 @@ import com.izeye.playground.support.naver.domain.search.movie.NaverSearchMovieRe
 import com.izeye.playground.support.naver.domain.search.news.NaverSearchNewsResponse;
 import com.izeye.playground.support.naver.domain.search.rank.NaverSearchRankItem;
 import com.izeye.playground.support.naver.domain.search.rank.NaverSearchRankType;
+import com.izeye.playground.support.naver.domain.search.site.NaverSearchSiteResponse;
 
 public interface NaverOpenApiService {
 
-	List<NaverSearchRankItem> getSearchRanks(NaverSearchRankType type);
+	List<NaverSearchRankItem> getSearchRanks(NaverSearchRankType searchRankType);
+
+	List<NaverSearchRankItem> getSearchRanks(NaverSearchRequest request);
 
 	NaverSearchBlogResponse searchBlog(NaverSearchRequest request);
 
@@ -27,11 +30,11 @@ public interface NaverOpenApiService {
 
 	NaverSearchBookResponse searchBook(NaverSearchRequest request);
 
-	List<String> getSearchRecommendations(String query);
+	List<String> getSearchRecommendations(NaverSearchRequest request);
 
 	NaverSearchCafeResponse searchCafe(NaverSearchRequest request);
 
-	boolean checkForAdults(String query);
+	boolean checkForAdults(NaverSearchRequest request);
 
 	NaverSearchEncyclopediaResponse searchEncyclopedia(
 			NaverSearchRequest request);
@@ -43,5 +46,7 @@ public interface NaverOpenApiService {
 	NaverSearchMovieActorResponse searchMovieActor(NaverSearchRequest request);
 
 	NaverSearchCarResponse searchCar(NaverSearchCarRequest request);
+
+	NaverSearchSiteResponse searchShortcut(NaverSearchRequest request);
 
 }

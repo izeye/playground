@@ -1,7 +1,5 @@
 package com.izeye.playground.support.naver.domain.search.rank;
 
-import static com.izeye.playground.support.naver.domain.search.NaverSearchConstants.TARGET_RANK;
-import static com.izeye.playground.support.naver.domain.search.NaverSearchConstants.TARGET_RANK_THEME;
 import static com.izeye.playground.support.naver.domain.search.rank.NaverSearchRankConstants.QUERY_BOOK;
 import static com.izeye.playground.support.naver.domain.search.rank.NaverSearchRankConstants.QUERY_BROADCAST;
 import static com.izeye.playground.support.naver.domain.search.rank.NaverSearchRankConstants.QUERY_DRAMA;
@@ -11,24 +9,28 @@ import static com.izeye.playground.support.naver.domain.search.rank.NaverSearchR
 import static com.izeye.playground.support.naver.domain.search.rank.NaverSearchRankConstants.QUERY_PERFORMANCE;
 import static com.izeye.playground.support.naver.domain.search.rank.NaverSearchRankConstants.QUERY_SEARCH;
 
+import com.izeye.playground.support.naver.domain.search.NaverSearchType;
+
 public enum NaverSearchRankType {
 
-	SEARCH("Search", TARGET_RANK, QUERY_SEARCH), //
-	MOVIE("Movie", TARGET_RANK_THEME, QUERY_MOVIE), //
-	PEOPLE("People", TARGET_RANK_THEME, QUERY_PEOPLE), //
-	FOREIGN_ACTOR("Foreign actor", TARGET_RANK_THEME, QUERY_FOREIGN_ACTOR), //
-	PERFORMANCE("Performance", TARGET_RANK_THEME, QUERY_PERFORMANCE), //
-	DRAMA("Drama", TARGET_RANK_THEME, QUERY_DRAMA), //
-	BROADCAST("Broadcast", TARGET_RANK_THEME, QUERY_BROADCAST), //
-	BOOK("Book", TARGET_RANK_THEME, QUERY_BOOK);
+	SEARCH("Search", NaverSearchType.RANK, QUERY_SEARCH), //
+	MOVIE("Movie", NaverSearchType.RANK_THEME, QUERY_MOVIE), //
+	PEOPLE("People", NaverSearchType.RANK_THEME, QUERY_PEOPLE), //
+	FOREIGN_ACTOR("Foreign actor", NaverSearchType.RANK_THEME,
+			QUERY_FOREIGN_ACTOR), //
+	PERFORMANCE("Performance", NaverSearchType.RANK_THEME, QUERY_PERFORMANCE), //
+	DRAMA("Drama", NaverSearchType.RANK_THEME, QUERY_DRAMA), //
+	BROADCAST("Broadcast", NaverSearchType.RANK_THEME, QUERY_BROADCAST), //
+	BOOK("Book", NaverSearchType.RANK_THEME, QUERY_BOOK);
 
 	private final String name;
-	private final String target;
+	private final NaverSearchType searchType;
 	private final String query;
 
-	private NaverSearchRankType(String name, String target, String query) {
+	private NaverSearchRankType(String name, NaverSearchType searchType,
+			String query) {
 		this.name = name;
-		this.target = target;
+		this.searchType = searchType;
 		this.query = query;
 	}
 
@@ -36,8 +38,8 @@ public enum NaverSearchRankType {
 		return name;
 	}
 
-	public String getTarget() {
-		return target;
+	public NaverSearchType getSearchType() {
+		return searchType;
 	}
 
 	public String getQuery() {

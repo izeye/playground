@@ -28,6 +28,7 @@ import com.izeye.playground.support.naver.domain.search.movie.NaverSearchMovieRe
 import com.izeye.playground.support.naver.domain.search.news.NaverSearchNewsResponse;
 import com.izeye.playground.support.naver.domain.search.rank.NaverSearchRankItem;
 import com.izeye.playground.support.naver.domain.search.rank.NaverSearchRankType;
+import com.izeye.playground.support.naver.domain.search.site.NaverSearchSiteResponse;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:applicationContext.xml")
@@ -101,8 +102,10 @@ public class NaverOpenApiServiceTest {
 	@Test
 	public void getSearchRecommendations() {
 		String query = "nhn";
+		NaverSearchRequest request = new NaverSearchRequest(
+				NaverSearchType.RECOMMENDATION, query);
 		List<String> searchRecommendations = naverOpenApiService
-				.getSearchRecommendations(query);
+				.getSearchRecommendations(request);
 		System.out.println(searchRecommendations);
 	}
 
@@ -119,10 +122,13 @@ public class NaverOpenApiServiceTest {
 	@Test
 	public void checkForAdults() {
 		String query = "소녀";
-		assertThat(naverOpenApiService.checkForAdults(query), is(false));
+		NaverSearchRequest request = new NaverSearchRequest(
+				NaverSearchType.ADULT, query);
+		assertThat(naverOpenApiService.checkForAdults(request), is(false));
 
 		query = "단란주점";
-		assertThat(naverOpenApiService.checkForAdults(query), is(true));
+		request = new NaverSearchRequest(NaverSearchType.ADULT, query);
+		assertThat(naverOpenApiService.checkForAdults(request), is(true));
 	}
 
 	@Test
@@ -138,7 +144,10 @@ public class NaverOpenApiServiceTest {
 	@Test
 	public void searchMovie() {
 		String query = "벤허";
-		NaverSearchMovieRequest request = new NaverSearchMovieRequest(query);
+		int display = 10;
+		int start = 1;
+		NaverSearchMovieRequest request = new NaverSearchMovieRequest(query,
+				display, start);
 		NaverSearchMovieResponse response = naverOpenApiService
 				.searchMovie(request);
 		System.out.println(response);
@@ -167,9 +176,37 @@ public class NaverOpenApiServiceTest {
 	@Test
 	public void searchCar() {
 		String query = "porsche";
-		NaverSearchCarRequest request = new NaverSearchCarRequest(query);
+		int display = 10;
+		int start = 1;
+		NaverSearchCarRequest request = new NaverSearchCarRequest(query,
+				display, start);
 		NaverSearchCarResponse response = naverOpenApiService
 				.searchCar(request);
+		System.out.println(response);
+	}
+
+	@Test
+	public void searchShortcut() {
+		// NOTE:
+		// I guess this is not a real-time data.
+		// I can't find my site!
+		String query = "개발자의 하루";
+		NaverSearchRequest request = new NaverSearchRequest(
+				NaverSearchType.SHORTCUT, query);
+		NaverSearchSiteResponse response = naverOpenApiService
+				.searchShortcut(request);
+		System.out.println(response);
+
+		query = "naver";
+		request = new NaverSearchRequest(NaverSearchType.SHORTCUT, query);
+		response = naverOpenApiService.searchShortcut(request);
+		System.out.println(response);
+
+		// NOTE:
+		// Space-tolerable by Naver open API.
+		query = "n aver";
+		request = new NaverSearchRequest(NaverSearchType.SHORTCUT, query);
+		response = naverOpenApiService.searchShortcut(request);
 		System.out.println(response);
 	}
 

@@ -127,6 +127,13 @@ public interface MenuConstants {
 	String API_PATH_NAVER_SEARCH_CAR = SUB_MENU_ITEM_NAVER_SEARCH_CAR_PATH
 			+ "/api";
 
+	String SUB_MENU_ITEM_NAVER_SEARCH_SITE_NAME = "Naver Search Shortcut";
+	String SUB_MENU_ITEM_NAVER_SEARCH_SHORTCUT_PATH = SUB_MENU_ITEM_GROUP_PLAYGROUND_DEMO_PATH
+			+ "/naver/search/shortcut";
+
+	String API_PATH_NAVER_SEARCH_SHORTCUT = SUB_MENU_ITEM_NAVER_SEARCH_SHORTCUT_PATH
+			+ "/api";
+
 	String MENU_ITEM_TOOLS_NAME = "Tools";
 	String MENU_ITEM_TOOLS_PATH = "/tools";
 

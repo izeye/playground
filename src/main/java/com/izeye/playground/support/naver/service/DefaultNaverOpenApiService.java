@@ -1,13 +1,6 @@
 package com.izeye.playground.support.naver.service;
 
-import static com.izeye.playground.support.naver.domain.search.NaverSearchConstants.ELEMENT_ADULT;
-import static com.izeye.playground.support.naver.domain.search.NaverSearchConstants.ELEMENT_ITEM;
-import static com.izeye.playground.support.naver.domain.search.NaverSearchConstants.ELEMENT_K;
-import static com.izeye.playground.support.naver.domain.search.NaverSearchConstants.ELEMENT_S;
-import static com.izeye.playground.support.naver.domain.search.NaverSearchConstants.ELEMENT_V;
-import static com.izeye.playground.support.naver.domain.search.NaverSearchConstants.TARGET_ADULT;
-import static com.izeye.playground.support.naver.domain.search.NaverSearchConstants.TARGET_RECOMMENDATION;
-import static com.izeye.playground.support.naver.domain.search.NaverSearchConstants.TRUE_AS_INT;
+import static com.izeye.playground.support.naver.domain.search.NaverSearchConstants.*;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -46,6 +39,7 @@ import com.izeye.playground.support.naver.domain.search.news.NaverSearchNewsResp
 import com.izeye.playground.support.naver.domain.search.rank.NaverSearchRankItem;
 import com.izeye.playground.support.naver.domain.search.rank.NaverSearchRankStatus;
 import com.izeye.playground.support.naver.domain.search.rank.NaverSearchRankType;
+import com.izeye.playground.support.naver.domain.search.site.NaverSearchSiteResponse;
 import com.izeye.playground.support.naver.service.search.blog.NaverSearchBlogResponseParser;
 import com.izeye.playground.support.naver.service.search.book.NaverSearchBookResponseParser;
 import com.izeye.playground.support.naver.service.search.cafe.NaverSearchCafeArticleResponseParser;
@@ -59,7 +53,7 @@ import com.izeye.playground.support.naver.service.search.news.NaverSearchNewsRes
 @Service("naverOpenApiService")
 public class DefaultNaverOpenApiService implements NaverOpenApiService {
 
-	private static final String NAVER_SEARCH_RANK_API_URL_PREFIX = "http://openapi.naver.com/search?";
+	private static final String NAVER_SEARCH_API_URL_PREFIX = "http://openapi.naver.com/search?";
 
 	private static final String PARAM_KEY = "key";
 	private static final String PARAM_TARGET = "target";
@@ -105,17 +99,8 @@ public class DefaultNaverOpenApiService implements NaverOpenApiService {
 	// How can I remove these warnings?
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
-	public List<NaverSearchRankItem> getSearchRanks(NaverSearchRankType type) {
-		Map<String, Object> params = new HashMap<String, Object>();
-		params.put(PARAM_KEY, searchApiKey);
-		params.put(PARAM_TARGET, type.getTarget());
-		params.put(PARAM_QUERY, type.getQuery());
-
-		String apiUrl = UrlUtils.createUrl(NAVER_SEARCH_RANK_API_URL_PREFIX,
-				params);
-		log.debug(apiUrl);
-
-		return search(apiUrl, new NaverSearchResponseCallback<List>() {
+	public List<NaverSearchRankItem> getSearchRanks(NaverSearchRequest request) {
+		return search(request, new NaverSearchResponseCallback<List>() {
 			@Override
 			public List<NaverSearchRankItem> callback(Element root) {
 				List<NaverSearchRankItem> ranks = new ArrayList<NaverSearchRankItem>();
@@ -136,6 +121,14 @@ public class DefaultNaverOpenApiService implements NaverOpenApiService {
 				return ranks;
 			}
 		}, List.class);
+	}
+
+	@Override
+	public List<NaverSearchRankItem> getSearchRanks(
+			NaverSearchRankType searchRankType) {
+		NaverSearchRequest request = new NaverSearchRequest(
+				searchRankType.getSearchType(), searchRankType.getQuery());
+		return getSearchRanks(request);
 	}
 
 	@Override
@@ -181,17 +174,8 @@ public class DefaultNaverOpenApiService implements NaverOpenApiService {
 	// How can I remove these warnings?
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
-	public List<String> getSearchRecommendations(String query) {
-		Map<String, Object> params = new HashMap<String, Object>();
-		params.put(PARAM_KEY, searchApiKey);
-		params.put(PARAM_TARGET, TARGET_RECOMMENDATION);
-		params.put(PARAM_QUERY, query);
-
-		String apiUrl = UrlUtils.createUrl(NAVER_SEARCH_RANK_API_URL_PREFIX,
-				params);
-		log.debug(apiUrl);
-
-		return search(apiUrl, new NaverSearchResponseCallback<List>() {
+	public List<String> getSearchRecommendations(NaverSearchRequest request) {
+		return search(request, new NaverSearchResponseCallback<List>() {
 			@Override
 			public List<String> callback(Element root) {
 				List<String> searchRecommendations = new ArrayList<String>();
@@ -219,17 +203,8 @@ public class DefaultNaverOpenApiService implements NaverOpenApiService {
 	}
 
 	@Override
-	public boolean checkForAdults(String query) {
-		Map<String, Object> params = new HashMap<String, Object>();
-		params.put(PARAM_KEY, searchApiKey);
-		params.put(PARAM_TARGET, TARGET_ADULT);
-		params.put(PARAM_QUERY, query);
-
-		String apiUrl = UrlUtils.createUrl(NAVER_SEARCH_RANK_API_URL_PREFIX,
-				params);
-		log.debug(apiUrl);
-
-		return search(apiUrl, new NaverSearchResponseCallback<Boolean>() {
+	public boolean checkForAdults(NaverSearchRequest request) {
+		return search(request, new NaverSearchResponseCallback<Boolean>() {
 			@Override
 			public Boolean callback(Element root) {
 				Element itemElement = root.getChild(ELEMENT_ITEM);
@@ -311,21 +286,46 @@ public class DefaultNaverOpenApiService implements NaverOpenApiService {
 				}, NaverSearchCarResponse.class);
 	}
 
+	@Override
+	public NaverSearchSiteResponse searchShortcut(NaverSearchRequest request) {
+		return search(request,
+				new NaverSearchResponseCallback<NaverSearchSiteResponse>() {
+					@Override
+					public NaverSearchSiteResponse callback(Element root) {
+						Element itemElement = root.getChild(ELEMENT_ITEM);
+						Element shortcutElement = itemElement
+								.getChild(ELEMENT_SHORTCUT);
+						String label = shortcutElement
+								.getChildText(ELEMENT_LABEL);
+						String url = shortcutElement.getChildText(ELEMENT_URL);
+						return new NaverSearchSiteResponse(label, url);
+					}
+				}, NaverSearchSiteResponse.class);
+	}
+
 	private <T> T search(NaverSearchRequest request,
 			NaverSearchResponseCallback<T> callback, Class<T> returnType) {
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put(PARAM_KEY, searchApiKey);
 		params.put(PARAM_TARGET, request.getSearchType().getTarget());
 		params.put(PARAM_QUERY, request.getQuery());
-		params.put(PARAM_DISPLAY, request.getDisplay());
-		params.put(PARAM_START, request.getStart());
+
+		Integer display = request.getDisplay();
+		if (display != null) {
+			params.put(PARAM_DISPLAY, display);
+		}
+
+		Integer start = request.getStart();
+		if (start != null) {
+			params.put(PARAM_START, start);
+		}
+
 		NaverSearchSortType sortType = request.getSortType();
 		if (sortType != NaverSearchSortType.NOT_AVAILABLE) {
 			params.put(PARAM_SORT, sortType.getValue());
 		}
 
-		String apiUrl = UrlUtils.createUrl(NAVER_SEARCH_RANK_API_URL_PREFIX,
-				params);
+		String apiUrl = UrlUtils.createUrl(NAVER_SEARCH_API_URL_PREFIX, params);
 		log.debug(apiUrl);
 
 		return search(apiUrl, callback, returnType);

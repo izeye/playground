@@ -68,12 +68,9 @@ public interface NaverSearchConstants {
 	String ELEMENT_MAKER = "maker";
 	String ELEMENT_TYPE = "type";
 
-	String TARGET_RANK = "rank";
-	String TARGET_RANK_THEME = "ranktheme";
-
-	String TARGET_RECOMMENDATION = "recmd";
-
-	String TARGET_ADULT = "adult";
+	String ELEMENT_SHORTCUT = "shortcut";
+	String ELEMENT_LABEL = "label";
+	String ELEMENT_URL = "url";
 
 	int TRUE_AS_INT = 1;
 	int FALSE_AS_INT = 0;
