@@ -36,7 +36,10 @@ import com.izeye.playground.support.naver.domain.search.blog.NaverSearchBlogResp
 import com.izeye.playground.support.naver.domain.search.book.NaverSearchBookResponse;
 import com.izeye.playground.support.naver.domain.search.cafe.NaverSearchCafeArticleResponse;
 import com.izeye.playground.support.naver.domain.search.cafe.NaverSearchCafeResponse;
+import com.izeye.playground.support.naver.domain.search.car.NaverSearchCarRequest;
+import com.izeye.playground.support.naver.domain.search.car.NaverSearchCarResponse;
 import com.izeye.playground.support.naver.domain.search.encyclopedia.NaverSearchEncyclopediaResponse;
+import com.izeye.playground.support.naver.domain.search.movie.NaverSearchMovieActorResponse;
 import com.izeye.playground.support.naver.domain.search.movie.NaverSearchMovieRequest;
 import com.izeye.playground.support.naver.domain.search.movie.NaverSearchMovieResponse;
 import com.izeye.playground.support.naver.domain.search.news.NaverSearchNewsResponse;
@@ -47,7 +50,9 @@ import com.izeye.playground.support.naver.service.search.blog.NaverSearchBlogRes
 import com.izeye.playground.support.naver.service.search.book.NaverSearchBookResponseParser;
 import com.izeye.playground.support.naver.service.search.cafe.NaverSearchCafeArticleResponseParser;
 import com.izeye.playground.support.naver.service.search.cafe.NaverSearchCafeResponseParser;
+import com.izeye.playground.support.naver.service.search.car.NaverSearchCarResponseParser;
 import com.izeye.playground.support.naver.service.search.encyclopedia.NaverSearchEncyclopediaResponseParser;
+import com.izeye.playground.support.naver.service.search.movie.NaverSearchMovieActorResponseParser;
 import com.izeye.playground.support.naver.service.search.movie.NaverSearchMovieResponseParser;
 import com.izeye.playground.support.naver.service.search.news.NaverSearchNewsResponseParser;
 
@@ -87,6 +92,12 @@ public class DefaultNaverOpenApiService implements NaverOpenApiService {
 
 	@Resource
 	private NaverSearchCafeArticleResponseParser cafeArticleResponseParser;
+
+	@Resource
+	private NaverSearchMovieActorResponseParser movieActorResponseParser;
+
+	@Resource
+	private NaverSearchCarResponseParser carResponseParser;
 
 	private final Logger log = LoggerFactory.getLogger(getClass());
 
@@ -270,6 +281,34 @@ public class DefaultNaverOpenApiService implements NaverOpenApiService {
 						return response;
 					}
 				}, NaverSearchCafeArticleResponse.class);
+	}
+
+	@Override
+	public NaverSearchMovieActorResponse searchMovieActor(
+			NaverSearchRequest request) {
+		return search(
+				request,
+				new NaverSearchResponseCallback<NaverSearchMovieActorResponse>() {
+					@Override
+					public NaverSearchMovieActorResponse callback(Element root) {
+						NaverSearchMovieActorResponse response = new NaverSearchMovieActorResponse();
+						movieActorResponseParser.parse(root, response);
+						return response;
+					}
+				}, NaverSearchMovieActorResponse.class);
+	}
+
+	@Override
+	public NaverSearchCarResponse searchCar(NaverSearchCarRequest request) {
+		return search(request,
+				new NaverSearchResponseCallback<NaverSearchCarResponse>() {
+					@Override
+					public NaverSearchCarResponse callback(Element root) {
+						NaverSearchCarResponse response = new NaverSearchCarResponse();
+						carResponseParser.parse(root, response);
+						return response;
+					}
+				}, NaverSearchCarResponse.class);
 	}
 
 	private <T> T search(NaverSearchRequest request,

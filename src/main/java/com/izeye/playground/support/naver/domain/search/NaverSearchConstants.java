@@ -58,6 +58,16 @@ public interface NaverSearchConstants {
 	String ELEMENT_CAFE_NAME = "cafename";
 	String ELEMENT_CAFE_URL = "cafeurl";
 
+	String ELEMENT_BIRTHDAY = "birthday";
+	String ELEMENT_BIRTHPLACE = "birthplace";
+	String ELEMENT_GENDER = "gender";
+	String ELEMENT_FILM = "filmo";
+	String ELEMENT_MISSION = "mission";
+
+	String ELEMENT_CAR_PUBLISHED_DATE = "pubDate";
+	String ELEMENT_MAKER = "maker";
+	String ELEMENT_TYPE = "type";
+
 	String TARGET_RANK = "rank";
 	String TARGET_RANK_THEME = "ranktheme";
 

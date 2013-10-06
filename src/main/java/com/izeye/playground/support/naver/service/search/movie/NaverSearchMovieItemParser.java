@@ -1,12 +1,17 @@
 package com.izeye.playground.support.naver.service.search.movie;
 
+import static com.izeye.playground.support.naver.domain.search.NaverSearchConstants.ELEMENT_ACTOR;
+import static com.izeye.playground.support.naver.domain.search.NaverSearchConstants.ELEMENT_DIRECTOR;
+import static com.izeye.playground.support.naver.domain.search.NaverSearchConstants.ELEMENT_IMAGE;
+import static com.izeye.playground.support.naver.domain.search.NaverSearchConstants.ELEMENT_MOVIE_PUBLISHED_DATE;
+import static com.izeye.playground.support.naver.domain.search.NaverSearchConstants.ELEMENT_SUBTITLE;
+import static com.izeye.playground.support.naver.domain.search.NaverSearchConstants.ELEMENT_USER_RATING;
+
 import org.jdom.Element;
 import org.springframework.stereotype.Service;
 
 import com.izeye.playground.support.naver.domain.search.movie.NaverSearchMovieItem;
 import com.izeye.playground.support.naver.service.AbstractNaverSearchItemParser;
-
-import static com.izeye.playground.support.naver.domain.search.NaverSearchConstants.*;
 
 @Service("naverSearchMovieItemParser")
 public class NaverSearchMovieItemParser extends

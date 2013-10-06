@@ -15,20 +15,31 @@ var search = function (start) {
 		$('#moreButton').show();
 	}
 	
-	$.get('${API_PATH_NAVER_SEARCH_CAFE_ARTICLE}', {
+	$.get('${API_PATH_NAVER_SEARCH_MOVIE_ACTOR}', {
 		query: $('#query').val(),
 		display: APP.display,
 		start: start
 	}).done(function (data) {
+		console.log(data);
 		var result = '';
 		for (var i in data.items) {
 			var item = data.items[i];
 			
-			result += '<li>' +
+			result +=
+					'<li>' +
 					'<dl>' +
 					'<dt><a href="' + item.redirectedLink + '">' + item.title + '</a></dt>' +
-					'<dd>' + item.description + '</dd>' +
-					'<dd><a href="' + item.redirectedLink + '">' + item.redirectedLink + '</a> Cafe name: <a href="' + item.cafeUrl + '">' + item.cafeName + '</a></dd>' +
+					'<dd>' + item.gender + ' | Birth year: ' + item.birthyear + '</dd>';
+			result += '<dd>';
+			for (var j in item.films) {
+				if (j != 0) {
+					result += ', ';
+				}
+				var film = item.films[j];
+				result += '<a href="' + film.link + '">' + film.title + '</a> - ' + film.mission;
+			}
+			result +=
+					'</dd>' +
 					'</dl>' +
 					'</li>';
 		}
@@ -39,10 +50,10 @@ var search = function (start) {
 };
 </script>
 
-<p>This is a page for searching Naver cafe article.</p>
+<p>This is a page for searching Naver movie actor.</p>
 
 <label for="query">Query:</label>
-<input id="query" type="text" value="test" />
+<input id="query" type="text" value="Jodie Foster" />
 <input type="button" value="Search" onclick="search(1);" />
 
 <div><ul id="result"></ul></div>

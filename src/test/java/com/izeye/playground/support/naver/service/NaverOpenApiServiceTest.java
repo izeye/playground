@@ -19,7 +19,10 @@ import com.izeye.playground.support.naver.domain.search.blog.NaverSearchBlogResp
 import com.izeye.playground.support.naver.domain.search.book.NaverSearchBookResponse;
 import com.izeye.playground.support.naver.domain.search.cafe.NaverSearchCafeArticleResponse;
 import com.izeye.playground.support.naver.domain.search.cafe.NaverSearchCafeResponse;
+import com.izeye.playground.support.naver.domain.search.car.NaverSearchCarRequest;
+import com.izeye.playground.support.naver.domain.search.car.NaverSearchCarResponse;
 import com.izeye.playground.support.naver.domain.search.encyclopedia.NaverSearchEncyclopediaResponse;
+import com.izeye.playground.support.naver.domain.search.movie.NaverSearchMovieActorResponse;
 import com.izeye.playground.support.naver.domain.search.movie.NaverSearchMovieRequest;
 import com.izeye.playground.support.naver.domain.search.movie.NaverSearchMovieResponse;
 import com.izeye.playground.support.naver.domain.search.news.NaverSearchNewsResponse;
@@ -148,6 +151,25 @@ public class NaverOpenApiServiceTest {
 				NaverSearchType.CAFE_ARTICLE, query);
 		NaverSearchCafeArticleResponse response = naverOpenApiService
 				.searchCafeArticle(request);
+		System.out.println(response);
+	}
+
+	@Test
+	public void searchMovieActor() {
+		String query = "안성기";
+		NaverSearchRequest request = new NaverSearchRequest(
+				NaverSearchType.MOVIE_ACTOR, query);
+		NaverSearchMovieActorResponse response = naverOpenApiService
+				.searchMovieActor(request);
+		System.out.println(response);
+	}
+
+	@Test
+	public void searchCar() {
+		String query = "porsche";
+		NaverSearchCarRequest request = new NaverSearchCarRequest(query);
+		NaverSearchCarResponse response = naverOpenApiService
+				.searchCar(request);
 		System.out.println(response);
 	}
 

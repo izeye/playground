@@ -7,7 +7,10 @@ import com.izeye.playground.support.naver.domain.search.blog.NaverSearchBlogResp
 import com.izeye.playground.support.naver.domain.search.book.NaverSearchBookResponse;
 import com.izeye.playground.support.naver.domain.search.cafe.NaverSearchCafeArticleResponse;
 import com.izeye.playground.support.naver.domain.search.cafe.NaverSearchCafeResponse;
+import com.izeye.playground.support.naver.domain.search.car.NaverSearchCarRequest;
+import com.izeye.playground.support.naver.domain.search.car.NaverSearchCarResponse;
 import com.izeye.playground.support.naver.domain.search.encyclopedia.NaverSearchEncyclopediaResponse;
+import com.izeye.playground.support.naver.domain.search.movie.NaverSearchMovieActorResponse;
 import com.izeye.playground.support.naver.domain.search.movie.NaverSearchMovieRequest;
 import com.izeye.playground.support.naver.domain.search.movie.NaverSearchMovieResponse;
 import com.izeye.playground.support.naver.domain.search.news.NaverSearchNewsResponse;
@@ -36,5 +39,9 @@ public interface NaverOpenApiService {
 	NaverSearchMovieResponse searchMovie(NaverSearchMovieRequest request);
 
 	NaverSearchCafeArticleResponse searchCafeArticle(NaverSearchRequest request);
+
+	NaverSearchMovieActorResponse searchMovieActor(NaverSearchRequest request);
+
+	NaverSearchCarResponse searchCar(NaverSearchCarRequest request);
 
 }

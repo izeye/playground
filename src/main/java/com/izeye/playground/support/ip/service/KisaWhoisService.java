@@ -20,6 +20,8 @@ import javax.annotation.Resource;
 
 import org.jdom.Element;
 import org.jdom.JDOMException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -46,6 +48,8 @@ public class KisaWhoisService implements WhoisService {
 	@Value("${kisa.whois.api.key}")
 	private String apiKey;
 
+	private final Logger log = LoggerFactory.getLogger(getClass());
+
 	@Override
 	public Whois whois(String ip) throws WhoisFailException {
 		Map<String, Object> params = new HashMap<String, Object>();
@@ -53,6 +57,8 @@ public class KisaWhoisService implements WhoisService {
 		params.put(PARAM_KEY, apiKey);
 
 		String apiUrl = UrlUtils.createUrl(KISA_WHOIS_API_URL_PREFIX, params);
+		log.debug("API URL: {}", apiUrl);
+
 		InputStream is = null;
 		try {
 			is = HttpUtils.urlToInputStream(apiUrl);
@@ -66,7 +72,7 @@ public class KisaWhoisService implements WhoisService {
 			Country country = countryService.getCountryByCode(countryCodeText);
 			whois.setCountry(country);
 
-			if (countryCodeText.equals(COUNTRY_CODE_KR)) {
+			if (countryCodeText.equalsIgnoreCase(COUNTRY_CODE_KR)) {
 				Element korean = root.getChild(KOREAN);
 				WhoisDetail koreanDetail = getDetail(korean);
 

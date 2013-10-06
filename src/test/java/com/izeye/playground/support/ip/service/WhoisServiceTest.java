@@ -23,6 +23,9 @@ public class WhoisServiceTest {
 	@Resource
 	private WhoisService whoisService;
 
+	@Resource(name = "kisaWhoisService")
+	private WhoisService kisaWhoisService;
+
 	@Test
 	public void whois() throws JsonGenerationException, JsonMappingException,
 			IOException {
@@ -49,6 +52,13 @@ public class WhoisServiceTest {
 		// Test the cache.
 		ip = "14.37.254.91";
 		whois = whoisService.whois(ip);
+		System.out.println(whois);
+	}
+
+	@Test
+	public void whoisByKisa() {
+		String ip = "125.186.211.36";
+		Whois whois = kisaWhoisService.whois(ip);
 		System.out.println(whois);
 	}
 
