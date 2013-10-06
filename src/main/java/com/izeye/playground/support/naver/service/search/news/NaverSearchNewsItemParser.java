@@ -9,7 +9,7 @@ import org.jdom.Element;
 import org.springframework.stereotype.Service;
 
 import com.izeye.playground.support.naver.domain.search.news.NaverSearchNewsItem;
-import com.izeye.playground.support.naver.service.AbstractNaverSearchItemParser;
+import com.izeye.playground.support.naver.service.search.AbstractNaverSearchItemParser;
 import com.izeye.playground.support.naver.util.NaverDateUtils;
 
 @Service("naverSearchNewsItemParser")

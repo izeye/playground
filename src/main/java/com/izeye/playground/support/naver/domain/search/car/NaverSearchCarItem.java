@@ -1,8 +1,8 @@
 package com.izeye.playground.support.naver.domain.search.car;
 
-import com.izeye.playground.support.naver.domain.search.AbstractNaverSearchItem;
+import com.izeye.playground.support.naver.domain.search.BaseNaverSearchItem;
 
-public class NaverSearchCarItem extends AbstractNaverSearchItem {
+public class NaverSearchCarItem extends BaseNaverSearchItem {
 
 	private String publishedDate;
 	private String maker;

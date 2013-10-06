@@ -9,7 +9,7 @@ import org.jdom.Element;
 import org.springframework.stereotype.Service;
 
 import com.izeye.playground.support.naver.domain.search.cafe.NaverSearchCafeItem;
-import com.izeye.playground.support.naver.service.AbstractNaverSearchItemParser;
+import com.izeye.playground.support.naver.service.search.AbstractNaverSearchItemParser;
 
 @Service("naverSearchCafeItemParser")
 public class NaverSearchCafeItemParser extends

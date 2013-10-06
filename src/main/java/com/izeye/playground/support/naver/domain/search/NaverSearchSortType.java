@@ -9,7 +9,9 @@ public enum NaverSearchSortType {
 	SIMILARITY("sim"), //
 	MEMBER("member"), //
 	NEW_ARTICLES("newarticles"), //
-	RANK("rank");
+	RANK("rank"), //
+	READ_COUNT("count"), //
+	RATING("point");
 
 	private final String value;
 

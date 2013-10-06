@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.izeye.playground.support.naver.domain.search.movie.NaverSearchMovieActorItem;
 import com.izeye.playground.support.naver.domain.search.movie.NaverSearchMovieActorResponse;
-import com.izeye.playground.support.naver.service.AbstractNaverSearchResponseParser;
+import com.izeye.playground.support.naver.service.search.AbstractNaverSearchResponseParser;
 
 @Service("naverSearchMovieActorResponseParser")
 public class NaverSearchMovieActorResponseParser extends

@@ -2,9 +2,9 @@ package com.izeye.playground.support.naver.domain.search.news;
 
 import java.util.Date;
 
-import com.izeye.playground.support.naver.domain.search.AbstractNaverSearchItem;
+import com.izeye.playground.support.naver.domain.search.BaseNaverSearchItem;
 
-public class NaverSearchNewsItem extends AbstractNaverSearchItem {
+public class NaverSearchNewsItem extends BaseNaverSearchItem {
 
 	private String originalLink;
 	private Date publishedDate;

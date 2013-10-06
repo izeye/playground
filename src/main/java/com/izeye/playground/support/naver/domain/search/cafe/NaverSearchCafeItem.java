@@ -1,8 +1,8 @@
 package com.izeye.playground.support.naver.domain.search.cafe;
 
-import com.izeye.playground.support.naver.domain.search.AbstractNaverSearchItem;
+import com.izeye.playground.support.naver.domain.search.BaseNaverSearchItem;
 
-public class NaverSearchCafeItem extends AbstractNaverSearchItem {
+public class NaverSearchCafeItem extends BaseNaverSearchItem {
 
 	private String ranking;
 	private int member;

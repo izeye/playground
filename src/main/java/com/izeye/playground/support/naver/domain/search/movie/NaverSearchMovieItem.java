@@ -1,8 +1,8 @@
 package com.izeye.playground.support.naver.domain.search.movie;
 
-import com.izeye.playground.support.naver.domain.search.AbstractNaverSearchItem;
+import com.izeye.playground.support.naver.domain.search.BaseNaverSearchItem;
 
-public class NaverSearchMovieItem extends AbstractNaverSearchItem {
+public class NaverSearchMovieItem extends BaseNaverSearchItem {
 
 	private String image;
 	private String subtitle;

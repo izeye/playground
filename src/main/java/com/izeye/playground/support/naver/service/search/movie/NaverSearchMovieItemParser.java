@@ -11,7 +11,7 @@ import org.jdom.Element;
 import org.springframework.stereotype.Service;
 
 import com.izeye.playground.support.naver.domain.search.movie.NaverSearchMovieItem;
-import com.izeye.playground.support.naver.service.AbstractNaverSearchItemParser;
+import com.izeye.playground.support.naver.service.search.AbstractNaverSearchItemParser;
 
 @Service("naverSearchMovieItemParser")
 public class NaverSearchMovieItemParser extends

@@ -6,7 +6,7 @@ import org.jdom.Element;
 import org.springframework.stereotype.Service;
 
 import com.izeye.playground.support.naver.domain.search.car.NaverSearchCarItem;
-import com.izeye.playground.support.naver.service.AbstractNaverSearchItemParser;
+import com.izeye.playground.support.naver.service.search.AbstractNaverSearchItemParser;
 
 @Service("naverSearchCarItemParser")
 public class NaverSearchCarItemParser extends

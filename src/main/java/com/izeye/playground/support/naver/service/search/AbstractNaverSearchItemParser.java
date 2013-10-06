@@ -1,4 +1,4 @@
-package com.izeye.playground.support.naver.service;
+package com.izeye.playground.support.naver.service.search;
 
 import static com.izeye.playground.support.naver.domain.search.NaverSearchConstants.ELEMENT_DESCRIPTION;
 import static com.izeye.playground.support.naver.domain.search.NaverSearchConstants.ELEMENT_LINK;

@@ -2,7 +2,7 @@ package com.izeye.playground.support.naver.domain.search;
 
 import com.izeye.playground.common.util.UrlUtils;
 
-public abstract class AbstractNaverSearchItem implements NaverSearchItem {
+public class BaseNaverSearchItem implements NaverSearchItem {
 
 	private String title;
 	private String link;

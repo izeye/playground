@@ -1,8 +1,8 @@
 package com.izeye.playground.support.naver.domain.search.blog;
 
-import com.izeye.playground.support.naver.domain.search.AbstractNaverSearchItem;
+import com.izeye.playground.support.naver.domain.search.BaseNaverSearchItem;
 
-public class NaverSearchBlogItem extends AbstractNaverSearchItem {
+public class NaverSearchBlogItem extends BaseNaverSearchItem {
 
 	private static final String HTTP_PREFIX = "http://";
 

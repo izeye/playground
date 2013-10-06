@@ -17,7 +17,7 @@ var search = function () {
 <p>This is a page for searching Naver shortcut.</p>
 
 <label for="query">Query:</label>
-<input id="query" type="text" value="test" />
+<input id="query" type="text" value="naver" />
 <input type="button" value="Search" onclick="search();" />
 
 <div><dl id="result"></dl></div>

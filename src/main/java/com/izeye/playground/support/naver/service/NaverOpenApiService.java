@@ -2,6 +2,7 @@ package com.izeye.playground.support.naver.service;
 
 import java.util.List;
 
+import com.izeye.playground.support.naver.domain.search.DefaultNaverSearchResponse;
 import com.izeye.playground.support.naver.domain.search.NaverSearchRequest;
 import com.izeye.playground.support.naver.domain.search.blog.NaverSearchBlogResponse;
 import com.izeye.playground.support.naver.domain.search.book.NaverSearchBookResponse;
@@ -48,5 +49,7 @@ public interface NaverOpenApiService {
 	NaverSearchCarResponse searchCar(NaverSearchCarRequest request);
 
 	NaverSearchSiteResponse searchShortcut(NaverSearchRequest request);
+
+	DefaultNaverSearchResponse searchKin(NaverSearchRequest request);
 
 }

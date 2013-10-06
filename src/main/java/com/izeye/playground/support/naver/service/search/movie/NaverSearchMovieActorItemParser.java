@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
 
 import com.izeye.playground.support.naver.domain.search.movie.NaverSearchMovieActorFilm;
 import com.izeye.playground.support.naver.domain.search.movie.NaverSearchMovieActorItem;
-import com.izeye.playground.support.naver.service.AbstractNaverSearchItemParser;
+import com.izeye.playground.support.naver.service.search.AbstractNaverSearchItemParser;
 import com.izeye.playground.support.naver.util.NaverDateUtils;
 
 @Service("naverSearchMovieActorItemParser")

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.izeye.playground.support.naver.domain.search.news.NaverSearchNewsItem;
 import com.izeye.playground.support.naver.domain.search.news.NaverSearchNewsResponse;
-import com.izeye.playground.support.naver.service.AbstractNaverSearchResponseParser;
+import com.izeye.playground.support.naver.service.search.AbstractNaverSearchResponseParser;
 
 @Service("naverSearchNewsResponseParser")
 public class NaverSearchNewsResponseParser extends

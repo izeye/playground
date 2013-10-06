@@ -13,6 +13,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.izeye.playground.support.naver.domain.search.DefaultNaverSearchResponse;
 import com.izeye.playground.support.naver.domain.search.NaverSearchRequest;
 import com.izeye.playground.support.naver.domain.search.NaverSearchType;
 import com.izeye.playground.support.naver.domain.search.blog.NaverSearchBlogResponse;
@@ -207,6 +208,16 @@ public class NaverOpenApiServiceTest {
 		query = "n aver";
 		request = new NaverSearchRequest(NaverSearchType.SHORTCUT, query);
 		response = naverOpenApiService.searchShortcut(request);
+		System.out.println(response);
+	}
+
+	@Test
+	public void searchKin() {
+		String query = "test";
+		NaverSearchRequest request = new NaverSearchRequest(
+				NaverSearchType.KIN, query);
+		DefaultNaverSearchResponse response = naverOpenApiService
+				.searchKin(request);
 		System.out.println(response);
 	}
 

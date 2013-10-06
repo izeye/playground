@@ -22,6 +22,7 @@ import com.izeye.playground.common.util.HttpUtils;
 import com.izeye.playground.common.util.JDOMUtils;
 import com.izeye.playground.common.util.UrlUtils;
 import com.izeye.playground.support.naver.domain.NaverOpenApiFailException;
+import com.izeye.playground.support.naver.domain.search.DefaultNaverSearchResponse;
 import com.izeye.playground.support.naver.domain.search.NaverSearchRequest;
 import com.izeye.playground.support.naver.domain.search.NaverSearchResponseCallback;
 import com.izeye.playground.support.naver.domain.search.NaverSearchSortType;
@@ -40,6 +41,7 @@ import com.izeye.playground.support.naver.domain.search.rank.NaverSearchRankItem
 import com.izeye.playground.support.naver.domain.search.rank.NaverSearchRankStatus;
 import com.izeye.playground.support.naver.domain.search.rank.NaverSearchRankType;
 import com.izeye.playground.support.naver.domain.search.site.NaverSearchSiteResponse;
+import com.izeye.playground.support.naver.service.search.DefaultNaverSearchResponseParser;
 import com.izeye.playground.support.naver.service.search.blog.NaverSearchBlogResponseParser;
 import com.izeye.playground.support.naver.service.search.book.NaverSearchBookResponseParser;
 import com.izeye.playground.support.naver.service.search.cafe.NaverSearchCafeArticleResponseParser;
@@ -92,6 +94,9 @@ public class DefaultNaverOpenApiService implements NaverOpenApiService {
 
 	@Resource
 	private NaverSearchCarResponseParser carResponseParser;
+
+	@Resource
+	private DefaultNaverSearchResponseParser defaultResponseParser;
 
 	private final Logger log = LoggerFactory.getLogger(getClass());
 
@@ -301,6 +306,19 @@ public class DefaultNaverOpenApiService implements NaverOpenApiService {
 						return new NaverSearchSiteResponse(label, url);
 					}
 				}, NaverSearchSiteResponse.class);
+	}
+
+	@Override
+	public DefaultNaverSearchResponse searchKin(NaverSearchRequest request) {
+		return search(request,
+				new NaverSearchResponseCallback<DefaultNaverSearchResponse>() {
+					@Override
+					public DefaultNaverSearchResponse callback(Element root) {
+						DefaultNaverSearchResponse response = new DefaultNaverSearchResponse();
+						defaultResponseParser.parse(root, response);
+						return response;
+					}
+				}, DefaultNaverSearchResponse.class);
 	}
 
 	private <T> T search(NaverSearchRequest request,

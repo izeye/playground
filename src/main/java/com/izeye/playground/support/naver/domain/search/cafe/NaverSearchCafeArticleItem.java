@@ -1,8 +1,8 @@
 package com.izeye.playground.support.naver.domain.search.cafe;
 
-import com.izeye.playground.support.naver.domain.search.AbstractNaverSearchItem;
+import com.izeye.playground.support.naver.domain.search.BaseNaverSearchItem;
 
-public class NaverSearchCafeArticleItem extends AbstractNaverSearchItem {
+public class NaverSearchCafeArticleItem extends BaseNaverSearchItem {
 
 	private String cafeName;
 	private String cafeUrl;

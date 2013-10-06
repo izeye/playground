@@ -6,7 +6,7 @@ import org.jdom.Element;
 import org.springframework.stereotype.Service;
 
 import com.izeye.playground.support.naver.domain.search.encyclopedia.NaverSearchEncyclopediaItem;
-import com.izeye.playground.support.naver.service.AbstractNaverSearchItemParser;
+import com.izeye.playground.support.naver.service.search.AbstractNaverSearchItemParser;
 
 @Service("naverSearchEncyclopediaItemParser")
 public class NaverSearchEncyclopediaItemParser extends

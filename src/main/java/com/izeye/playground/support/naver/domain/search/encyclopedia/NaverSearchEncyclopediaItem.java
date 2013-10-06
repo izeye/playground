@@ -1,8 +1,8 @@
 package com.izeye.playground.support.naver.domain.search.encyclopedia;
 
-import com.izeye.playground.support.naver.domain.search.AbstractNaverSearchItem;
+import com.izeye.playground.support.naver.domain.search.BaseNaverSearchItem;
 
-public class NaverSearchEncyclopediaItem extends AbstractNaverSearchItem {
+public class NaverSearchEncyclopediaItem extends BaseNaverSearchItem {
 
 	// NOTE:
 	// Doesn't work!

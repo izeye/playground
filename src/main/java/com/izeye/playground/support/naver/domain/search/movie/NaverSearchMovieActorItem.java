@@ -4,9 +4,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import com.izeye.playground.support.naver.domain.search.AbstractNaverSearchItem;
+import com.izeye.playground.support.naver.domain.search.BaseNaverSearchItem;
 
-public class NaverSearchMovieActorItem extends AbstractNaverSearchItem {
+public class NaverSearchMovieActorItem extends BaseNaverSearchItem {
 
 	private String image;
 	private Date birthday;

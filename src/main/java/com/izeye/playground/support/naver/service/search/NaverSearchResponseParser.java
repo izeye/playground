@@ -1,4 +1,4 @@
-package com.izeye.playground.support.naver.service;
+package com.izeye.playground.support.naver.service.search;
 
 import org.jdom.Element;
 

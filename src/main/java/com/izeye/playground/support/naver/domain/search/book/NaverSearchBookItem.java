@@ -2,10 +2,10 @@ package com.izeye.playground.support.naver.domain.search.book;
 
 import java.util.Date;
 
-import com.izeye.playground.support.naver.domain.search.AbstractNaverSearchItem;
+import com.izeye.playground.support.naver.domain.search.BaseNaverSearchItem;
 import com.izeye.playground.support.naver.util.NaverDateUtils;
 
-public class NaverSearchBookItem extends AbstractNaverSearchItem {
+public class NaverSearchBookItem extends BaseNaverSearchItem {
 
 	private String image;
 	private String author;

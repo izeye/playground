@@ -15,7 +15,8 @@ public enum NaverSearchType {
 	CAFE_ARTICLE("cafearticle", NaverSearchSortType.SIMILARITY), //
 	MOVIE_ACTOR("movieman", NaverSearchSortType.NOT_AVAILABLE), //
 	CAR("car", NaverSearchSortType.NOT_AVAILABLE), //
-	SHORTCUT("shortcut", NaverSearchSortType.NOT_AVAILABLE);
+	SHORTCUT("shortcut", NaverSearchSortType.NOT_AVAILABLE), //
+	KIN("kin", NaverSearchSortType.SIMILARITY);
 
 	private final String target;
 	private final NaverSearchSortType defaultSortType;
