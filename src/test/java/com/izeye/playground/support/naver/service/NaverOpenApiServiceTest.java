@@ -23,6 +23,8 @@ import com.izeye.playground.support.naver.domain.search.cafe.NaverSearchCafeResp
 import com.izeye.playground.support.naver.domain.search.car.NaverSearchCarRequest;
 import com.izeye.playground.support.naver.domain.search.car.NaverSearchCarResponse;
 import com.izeye.playground.support.naver.domain.search.encyclopedia.NaverSearchEncyclopediaResponse;
+import com.izeye.playground.support.naver.domain.search.image.NaverSearchImageRequest;
+import com.izeye.playground.support.naver.domain.search.image.NaverSearchImageResponse;
 import com.izeye.playground.support.naver.domain.search.local.NaverSearchLocalResponse;
 import com.izeye.playground.support.naver.domain.search.movie.NaverSearchMovieActorResponse;
 import com.izeye.playground.support.naver.domain.search.movie.NaverSearchMovieRequest;
@@ -256,6 +258,15 @@ public class NaverOpenApiServiceTest {
 		request = new NaverSearchRequest(NaverSearchType.TYPO, query);
 		fixedTypo = naverOpenApiService.fixTypo(request);
 		assertThat(fixedTypo, is(expected));
+	}
+
+	@Test
+	public void searchImage() {
+		String query = "triangle";
+		NaverSearchImageRequest request = new NaverSearchImageRequest(query);
+		NaverSearchImageResponse response = naverOpenApiService
+				.searchImage(request);
+		System.out.println(response);
 	}
 
 }

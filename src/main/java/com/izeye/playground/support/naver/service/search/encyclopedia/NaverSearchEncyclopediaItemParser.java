@@ -1,6 +1,6 @@
 package com.izeye.playground.support.naver.service.search.encyclopedia;
 
-import static com.izeye.playground.support.naver.domain.search.NaverSearchConstants.*;
+import static com.izeye.playground.support.naver.domain.search.NaverSearchConstants.ELEMENT_THUMBNAIL;
 
 import org.jdom.Element;
 import org.springframework.stereotype.Service;

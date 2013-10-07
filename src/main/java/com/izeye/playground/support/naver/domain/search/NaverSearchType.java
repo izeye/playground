@@ -19,7 +19,8 @@ public enum NaverSearchType {
 	KIN("kin", NaverSearchSortType.SIMILARITY), //
 	LOCAL("local", NaverSearchSortType.RANDOM), //
 	WEB("webkr", NaverSearchSortType.NOT_AVAILABLE), //
-	TYPO("errata", NaverSearchSortType.NOT_AVAILABLE);
+	TYPO("errata", NaverSearchSortType.NOT_AVAILABLE), //
+	IMAGE("image", NaverSearchSortType.SIMILARITY);
 
 	private final String target;
 	private final NaverSearchSortType defaultSortType;

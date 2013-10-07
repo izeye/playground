@@ -11,6 +11,8 @@ import com.izeye.playground.support.naver.domain.search.cafe.NaverSearchCafeResp
 import com.izeye.playground.support.naver.domain.search.car.NaverSearchCarRequest;
 import com.izeye.playground.support.naver.domain.search.car.NaverSearchCarResponse;
 import com.izeye.playground.support.naver.domain.search.encyclopedia.NaverSearchEncyclopediaResponse;
+import com.izeye.playground.support.naver.domain.search.image.NaverSearchImageRequest;
+import com.izeye.playground.support.naver.domain.search.image.NaverSearchImageResponse;
 import com.izeye.playground.support.naver.domain.search.local.NaverSearchLocalResponse;
 import com.izeye.playground.support.naver.domain.search.movie.NaverSearchMovieActorResponse;
 import com.izeye.playground.support.naver.domain.search.movie.NaverSearchMovieRequest;
@@ -59,5 +61,7 @@ public interface NaverOpenApiService {
 	DefaultNaverSearchResponse searchWeb(NaverSearchWebRequest request);
 
 	String fixTypo(NaverSearchRequest request);
+
+	NaverSearchImageResponse searchImage(NaverSearchImageRequest request);
 
 }

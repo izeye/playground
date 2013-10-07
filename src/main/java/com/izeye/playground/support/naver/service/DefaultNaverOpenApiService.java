@@ -33,6 +33,8 @@ import com.izeye.playground.support.naver.domain.search.cafe.NaverSearchCafeResp
 import com.izeye.playground.support.naver.domain.search.car.NaverSearchCarRequest;
 import com.izeye.playground.support.naver.domain.search.car.NaverSearchCarResponse;
 import com.izeye.playground.support.naver.domain.search.encyclopedia.NaverSearchEncyclopediaResponse;
+import com.izeye.playground.support.naver.domain.search.image.NaverSearchImageRequest;
+import com.izeye.playground.support.naver.domain.search.image.NaverSearchImageResponse;
 import com.izeye.playground.support.naver.domain.search.local.NaverSearchLocalResponse;
 import com.izeye.playground.support.naver.domain.search.movie.NaverSearchMovieActorResponse;
 import com.izeye.playground.support.naver.domain.search.movie.NaverSearchMovieRequest;
@@ -50,6 +52,7 @@ import com.izeye.playground.support.naver.service.search.cafe.NaverSearchCafeArt
 import com.izeye.playground.support.naver.service.search.cafe.NaverSearchCafeResponseParser;
 import com.izeye.playground.support.naver.service.search.car.NaverSearchCarResponseParser;
 import com.izeye.playground.support.naver.service.search.encyclopedia.NaverSearchEncyclopediaResponseParser;
+import com.izeye.playground.support.naver.service.search.image.NaverSearchImageResponseParser;
 import com.izeye.playground.support.naver.service.search.local.NaverSearchLocalResponseParser;
 import com.izeye.playground.support.naver.service.search.movie.NaverSearchMovieActorResponseParser;
 import com.izeye.playground.support.naver.service.search.movie.NaverSearchMovieResponseParser;
@@ -103,6 +106,9 @@ public class DefaultNaverOpenApiService implements NaverOpenApiService {
 
 	@Resource
 	private NaverSearchLocalResponseParser localResponseParser;
+
+	@Resource
+	private NaverSearchImageResponseParser imageResponseParser;
 
 	private final Logger log = LoggerFactory.getLogger(getClass());
 
@@ -348,6 +354,19 @@ public class DefaultNaverOpenApiService implements NaverOpenApiService {
 				return itemElement.getChildText(ELEMENT_ERRATA);
 			}
 		}, String.class);
+	}
+
+	@Override
+	public NaverSearchImageResponse searchImage(NaverSearchImageRequest request) {
+		return search(request,
+				new NaverSearchResponseCallback<NaverSearchImageResponse>() {
+					@Override
+					public NaverSearchImageResponse callback(Element root) {
+						NaverSearchImageResponse response = new NaverSearchImageResponse();
+						imageResponseParser.parse(root, response);
+						return response;
+					}
+				}, NaverSearchImageResponse.class);
 	}
 
 	private <T> T search(NaverSearchRequest request,

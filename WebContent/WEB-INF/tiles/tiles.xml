@@ -165,6 +165,11 @@
 		<put-attribute name="body" value="/WEB-INF/views/playground/demo/naver/search/typo.jsp" />
 	</definition>
 
+	<definition name="playground/demo/naver/search/image" extends="playground">
+		<put-attribute name="body_title" value="Naver Search Image" />
+		<put-attribute name="body" value="/WEB-INF/views/playground/demo/naver/search/image.jsp" />
+	</definition>
+
 	<definition name="tools" extends="base.definition">
 		<put-attribute name="facebook_like" value="/WEB-INF/tiles/jsp/facebook_like.jsp" />
 		<put-attribute name="facebook_share" value="/WEB-INF/tiles/jsp/facebook_share.jsp" />

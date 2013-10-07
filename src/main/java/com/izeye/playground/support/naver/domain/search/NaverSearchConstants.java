@@ -79,6 +79,9 @@ public interface NaverSearchConstants {
 
 	String ELEMENT_ERRATA = "errata";
 
+	String ELEMENT_SIZE_HEIGHT = "sizeheight";
+	String ELEMENT_SIZE_WIDTH = "sizewidth";
+
 	int TRUE_AS_INT = 1;
 	int FALSE_AS_INT = 0;
 

@@ -162,6 +162,13 @@ public interface MenuConstants {
 	String API_PATH_NAVER_SEARCH_TYPO = SUB_MENU_ITEM_NAVER_SEARCH_TYPO_PATH
 			+ "/api";
 
+	String SUB_MENU_ITEM_NAVER_SEARCH_IMAGE_NAME = "Naver Search Image";
+	String SUB_MENU_ITEM_NAVER_SEARCH_IMAGE_PATH = SUB_MENU_ITEM_GROUP_PLAYGROUND_DEMO_PATH
+			+ "/naver/search/image";
+
+	String API_PATH_NAVER_SEARCH_IMAGE = SUB_MENU_ITEM_NAVER_SEARCH_IMAGE_PATH
+			+ "/api";
+
 	String MENU_ITEM_TOOLS_NAME = "Tools";
 	String MENU_ITEM_TOOLS_PATH = "/tools";
 
