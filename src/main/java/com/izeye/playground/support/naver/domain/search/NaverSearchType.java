@@ -16,7 +16,10 @@ public enum NaverSearchType {
 	MOVIE_ACTOR("movieman", NaverSearchSortType.NOT_AVAILABLE), //
 	CAR("car", NaverSearchSortType.NOT_AVAILABLE), //
 	SHORTCUT("shortcut", NaverSearchSortType.NOT_AVAILABLE), //
-	KIN("kin", NaverSearchSortType.SIMILARITY);
+	KIN("kin", NaverSearchSortType.SIMILARITY), //
+	LOCAL("local", NaverSearchSortType.RANDOM), //
+	WEB("webkr", NaverSearchSortType.NOT_AVAILABLE), //
+	TYPO("errata", NaverSearchSortType.NOT_AVAILABLE);
 
 	private final String target;
 	private final NaverSearchSortType defaultSortType;

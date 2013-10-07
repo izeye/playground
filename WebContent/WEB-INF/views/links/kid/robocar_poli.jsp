@@ -11,4 +11,6 @@
 <a href="http://www.youtube.com/watch?v=w7z4SEDb0V0&noredirect=1" target="_blank">9. 스쿨비의 약속</a><br/>
 <a href="http://www.youtube.com/watch?v=mmXFVZ9a9ow&noredirect=1" target="_blank">10. 칭찬받고 싶어요</a><br/>
 <a href="http://www.youtube.com/watch?v=czHCLNOXcl4&noredirect=1" target="_blank">11. 뽐내기 대회</a><br/>
-<a href="http://www.youtube.com/watch?v=_irZ_N8mhyM&noredirect=1" target="_blank">12. 스쿨비의 선물</a>
+<a href="http://www.youtube.com/watch?v=_irZ_N8mhyM&noredirect=1" target="_blank">12. 스쿨비의 선물</a><br/>
+<a href="http://www.youtube.com/watch?v=C2l4TRHoJLg&noredirect=1" target="_blank">13. 깨끗이 닦아요</a><br/>
+<a href="http://www.youtube.com/watch?v=892b8yqxNWs&noredirect=1" target="_blank">14. 할아버지 사랑해요</a>

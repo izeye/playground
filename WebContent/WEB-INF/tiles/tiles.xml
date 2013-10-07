@@ -150,6 +150,21 @@
 		<put-attribute name="body" value="/WEB-INF/views/playground/demo/naver/search/kin.jsp" />
 	</definition>
 
+	<definition name="playground/demo/naver/search/local" extends="playground">
+		<put-attribute name="body_title" value="Naver Search Local" />
+		<put-attribute name="body" value="/WEB-INF/views/playground/demo/naver/search/local.jsp" />
+	</definition>
+
+	<definition name="playground/demo/naver/search/web" extends="playground">
+		<put-attribute name="body_title" value="Naver Search Web" />
+		<put-attribute name="body" value="/WEB-INF/views/playground/demo/naver/search/web.jsp" />
+	</definition>
+
+	<definition name="playground/demo/naver/search/typo" extends="playground">
+		<put-attribute name="body_title" value="Naver Search Typo" />
+		<put-attribute name="body" value="/WEB-INF/views/playground/demo/naver/search/typo.jsp" />
+	</definition>
+
 	<definition name="tools" extends="base.definition">
 		<put-attribute name="facebook_like" value="/WEB-INF/tiles/jsp/facebook_like.jsp" />
 		<put-attribute name="facebook_share" value="/WEB-INF/tiles/jsp/facebook_share.jsp" />

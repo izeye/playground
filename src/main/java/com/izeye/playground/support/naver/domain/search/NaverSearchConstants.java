@@ -72,6 +72,13 @@ public interface NaverSearchConstants {
 	String ELEMENT_LABEL = "label";
 	String ELEMENT_URL = "url";
 
+	String ELEMENT_TELEPHONE = "telephone";
+	String ELEMENT_ADDRESS = "address";
+	String ELEMENT_MAP_X = "mapx";
+	String ELEMENT_MAP_Y = "mapy";
+
+	String ELEMENT_ERRATA = "errata";
+
 	int TRUE_AS_INT = 1;
 	int FALSE_AS_INT = 0;
 

@@ -33,6 +33,7 @@ import com.izeye.playground.support.naver.domain.search.cafe.NaverSearchCafeResp
 import com.izeye.playground.support.naver.domain.search.car.NaverSearchCarRequest;
 import com.izeye.playground.support.naver.domain.search.car.NaverSearchCarResponse;
 import com.izeye.playground.support.naver.domain.search.encyclopedia.NaverSearchEncyclopediaResponse;
+import com.izeye.playground.support.naver.domain.search.local.NaverSearchLocalResponse;
 import com.izeye.playground.support.naver.domain.search.movie.NaverSearchMovieActorResponse;
 import com.izeye.playground.support.naver.domain.search.movie.NaverSearchMovieRequest;
 import com.izeye.playground.support.naver.domain.search.movie.NaverSearchMovieResponse;
@@ -41,6 +42,7 @@ import com.izeye.playground.support.naver.domain.search.rank.NaverSearchRankItem
 import com.izeye.playground.support.naver.domain.search.rank.NaverSearchRankStatus;
 import com.izeye.playground.support.naver.domain.search.rank.NaverSearchRankType;
 import com.izeye.playground.support.naver.domain.search.site.NaverSearchSiteResponse;
+import com.izeye.playground.support.naver.domain.search.web.NaverSearchWebRequest;
 import com.izeye.playground.support.naver.service.search.DefaultNaverSearchResponseParser;
 import com.izeye.playground.support.naver.service.search.blog.NaverSearchBlogResponseParser;
 import com.izeye.playground.support.naver.service.search.book.NaverSearchBookResponseParser;
@@ -48,6 +50,7 @@ import com.izeye.playground.support.naver.service.search.cafe.NaverSearchCafeArt
 import com.izeye.playground.support.naver.service.search.cafe.NaverSearchCafeResponseParser;
 import com.izeye.playground.support.naver.service.search.car.NaverSearchCarResponseParser;
 import com.izeye.playground.support.naver.service.search.encyclopedia.NaverSearchEncyclopediaResponseParser;
+import com.izeye.playground.support.naver.service.search.local.NaverSearchLocalResponseParser;
 import com.izeye.playground.support.naver.service.search.movie.NaverSearchMovieActorResponseParser;
 import com.izeye.playground.support.naver.service.search.movie.NaverSearchMovieResponseParser;
 import com.izeye.playground.support.naver.service.search.news.NaverSearchNewsResponseParser;
@@ -97,6 +100,9 @@ public class DefaultNaverOpenApiService implements NaverOpenApiService {
 
 	@Resource
 	private DefaultNaverSearchResponseParser defaultResponseParser;
+
+	@Resource
+	private NaverSearchLocalResponseParser localResponseParser;
 
 	private final Logger log = LoggerFactory.getLogger(getClass());
 
@@ -310,15 +316,38 @@ public class DefaultNaverOpenApiService implements NaverOpenApiService {
 
 	@Override
 	public DefaultNaverSearchResponse searchKin(NaverSearchRequest request) {
+		return search(request, DEFAULT_NAVER_SEARCH_RESPONSE_CALLBACK,
+				DefaultNaverSearchResponse.class);
+	}
+
+	@Override
+	public NaverSearchLocalResponse searchLocal(NaverSearchRequest request) {
 		return search(request,
-				new NaverSearchResponseCallback<DefaultNaverSearchResponse>() {
+				new NaverSearchResponseCallback<NaverSearchLocalResponse>() {
 					@Override
-					public DefaultNaverSearchResponse callback(Element root) {
-						DefaultNaverSearchResponse response = new DefaultNaverSearchResponse();
-						defaultResponseParser.parse(root, response);
+					public NaverSearchLocalResponse callback(Element root) {
+						NaverSearchLocalResponse response = new NaverSearchLocalResponse();
+						localResponseParser.parse(root, response);
 						return response;
 					}
-				}, DefaultNaverSearchResponse.class);
+				}, NaverSearchLocalResponse.class);
+	}
+
+	@Override
+	public DefaultNaverSearchResponse searchWeb(NaverSearchWebRequest request) {
+		return search(request, DEFAULT_NAVER_SEARCH_RESPONSE_CALLBACK,
+				DefaultNaverSearchResponse.class);
+	}
+
+	@Override
+	public String fixTypo(NaverSearchRequest request) {
+		return search(request, new NaverSearchResponseCallback<String>() {
+			@Override
+			public String callback(Element root) {
+				Element itemElement = root.getChild(ELEMENT_ITEM);
+				return itemElement.getChildText(ELEMENT_ERRATA);
+			}
+		}, String.class);
 	}
 
 	private <T> T search(NaverSearchRequest request,
@@ -372,5 +401,14 @@ public class DefaultNaverOpenApiService implements NaverOpenApiService {
 			}
 		}
 	}
+
+	private final NaverSearchResponseCallback<DefaultNaverSearchResponse> DEFAULT_NAVER_SEARCH_RESPONSE_CALLBACK = new NaverSearchResponseCallback<DefaultNaverSearchResponse>() {
+		@Override
+		public DefaultNaverSearchResponse callback(Element root) {
+			DefaultNaverSearchResponse response = new DefaultNaverSearchResponse();
+			defaultResponseParser.parse(root, response);
+			return response;
+		}
+	};
 
 }

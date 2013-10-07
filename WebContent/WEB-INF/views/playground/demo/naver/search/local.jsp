@@ -15,7 +15,7 @@ var search = function (start) {
 		$('#moreButton').show();
 	}
 	
-	$.get('${API_PATH_NAVER_SEARCH_CAFE_ARTICLE}', {
+	$.get('${API_PATH_NAVER_SEARCH_LOCAL}', {
 		query: $('#query').val(),
 		display: APP.display,
 		start: start
@@ -27,9 +27,17 @@ var search = function (start) {
 			result +=
 					'<li>' +
 					'<dl>' +
-					'<dt><a href="' + item.redirectedLink + '" target="_blank">' + item.title + '</a></dt>' +
-					'<dd>' + item.description + '</dd>' +
-					'<dd><a href="' + item.redirectedLink + '">' + item.redirectedLink + '</a> Cafe name: <a href="' + item.cafeUrl + '">' + item.cafeName + '</a></dd>' +
+					'<dt>';
+			if (item.redirectedLink) {
+				result += '<a href="' + item.redirectedLink + '" target="_blank">';
+			}
+			result += item.title;
+			if (item.redirectedLink) {
+				result += '</a>';
+			}
+			result +=
+					'</dt>' +
+					'<dd>' + item.telephone + ' ' + item.address + '</dd>' +
 					'</dl>' +
 					'</li>';
 		}
@@ -40,7 +48,7 @@ var search = function (start) {
 };
 </script>
 
-<p>This is a page for searching Naver cafe article.</p>
+<p>This is a page for searching Naver local.</p>
 
 <label for="query">Query:</label>
 <input id="query" type="text" value="test" />

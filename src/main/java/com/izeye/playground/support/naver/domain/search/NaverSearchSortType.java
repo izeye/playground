@@ -11,7 +11,10 @@ public enum NaverSearchSortType {
 	NEW_ARTICLES("newarticles"), //
 	RANK("rank"), //
 	READ_COUNT("count"), //
-	RATING("point");
+	POINT("point"), //
+	RANDOM("random"), //
+	COMMENT_COUNT("comment"), //
+	VOTE("vote");
 
 	private final String value;
 

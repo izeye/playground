@@ -11,6 +11,7 @@ import com.izeye.playground.support.naver.domain.search.cafe.NaverSearchCafeResp
 import com.izeye.playground.support.naver.domain.search.car.NaverSearchCarRequest;
 import com.izeye.playground.support.naver.domain.search.car.NaverSearchCarResponse;
 import com.izeye.playground.support.naver.domain.search.encyclopedia.NaverSearchEncyclopediaResponse;
+import com.izeye.playground.support.naver.domain.search.local.NaverSearchLocalResponse;
 import com.izeye.playground.support.naver.domain.search.movie.NaverSearchMovieActorResponse;
 import com.izeye.playground.support.naver.domain.search.movie.NaverSearchMovieRequest;
 import com.izeye.playground.support.naver.domain.search.movie.NaverSearchMovieResponse;
@@ -18,6 +19,7 @@ import com.izeye.playground.support.naver.domain.search.news.NaverSearchNewsResp
 import com.izeye.playground.support.naver.domain.search.rank.NaverSearchRankItem;
 import com.izeye.playground.support.naver.domain.search.rank.NaverSearchRankType;
 import com.izeye.playground.support.naver.domain.search.site.NaverSearchSiteResponse;
+import com.izeye.playground.support.naver.domain.search.web.NaverSearchWebRequest;
 
 public interface NaverOpenApiService {
 
@@ -51,5 +53,11 @@ public interface NaverOpenApiService {
 	NaverSearchSiteResponse searchShortcut(NaverSearchRequest request);
 
 	DefaultNaverSearchResponse searchKin(NaverSearchRequest request);
+
+	NaverSearchLocalResponse searchLocal(NaverSearchRequest request);
+
+	DefaultNaverSearchResponse searchWeb(NaverSearchWebRequest request);
+
+	String fixTypo(NaverSearchRequest request);
 
 }

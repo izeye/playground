@@ -30,7 +30,8 @@ public class BaseNaverSearchItem implements NaverSearchItem {
 
 	@Override
 	public String getRedirectedLink() {
-		return UrlUtils.getRedirectedUrl(link);
+		return link == null || link.isEmpty() ? link : UrlUtils
+				.getRedirectedUrl(link);
 	}
 
 	@Override
