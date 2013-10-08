@@ -20,6 +20,7 @@ import com.izeye.playground.support.naver.domain.search.movie.NaverSearchMovieRe
 import com.izeye.playground.support.naver.domain.search.news.NaverSearchNewsResponse;
 import com.izeye.playground.support.naver.domain.search.rank.NaverSearchRankItem;
 import com.izeye.playground.support.naver.domain.search.rank.NaverSearchRankType;
+import com.izeye.playground.support.naver.domain.search.shopping.NaverSearchShoppingResponse;
 import com.izeye.playground.support.naver.domain.search.site.NaverSearchSiteResponse;
 import com.izeye.playground.support.naver.domain.search.web.NaverSearchWebRequest;
 
@@ -63,5 +64,9 @@ public interface NaverOpenApiService {
 	String fixTypo(NaverSearchRequest request);
 
 	NaverSearchImageResponse searchImage(NaverSearchImageRequest request);
+
+	NaverSearchShoppingResponse searchShopping(NaverSearchRequest request);
+
+	DefaultNaverSearchResponse searchDocument(NaverSearchRequest request);
 
 }

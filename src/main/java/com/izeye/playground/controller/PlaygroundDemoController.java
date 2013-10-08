@@ -1,6 +1,6 @@
 package com.izeye.playground.controller;
 
-import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_NAVER_SEARCH_ADULT;
+import static com.izeye.playground.support.menu.domain.MenuConstants.*;
 import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_NAVER_SEARCH_BLOG;
 import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_NAVER_SEARCH_BOOK;
 import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_NAVER_SEARCH_CAFE;
@@ -15,6 +15,7 @@ import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_NA
 import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_NAVER_SEARCH_NEWS;
 import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_NAVER_SEARCH_RANK;
 import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_NAVER_SEARCH_RECOMMEND;
+import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_NAVER_SEARCH_SHOPPING;
 import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_NAVER_SEARCH_SHORTCUT;
 import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_NAVER_SEARCH_TYPO;
 import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_NAVER_SEARCH_WEB;
@@ -34,6 +35,7 @@ import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_IT
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_NAVER_SEARCH_NEWS_PATH;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_NAVER_SEARCH_RANK_PATH;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_NAVER_SEARCH_RECOMMEND_PATH;
+import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_NAVER_SEARCH_SHOPPING_PATH;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_NAVER_SEARCH_SHORTCUT_PATH;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_NAVER_SEARCH_TYPO_PATH;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_NAVER_SEARCH_WEB_PATH;
@@ -70,6 +72,7 @@ import com.izeye.playground.support.naver.domain.search.movie.NaverSearchMovieRe
 import com.izeye.playground.support.naver.domain.search.news.NaverSearchNewsResponse;
 import com.izeye.playground.support.naver.domain.search.rank.NaverSearchRankItem;
 import com.izeye.playground.support.naver.domain.search.rank.NaverSearchRankType;
+import com.izeye.playground.support.naver.domain.search.shopping.NaverSearchShoppingResponse;
 import com.izeye.playground.support.naver.domain.search.site.NaverSearchSiteResponse;
 import com.izeye.playground.support.naver.domain.search.web.NaverSearchWebRequest;
 import com.izeye.playground.support.naver.service.NaverOpenApiService;
@@ -411,6 +414,42 @@ public class PlaygroundDemoController extends AbstractPlaygroundController {
 		NaverSearchImageRequest request = new NaverSearchImageRequest(query,
 				display, start);
 		return naverOpenApiService.searchImage(request);
+	}
+
+	@RequestMapping(SUB_MENU_ITEM_NAVER_SEARCH_SHOPPING_PATH)
+	public String naverSearchShopping(Model model) {
+		model.addAttribute("API_PATH_NAVER_SEARCH_SHOPPING",
+				API_PATH_NAVER_SEARCH_SHOPPING);
+
+		return SubMenuItem.PLAYGROUND_DEMO_NAVER_SEARCH_SHOPPING.getViewName();
+	}
+
+	@RequestMapping(API_PATH_NAVER_SEARCH_SHOPPING)
+	@ResponseBody
+	public NaverSearchShoppingResponse naverSearchShoppingApi(
+			@RequestParam String query, @RequestParam int display,
+			@RequestParam int start) {
+		NaverSearchRequest request = new NaverSearchRequest(
+				NaverSearchType.SHOPPING, query, display, start);
+		return naverOpenApiService.searchShopping(request);
+	}
+
+	@RequestMapping(SUB_MENU_ITEM_NAVER_SEARCH_DOCUMENT_PATH)
+	public String naverSearchDocument(Model model) {
+		model.addAttribute("API_PATH_NAVER_SEARCH_DOCUMENT",
+				API_PATH_NAVER_SEARCH_DOCUMENT);
+
+		return SubMenuItem.PLAYGROUND_DEMO_NAVER_SEARCH_DOCUMENT.getViewName();
+	}
+
+	@RequestMapping(API_PATH_NAVER_SEARCH_DOCUMENT)
+	@ResponseBody
+	public DefaultNaverSearchResponse naverSearchDocumentApi(
+			@RequestParam String query, @RequestParam int display,
+			@RequestParam int start) {
+		NaverSearchRequest request = new NaverSearchRequest(
+				NaverSearchType.DOCUMENT, query, display, start);
+		return naverOpenApiService.searchDocument(request);
 	}
 
 }

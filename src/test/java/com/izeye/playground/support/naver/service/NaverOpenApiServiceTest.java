@@ -32,6 +32,7 @@ import com.izeye.playground.support.naver.domain.search.movie.NaverSearchMovieRe
 import com.izeye.playground.support.naver.domain.search.news.NaverSearchNewsResponse;
 import com.izeye.playground.support.naver.domain.search.rank.NaverSearchRankItem;
 import com.izeye.playground.support.naver.domain.search.rank.NaverSearchRankType;
+import com.izeye.playground.support.naver.domain.search.shopping.NaverSearchShoppingResponse;
 import com.izeye.playground.support.naver.domain.search.site.NaverSearchSiteResponse;
 import com.izeye.playground.support.naver.domain.search.web.NaverSearchWebRequest;
 
@@ -266,6 +267,26 @@ public class NaverOpenApiServiceTest {
 		NaverSearchImageRequest request = new NaverSearchImageRequest(query);
 		NaverSearchImageResponse response = naverOpenApiService
 				.searchImage(request);
+		System.out.println(response);
+	}
+
+	@Test
+	public void searchShopping() {
+		String query = "test";
+		NaverSearchRequest request = new NaverSearchRequest(
+				NaverSearchType.SHOPPING, query);
+		NaverSearchShoppingResponse response = naverOpenApiService
+				.searchShopping(request);
+		System.out.println(response);
+	}
+
+	@Test
+	public void searchDocument() {
+		String query = "test";
+		NaverSearchRequest request = new NaverSearchRequest(
+				NaverSearchType.DOCUMENT, query);
+		DefaultNaverSearchResponse response = naverOpenApiService
+				.searchDocument(request);
 		System.out.println(response);
 	}
 

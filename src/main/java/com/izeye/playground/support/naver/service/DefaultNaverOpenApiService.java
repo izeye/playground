@@ -43,6 +43,7 @@ import com.izeye.playground.support.naver.domain.search.news.NaverSearchNewsResp
 import com.izeye.playground.support.naver.domain.search.rank.NaverSearchRankItem;
 import com.izeye.playground.support.naver.domain.search.rank.NaverSearchRankStatus;
 import com.izeye.playground.support.naver.domain.search.rank.NaverSearchRankType;
+import com.izeye.playground.support.naver.domain.search.shopping.NaverSearchShoppingResponse;
 import com.izeye.playground.support.naver.domain.search.site.NaverSearchSiteResponse;
 import com.izeye.playground.support.naver.domain.search.web.NaverSearchWebRequest;
 import com.izeye.playground.support.naver.service.search.DefaultNaverSearchResponseParser;
@@ -57,6 +58,7 @@ import com.izeye.playground.support.naver.service.search.local.NaverSearchLocalR
 import com.izeye.playground.support.naver.service.search.movie.NaverSearchMovieActorResponseParser;
 import com.izeye.playground.support.naver.service.search.movie.NaverSearchMovieResponseParser;
 import com.izeye.playground.support.naver.service.search.news.NaverSearchNewsResponseParser;
+import com.izeye.playground.support.naver.service.search.shopping.NaverSearchShoppingResponseParser;
 
 @Service("naverOpenApiService")
 public class DefaultNaverOpenApiService implements NaverOpenApiService {
@@ -109,6 +111,9 @@ public class DefaultNaverOpenApiService implements NaverOpenApiService {
 
 	@Resource
 	private NaverSearchImageResponseParser imageResponseParser;
+
+	@Resource
+	private NaverSearchShoppingResponseParser shoppingResponseParser;
 
 	private final Logger log = LoggerFactory.getLogger(getClass());
 
@@ -322,8 +327,7 @@ public class DefaultNaverOpenApiService implements NaverOpenApiService {
 
 	@Override
 	public DefaultNaverSearchResponse searchKin(NaverSearchRequest request) {
-		return search(request, DEFAULT_NAVER_SEARCH_RESPONSE_CALLBACK,
-				DefaultNaverSearchResponse.class);
+		return search(request);
 	}
 
 	@Override
@@ -341,8 +345,7 @@ public class DefaultNaverOpenApiService implements NaverOpenApiService {
 
 	@Override
 	public DefaultNaverSearchResponse searchWeb(NaverSearchWebRequest request) {
-		return search(request, DEFAULT_NAVER_SEARCH_RESPONSE_CALLBACK,
-				DefaultNaverSearchResponse.class);
+		return search(request);
 	}
 
 	@Override
@@ -367,6 +370,29 @@ public class DefaultNaverOpenApiService implements NaverOpenApiService {
 						return response;
 					}
 				}, NaverSearchImageResponse.class);
+	}
+
+	@Override
+	public NaverSearchShoppingResponse searchShopping(NaverSearchRequest request) {
+		return search(request,
+				new NaverSearchResponseCallback<NaverSearchShoppingResponse>() {
+					@Override
+					public NaverSearchShoppingResponse callback(Element root) {
+						NaverSearchShoppingResponse response = new NaverSearchShoppingResponse();
+						shoppingResponseParser.parse(root, response);
+						return response;
+					}
+				}, NaverSearchShoppingResponse.class);
+	}
+
+	@Override
+	public DefaultNaverSearchResponse searchDocument(NaverSearchRequest request) {
+		return search(request);
+	}
+
+	private DefaultNaverSearchResponse search(NaverSearchRequest request) {
+		return search(request, DEFAULT_NAVER_SEARCH_RESPONSE_CALLBACK,
+				DefaultNaverSearchResponse.class);
 	}
 
 	private <T> T search(NaverSearchRequest request,

@@ -14,7 +14,9 @@ public enum NaverSearchSortType {
 	POINT("point"), //
 	RANDOM("random"), //
 	COMMENT_COUNT("comment"), //
-	VOTE("vote");
+	VOTE("vote"), //
+	PRICE_ASCENDING("asc"), //
+	PRICE_DESCENDING("dsc");
 
 	private final String value;
 

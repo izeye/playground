@@ -82,6 +82,12 @@ public interface NaverSearchConstants {
 	String ELEMENT_SIZE_HEIGHT = "sizeheight";
 	String ELEMENT_SIZE_WIDTH = "sizewidth";
 
+	String ELEMENT_LOW_PRICE = "lprice";
+	String ELEMENT_HIGH_PRICE = "hprice";
+	String ELEMENT_MALL_NAME = "mallName";
+	String ELEMENT_PRODUCT_ID = "productId";
+	String ELEMENT_PRODUCT_TYPE = "productType";
+
 	int TRUE_AS_INT = 1;
 	int FALSE_AS_INT = 0;
 
