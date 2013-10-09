@@ -10,6 +10,7 @@ public enum SubMenuItemGroup {
 	TOOLS_LIFE("Life"), //
 	TOOLS_COMPUTER("Computer"), //
 	TOOLS_LINGUISTICS("Linguistics"), //
+	MATH_BABY("Math for Babies"), //
 	MATH_ALGEBRA("Algebra"), //
 	MATH_GEOMETRY("Geometry"), //
 	LINKS_KID("Kid"), //

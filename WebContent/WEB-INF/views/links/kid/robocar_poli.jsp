@@ -13,4 +13,6 @@
 <a href="http://www.youtube.com/watch?v=czHCLNOXcl4&noredirect=1" target="_blank">11. 뽐내기 대회</a><br/>
 <a href="http://www.youtube.com/watch?v=_irZ_N8mhyM&noredirect=1" target="_blank">12. 스쿨비의 선물</a><br/>
 <a href="http://www.youtube.com/watch?v=C2l4TRHoJLg&noredirect=1" target="_blank">13. 깨끗이 닦아요</a><br/>
-<a href="http://www.youtube.com/watch?v=892b8yqxNWs&noredirect=1" target="_blank">14. 할아버지 사랑해요</a>
+<a href="http://www.youtube.com/watch?v=892b8yqxNWs&noredirect=1" target="_blank">14. 할아버지 사랑해요</a><br/>
+<a href="http://www.youtube.com/watch?v=y2YawV9af1c&noredirect=1" target="_blank">15. 클리니 어디 가?</a><br/>
+<a href="http://www.youtube.com/watch?v=-It5hyuVQUI&noredirect=1" target="_blank">16. 테리가 아파요</a>

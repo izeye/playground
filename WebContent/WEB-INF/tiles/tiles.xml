@@ -317,6 +317,11 @@
 		<put-attribute name="facebook_comments" value="/WEB-INF/tiles/jsp/facebook_comments.jsp" />
 	</definition>
 
+	<definition name="math/baby/number_counting" extends="math">
+		<put-attribute name="body_title" value="Number Counting" />
+		<put-attribute name="body" value="/WEB-INF/views/math/baby/number_counting.jsp" />
+	</definition>
+
 	<definition name="math/algebra/prime" extends="math">
 		<put-attribute name="body_title" value="Prime" />
 		<put-attribute name="body" value="/WEB-INF/views/math/algebra/prime/prime.jsp" />

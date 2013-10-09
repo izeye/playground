@@ -351,6 +351,12 @@ public interface MenuConstants {
 	String MENU_ITEM_MATH_PATH = "/math";
 	String MENU_ITEM_MATH_VIEW_NAME = "math";
 
+	String SUB_MENU_ITEM_GROUP_MATH_BABY_PATH = MENU_ITEM_MATH_PATH + "/baby";
+
+	String SUB_MENU_ITEM_NUMBER_COUNTING_NAME = "Number Counting";
+	String SUB_MENU_ITEM_NUMBER_COUNTING_PATH = SUB_MENU_ITEM_GROUP_MATH_BABY_PATH
+			+ "/number_counting";
+
 	String SUB_MENU_ITEM_GROUP_MATH_ALGEBRA_PATH = MENU_ITEM_MATH_PATH
 			+ "/algebra";
 
