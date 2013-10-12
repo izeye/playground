@@ -3,10 +3,10 @@
   "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
   "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
 <tiles-definitions>
-	<definition name="base.definition" template="/WEB-INF/tiles/jsp/layout.jsp">
+	<definition name="base.definition" template="/WEB-INF/tiles/jsp/new_layout.jsp">
 		<put-attribute name="title" value="izeye's Playground" />
-		<put-attribute name="menu" value="/WEB-INF/tiles/jsp/menu.jsp" />
-		<put-attribute name="sub_menu" value="/WEB-INF/tiles/jsp/sub_menu.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/tiles/jsp/new_menu.jsp" />
+		<put-attribute name="sub_menu" value="/WEB-INF/tiles/jsp/new_sub_menu.jsp" />
 		<put-attribute name="body_title" value="" />
 		<put-attribute name="facebook_like" value="" />
 		<put-attribute name="facebook_share" value="" />
