@@ -225,6 +225,10 @@ public interface MenuConstants {
 
 	String API_PATH_CSV_PARSER = SUB_MENU_ITEM_CSV_PARSER_PATH + "/api";
 
+	String SUB_MENU_ITEM_TEXT_2_IMAGE_NAME = "Text 2 Image";
+	String SUB_MENU_ITEM_TEXT_2_IMAGE_PATH = SUB_MENU_ITEM_GROUP_TOOLS_LIFE_PATH
+			+ "/text2image";
+
 	String SUB_MENU_ITEM_GROUP_TOOLS_COMPUTER_PATH = MENU_ITEM_TOOLS_PATH
 			+ "/computer";
 

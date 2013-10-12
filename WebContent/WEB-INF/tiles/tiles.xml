@@ -235,6 +235,11 @@
 		<put-attribute name="body" value="/WEB-INF/views/tools/life/csv_parser/csv_parser.jsp" />
 	</definition>
 
+	<definition name="tools/life/text2image" extends="tools">
+		<put-attribute name="body_title" value="Text 2 Image" />
+		<put-attribute name="body" value="/WEB-INF/views/tools/life/text2image/text2image.jsp" />
+	</definition>
+
 	<definition name="tools/computer/timestamp2datetime" extends="tools">
 		<put-attribute name="body_title" value="Timestamp 2 Date&amp;Time" />
 		<put-attribute name="body" value="/WEB-INF/views/tools/computer/timestamp2datetime/timestamp2datetime.jsp" />
