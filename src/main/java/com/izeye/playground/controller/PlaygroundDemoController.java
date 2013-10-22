@@ -1,46 +1,6 @@
 package com.izeye.playground.controller;
 
 import static com.izeye.playground.support.menu.domain.MenuConstants.*;
-import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_NAVER_SEARCH_BLOG;
-import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_NAVER_SEARCH_BOOK;
-import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_NAVER_SEARCH_CAFE;
-import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_NAVER_SEARCH_CAFE_ARTICLE;
-import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_NAVER_SEARCH_CAR;
-import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_NAVER_SEARCH_ENCYCLOPEDIA;
-import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_NAVER_SEARCH_IMAGE;
-import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_NAVER_SEARCH_KIN;
-import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_NAVER_SEARCH_LOCAL;
-import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_NAVER_SEARCH_MOVIE;
-import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_NAVER_SEARCH_MOVIE_ACTOR;
-import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_NAVER_SEARCH_NEWS;
-import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_NAVER_SEARCH_RANK;
-import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_NAVER_SEARCH_RECOMMEND;
-import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_NAVER_SEARCH_SHOPPING;
-import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_NAVER_SEARCH_SHORTCUT;
-import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_NAVER_SEARCH_TYPO;
-import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_NAVER_SEARCH_WEB;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_KAKAO_LINK_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_NAVER_SEARCH_ADULT_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_NAVER_SEARCH_BLOG_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_NAVER_SEARCH_BOOK_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_NAVER_SEARCH_CAFE_ARTICLE_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_NAVER_SEARCH_CAFE_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_NAVER_SEARCH_CAR_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_NAVER_SEARCH_ENCYCLOPEDIA_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_NAVER_SEARCH_IMAGE_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_NAVER_SEARCH_KIN_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_NAVER_SEARCH_LOCAL_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_NAVER_SEARCH_MOVIE_ACTOR_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_NAVER_SEARCH_MOVIE_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_NAVER_SEARCH_NEWS_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_NAVER_SEARCH_RANK_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_NAVER_SEARCH_RECOMMEND_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_NAVER_SEARCH_SHOPPING_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_NAVER_SEARCH_SHORTCUT_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_NAVER_SEARCH_TYPO_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_NAVER_SEARCH_WEB_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_WEBCAM_LIVE_PATH;
-import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_WEBCAM_SNAPSHOTS_PATH;
 
 import java.util.List;
 
@@ -52,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.izeye.playground.support.daum.domain.MypeopleBotCallbackAction;
+import com.izeye.playground.support.daum.service.MypeopleBotService;
 import com.izeye.playground.support.menu.domain.SubMenuItem;
 import com.izeye.playground.support.naver.domain.search.DefaultNaverSearchResponse;
 import com.izeye.playground.support.naver.domain.search.NaverSearchRequest;
@@ -82,6 +44,9 @@ public class PlaygroundDemoController extends AbstractPlaygroundController {
 
 	@Resource
 	private NaverOpenApiService naverOpenApiService;
+
+	@Resource
+	private MypeopleBotService mypeopleBotService;
 
 	@RequestMapping(SUB_MENU_ITEM_WEBCAM_LIVE_PATH)
 	public String webcamLive() {
@@ -450,6 +415,23 @@ public class PlaygroundDemoController extends AbstractPlaygroundController {
 		NaverSearchRequest request = new NaverSearchRequest(
 				NaverSearchType.DOCUMENT, query, display, start);
 		return naverOpenApiService.searchDocument(request);
+	}
+
+	@RequestMapping(SUB_MENU_ITEM_DAUM_MYPEOPLE_BOT_PATH)
+	public String daumMypeopleBot() {
+		return SubMenuItem.PLAYGROUND_DEMO_DAUM_MYPEOPLE_BOT.getViewName();
+	}
+
+	@RequestMapping(CALLBACK_PATH_DAUM_MYPEOPLE_BOT)
+	@ResponseBody
+	public String daumMyPeopleBotCallback(@RequestParam String action,
+			@RequestParam(required = false) String groupId,
+			@RequestParam String buddyId,
+			@RequestParam(required = false) String content) {
+		mypeopleBotService.handleCallback(
+				MypeopleBotCallbackAction.getByValue(action), groupId, buddyId,
+				content);
+		return "";
 	}
 
 }

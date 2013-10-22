@@ -1,20 +1,20 @@
 package com.izeye.playground.support.http.client.domain;
 
-public class HTTPRequestAndResponsePair {
+public class HttpRequestAndResponsePair {
 
-	private final HTTPRequest request;
-	private final HTTPResponse response;
+	private final HttpRequest request;
+	private final HttpResponse response;
 
-	public HTTPRequestAndResponsePair(HTTPRequest request, HTTPResponse response) {
+	public HttpRequestAndResponsePair(HttpRequest request, HttpResponse response) {
 		this.request = request;
 		this.response = response;
 	}
 
-	public HTTPRequest getRequest() {
+	public HttpRequest getRequest() {
 		return request;
 	}
 
-	public HTTPResponse getResponse() {
+	public HttpResponse getResponse() {
 		return response;
 	}
 

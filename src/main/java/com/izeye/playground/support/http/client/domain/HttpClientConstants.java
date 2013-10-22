@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 
 import com.izeye.playground.support.unit.domain.DigitalStorageUnit;
 
-public interface HTTPClientConstants {
+public interface HttpClientConstants {
 
 	String DEFAULT_HTTP_VERSION = "1.1";
 

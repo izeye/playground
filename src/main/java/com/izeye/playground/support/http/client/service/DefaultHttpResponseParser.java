@@ -1,6 +1,6 @@
 package com.izeye.playground.support.http.client.service;
 
-import static com.izeye.playground.support.http.client.domain.HTTPClientConstants.DEFAULT_RESPONSE_CONTENT_LENGTH_LIMIT;
+import static com.izeye.playground.support.http.client.domain.HttpClientConstants.DEFAULT_RESPONSE_CONTENT_LENGTH_LIMIT;
 import static com.izeye.playground.support.http.domain.HTTPConstants.CRLF;
 import static com.izeye.playground.support.http.domain.HTTPConstants.HEADER_CONTENT_LENGTH;
 import static com.izeye.playground.support.http.domain.HTTPConstants.HEADER_DELIMITER;
@@ -15,21 +15,21 @@ import java.util.Map;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-import com.izeye.playground.support.http.client.domain.HTTPClientFailureException;
-import com.izeye.playground.support.http.client.domain.HTTPResponse;
+import com.izeye.playground.support.http.client.domain.HttpClientFailureException;
+import com.izeye.playground.support.http.client.domain.HttpResponse;
 
 @Service("httpResponseParser")
-public class DefaultHTTPResponseParser implements HTTPResponseParser {
+public class DefaultHttpResponseParser implements HttpResponseParser {
 
 	@Override
-	public HTTPResponse parse(InputStream is) throws HTTPClientFailureException {
+	public HttpResponse parse(InputStream is) throws HttpClientFailureException {
 		return parse(is, false);
 	}
 
 	@Override
-	public HTTPResponse parse(InputStream is, boolean contentLengthLimited)
-			throws HTTPClientFailureException {
-		HTTPResponse response = new HTTPResponse();
+	public HttpResponse parse(InputStream is, boolean contentLengthLimited)
+			throws HttpClientFailureException {
+		HttpResponse response = new HttpResponse();
 
 		BufferedReader br = null;
 		try {
@@ -61,7 +61,7 @@ public class DefaultHTTPResponseParser implements HTTPResponseParser {
 				int contentLength = Integer.parseInt(headers
 						.get(HEADER_CONTENT_LENGTH));
 				if (contentLength > DEFAULT_RESPONSE_CONTENT_LENGTH_LIMIT) {
-					throw new HTTPClientFailureException(
+					throw new HttpClientFailureException(
 							"Content length is too big: " + contentLength
 									+ " (Max content length: "
 									+ DEFAULT_RESPONSE_CONTENT_LENGTH_LIMIT
@@ -90,7 +90,7 @@ public class DefaultHTTPResponseParser implements HTTPResponseParser {
 			return response;
 		} catch (IOException e) {
 			e.printStackTrace();
-			throw new HTTPClientFailureException(e);
+			throw new HttpClientFailureException(e);
 		}
 	}
 

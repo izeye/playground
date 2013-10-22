@@ -180,6 +180,11 @@
 		<put-attribute name="body" value="/WEB-INF/views/playground/demo/naver/search/document.jsp" />
 	</definition>
 
+	<definition name="playground/demo/daum/mypeople/bot" extends="playground">
+		<put-attribute name="body_title" value="mypeople Bot" />
+		<put-attribute name="body" value="/WEB-INF/views/playground/demo/daum/mypeople/bot.jsp" />
+	</definition>
+
 	<definition name="tools" extends="base.definition">
 		<put-attribute name="facebook_like" value="/WEB-INF/tiles/jsp/facebook_like.jsp" />
 		<put-attribute name="facebook_share" value="/WEB-INF/tiles/jsp/facebook_share.jsp" />

@@ -92,6 +92,16 @@ INSERT INTO tb_authorities (user_id, authority) VALUES ((SELECT id FROM tb_users
 
 CREATE UNIQUE INDEX ix_auth_user_id on tb_authorities (user_id, authority);
 
+CREATE TABLE tb_mypeople_bot_callback_log (
+	id INT AUTO_INCREMENT,
+	created_time DATETIME NOT NULL,
+	action VARCHAR(128) NOT NULL,
+	group_id VARCHAR(128),
+	buddy_id VARCHAR(128) NOT NULL,
+	content VARCHAR(1024),
+	PRIMARY KEY(id)
+);
+
 CREATE TABLE tb_menu_item (
 	id INT AUTO_INCREMENT,
 	name VARCHAR(128) NOT NULL,

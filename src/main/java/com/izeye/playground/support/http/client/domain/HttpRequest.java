@@ -1,10 +1,10 @@
 package com.izeye.playground.support.http.client.domain;
 
-import static com.izeye.playground.support.http.client.domain.HTTPClientConstants.DEFAULT_HEADER_CONNECTION;
-import static com.izeye.playground.support.http.client.domain.HTTPClientConstants.DEFAULT_HEADER_REFERER;
-import static com.izeye.playground.support.http.client.domain.HTTPClientConstants.DEFAULT_HEADER_USER_AGENT;
-import static com.izeye.playground.support.http.client.domain.HTTPClientConstants.DEFAULT_HTTP_VERSION;
-import static com.izeye.playground.support.http.client.domain.HTTPClientConstants.DEFAULT_PATH;
+import static com.izeye.playground.support.http.client.domain.HttpClientConstants.DEFAULT_HEADER_CONNECTION;
+import static com.izeye.playground.support.http.client.domain.HttpClientConstants.DEFAULT_HEADER_REFERER;
+import static com.izeye.playground.support.http.client.domain.HttpClientConstants.DEFAULT_HEADER_USER_AGENT;
+import static com.izeye.playground.support.http.client.domain.HttpClientConstants.DEFAULT_HTTP_VERSION;
+import static com.izeye.playground.support.http.client.domain.HttpClientConstants.DEFAULT_PATH;
 import static com.izeye.playground.support.http.domain.HTTPConstants.CRLF;
 import static com.izeye.playground.support.http.domain.HTTPConstants.DEFAULT_PORT;
 import static com.izeye.playground.support.http.domain.HTTPConstants.HEADER_CONNECTION;
@@ -20,9 +20,9 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
-public class HTTPRequest {
+public class HttpRequest {
 
-	private HTTPMethod method;
+	private HttpMethod method;
 	private URL url;
 
 	private String version;
@@ -38,7 +38,7 @@ public class HTTPRequest {
 
 	private String parametersAsString;
 
-	public HTTPRequest(HTTPMethod method, URL url) {
+	public HttpRequest(HttpMethod method, URL url) {
 		this.method = method;
 
 		setUrl(url);
@@ -56,16 +56,16 @@ public class HTTPRequest {
 		headers.put(HEADER_CONNECTION, DEFAULT_HEADER_CONNECTION);
 	}
 
-	public HTTPRequest(HTTPMethod method, String url)
+	public HttpRequest(HttpMethod method, String url)
 			throws MalformedURLException {
 		this(method, new URL(url));
 	}
 
-	public HTTPMethod getMethod() {
+	public HttpMethod getMethod() {
 		return method;
 	}
 
-	public void setMethod(HTTPMethod method) {
+	public void setMethod(HttpMethod method) {
 		this.method = method;
 	}
 
@@ -156,7 +156,7 @@ public class HTTPRequest {
 	public void setParameters(Map<String, String> parameters) {
 		this.parameters = parameters;
 
-		if (getMethod() == HTTPMethod.POST && parameters.size() != 0) {
+		if (getMethod() == HttpMethod.POST && parameters.size() != 0) {
 			StringBuilder sbParameters = new StringBuilder();
 			for (Map.Entry<String, String> parameter : parameters.entrySet()) {
 				sbParameters.append(parameter.getKey());
@@ -190,7 +190,7 @@ public class HTTPRequest {
 			sb.append(CRLF);
 		}
 		sb.append(CRLF);
-		if (getMethod() == HTTPMethod.POST && parameters.size() != 0) {
+		if (getMethod() == HttpMethod.POST && parameters.size() != 0) {
 			sb.append(parametersAsString);
 		}
 		return sb.toString();

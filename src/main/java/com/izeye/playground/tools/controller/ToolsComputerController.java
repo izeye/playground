@@ -54,11 +54,11 @@ import com.izeye.playground.support.date.service.DateService;
 import com.izeye.playground.support.encode.base64.service.Base64EncodingService;
 import com.izeye.playground.support.encode.unicode.service.UnicodeEncodingService;
 import com.izeye.playground.support.encode.url.service.URLEncodingService;
-import com.izeye.playground.support.http.client.domain.HTTPMethod;
-import com.izeye.playground.support.http.client.domain.HTTPRequest;
-import com.izeye.playground.support.http.client.domain.HTTPRequestAndResponsePair;
-import com.izeye.playground.support.http.client.domain.HTTPResponse;
-import com.izeye.playground.support.http.client.service.HTTPClient;
+import com.izeye.playground.support.http.client.domain.HttpMethod;
+import com.izeye.playground.support.http.client.domain.HttpRequest;
+import com.izeye.playground.support.http.client.domain.HttpRequestAndResponsePair;
+import com.izeye.playground.support.http.client.domain.HttpResponse;
+import com.izeye.playground.support.http.client.service.HttpClient;
 import com.izeye.playground.support.ip.domain.IpInfo;
 import com.izeye.playground.support.ip.service.IpAnalyzer;
 import com.izeye.playground.support.lang.ko.unicode.domain.Unicode;
@@ -88,7 +88,7 @@ public class ToolsComputerController extends AbstractToolsController {
 	private KoreanUnicodeService koreanUnicodeService;
 
 	@Resource
-	private HTTPClient httpClient;
+	private HttpClient httpClient;
 
 	@Resource
 	private IpAnalyzer ipAnalyzer;
@@ -241,7 +241,7 @@ public class ToolsComputerController extends AbstractToolsController {
 
 	@RequestMapping(SUB_MENU_ITEM_HTTP_CLIENT_PATH)
 	public String httpClient(Model model) {
-		model.addAttribute("methods", HTTPMethod.values());
+		model.addAttribute("methods", HttpMethod.values());
 
 		model.addAttribute("API_PATH_HTTP_CLIENT", API_PATH_HTTP_CLIENT);
 
@@ -250,11 +250,11 @@ public class ToolsComputerController extends AbstractToolsController {
 
 	@RequestMapping(API_PATH_HTTP_CLIENT)
 	@ResponseBody
-	public HTTPRequestAndResponsePair httpClientApi(
-			@RequestParam HTTPMethod method, @RequestParam String url,
+	public HttpRequestAndResponsePair httpClientApi(
+			@RequestParam HttpMethod method, @RequestParam String url,
 			@RequestParam String headers, @RequestParam String parameters)
 			throws MalformedURLException {
-		HTTPRequest request = new HTTPRequest(method, url);
+		HttpRequest request = new HttpRequest(method, url);
 
 		headers = headers.trim();
 		if (!headers.isEmpty()) {
@@ -289,8 +289,8 @@ public class ToolsComputerController extends AbstractToolsController {
 			request.setParameters(parameterMap);
 		}
 
-		HTTPResponse response = httpClient.send(request);
-		return new HTTPRequestAndResponsePair(request, response);
+		HttpResponse response = httpClient.send(request);
+		return new HttpRequestAndResponsePair(request, response);
 	}
 
 	@RequestMapping(SUB_MENU_ITEM_IP_ANALYZER_PATH)

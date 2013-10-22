@@ -12,25 +12,25 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.izeye.playground.support.http.client.domain.HTTPClientFailureException;
-import com.izeye.playground.support.http.client.domain.HTTPRequest;
-import com.izeye.playground.support.http.client.domain.HTTPResponse;
+import com.izeye.playground.support.http.client.domain.HttpClientFailureException;
+import com.izeye.playground.support.http.client.domain.HttpRequest;
+import com.izeye.playground.support.http.client.domain.HttpResponse;
 
 @Service("httpClient")
-public class DefaultHTTPClient implements HTTPClient {
+public class DefaultHttpClient implements HttpClient {
 
 	@Resource
-	private HTTPResponseParser httpResponseParser;
+	private HttpResponseParser httpResponseParser;
 
 	@Override
-	public HTTPResponse send(HTTPRequest request)
-			throws HTTPClientFailureException {
+	public HttpResponse send(HttpRequest request)
+			throws HttpClientFailureException {
 		return send(request, false);
 	}
 
 	@Override
-	public HTTPResponse send(HTTPRequest request, boolean contentLengthLimited)
-			throws HTTPClientFailureException {
+	public HttpResponse send(HttpRequest request, boolean contentLengthLimited)
+			throws HttpClientFailureException {
 		Socket socket = null;
 
 		BufferedOutputStream bos = null;
@@ -47,10 +47,10 @@ public class DefaultHTTPClient implements HTTPClient {
 			return httpResponseParser.parse(is, contentLengthLimited);
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
-			throw new HTTPClientFailureException(e);
+			throw new HttpClientFailureException(e);
 		} catch (IOException e) {
 			e.printStackTrace();
-			throw new HTTPClientFailureException(e);
+			throw new HttpClientFailureException(e);
 		} finally {
 			if (bos != null) {
 				try {

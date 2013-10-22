@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.izeye.playground.support.daum.dao.mybatis.MypeopleBotMapper">
+	<insert id="insert">
+		INSERT INTO
+			tb_mypeople_bot_callback_log (created_time, action, group_id, buddy_id, content)
+		VALUES
+			(now(), #{action}, #{groupId}, #{buddyId}, #{content})
+	</insert>
+</mapper>

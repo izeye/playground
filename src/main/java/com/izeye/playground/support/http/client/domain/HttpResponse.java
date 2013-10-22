@@ -5,7 +5,7 @@ import java.util.Map;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.util.HtmlUtils;
 
-public class HTTPResponse {
+public class HttpResponse {
 
 	private String rawResponse;
 
