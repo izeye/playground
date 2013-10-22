@@ -26,20 +26,30 @@ var save = function () {
 };
 </script>
 
-<label for="text">Text</label>
-<input id="text" type="text" value="Test" /><br/>
-<label for="width">Font size</label>
-<input id="fontSize" type="text" value="12" /><br/>
+<p>
+This page provides converting text to image and you can save it as a file.
+</p>
 
-<label for="width">Width</label>
+<label for="text">Text
+<input id="text" type="text" value="Test" />
+</label><br/>
+<label for="width">Font size
+<input id="fontSize" type="text" value="12" />
+</label><br/>
+
+<label for="width">Width
 <input id="width" type="text" value="400" />
-<label for="width">Height</label>
-<input id="height" type="text" value="300" /><br/>
+</label>
+<label for="width">Height
+<input id="height" type="text" value="300" />
+</label><br/>
 
-<label for="width">Background color</label>
+<label for="width">Background color
 <input id="backgroundColor" type="text" value="#3a5a97" />
-<label for="width">Foreground color</label>
-<input id="foregroundColor" type="text" value="#fff" /><br/>
+</label>
+<label for="width">Foreground color
+<input id="foregroundColor" type="text" value="#fff" />
+</label><br/>
 
 <input type="button" value="Draw" onclick="draw();" /><br/><br/>
 

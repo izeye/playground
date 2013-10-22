@@ -6,6 +6,7 @@ import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_TE
 import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_UNIT_CONVERTER;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_BOOKMARKLETS_PATH;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_CSV_PARSER_PATH;
+import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_DRAW_IMAGE_PATH;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_TEXT_2_IMAGE_PATH;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_TEXT_2_QR_CODE_IN_JAVASCRIPT_PATH;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_TEXT_2_QR_CODE_IN_JAVA_PATH;
@@ -139,6 +140,11 @@ public class ToolsLifeController extends AbstractToolsController {
 	@RequestMapping(SUB_MENU_ITEM_TEXT_2_IMAGE_PATH)
 	public String text2Image() {
 		return SubMenuItem.TOOLS_LIFE_TEXT_2_IMAGE.getViewName();
+	}
+
+	@RequestMapping(SUB_MENU_ITEM_DRAW_IMAGE_PATH)
+	public String drawImage() {
+		return SubMenuItem.TOOLS_LIFE_DRAW_IMAGE.getViewName();
 	}
 
 }

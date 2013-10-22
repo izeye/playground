@@ -229,6 +229,10 @@ public interface MenuConstants {
 	String SUB_MENU_ITEM_TEXT_2_IMAGE_PATH = SUB_MENU_ITEM_GROUP_TOOLS_LIFE_PATH
 			+ "/text2image";
 
+	String SUB_MENU_ITEM_DRAW_IMAGE_NAME = "Draw Image";
+	String SUB_MENU_ITEM_DRAW_IMAGE_PATH = SUB_MENU_ITEM_GROUP_TOOLS_LIFE_PATH
+			+ "/draw_image";
+
 	String SUB_MENU_ITEM_GROUP_TOOLS_COMPUTER_PATH = MENU_ITEM_TOOLS_PATH
 			+ "/computer";
 

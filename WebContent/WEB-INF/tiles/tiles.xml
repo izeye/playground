@@ -240,6 +240,11 @@
 		<put-attribute name="body" value="/WEB-INF/views/tools/life/text2image/text2image.jsp" />
 	</definition>
 
+	<definition name="tools/life/draw_image" extends="tools">
+		<put-attribute name="body_title" value="Draw Image" />
+		<put-attribute name="body" value="/WEB-INF/views/tools/life/draw_image/draw_image.jsp" />
+	</definition>
+
 	<definition name="tools/computer/timestamp2datetime" extends="tools">
 		<put-attribute name="body_title" value="Timestamp 2 Date&amp;Time" />
 		<put-attribute name="body" value="/WEB-INF/views/tools/computer/timestamp2datetime/timestamp2datetime.jsp" />
