@@ -30,7 +30,7 @@ import com.izeye.playground.support.daum.domain.MypeopleBotCallbackLog;
 import com.izeye.playground.support.daum.domain.MypeopleBotException;
 
 @Service("mypeopleBotService")
-public class DefaultMypeopleBotService implements MypeopleBotService {  
+public class DefaultMypeopleBotService implements MypeopleBotService {
 
 	private static final String XML = ".xml";
 	private static final String JSON = ".json";
@@ -92,7 +92,7 @@ public class DefaultMypeopleBotService implements MypeopleBotService {
 			params.add(new BasicNameValuePair("buddyId", buddyId));
 			params.add(new BasicNameValuePair("content", content));
 			params.add(new BasicNameValuePair("apikey", apiKey));
-			httpPost.setEntity(new UrlEncodedFormEntity(params));
+			httpPost.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
 			HttpResponse httpResponse = httpClient.execute(httpPost);
 			String response = toString(httpResponse);
 			log.debug(response);
