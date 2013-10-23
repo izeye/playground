@@ -1,7 +1,7 @@
 package com.izeye.playground.support.http.client.domain;
 
 import static com.izeye.playground.common.domain.CommonConstants.DOMAIN;
-import static com.izeye.playground.support.http.domain.HTTPConstants.HEADER_CONNECTION_CLOSE;
+import static com.izeye.playground.support.http.domain.HttpConstants.HEADER_CONNECTION_CLOSE;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_HTTP_CLIENT_PATH;
 
 import java.math.BigDecimal;

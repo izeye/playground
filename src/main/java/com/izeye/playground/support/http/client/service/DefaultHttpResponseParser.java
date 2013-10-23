@@ -1,9 +1,9 @@
 package com.izeye.playground.support.http.client.service;
 
 import static com.izeye.playground.support.http.client.domain.HttpClientConstants.DEFAULT_RESPONSE_CONTENT_LENGTH_LIMIT;
-import static com.izeye.playground.support.http.domain.HTTPConstants.CRLF;
-import static com.izeye.playground.support.http.domain.HTTPConstants.HEADER_CONTENT_LENGTH;
-import static com.izeye.playground.support.http.domain.HTTPConstants.HEADER_DELIMITER;
+import static com.izeye.playground.support.http.domain.HttpConstants.CRLF;
+import static com.izeye.playground.support.http.domain.HttpConstants.HEADER_CONTENT_LENGTH;
+import static com.izeye.playground.support.http.domain.HttpConstants.HEADER_DELIMITER;
 
 import java.io.BufferedReader;
 import java.io.IOException;

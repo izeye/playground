@@ -1,6 +1,6 @@
 <script type="text/javascript">
 var convertToDate = function () {
-	$.get('${API_URL_TIMESTAMP_2_DATE_AND_TIME}', {
+	$.get('${API_PATH_TIMESTAMP_2_DATE_AND_TIME}', {
 		timestampInSeconds: $('#timestampInSeconds').val()
 	}).done(function (data) {
 		$('#convertedDate').text(data);
@@ -8,7 +8,7 @@ var convertToDate = function () {
 };
 
 var convertToTimestamp = function () {
-	$.get('${API_URL_DATE_AND_TIME_2_TIMESTAMP}', {
+	$.get('${API_PATH_DATE_AND_TIME_2_TIMESTAMP}', {
 		formattedDate: $('#formattedDate').val()
 	}).done(function (data) {
 		$('#convertedTimestamp').text(data);

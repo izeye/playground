@@ -5,15 +5,15 @@ import static com.izeye.playground.support.http.client.domain.HttpClientConstant
 import static com.izeye.playground.support.http.client.domain.HttpClientConstants.DEFAULT_HEADER_USER_AGENT;
 import static com.izeye.playground.support.http.client.domain.HttpClientConstants.DEFAULT_HTTP_VERSION;
 import static com.izeye.playground.support.http.client.domain.HttpClientConstants.DEFAULT_PATH;
-import static com.izeye.playground.support.http.domain.HTTPConstants.CRLF;
-import static com.izeye.playground.support.http.domain.HTTPConstants.DEFAULT_PORT;
-import static com.izeye.playground.support.http.domain.HTTPConstants.HEADER_CONNECTION;
-import static com.izeye.playground.support.http.domain.HTTPConstants.HEADER_DELIMITER;
-import static com.izeye.playground.support.http.domain.HTTPConstants.HEADER_HOST;
-import static com.izeye.playground.support.http.domain.HTTPConstants.HEADER_REFERER;
-import static com.izeye.playground.support.http.domain.HTTPConstants.HEADER_USER_AGENT;
-import static com.izeye.playground.support.http.domain.HTTPConstants.PARAMETERS_DELIMITER;
-import static com.izeye.playground.support.http.domain.HTTPConstants.*;
+import static com.izeye.playground.support.http.domain.HttpConstants.CRLF;
+import static com.izeye.playground.support.http.domain.HttpConstants.DEFAULT_PORT;
+import static com.izeye.playground.support.http.domain.HttpConstants.HEADER_CONNECTION;
+import static com.izeye.playground.support.http.domain.HttpConstants.HEADER_DELIMITER;
+import static com.izeye.playground.support.http.domain.HttpConstants.HEADER_HOST;
+import static com.izeye.playground.support.http.domain.HttpConstants.HEADER_REFERER;
+import static com.izeye.playground.support.http.domain.HttpConstants.HEADER_USER_AGENT;
+import static com.izeye.playground.support.http.domain.HttpConstants.PARAMETERS_DELIMITER;
+import static com.izeye.playground.support.http.domain.HttpConstants.*;
 
 import java.net.MalformedURLException;
 import java.net.URL;

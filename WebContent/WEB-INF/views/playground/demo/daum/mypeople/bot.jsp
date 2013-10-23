@@ -2,4 +2,4 @@
 
 <p>You can add me (izeye.bot) in mypeople.</p>
 
-<p>This bot is just echoing bot.</p>
+<p>This bot is just an echoing bot.</p>

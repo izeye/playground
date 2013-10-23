@@ -1,6 +1,6 @@
 package com.izeye.playground.support.http.domain;
 
-public interface HTTPConstants {
+public interface HttpConstants {
 
 	String CRLF = "\r\n";
 

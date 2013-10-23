@@ -30,7 +30,7 @@ import com.izeye.playground.support.daum.domain.MypeopleBotCallbackLog;
 import com.izeye.playground.support.daum.domain.MypeopleBotException;
 
 @Service("mypeopleBotService")
-public class DefaultMypeopleBotService implements MypeopleBotService {
+public class DefaultMypeopleBotService implements MypeopleBotService {  
 
 	private static final String XML = ".xml";
 	private static final String JSON = ".json";

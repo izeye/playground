@@ -1,7 +1,7 @@
 package com.izeye.playground.tools.controller;
 
-import static com.izeye.playground.support.http.domain.HTTPConstants.HEADER_DELIMITER;
-import static com.izeye.playground.support.http.domain.HTTPConstants.PARAMETER_DELIMITER;
+import static com.izeye.playground.support.http.domain.HttpConstants.HEADER_DELIMITER;
+import static com.izeye.playground.support.http.domain.HttpConstants.PARAMETER_DELIMITER;
 import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_BASE64_ENCODER_AND_DECODER_DECODE;
 import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_BASE64_ENCODER_AND_DECODER_ENCODE;
 import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_BASE_CONVERTER;
@@ -11,6 +11,7 @@ import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_HT
 import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_HTTP_CLIENT;
 import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_IP_ANALYZER;
 import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_MULTI_WORD_NOTATION_CONVERTER;
+import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_REGULAR_EXPRESSION_TESTER;
 import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_TIMESTAMP_2_DATE_AND_TIME;
 import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_UA_ANALYZER;
 import static com.izeye.playground.support.menu.domain.MenuConstants.API_PATH_UNICODE_ENCODER_AND_DECODER_DECODE;
@@ -24,6 +25,7 @@ import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_IT
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_IP_ANALYZER_PATH;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_KOREAN_UNICODE_TABLE_PATH;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_MULTI_WORD_NOTATION_CONVERTER_PATH;
+import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_REGULAR_EXPRESSION_TESTER_PATH;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_TIMESTAMP_2_DATE_AND_TIME_PATH;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_UA_ANALYZER_PATH;
 import static com.izeye.playground.support.menu.domain.MenuConstants.SUB_MENU_ITEM_UNICODE_ENCODER_AND_DECODER_PATH;
@@ -65,6 +67,7 @@ import com.izeye.playground.support.lang.ko.unicode.domain.Unicode;
 import com.izeye.playground.support.lang.ko.unicode.service.KoreanUnicodeService;
 import com.izeye.playground.support.math.base.domain.Base;
 import com.izeye.playground.support.menu.domain.SubMenuItem;
+import com.izeye.playground.support.regex.service.RegularExpressionService;
 import com.izeye.playground.support.ua.domain.UserAgent;
 import com.izeye.playground.support.ua.service.UserAgentAnalyzer;
 import com.sun.org.apache.xml.internal.security.exceptions.Base64DecodingException;
@@ -96,6 +99,9 @@ public class ToolsComputerController extends AbstractToolsController {
 	@Resource
 	private UserAgentAnalyzer userAgentAnalyzer;
 
+	@Resource
+	private RegularExpressionService regularExpressionService;
+
 	@RequestMapping(SUB_MENU_ITEM_TIMESTAMP_2_DATE_AND_TIME_PATH)
 	public String timestamp2DateAndTime(Model model) {
 		Date currentDate = new Date();
@@ -106,9 +112,9 @@ public class ToolsComputerController extends AbstractToolsController {
 				currentTimestampInSeconds);
 		model.addAttribute("currentFormattedDate", currentFormattedDate);
 
-		model.addAttribute("API_URL_TIMESTAMP_2_DATE_AND_TIME",
+		model.addAttribute("API_PATH_TIMESTAMP_2_DATE_AND_TIME",
 				API_PATH_TIMESTAMP_2_DATE_AND_TIME);
-		model.addAttribute("API_URL_DATE_AND_TIME_2_TIMESTAMP",
+		model.addAttribute("API_PATH_DATE_AND_TIME_2_TIMESTAMP",
 				API_PATH_DATE_AND_TIME_2_TIMESTAMP);
 
 		return SubMenuItem.TOOLS_COMPUTER_TIMESTAMP_2_DATE_AND_TIME
@@ -361,6 +367,22 @@ public class ToolsComputerController extends AbstractToolsController {
 	public String baseConverterApi(@RequestParam Base sourceBase,
 			@RequestParam Base targetBase, @RequestParam String numberToConvert) {
 		return targetBase.convert(numberToConvert, sourceBase);
+	}
+
+	@RequestMapping(SUB_MENU_ITEM_REGULAR_EXPRESSION_TESTER_PATH)
+	public String regularExpressionTester(Model model) {
+		model.addAttribute("API_PATH_REGULAR_EXPRESSION_TESTER",
+				API_PATH_REGULAR_EXPRESSION_TESTER);
+
+		return SubMenuItem.TOOLS_COMPUTER_REGULAR_EXPRESSION_TESTER
+				.getViewName();
+	}
+
+	@RequestMapping(API_PATH_REGULAR_EXPRESSION_TESTER)
+	@ResponseBody
+	public boolean regularExpressionTesterApi(@RequestParam String regex,
+			@RequestParam String input) {
+		return regularExpressionService.matches(regex, input);
 	}
 
 }

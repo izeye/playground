@@ -305,6 +305,11 @@
 		<put-attribute name="body" value="/WEB-INF/views/tools/computer/base_converter/base_converter.jsp" />
 	</definition>
 
+	<definition name="tools/computer/regular_expression_tester" extends="tools">
+		<put-attribute name="body_title" value="Regular Expression Tester" />
+		<put-attribute name="body" value="/WEB-INF/views/tools/computer/regular_expression_tester/regular_expression_tester.jsp" />
+	</definition>
+
 	<definition name="tools/linguistics/korean_romanization" extends="tools">
 		<put-attribute name="body_title" value="Korean Romanization" />
 		<put-attribute name="body" value="/WEB-INF/views/tools/linguistics/korean_romanization/korean_romanization.jsp" />
