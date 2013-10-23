@@ -12,6 +12,7 @@
 <link
 	href="<c:url value="/resources/bootstrap/3.0.0/css/docs.css" />"
 	rel="stylesheet" media="screen">
+<link rel="shortcut icon" href="<c:url value="/resources/icons/i_16x16.ico" />" />
 <style type="text/css">
 body {
 	padding-top: 60px;
