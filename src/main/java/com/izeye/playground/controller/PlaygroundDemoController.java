@@ -434,4 +434,9 @@ public class PlaygroundDemoController extends AbstractPlaygroundController {
 		return "";
 	}
 
+	@RequestMapping(SUB_MENU_ITEM_FIREBASE_CHAT_PATH)
+	public String firebaseChat() {
+		return SubMenuItem.PLAYGROUND_DEMO_FIREBASE_CHAT.getViewName();
+	}
+
 }

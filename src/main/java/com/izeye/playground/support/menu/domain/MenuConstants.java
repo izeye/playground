@@ -190,6 +190,10 @@ public interface MenuConstants {
 	String CALLBACK_PATH_DAUM_MYPEOPLE_BOT = SUB_MENU_ITEM_DAUM_MYPEOPLE_BOT_PATH
 			+ "/callback";
 
+	String SUB_MENU_ITEM_FIREBASE_CHAT_NAME = "Firebase Chat";
+	String SUB_MENU_ITEM_FIREBASE_CHAT_PATH = SUB_MENU_ITEM_GROUP_PLAYGROUND_DEMO_PATH
+			+ "/firebase/chat";
+
 	String MENU_ITEM_TOOLS_NAME = "Tools";
 	String MENU_ITEM_TOOLS_PATH = "/tools";
 

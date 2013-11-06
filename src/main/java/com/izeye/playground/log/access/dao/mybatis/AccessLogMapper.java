@@ -1,5 +1,6 @@
 package com.izeye.playground.log.access.dao.mybatis;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
@@ -24,6 +25,9 @@ public interface AccessLogMapper {
 	List<AccessLog> getAccessLogsInSpecificDate(String date);
 
 	List<DailyCount> getDailyCounts();
+
+	List<DailyCount> getLatestDailyCounts(@Param("startDate") Date startDate,
+			@Param("endDate") Date endDate);
 
 	List<UserAgentCount> getUserAgentCounts();
 

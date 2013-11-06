@@ -1,5 +1,6 @@
 package com.izeye.playground.log.access.dao.mybatis;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -51,6 +52,12 @@ public class AccessLogDaoMyBatis implements AccessLogDao {
 	public List<DailyCount> getDailyCounts() {
 		AccessLogMapper mapper = sqlSession.getMapper(AccessLogMapper.class);
 		return mapper.getDailyCounts();
+	}
+
+	@Override
+	public List<DailyCount> getDailyCountsBetween(Date startDate, Date endDate) {
+		AccessLogMapper mapper = sqlSession.getMapper(AccessLogMapper.class);
+		return mapper.getLatestDailyCounts(startDate, endDate);
 	}
 
 	@Override

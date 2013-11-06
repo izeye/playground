@@ -1,5 +1,6 @@
 package com.izeye.playground.log.access.dao;
 
+import java.sql.Date;
 import java.util.List;
 
 import com.izeye.playground.log.access.domain.AccessLog;
@@ -18,6 +19,8 @@ public interface AccessLogDao {
 	List<AccessLog> getAccessLogsInSpecificDate(String date);
 
 	List<DailyCount> getDailyCounts();
+
+	List<DailyCount> getDailyCountsBetween(Date startDate, Date endDate);
 
 	List<UserAgentCount> getUserAgentCounts();
 
