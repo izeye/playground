@@ -43,6 +43,21 @@
 		GROUP BY day
 		ORDER BY day DESC
 	</select>
+	<select id="getDailyCountsWithCount" resultType="DailyCount">
+		SELECT
+			day, SUM(count) pageviews, COUNT(count) unique_visitors
+		FROM
+			(
+				SELECT
+					DATE_FORMAT(access_time, '%Y-%m-%d') AS day, COUNT(1) AS count
+				FROM
+					tb_access_log
+				GROUP BY day, ip
+			) V
+		GROUP BY day
+		ORDER BY day DESC
+		LIMIT #{count}
+	</select>
 	<select id="getUserAgentCounts" resultType="UserAgentCount">
 		SELECT
 			user_agent, COUNT(1) AS count

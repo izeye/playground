@@ -34,24 +34,35 @@ Search:
 </p>
 <p>PV (Pageviews): ${yesterdayVisitStat.getPageviews()}</p>
 <p>UV (Unique Visitors): ${yesterdayVisitStat.getUniqueVisitors()}</p>
+<script type="text/javascript">
+var lineForPageviews = [];
+var lineForUniqueVisitors = [];
+
+<c:forEach var="dailyCount" items="${dailyCountsInThisWeek}">
+	lineForPageviews.push(['${dailyCount.getDay()}', ${dailyCount.getPageviews()}]);
+	lineForUniqueVisitors.push(['${dailyCount.getDay()}', ${dailyCount.getUniqueVisitors()}]);
+</c:forEach>
+</script>
 
 <script type="text/javascript">
 $(document).ready(function () {
-	var line2 = [['2008-06-30 8:00AM', 4], ['2008-07-30 8:00AM', 6.5], ['2008-08-30 8:00AM', 5.7], ['2008-09-30 8:00AM', 9], ['2008-10-30 8:00AM', 8.2]];
-	var plot2 = $.jqplot('chart', [line2], {
-		title: 'Customized Date Axis',
+	var plot = $.jqplot('chart', [lineForPageviews, lineForUniqueVisitors], {
+		title: 'PV & UV in this week',
 		axes: {
 			xaxis: {
 				renderer: $.jqplot.DateAxisRenderer,
-				tickOptions: {formatString: '%b %#d, %y'},
-				min: 'May 30, 2008',
-				tickInterval: '1 month'
+				tickOptions: {formatString: '%Y-%m-%d'},
+				tickInterval: '1 day'
 			},
 			yaxis: {
 				min: 0
 			}
 		},
-		series: [{lineWidth: 4, markerOptions: {style: 'sqaure'}}]
+		series: [
+			{lineWidth: 4, markerOptions: {style: 'sqaure'}, label: 'PV'},
+			{lineWidth: 4, markerOptions: {style: 'sqaure'}, label: 'UV'}
+		],
+		legend: {show: true}
 	});
 });
 </script>

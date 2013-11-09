@@ -22,6 +22,8 @@ public interface AccessLogDao {
 
 	List<DailyCount> getDailyCountsBetween(Date startDate, Date endDate);
 
+	List<DailyCount> getDailyCounts(int count);
+
 	List<UserAgentCount> getUserAgentCounts();
 
 	List<IpCount> getUserAgentSpamIpCounts();

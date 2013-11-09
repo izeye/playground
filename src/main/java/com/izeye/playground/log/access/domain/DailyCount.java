@@ -22,7 +22,7 @@ public class DailyCount {
 		this.pageviews = pageviews;
 	}
 
-	public int getUniqueVistors() {
+	public int getUniqueVisitors() {
 		return uniqueVisitors;
 	}
 

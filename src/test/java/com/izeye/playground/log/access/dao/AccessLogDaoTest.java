@@ -63,6 +63,13 @@ public class AccessLogDaoTest {
 	}
 
 	@Test
+	public void getDailyCountsWithCount() {
+		int count = 7;
+		List<DailyCount> dailyCounts = accessLogDao.getDailyCounts(count);
+		System.out.println(dailyCounts);
+	}
+
+	@Test
 	public void getUserAgentCounts() {
 		List<UserAgentCount> userAgentCounts = accessLogDao
 				.getUserAgentCounts();

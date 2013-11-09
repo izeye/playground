@@ -62,6 +62,11 @@ public class DefaultAudienceAnalyticsService implements
 	}
 
 	@Override
+	public List<DailyCount> getDailyCountsInThisWeek() {
+		return accessLogDao.getDailyCounts(7);
+	}
+
+	@Override
 	public List<UserAgentCount> getUserAgentCounts() {
 		List<UserAgentCount> userAgentCounts = accessLogDao
 				.getUserAgentCounts();

@@ -18,6 +18,8 @@ public interface AudienceAnalyticsService {
 
 	List<DailyCount> getDailyCounts();
 
+	List<DailyCount> getDailyCountsInThisWeek();
+
 	List<UserAgentCount> getUserAgentCounts();
 
 	List<IpCount> getUserAgentSpamIPCounts();

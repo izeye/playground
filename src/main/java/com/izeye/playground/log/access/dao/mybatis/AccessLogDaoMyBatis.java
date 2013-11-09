@@ -61,6 +61,12 @@ public class AccessLogDaoMyBatis implements AccessLogDao {
 	}
 
 	@Override
+	public List<DailyCount> getDailyCounts(int count) {
+		AccessLogMapper mapper = sqlSession.getMapper(AccessLogMapper.class);
+		return mapper.getDailyCountsWithCount(count);
+	}
+
+	@Override
 	@Cacheable(value = "accessLogCache", key = "{#root.methodName}")
 	public List<UserAgentCount> getUserAgentCounts() {
 		AccessLogMapper mapper = sqlSession.getMapper(AccessLogMapper.class);

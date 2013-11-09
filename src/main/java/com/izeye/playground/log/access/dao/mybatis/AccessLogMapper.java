@@ -29,6 +29,8 @@ public interface AccessLogMapper {
 	List<DailyCount> getLatestDailyCounts(@Param("startDate") Date startDate,
 			@Param("endDate") Date endDate);
 
+	List<DailyCount> getDailyCountsWithCount(int count);
+
 	List<UserAgentCount> getUserAgentCounts();
 
 	List<IpCount> getUserAgentSpamIPCounts();
