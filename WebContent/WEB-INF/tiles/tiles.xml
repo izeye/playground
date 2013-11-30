@@ -335,6 +335,11 @@
 		<put-attribute name="body" value="/WEB-INF/views/tools/linguistics/english_lowercase_uppercase_converter/english_lowercase_uppercase_converter.jsp" />
 	</definition>
 
+	<definition name="tools/linguistics/letter_frequency" extends="tools">
+		<put-attribute name="body_title" value="Letter Frequency" />
+		<put-attribute name="body" value="/WEB-INF/views/tools/linguistics/letter_frequency/letter_frequency.jsp" />
+	</definition>
+
 	<definition name="math" extends="base.definition">
 		<put-attribute name="facebook_like" value="/WEB-INF/tiles/jsp/facebook_like.jsp" />
 		<put-attribute name="facebook_share" value="/WEB-INF/tiles/jsp/facebook_share.jsp" />
