@@ -194,6 +194,10 @@ public interface MenuConstants {
 	String SUB_MENU_ITEM_FIREBASE_CHAT_PATH = SUB_MENU_ITEM_GROUP_PLAYGROUND_DEMO_PATH
 			+ "/firebase/chat";
 
+	String SUB_MENU_ITEM_D3_4_CIRCLES_ILLUSION_NAME = "4 Circles Illusion";
+	String SUB_MENU_ITEM_D3_4_CIRCLES_ILLUSION_PATH = SUB_MENU_ITEM_GROUP_PLAYGROUND_DEMO_PATH
+			+ "/d3/4_circles_illusion";
+
 	String MENU_ITEM_TOOLS_NAME = "Tools";
 	String MENU_ITEM_TOOLS_PATH = "/tools";
 

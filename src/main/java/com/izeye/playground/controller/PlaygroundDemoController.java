@@ -439,4 +439,9 @@ public class PlaygroundDemoController extends AbstractPlaygroundController {
 		return SubMenuItem.PLAYGROUND_DEMO_FIREBASE_CHAT.getViewName();
 	}
 
+	@RequestMapping(SUB_MENU_ITEM_D3_4_CIRCLES_ILLUSION_PATH)
+	public String d34CirclesIllusion() {
+		return SubMenuItem.PLAYGROUND_DEMO_D3_4_CIRCLES_ILLUSION.getViewName();
+	}
+
 }
